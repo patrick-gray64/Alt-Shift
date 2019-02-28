@@ -16,7 +16,7 @@ public class ShiftSwapDialogue extends DialogFragment {
         builder.setMessage(R.string.swap_message)
                 .setPositiveButton(R.string.accept_button, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(getContext(),"Your shift has been swapped!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Your shift has been swapped!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton(R.string.reject_button, new DialogInterface.OnClickListener() {
@@ -27,5 +27,5 @@ public class ShiftSwapDialogue extends DialogFragment {
         // Create the AlertDialog object and return it
         return builder.create();
 
-
+    }
 }
