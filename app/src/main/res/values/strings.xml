@@ -2,5 +2,6 @@
     <string name="app_name">ALT_SHIFT_CS991</string>
     <string name="swap_message">John would like to swap his Wednesday evening shift with your Saturday evening shift</string>
     <string name="accept_button">Accept</string>
+    
     <string name="reject_button">Reject</string>
 </resources>
