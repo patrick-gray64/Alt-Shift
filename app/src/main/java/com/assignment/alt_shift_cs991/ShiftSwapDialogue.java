@@ -22,6 +22,7 @@ public class ShiftSwapDialogue extends DialogFragment {
                 .setNegativeButton(R.string.reject_button, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // User cancelled the proposed swap
+                        Toast.makeText(getContext(), "Shift swap rejected because you're a bastard.", Toast.LENGTH_SHORT).show();
                     }
                 });
         // Create the AlertDialog object and return it
