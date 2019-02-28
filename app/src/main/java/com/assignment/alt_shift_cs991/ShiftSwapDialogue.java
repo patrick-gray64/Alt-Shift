@@ -8,12 +8,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 public class ShiftSwapDialogue extends DialogFragment {
-    /**
-     * Hi Paddy
-     *
-     * @param savedInstanceState
-     * @return
-     */
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -34,5 +28,4 @@ public class ShiftSwapDialogue extends DialogFragment {
         return builder.create();
 
 
-    }
 }
