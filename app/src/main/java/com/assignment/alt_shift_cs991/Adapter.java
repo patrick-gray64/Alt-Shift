@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private List<ShiftModel> shiftModelList = new ArrayList<>();
-
     private StartActivityCallback startActivityCallback;
 
     public List<ShiftModel> getShiftModelList() {
@@ -31,7 +30,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public void setStartActivityCallback(StartActivityCallback startActivityCallback) {
-        this.startActivityCallback = startActivityCallback;
+       this.startActivityCallback = startActivityCallback;
     }
 
     @Override
