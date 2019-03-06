@@ -2,9 +2,9 @@ package com.assignment.alt_shift_cs991;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,7 +34,7 @@ public class Pending_Swaps_EMP extends AppCompatActivity {
     }
 
     public void backToMain(View view){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
     }
 }
