@@ -4,9 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class Pending_Swap_Adapter extends RecyclerView.Adapter<Pending_Swap_Adapter.MyViewHolder> {
