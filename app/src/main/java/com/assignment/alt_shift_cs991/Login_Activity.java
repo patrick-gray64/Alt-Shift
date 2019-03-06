@@ -31,7 +31,7 @@ public class Login_Activity extends AppCompatActivity {
 
                 if (userName.getText().toString().equals("admin") && password.getText().toString().equals("password")) {
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                     startActivity(intent);
                 } else {
 

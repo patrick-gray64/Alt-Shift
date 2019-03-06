@@ -1,5 +1,6 @@
 package com.assignment.alt_shift_cs991;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.TextView;
@@ -27,23 +28,25 @@ public class CalendarActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        TextView title = findViewById(R.id.button);
+        TextView dateButton = findViewById(R.id.date);
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat month_date = new SimpleDateFormat("MMMM dd yyyy", Locale.getDefault());
         String month_name = month_date.format(calendar.getTime());
-        title.setText(month_name);
+        dateButton.setText(month_name);
 
-        findViewById(R.id.button).setOnClickListener(v -> {
+        dateButton.setOnClickListener(v -> {
             isExpanded = !isExpanded;
             ((AppBarLayout) findViewById(R.id.appbarlayout)).setExpanded(isExpanded, true);
         });
 
         CalendarView calendarView = findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            title.setText(getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
+            dateButton.setText(getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
             isExpanded = !isExpanded;
             ((AppBarLayout) findViewById(R.id.appbarlayout)).setExpanded(isExpanded, true);
+            Intent intent = new Intent(getApplicationContext(), SwapActivity.class);
+            startActivity(intent);
         });
 
     }

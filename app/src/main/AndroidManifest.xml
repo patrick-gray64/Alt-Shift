@@ -20,7 +20,6 @@
         <activity android:name=".ShiftSwapActivity"/>
         <activity android:name=".SwapActivity"/>
         <activity android:name=".CalendarActivity"/>
-        <activity android:name=".MainActivity" />
 
     </application>
 
