@@ -7,15 +7,18 @@ public class ShiftModel implements Parcelable {
 
     private String name;
     private String description;
+    private String workingDate;
 
-    public ShiftModel(String name, String description) {
+    public ShiftModel(String name, String description, String workingDate) {
         this.name = name;
         this.description = description;
+        this.workingDate = workingDate;
     }
 
     protected ShiftModel(Parcel in) {
         name = in.readString();
         description = in.readString();
+        workingDate = in.readString();
     }
 
     public String getName() {
@@ -33,6 +36,12 @@ public class ShiftModel implements Parcelable {
     public void setDescription(String description) {
         this.description = description;
     }
+    public String getWorkingDate(){
+        return workingDate;
+    }
+    public void setWorkingDate(String workingDate){
+        this.workingDate = workingDate;
+    }
 
 
     @Override
@@ -44,6 +53,7 @@ public class ShiftModel implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(description);
+        dest.writeSerializable(workingDate);
     }
 
     public static final Creator<ShiftModel> CREATOR = new Creator<ShiftModel>() {

@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.databinding.SwapLayoutBinding;
 
@@ -70,6 +71,7 @@ public class ShiftSwapActivity extends AppCompatActivity {
                 animationSet.start();
             }
         }).start();
+        Toast.makeText(getApplicationContext(),"Shift swap request sent!", Toast.LENGTH_SHORT).show();
     }
 
 
