@@ -14,6 +14,8 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static android.content.Intent.EXTRA_TEXT;
+
 public class CalendarActivity extends AppCompatActivity {
 
     boolean isExpanded = false;
@@ -45,8 +47,12 @@ public class CalendarActivity extends AppCompatActivity {
             dateButton.setText(getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
             isExpanded = !isExpanded;
             ((AppBarLayout) findViewById(R.id.appbarlayout)).setExpanded(isExpanded, true);
+
+
             Intent intent = new Intent(getApplicationContext(), SwapActivity.class);
+            intent.putExtra(EXTRA_TEXT, getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
             startActivity(intent);
+
         });
 
     }

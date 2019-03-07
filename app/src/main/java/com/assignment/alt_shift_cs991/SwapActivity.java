@@ -13,6 +13,8 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static android.content.Intent.EXTRA_TEXT;
+
 public class SwapActivity extends AppCompatActivity  {
 
     public RecyclerView recyclerView;
@@ -22,14 +24,27 @@ public class SwapActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swap);
 
+        Bundle bundle = getIntent().getExtras();
+        String message = bundle.getString(EXTRA_TEXT);
+
         recyclerView = findViewById(R.id.recycler_view);
         Adapter adapter = new Adapter();
 
         List<ShiftModel> shiftModelList = new ArrayList<ShiftModel>();
-        shiftModelList.add(new ShiftModel("J Smith", "Employee Number One"));
-        shiftModelList.add(new ShiftModel("D Anderson", "Employee Number Two"));
+        shiftModelList.add(new ShiftModel("J Smith", "Employee Number One", "March 21 2019"));
+        shiftModelList.add(new ShiftModel("D Anderson", "Employee Number Two", "March 21 2019"));
+        shiftModelList.add(new ShiftModel("Steve", "Employee Number Three", "March 22 2019"));
 
-        adapter.setShiftModelList(shiftModelList);
+        List<ShiftModel> filteredShiftModelList = new ArrayList<ShiftModel>();
+
+        for (int i = 0; i < shiftModelList.size(); i++) {
+            if (!shiftModelList.get(i).getWorkingDate().equals(message)) {
+                filteredShiftModelList.add(shiftModelList.get(i));
+            }
+        }
+        adapter.setShiftModelList(filteredShiftModelList);
+
+
 
         adapter.setStartActivityCallback(new Adapter.StartActivityCallback() {
             @Override
@@ -43,6 +58,7 @@ public class SwapActivity extends AppCompatActivity  {
         recyclerView.setLayoutManager(linearLayoutManager);
 
     }
+
 
     public void animateIntent(View view, ShiftModel shiftModel) {
 
