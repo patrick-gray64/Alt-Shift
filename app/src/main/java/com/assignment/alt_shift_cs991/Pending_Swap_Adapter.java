@@ -1,5 +1,6 @@
 package com.assignment.alt_shift_cs991;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,8 @@ public class Pending_Swap_Adapter extends RecyclerView.Adapter<Pending_Swap_Adap
             index_text = (TextView) view.findViewById(R.id.index_text);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-
+                    Intent intent = new Intent(v.getContext(), ShiftSwapActivity.class);
+                    v.getContext().startActivity(intent);
                 }
             });
         }
