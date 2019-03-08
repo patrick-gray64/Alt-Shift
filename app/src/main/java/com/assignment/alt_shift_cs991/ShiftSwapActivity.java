@@ -12,7 +12,7 @@ import com.assignment.alt_shift_cs991.databinding.SwapLayoutBinding;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-public class ShiftSwapActivity extends AppCompatActivity {
+public class ShiftSwapActivity extends Toolbar_activity {
 
     ShiftModel shiftModel;
     private ObjectAnimator shiftWorkerCardAnimation;
@@ -26,6 +26,7 @@ public class ShiftSwapActivity extends AppCompatActivity {
         }
         SwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.swap_layout);
         shiftSwapLayoutBinding.setShiftModel(shiftModel);
+        initToolbar();
     }
 
 

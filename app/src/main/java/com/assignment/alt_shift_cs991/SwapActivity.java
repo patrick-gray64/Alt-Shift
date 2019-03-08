@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import static android.content.Intent.EXTRA_TEXT;
 
-public class SwapActivity extends AppCompatActivity  {
+public class SwapActivity extends Toolbar_activity  {
 
     public RecyclerView recyclerView;
 
@@ -23,6 +23,7 @@ public class SwapActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swap);
+        initToolbar();
 
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString(EXTRA_TEXT);

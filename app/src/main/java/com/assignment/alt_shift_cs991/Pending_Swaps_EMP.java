@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class Pending_Swaps_EMP extends AppCompatActivity {
+public class Pending_Swaps_EMP extends Toolbar_activity {
 
     private ArrayList<Pending_Swap_Item> ShiftArray;
     private RecyclerView recyclerView;
@@ -30,6 +30,7 @@ public class Pending_Swaps_EMP extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         ShiftArray.add(new Pending_Swap_Item("new shift"));
         ShiftArray.add(new Pending_Swap_Item("two shift"));
+        initToolbar();
 
     }
 

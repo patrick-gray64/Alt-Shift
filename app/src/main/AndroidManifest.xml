@@ -12,13 +12,15 @@
         <activity android:name=".Login_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShiftSwapActivity"/>
-        <activity android:name=".Pending_Swaps_EMP"/>
-        <activity android:name=".SwapActivity"/>
-        <activity android:name=".CalendarActivity"/>
+        <activity android:name=".ShiftSwapActivity" />
+        <activity android:name=".Pending_Swaps_EMP" />
+        <activity android:name=".SwapActivity" />
+        <activity android:name=".Toolbar_activity"/>
+        <activity android:name=".CalendarActivity" />
     </application>
 
 </manifest>
