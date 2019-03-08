@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    // toolbar button
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/home"
+        android:title="@string/action_home"
+        app:showAsAction="ifRoom"/>
+
+    //pending shift toolbar button
+    <item
+        android:id="@+id/action_more"
+        android:icon="@drawable/ic_pending_shifts"
+        android:title="@string/action_more"
+        app:showAsAction="ifRoom" />
+
+
+
+</menu>
