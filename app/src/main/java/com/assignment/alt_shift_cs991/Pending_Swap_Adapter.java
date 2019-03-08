@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class Pending_Swap_Adapter extends RecyclerView.Adapter<Pending_Swap_Adapter.MyViewHolder> {
+public class Pending_Swap_Adapter extends RecyclerView.Adapter<Pending_Swap_Adapter.MyViewHolder>{
 
 
     private ArrayList<Pending_Swap_Item> shiftArray;

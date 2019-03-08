@@ -5,4 +5,6 @@
     <string name="pending_text">Below are your pending shift requests, tap to accept or reject</string>
     <string name="tool_bar_title_date">%1$s %2$s %3$s</string>
     <string name="reject_button">Reject</string>
+    <string name="action_home">Go Back To Menu</string>
+    <string name="action_more">View more options</string>
 </resources>

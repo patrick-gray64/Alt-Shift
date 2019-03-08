@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import static android.content.Intent.EXTRA_TEXT;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalendarActivity extends Toolbar_activity {
 
     boolean isExpanded = false;
 
@@ -24,7 +24,8 @@ public class CalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_view);
-
+        initToolbar();
+/*
         setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -40,15 +41,15 @@ public class CalendarActivity extends AppCompatActivity {
         dateButton.setOnClickListener(v -> {
             isExpanded = !isExpanded;
             ((AppBarLayout) findViewById(R.id.appbarlayout)).setExpanded(isExpanded, true);
-        });
+        });*/
 
         CalendarView calendarView = findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            dateButton.setText(getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
+           /* dateButton.setText(getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
             isExpanded = !isExpanded;
             ((AppBarLayout) findViewById(R.id.appbarlayout)).setExpanded(isExpanded, true);
 
-
+*/
             Intent intent = new Intent(getApplicationContext(), SwapActivity.class);
             intent.putExtra(EXTRA_TEXT, getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
             startActivity(intent);
