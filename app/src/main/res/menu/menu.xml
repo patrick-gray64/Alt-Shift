@@ -7,7 +7,7 @@
     // toolbar button
     <item
         android:id="@+id/action_home"
-        android:icon="@drawable/home"
+        android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/action_home"
         app:showAsAction="ifRoom"/>
 

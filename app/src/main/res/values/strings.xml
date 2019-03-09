@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ALT_SHIFT_CS991</string>
+    <string name="app_name">Alt Shift</string>
     <string name="swap_message">John would like to swap his Wednesday evening shift with your Saturday evening shift</string>
     <string name="accept_button">Accept</string>
     <string name="pending_text">Below are your pending shift requests, tap to accept or reject</string>

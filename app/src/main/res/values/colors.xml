@@ -3,7 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="jamesblue">#283593</color>
+    <color name="jamesblue">#1EB2C5</color>
+    <color name="rachelsprink">#ef476f</color>
+    <color name="andreasyellow">#ffc43d</color>
+    <color name="paddysgreen">#06d6a0</color>
+    <color name="paulsneutral">#f8ffe5</color>
     <color name="transparent">#00D81B60</color>
 
 
