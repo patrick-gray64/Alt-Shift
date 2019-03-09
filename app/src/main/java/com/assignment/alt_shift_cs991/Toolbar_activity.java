@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class Toolbar_activity extends AppCompatActivity {
-
+    private TextView textCartItemCount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,24 @@ public class Toolbar_activity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        final MenuItem menuItem = menu.findItem(R.id.action_more);
+
+        View actionView = menuItem.getActionView();
+        textCartItemCount = actionView.findViewById(R.id.cart_badge);
+
+/** REPLACE 10 WITH VALUE OF PENDING SHIFTS FROM BACKEND!!!!!*/
+        setupBadge(10);
+
+        actionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onOptionsItemSelected(menuItem);
+            }
+        });
+
+        return true;
+
     }
 
     // handle button activities
@@ -46,8 +65,26 @@ public class Toolbar_activity extends AppCompatActivity {
             return false;
         }
         return super.onOptionsItemSelected(item);
-
-
     }
 
+    private void setupBadge(int mItemCount) {
+
+        if (textCartItemCount != null) {
+            if (mItemCount == 0) {
+                if (textCartItemCount.getVisibility() != View.GONE) {
+                    textCartItemCount.setVisibility(View.GONE);
+                }
+            } else {
+                textCartItemCount.setText(String.valueOf(Math.min(mItemCount, 99)));
+                if (textCartItemCount.getVisibility() != View.VISIBLE) {
+                    textCartItemCount.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+    }
+
+
 }
+
+
+
