@@ -76,14 +76,15 @@
 
             <ImageButton
                 android:id="@+id/shift_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="99dp"
+                android:layout_height="37dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@android:color/transparent"
                 android:onClick="switchShifts"
-                android:src="@drawable/ic_arrow_upward_black_24dp" />
+                android:background="@drawable/button_layout"
+            android:src="@drawable/ic_compare_arrows_black_24dp"
+                />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/current_shift_worker_card"
