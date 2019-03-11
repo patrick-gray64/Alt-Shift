@@ -1,5 +1,8 @@
 package com.assignment.alt_shift_cs991;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Shifter {
 	/**
 	 * A Shifter is a person that works shifts.
@@ -10,6 +13,8 @@ public class Shifter {
 	private String password;
 	private String firstName;
 	private String surname;
+	private ArrayList<Shift> myShifts;
+	private ArrayList<Date> myShiftDates;
 
 	/**
 	 * Constructor for a Shifter Employee
@@ -23,6 +28,7 @@ public class Shifter {
 		password = p;
 		firstName = f;
 		surname = s;
+		myShifts = new ArrayList<Shift>();
 	}
 
 	/**
@@ -88,4 +94,28 @@ public class Shifter {
 	public void setSurname(String s) {
 		surname = s;
 	}
+
+	/**
+	 * Getter for myShifts
+	 * @return List of Shifts that this Shifter is assigned
+	 */
+	public ArrayList<Shift> getMyShifts() {
+		return myShifts;
+	}
+
+	/**
+	 * Setter for myShifts
+	 * @param myShifts List of Shifts that this Shifter is assigned
+	 */
+	public void setMyShifts(ArrayList<Shift> myShifts) {
+		this.myShifts = myShifts;
+	}
+
+	public ArrayList<Date> getMyShiftDates() {
+		for (Shift shift: myShifts) {
+			myShiftDates.add(shift.getDate());
+		}
+		return myShiftDates;
+	}
+
 }

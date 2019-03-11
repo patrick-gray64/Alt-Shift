@@ -19,6 +19,7 @@ public class Shift {
 	public Shift(Date d, Shifter s) {
 		date = d;
 		shifter = s;
+		s.getMyShifts().add(this);
 	}
 
 	/**
