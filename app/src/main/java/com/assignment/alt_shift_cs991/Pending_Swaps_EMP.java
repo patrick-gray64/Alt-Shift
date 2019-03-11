@@ -28,8 +28,8 @@ public class Pending_Swaps_EMP extends Toolbar_activity {
         recyclerView.setAdapter(mAdapter);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        ShiftArray.add(new Pending_Swap_Item("new shift"));
-        ShiftArray.add(new Pending_Swap_Item("two shift"));
+        ShiftArray.add(new Pending_Swap_Item("7th March"));
+        ShiftArray.add(new Pending_Swap_Item("1st March"));
         initToolbar();
 
     }

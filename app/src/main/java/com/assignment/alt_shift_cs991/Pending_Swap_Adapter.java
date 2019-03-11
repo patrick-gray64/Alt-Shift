@@ -25,13 +25,13 @@ public class Pending_Swap_Adapter extends RecyclerView.Adapter<Pending_Swap_Adap
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name;
+       // TextView name;
         TextView index_text;
 
         public MyViewHolder(View view) {
 
             super(view);
-            name = (TextView) view.findViewById(R.id.your_shift);
+            //name = (TextView) view.findViewById(R.id.your_shift);
             index_text = (TextView) view.findViewById(R.id.index_text);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
@@ -56,9 +56,9 @@ public class Pending_Swap_Adapter extends RecyclerView.Adapter<Pending_Swap_Adap
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.name.setText(shiftArray.get(position).getMyString());
+        holder.index_text.setText(shiftArray.get(position).getMyString());
         String index = String.valueOf(shiftArray.indexOf(shiftArray.get(position)));
-        holder.index_text.setText(index);
+       // holder.index_text.setText("2nd March");
     }
 
 

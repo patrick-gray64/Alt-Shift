@@ -35,8 +35,8 @@ public class Toolbar_activity extends AppCompatActivity {
         View actionView = menuItem.getActionView();
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
 
-/** REPLACE 10 WITH VALUE OF PENDING SHIFTS FROM BACKEND!!!!!*/
-        setupBadge(10);
+/** REPLACE 2 WITH VALUE OF PENDING SHIFTS FROM BACKEND!!!!!*/
+        setupBadge(2);
 
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
