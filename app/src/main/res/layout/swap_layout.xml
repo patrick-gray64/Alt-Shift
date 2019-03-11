@@ -84,7 +84,7 @@
                 android:layout_marginBottom="8dp"
                 android:onClick="switchShifts"
                 android:background="@drawable/button_layout"
-            android:src="@drawable/ic_compare_arrows_black_24dp"
+                app:srcCompat="@drawable/ic_up_down_arrows"
                 />
 
             <androidx.cardview.widget.CardView

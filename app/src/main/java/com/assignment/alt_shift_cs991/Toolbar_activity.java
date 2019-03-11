@@ -55,7 +55,7 @@ public class Toolbar_activity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_home) {
-            Intent intent = new Intent(Toolbar_activity.this, CalendarActivity.class);
+            Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
             return false;
         }
