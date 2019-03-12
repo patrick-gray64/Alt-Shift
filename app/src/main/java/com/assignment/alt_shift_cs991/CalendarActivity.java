@@ -3,28 +3,22 @@ package com.assignment.alt_shift_cs991;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CalendarView;
-import android.widget.TextView;
-
-import com.google.android.material.appbar.AppBarLayout;
 
 import java.text.DateFormatSymbols;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import static android.content.Intent.EXTRA_TEXT;
 
 public class CalendarActivity extends Toolbar_activity {
 
     boolean isExpanded = false;
+    protected AltShift_Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_view);
         initToolbar();
+        model = (AltShift_Application)getApplication();
 /*
         setSupportActionBar(findViewById(R.id.toolbar));
         if (getSupportActionBar() != null) {

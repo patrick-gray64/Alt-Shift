@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.databinding.SwapLayoutBinding;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 public class ShiftSwapActivity extends Toolbar_activity {
@@ -24,6 +22,7 @@ public class ShiftSwapActivity extends Toolbar_activity {
     private ObjectAnimator shiftWorkerCardAnimation;
     private ObjectAnimator userCardAnimation;
     private ImageButton swapButton;
+    protected AltShift_Application model;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,7 @@ public class ShiftSwapActivity extends Toolbar_activity {
         shiftSwapLayoutBinding.setShiftModel(shiftModel);
         initToolbar();
         swapButton =  findViewById(R.id.shift_button);
+        model = (AltShift_Application)getApplication();
     }
 
 
@@ -75,7 +75,7 @@ public class ShiftSwapActivity extends Toolbar_activity {
                         startActivity(intent);
                     }
                 });
-                RelativeLayout layout = (RelativeLayout)findViewById(R.id.rlayout);
+                RelativeLayout layout = findViewById(R.id.rlayout);
                 RelativeLayout.LayoutParams laypram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 laypram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);
                 laypram.addRule(RelativeLayout.ALIGN_END, R.id.cardSwapHolder);

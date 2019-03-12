@@ -1,8 +1,5 @@
 package com.assignment.alt_shift_cs991;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,13 +7,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 public class Toolbar_activity extends AppCompatActivity {
     private TextView textCartItemCount;
+    protected AltShift_Application model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_activity);
         initToolbar();
+        model = (AltShift_Application)getApplication();
 
 
     }

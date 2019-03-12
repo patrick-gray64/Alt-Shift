@@ -7,7 +7,6 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,12 +17,14 @@ import static android.content.Intent.EXTRA_TEXT;
 public class SwapActivity extends Toolbar_activity  {
 
     public RecyclerView recyclerView;
+    protected AltShift_Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swap);
         initToolbar();
+        model = (AltShift_Application)getApplication();
 
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString(EXTRA_TEXT);

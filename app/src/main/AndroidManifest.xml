@@ -3,6 +3,7 @@
     package="com.assignment.alt_shift_cs991">
 
     <application
+        android:name=".AltShift_Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

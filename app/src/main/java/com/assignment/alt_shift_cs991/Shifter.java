@@ -3,7 +3,7 @@ package com.assignment.alt_shift_cs991;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Shifter {
+public class Shifter{
 	/**
 	 * A Shifter is a person that works shifts.
 	 * @author pcolr
@@ -18,16 +18,16 @@ public class Shifter {
 
 	/**
 	 * Constructor for a Shifter Employee
-	 * @param u userID
-	 * @param p password
-	 * @param f first name
-	 * @param s surname
+	 * @param userID userID
+	 * @param password password
+	 * @param firstName first name
+	 * @param surname surname
 	 */
-	public Shifter(String u, String p, String f, String s) {
-		userID = u;
-		password = p;
-		firstName = f;
-		surname = s;
+	public Shifter(String userID, String password, String firstName, String surname) {
+		this.userID = userID;
+		this.password = password;
+		this.firstName = firstName;
+		this.surname = surname;
 		myShifts = new ArrayList<Shift>();
 	}
 
@@ -65,34 +65,34 @@ public class Shifter {
 
 	/**
 	 * Setter for user ID
-	 * @param u userID
+	 * @param userID userID
 	 */
-	public void setUserID(String u) {
-		userID = u;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
 	/**
 	 * Setter for password
-	 * @param p password
+	 * @param password password
 	 */
-	public void setPassword(String p) {
-		password = p;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**
 	 * Setter for first name
-	 * @param f firstName
+	 * @param firstName firstName
 	 */
-	public void setFirstName(String f) {
-		firstName = f;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	/**
 	 * Setter for surname
-	 * @param s surname
+	 * @param surname surname
 	 */
-	public void setSurname(String s) {
-		surname = s;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	/**

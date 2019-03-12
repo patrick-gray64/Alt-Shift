@@ -14,6 +14,7 @@ public class Login_Activity extends AppCompatActivity {
     private EditText userName, password;
     private CardView loginButton;
     private int passwordCount;
+    protected AltShift_Application model;
 
 
     @Override
@@ -21,6 +22,7 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
 
+        model = (AltShift_Application)getApplication();
         userName = findViewById(R.id.editText3);
         password = findViewById(R.id.editText4);
         loginButton = findViewById(R.id.cardButton);
@@ -29,7 +31,8 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (userName.getText().toString().equals("admin") && password.getText().toString().equals("password")) {
+
+                if (model.accessGetShifter(userName.getText().toString(), password.getText().toString()) != null){
 
                     Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                     startActivity(intent);

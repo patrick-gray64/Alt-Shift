@@ -13,13 +13,13 @@ public class Shift {
 
 	/**
 	 * Constructor for a Shift
-	 * @param d Date of Shift
-	 * @param s Employee on Shift
+	 * @param date Date of Shift
+	 * @param shifter Employee on Shift
 	 */
-	public Shift(Date d, Shifter s) {
-		date = d;
-		shifter = s;
-		s.getMyShifts().add(this);
+	public Shift(Date date, Shifter shifter) {
+		this.date = date;
+		this.shifter = shifter;
+		shifter.getMyShifts().add(this);
 	}
 
 	/**
@@ -40,18 +40,18 @@ public class Shift {
 
 	/**
 	 * Setter for Date
-	 * @param d date
+	 * @param date date
 	 */
-	public void setDate(Date d) {
-		date = d;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/**
 	 * Setter for Shifter
-	 * @param s shifter
+	 * @param shifter shifter
 	 */
-	public void setShifter(Shifter s) {
-		shifter = s;
+	public void setShifter(Shifter shifter) {
+		this.shifter = shifter;
 	}
 	
 }

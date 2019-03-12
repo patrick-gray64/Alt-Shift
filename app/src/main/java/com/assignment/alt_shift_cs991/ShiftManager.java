@@ -3,7 +3,7 @@ package com.assignment.alt_shift_cs991;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ShiftManager {
+public class ShiftManager{
 	/**
 	 * ShiftManager holds all the Shifts and ShiftSwaps in ArrayLists for search and retrieval
 	 * on the front end
@@ -21,19 +21,19 @@ public class ShiftManager {
 
 	/**
 	 * Adds a shift to allShifts list
-	 * @param s shift
+	 * @param shift shift
 	 */
-	public void addShift(Shift s) {
-		allShifts.add(s);
+	public void addShift(Shift shift) {
+		allShifts.add(shift);
 	}
 
 	/**
 	 * Adds a shift to allShifts list
-	 * @param d date
-	 * @param s shifter
+	 * @param date date
+	 * @param shifter shifter
 	 */
-	public void addShift(Date d, Shifter s) {
-		allShifts.add(new Shift(d, s));
+	public void addShift(Date date, Shifter shifter) {
+		allShifts.add(new Shift(date, shifter));
 	}
 
 	/**
