@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import com.assignment.alt_shift_cs991.databinding.AdapterItemBinding;
 
 import java.util.ArrayList;
@@ -14,15 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    private List<ShiftModel> shiftModelList = new ArrayList<>();
+    private List<Shifter> shifters = new ArrayList<>();
     private StartActivityCallback startActivityCallback;
 
-    public List<ShiftModel> getShiftModelList() {
-        return shiftModelList;
+    public List<Shifter> getShifterlList() {
+        return shifters;
     }
 
-    public void setShiftModelList(List<ShiftModel> shiftModelList) {
-        this.shiftModelList = shiftModelList;
+    public void setShifterList(List<Shifter> shifters) {
+        this.shifters = shifters;
     }
 
     public StartActivityCallback getStartActivityCallback() {
@@ -41,18 +42,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.adapterItemBinding.setShiftModel(shiftModelList.get(holder.getAdapterPosition()));
+        holder.adapterItemBinding.setShifter(shifters.get(holder.getAdapterPosition()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityCallback.startActivityIntent(v, shiftModelList.get(holder.getAdapterPosition()));
+                startActivityCallback.startActivityIntent(v, shifters.get(holder.getAdapterPosition()));
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return shiftModelList.size();
+        return shifters.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -71,6 +72,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     interface StartActivityCallback{
 
-        void startActivityIntent(View v, ShiftModel shiftModel);
+        void startActivityIntent(View v, Shifter shifter);
     }
 }

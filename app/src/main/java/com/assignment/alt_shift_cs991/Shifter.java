@@ -1,10 +1,13 @@
 package com.assignment.alt_shift_cs991;
 
-import java.util.ArrayList;
-import java.util.Date;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Shifter{
-	/**
+import java.util.ArrayList;
+
+public class Shifter implements Parcelable {
+
+    /**
 	 * A Shifter is a person that works shifts.
 	 * @author pcolr
 	 */
@@ -14,7 +17,7 @@ public class Shifter{
 	private String firstName;
 	private String surname;
 	private ArrayList<Shift> myShifts;
-	private ArrayList<Date> myShiftDates;
+	private ArrayList<String> myShiftDates;
 
 	/**
 	 * Constructor for a Shifter Employee
@@ -111,11 +114,43 @@ public class Shifter{
 		this.myShifts = myShifts;
 	}
 
-	public ArrayList<Date> getMyShiftDates() {
+	public ArrayList<String> getMyShiftDates() {
 		for (Shift shift: myShifts) {
 			myShiftDates.add(shift.getDate());
 		}
 		return myShiftDates;
 	}
+
+    protected Shifter(Parcel in) {
+        firstName = in.readString();
+        surname = in.readString();
+        userID = in.readString();
+        password = in.readString();
+
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(firstName);
+        dest.writeString(surname);
+        dest.writeSerializable(password);
+        dest.writeSerializable(userID);
+    }
+    public static final Creator<Shifter> CREATOR = new Creator<Shifter>() {
+        @Override
+        public Shifter createFromParcel(Parcel in) {
+            return new Shifter(in);
+        }
+
+        @Override
+        public Shifter[] newArray(int size) {
+            return new Shifter[size];
+        }
+    };
 
 }

@@ -1,14 +1,12 @@
 package com.assignment.alt_shift_cs991;
 
-import java.util.Date;
-
 public class Shift {
 	/**
 	 * A Shift is a date and a person (shifter) working on that date.
 	 * @author pcolr
 	 */
 
-	private Date date;
+	private String date;
 	private Shifter shifter;
 
 	/**
@@ -16,7 +14,7 @@ public class Shift {
 	 * @param date Date of Shift
 	 * @param shifter Employee on Shift
 	 */
-	public Shift(Date date, Shifter shifter) {
+	public Shift(String date, Shifter shifter) {
 		this.date = date;
 		this.shifter = shifter;
 		shifter.getMyShifts().add(this);
@@ -26,7 +24,7 @@ public class Shift {
 	 * Getter for Date
 	 * @return date
 	 */
-	public Date getDate(){
+	public String getDate(){
 		return date;
 	}
 
@@ -42,7 +40,7 @@ public class Shift {
 	 * Setter for Date
 	 * @param date date
 	 */
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

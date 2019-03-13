@@ -15,6 +15,7 @@ public class Login_Activity extends AppCompatActivity {
     private CardView loginButton;
     private int passwordCount;
     protected AltShift_Application model;
+    private String loggedIn;
 
 
     @Override
@@ -32,10 +33,12 @@ public class Login_Activity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (model.accessGetShifter(userName.getText().toString(), password.getText().toString()) != null){
-
+                if (model.accessGetShifterLogin(userName.getText().toString(), password.getText().toString()) != null){
+                    loggedIn = model.accessGetShifterLogin(userName.getText().toString(), password.getText().toString());
+                    setLoggedIn(model.accessGetShifterLogin(userName.getText().toString(), password.getText().toString()));
                     Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                     startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Hello " + loggedIn + "!", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(getApplicationContext(), "Wrong Username or Password, please try again", Toast.LENGTH_SHORT).show();
@@ -47,7 +50,16 @@ public class Login_Activity extends AppCompatActivity {
 
                     }
                 }
+
             }
         });
+    }
+    public void setLoggedIn(String loggedIn){
+        this.loggedIn = loggedIn;
+    }
+    public String getLoggedIn(){
+        return loggedIn;
+
+
     }
 }

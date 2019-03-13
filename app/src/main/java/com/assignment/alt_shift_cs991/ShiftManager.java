@@ -1,7 +1,6 @@
 package com.assignment.alt_shift_cs991;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ShiftManager{
 	/**
@@ -32,7 +31,7 @@ public class ShiftManager{
 	 * @param date date
 	 * @param shifter shifter
 	 */
-	public void addShift(Date date, Shifter shifter) {
+	public void addShift(String date, Shifter shifter) {
 		allShifts.add(new Shift(date, shifter));
 	}
 
@@ -96,7 +95,7 @@ public class ShiftManager{
 	 * @param d2 second date to swap
 	 * @param s2 second shifter to swap
 	 */
-	public void addShiftSwap(Date d1, Shifter s1, Date d2, Shifter s2) {
+	public void addShiftSwap(String d1, Shifter s1, String d2, Shifter s2) {
 		shiftSwaps.add(new ShiftSwap(new Shift(d1, s1), new Shift(d2, s2)));
 	}
 
@@ -115,7 +114,7 @@ public class ShiftManager{
 	 */
 	public ArrayList<Shift> getSwapableShifts(Shift s){
 		ArrayList<Shift> swapableShifts = allShifts;
-		Date date = s.getDate();
+		String date = s.getDate();
 		for (Shift shift: swapableShifts) {
 			if(s.getShifter().getMyShiftDates().contains(shift.getDate()))
 			swapableShifts.remove(shift);

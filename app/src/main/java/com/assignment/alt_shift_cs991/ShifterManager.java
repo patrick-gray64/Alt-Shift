@@ -25,14 +25,24 @@ public class ShifterManager extends AltShift_Application {
 	 * @param password Password of shifter.
 	 * @return Shifter with given user ID and password.
 	 */
-	public Shifter getShifter(String userID, String password) {
+	public String getShifterLogin(String userID, String password) {
 		for (Shifter s : shifters) {
 			if (s.getUserID().equals(userID) && s.getPassword().equals(password)) {
-				return s;
+				return s.getFirstName();
 			}
 		}
 		return null;
+
 	}
+
+    public Shifter getShifter(String userID, String password) {
+        for (Shifter s : shifters) {
+            if (s.getUserID().equals(userID) && s.getPassword().equals(password)) {
+                return s;
+            }
+        }
+        return null;
+    }
 
 	/**
 	 * Adds a new Shifter to shifters list if userID and password are not taken
