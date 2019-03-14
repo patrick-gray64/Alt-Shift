@@ -7,7 +7,6 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,12 +17,14 @@ import static android.content.Intent.EXTRA_TEXT;
 public class SwapActivity extends Toolbar_activity  {
 
     public RecyclerView recyclerView;
+    protected AltShift_Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swap);
         initToolbar();
+        model = (AltShift_Application) getApplication();
 
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString(EXTRA_TEXT);
@@ -31,26 +32,21 @@ public class SwapActivity extends Toolbar_activity  {
         recyclerView = findViewById(R.id.recycler_view);
         Adapter adapter = new Adapter();
 
-        List<ShiftModel> shiftModelList = new ArrayList<ShiftModel>();
-        shiftModelList.add(new ShiftModel("J Smith", "Employee Number One", "March 21 2019"));
-        shiftModelList.add(new ShiftModel("D Anderson", "Employee Number Two", "March 21 2019"));
-        shiftModelList.add(new ShiftModel("Steve", "Employee Number Three", "March 22 2019"));
+        List<Shifter> filteredList = new ArrayList<>();
 
-        List<ShiftModel> filteredShiftModelList = new ArrayList<ShiftModel>();
-
-        for (int i = 0; i < shiftModelList.size(); i++) {
-            if (!shiftModelList.get(i).getWorkingDate().equals(message)) {
-                filteredShiftModelList.add(shiftModelList.get(i));
+        for (int i = 0; i < model.getShiftList().size(); i++) {
+          if (!model.getShiftList().get(i).getDate().equals(message)) {
+             filteredList.add(model.getShiftList().get(i).getShifter());
             }
-        }
-        adapter.setShiftModelList(filteredShiftModelList);
+         }
+        adapter.setShifterList(filteredList);
 
 
 
         adapter.setStartActivityCallback(new Adapter.StartActivityCallback() {
             @Override
-            public void startActivityIntent(View v, ShiftModel shiftModel) {
-                animateIntent(v, shiftModel);
+            public void startActivityIntent(View v, Shifter shifter) {
+                animateIntent(v, shifter);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -61,14 +57,14 @@ public class SwapActivity extends Toolbar_activity  {
     }
 
 
-    public void animateIntent(View view, ShiftModel shiftModel) {
+    public void animateIntent(View view, Shifter shifter) {
 
         // Ordinary Intent for launching a new activity
         Intent intent = new Intent(this, ShiftSwapActivity.class);
         //Bundle bundle = new Bundle();
 
 
-        intent.putExtra("SHIFT_MODEL", shiftModel);
+        intent.putExtra("SHIFTER", shifter);
         // Get the transition name from the string
         String transitionName = "usercard";
 

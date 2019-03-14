@@ -6,7 +6,6 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +16,7 @@ public class Pending_Swaps_EMP extends Toolbar_activity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter mAdapter;
+    protected AltShift_Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class Pending_Swaps_EMP extends Toolbar_activity {
         ShiftArray.add(new Pending_Swap_Item("7th March"));
         ShiftArray.add(new Pending_Swap_Item("1st March"));
         initToolbar();
+        model = (AltShift_Application)getApplication();
 
     }
 

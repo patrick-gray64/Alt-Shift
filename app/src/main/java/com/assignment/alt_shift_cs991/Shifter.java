@@ -1,7 +1,13 @@
 package com.assignment.alt_shift_cs991;
 
-public class Shifter {
-	/**
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
+
+public class Shifter implements Parcelable {
+
+    /**
 	 * A Shifter is a person that works shifts.
 	 * @author pcolr
 	 */
@@ -10,19 +16,22 @@ public class Shifter {
 	private String password;
 	private String firstName;
 	private String surname;
+	private ArrayList<Shift> myShifts;
+	private ArrayList<String> myShiftDates;
 
 	/**
 	 * Constructor for a Shifter Employee
-	 * @param u userID
-	 * @param p password
-	 * @param f first name
-	 * @param s surname
+	 * @param userID userID
+	 * @param password password
+	 * @param firstName first name
+	 * @param surname surname
 	 */
-	public Shifter(String u, String p, String f, String s) {
-		userID = u;
-		password = p;
-		firstName = f;
-		surname = s;
+	public Shifter(String userID, String password, String firstName, String surname) {
+		this.userID = userID;
+		this.password = password;
+		this.firstName = firstName;
+		this.surname = surname;
+		myShifts = new ArrayList<Shift>();
 	}
 
 	/**
@@ -59,33 +68,89 @@ public class Shifter {
 
 	/**
 	 * Setter for user ID
-	 * @param u userID
+	 * @param userID userID
 	 */
-	public void setUserID(String u) {
-		userID = u;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
 	/**
 	 * Setter for password
-	 * @param p password
+	 * @param password password
 	 */
-	public void setPassword(String p) {
-		password = p;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**
 	 * Setter for first name
-	 * @param f firstName
+	 * @param firstName firstName
 	 */
-	public void setFirstName(String f) {
-		firstName = f;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	/**
 	 * Setter for surname
-	 * @param s surname
+	 * @param surname surname
 	 */
-	public void setSurname(String s) {
-		surname = s;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
+
+	/**
+	 * Getter for myShifts
+	 * @return List of Shifts that this Shifter is assigned
+	 */
+	public ArrayList<Shift> getMyShifts() {
+		return myShifts;
+	}
+
+	/**
+	 * Setter for myShifts
+	 * @param myShifts List of Shifts that this Shifter is assigned
+	 */
+	public void setMyShifts(ArrayList<Shift> myShifts) {
+		this.myShifts = myShifts;
+	}
+
+	public ArrayList<String> getMyShiftDates() {
+		for (Shift shift: myShifts) {
+			myShiftDates.add(shift.getDate());
+		}
+		return myShiftDates;
+	}
+
+    protected Shifter(Parcel in) {
+        firstName = in.readString();
+        surname = in.readString();
+        userID = in.readString();
+        password = in.readString();
+
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(firstName);
+        dest.writeString(surname);
+        dest.writeSerializable(password);
+        dest.writeSerializable(userID);
+    }
+    public static final Creator<Shifter> CREATOR = new Creator<Shifter>() {
+        @Override
+        public Shifter createFromParcel(Parcel in) {
+            return new Shifter(in);
+        }
+
+        @Override
+        public Shifter[] newArray(int size) {
+            return new Shifter[size];
+        }
+    };
+
 }
