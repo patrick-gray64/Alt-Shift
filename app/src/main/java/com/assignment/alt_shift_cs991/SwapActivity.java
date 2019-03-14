@@ -26,27 +26,30 @@ public class SwapActivity extends Toolbar_activity  {
         initToolbar();
         model = (AltShift_Application) getApplication();
 
-        Bundle bundle = getIntent().getExtras();
-        String message = bundle.getString(EXTRA_TEXT);
+        Intent intent = getIntent();
+        String message = (String) intent.getStringExtra(EXTRA_TEXT);
 
         recyclerView = findViewById(R.id.recycler_view);
         Adapter adapter = new Adapter();
 
         List<Shifter> filteredList = new ArrayList<>();
 
-        for (int i = 0; i < model.getShiftList().size(); i++) {
-          if (!model.getShiftList().get(i).getDate().equals(message)) {
-             filteredList.add(model.getShiftList().get(i).getShifter());
-            }
-         }
-        adapter.setShifterList(filteredList);
+
+//        for (int i = 0; i < model.getShiftList().size(); i++) {
+//          if (!model.getShiftList().get(i).getDate().equals(message)) {
+//             filteredList.add(model.getShiftList().get(i).getShifter());
+//            }
+//         }
+        Shifter shifter = (Shifter) intent.getSerializableExtra(CalendarActivity.EXTRA_SHIFTER);
+        Shift shift = model.getShiftManager().getShift(shifter, message);
+        adapter.setShiftList(model.getShiftManager().getSwapableShifts(shift));
 
 
 
         adapter.setStartActivityCallback(new Adapter.StartActivityCallback() {
             @Override
-            public void startActivityIntent(View v, Shifter shifter) {
-                animateIntent(v, shifter);
+            public void startActivityIntent(View v, Shift shift) {
+                animateIntent(v, shift);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -57,14 +60,14 @@ public class SwapActivity extends Toolbar_activity  {
     }
 
 
-    public void animateIntent(View view, Shifter shifter) {
+    public void animateIntent(View view, Shift shift) {
 
         // Ordinary Intent for launching a new activity
         Intent intent = new Intent(this, ShiftSwapActivity.class);
         //Bundle bundle = new Bundle();
 
 
-        intent.putExtra("SHIFTER", shifter);
+        intent.putExtra("SHIFT", shift);
         // Get the transition name from the string
         String transitionName = "usercard";
 

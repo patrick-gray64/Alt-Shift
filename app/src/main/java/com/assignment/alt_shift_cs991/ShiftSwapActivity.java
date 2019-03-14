@@ -18,7 +18,7 @@ import androidx.databinding.DataBindingUtil;
 
 public class ShiftSwapActivity extends Toolbar_activity {
 
-    private Shifter shifter;
+    private Shift shift;
     private ObjectAnimator shiftWorkerCardAnimation;
     private ObjectAnimator userCardAnimation;
     private ImageButton swapButton;
@@ -28,10 +28,10 @@ public class ShiftSwapActivity extends Toolbar_activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getIntent().getExtras() != null) {
-            shifter = getIntent().getExtras().getParcelable("SHIFTER");
+            shift = getIntent().getExtras().getParcelable("SHIFT");
         }
         SwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.swap_layout);
-        shiftSwapLayoutBinding.setShifter(shifter);
+        shiftSwapLayoutBinding.setShift(shift);
         initToolbar();
         swapButton =  findViewById(R.id.shift_button);
         model = (AltShift_Application)getApplication();

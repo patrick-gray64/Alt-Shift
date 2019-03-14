@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
+    private List<Shift> shifts  = new ArrayList<>();
     private List<Shifter> shifters = new ArrayList<>();
     private StartActivityCallback startActivityCallback;
 
@@ -24,6 +25,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public void setShifterList(List<Shifter> shifters) {
         this.shifters = shifters;
+    }
+
+    public void setShiftList(List<Shift> shifts) {
+        this.shifts = shifts;
+    }
+
+    public List<Shift> getShifts() {
+        return shifts;
     }
 
     public StartActivityCallback getStartActivityCallback() {
@@ -42,18 +51,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.adapterItemBinding.setShifter(shifters.get(holder.getAdapterPosition()));
+        holder.adapterItemBinding.setShift(shifts.get(holder.getAdapterPosition()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityCallback.startActivityIntent(v, shifters.get(holder.getAdapterPosition()));
+                startActivityCallback.startActivityIntent(v, shifts.get(holder.getAdapterPosition()));
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return shifters.size();
+        return shifts.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -72,6 +81,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     interface StartActivityCallback{
 
-        void startActivityIntent(View v, Shifter shifter);
+        void startActivityIntent(View v, Shift shift);
     }
 }

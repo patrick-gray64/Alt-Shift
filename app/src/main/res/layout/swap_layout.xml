@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="Shifter"
-            type="com.assignment.alt_shift_cs991.Shifter" />
+            name="Shift"
+            type="com.assignment.alt_shift_cs991.Shift" />
         <variable
             name="User"
             type="com.assignment.alt_shift_cs991.Login_Activity" />
@@ -60,7 +60,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="@{Shifter.firstName}"
+                        android:text="@{Shift.shifter.firstName}"
                         app:layout_constraintStart_toEndOf="@+id/user_imageView"
                         app:layout_constraintTop_toTopOf="@+id/user_imageView"
                         tools:text="first name second name" />
@@ -72,7 +72,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="@{Shifter.surname}"
+                        android:text="@{Shift.shifter.surname}"
 
                         tools:text="Just some random text to test the layout." />
                 </androidx.gridlayout.widget.GridLayout>
