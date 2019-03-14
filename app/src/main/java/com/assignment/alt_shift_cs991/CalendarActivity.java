@@ -1,60 +1,82 @@
 package com.assignment.alt_shift_cs991;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.CalendarView;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.material.appbar.AppBarLayout;
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 
+import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
 
 import static android.content.Intent.EXTRA_TEXT;
 
 public class CalendarActivity extends Toolbar_activity {
 
-    boolean isExpanded = false;
 
+    public CompactCalendarView calendarView;
+    private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+    private CalendarManager calendarManager = new CalendarManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_view);
         initToolbar();
-/*
-        setSupportActionBar(findViewById(R.id.toolbar));
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
+        final ActionBar actionBar = getSupportActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(false);
+        calendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        calendarView.setUseThreeLetterAbbreviation(true);
+        actionBar.setTitle(dateformat.format(new Date()));
 
-        TextView dateButton = findViewById(R.id.date);
+        //add events
+        calendarManager.addStringToShift(calendarView, "Mar 20 09:00:00 GMT 2019");
+        calendarManager.addStringToShift(calendarView, "Mar 18 09:00:00 GMT 2019");
+        calendarManager.addStringToShift(calendarView, "Mar 18 08:00:00 GMT 2019");
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat month_date = new SimpleDateFormat("MMMM dd yyyy", Locale.getDefault());
-        String month_name = month_date.format(calendar.getTime());
-        dateButton.setText(month_name);
 
-        dateButton.setOnClickListener(v -> {
-            isExpanded = !isExpanded;
-            ((AppBarLayout) findViewById(R.id.appbarlayout)).setExpanded(isExpanded, true);
-        });*/
+        // listener
+        calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                Context context = getApplicationContext();
+                List<Event> events = calendarView.getEvents(dateClicked);
+                if (events.size() != 0) {
+                   // Toast.makeText(context, "Event today:" + events.get(events.size() - 1), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), SwapActivity.class);
+                    intent.putExtra(EXTRA_TEXT, dateClicked);
+                    startActivity(intent);
+                    //
+                }
+            /*    if (dateClicked.toString().compareTo("Mar 14 09:00:00 GMT 2019") == 0){
+                    Toast.makeText(context, "This is the event", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(context, "Not the day", Toast.LENGTH_SHORT).show();
+                }*/
+            }
 
-        CalendarView calendarView = findViewById(R.id.calendarView);
-        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-           /* dateButton.setText(getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
-            isExpanded = !isExpanded;
-            ((AppBarLayout) findViewById(R.id.appbarlayout)).setExpanded(isExpanded, true);
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                actionBar.setTitle(dateformat.format(firstDayOfNewMonth));
+            }
+        });
+       // CalendarView calendarView = findViewById(R.id.calendarView);
+/*        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
 
-*/
             Intent intent = new Intent(getApplicationContext(), SwapActivity.class);
             intent.putExtra(EXTRA_TEXT, getResources().getString(R.string.tool_bar_title_date, new DateFormatSymbols().getMonths()[month], String.valueOf(dayOfMonth), String.valueOf(year)));
             startActivity(intent);
 
-        });
+        });*/
+
 
     }
 

@@ -5,8 +5,10 @@
     <color name="colorAccent">#C21C58</color>
     <color name="jamesblue">#1EB2C5</color>
     <color name="rachelsprink">#ef476f</color>
+    <color name="rachelsdarkprink">#BE254A</color>
     <color name="andreasyellow">#ffc43d</color>
-    <color name="paddysgreen">#06d6a0</color>
+    <color name="paddysdarkgreen">#046F53</color>
+    <color name="paddysgreen">#05C492</color>
     <color name="paulsneutral">#f8ffe5</color>
     <color name="transparent">#00D81B60</color>
 
