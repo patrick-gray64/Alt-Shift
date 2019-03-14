@@ -23,10 +23,13 @@ public class CalendarManager {
         calendarView.addEvent(shiftEvent);
     }
 
+    public void shiftPopulate(CompactCalendarView calendarView, Shifter shifter){
+       addMultiStringtoShift(calendarView, shifter.getMyShiftDates());
+    }
 
     public void addMultiStringtoShift (CompactCalendarView calendarView, List<String> shiftList){
-        for (int i = 0; i < shiftList.size(); i++){
-            addStringToShift(calendarView, shiftList.get(i));
+        for (int i = 0; i < (shiftList.size()); i++){
+           addStringToShift(calendarView, shiftList.get(i));
         }
     }
 

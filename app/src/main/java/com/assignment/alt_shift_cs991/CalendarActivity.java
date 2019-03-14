@@ -25,6 +25,7 @@ public class CalendarActivity extends Toolbar_activity {
     public CompactCalendarView calendarView;
     private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +36,10 @@ public class CalendarActivity extends Toolbar_activity {
         calendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateformat.format(new Date()));
-
+        Shifter testShifter = model.getShiftersList().get(1);
         //add events
-        calendarManager.addStringToShift(calendarView, "Mar 20 09:00:00 GMT 2019");
-        calendarManager.addStringToShift(calendarView, "Mar 18 09:00:00 GMT 2019");
-        calendarManager.addStringToShift(calendarView, "Mar 18 08:00:00 GMT 2019");
+        calendarManager.shiftPopulate(calendarView, testShifter);
+
 
 
         // listener

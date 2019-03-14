@@ -44,14 +44,13 @@
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            app:compactCalendarBackgroundColor="@color/rachelsprink"
-            app:compactCalendarCurrentDayBackgroundColor="@color/rachelsdarkprink"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/andreasyellow"
-            app:compactCalendarMultiEventIndicatorColor="#fff"
+            app:compactCalendarBackgroundColor="#fff"
+            app:compactCalendarCurrentDayBackgroundColor="@color/paulsneutral"
+            app:compactCalendarMultiEventIndicatorColor="@color/paddysgreen"
             app:compactCalendarTargetHeight="250dp"
-            app:compactCalendarTextColor="#fff"
+            app:compactCalendarTextColor="#000000"
             app:compactCalendarTextSize="14sp"
-            app:compactCalendarEventIndicatorStyle="small_indicator"/>
+            app:compactCalendarEventIndicatorStyle="no_fill_large_indicator"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

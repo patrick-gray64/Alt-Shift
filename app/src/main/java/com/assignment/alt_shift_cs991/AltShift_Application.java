@@ -2,6 +2,7 @@ package com.assignment.alt_shift_cs991;
 
 import android.app.Application;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AltShift_Application extends Application {
@@ -25,6 +26,17 @@ public class AltShift_Application extends Application {
     }
     public List<Shift> getShiftList(){
         return shiftManager.getAllShifts();
+    }
+
+    public List<Shift> thisShifterList(String userID, String password){
+        List<Shift> shiftList1 = getShiftList();
+        List myShiftList = new ArrayList();
+        for (int i = 0; i < shiftList1.size()-1; i++){
+            if (userID == shiftList1.get(i).getShifter().getUserID()){
+                myShiftList.add(shiftList1.get(i));
+            }
+        }
+        return myShiftList;
     }
 
     public void fillTheModel() {
@@ -54,8 +66,8 @@ public class AltShift_Application extends Application {
         shifterManager.addShifter(ten);
         shifterManager.addShifter(eleven);
 
-        Shift shift1 = new Shift("March 21 2019", one);
-        Shift shift2 = new Shift("March 22 2019", two);
+        Shift shift1 = new Shift("Mar 21 09:00:00 GMT 2019", one);
+        Shift shift2 = new Shift("Mar 21 09:00:00 GMT 2019", two);
         Shift shift3 = new Shift("March 23 2019", three);
         Shift shift4 = new Shift("March 24 2019", four);
         Shift shift5 = new Shift("March 25 2019", five);

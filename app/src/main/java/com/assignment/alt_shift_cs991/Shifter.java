@@ -32,6 +32,7 @@ public class Shifter implements Parcelable {
 		this.firstName = firstName;
 		this.surname = surname;
 		myShifts = new ArrayList<Shift>();
+		myShiftDates = new ArrayList<String>();
 	}
 
 	/**
