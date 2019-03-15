@@ -7,9 +7,11 @@ public class LoggedInStore {
 
     public static final String LI_NAME = "shifterDetails";
     SharedPreferences localData;
+    private ShiftManager shiftManager;
 
     public LoggedInStore(Context context) {
         localData = context.getSharedPreferences(LI_NAME, 0);
+        shiftManager = new ShiftManager();
     }
 
     public void storedLoggedInUser(Shifter shifter){
@@ -24,12 +26,13 @@ public class LoggedInStore {
 
     public Shifter getLoggedInShifter(){
 
+
         String name = localData.getString("name", "");
         String surname = localData.getString("surname", "");
         String password = localData.getString("password", "");
         String username = localData.getString("username", "");
 
-        Shifter storedShifter = new Shifter(username, password, name, surname);
+        Shifter storedShifter = shiftManager.getShifter(username, password);
 
         return storedShifter;
     }

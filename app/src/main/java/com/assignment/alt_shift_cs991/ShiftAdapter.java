@@ -12,7 +12,7 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder> {
+public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
 

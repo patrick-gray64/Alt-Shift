@@ -195,5 +195,6 @@ public class ShiftManager implements Serializable {
 		}
 		return null;
 	}
+
 }
 
