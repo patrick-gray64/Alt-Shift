@@ -74,6 +74,7 @@ public class ShiftSwapActivity extends Toolbar_activity {
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);
+                        Toast.makeText(getApplicationContext(),"Shift swap request sent!", Toast.LENGTH_SHORT).show();
                     }
                 });
                 RelativeLayout layout = findViewById(R.id.rlayout);
@@ -102,7 +103,6 @@ public class ShiftSwapActivity extends Toolbar_activity {
                 animationSet.start();
             }
         }).start();
-        Toast.makeText(getApplicationContext(),"Shift swap request sent!", Toast.LENGTH_SHORT).show();
     }
 
 
