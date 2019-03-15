@@ -71,8 +71,10 @@ public class ShiftSwapActivity extends Toolbar_activity {
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"Shift swap request sent!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);
+                        //Create a ShiftSwap and update the list in ShiftManager
                     }
                 });
                 RelativeLayout layout = findViewById(R.id.rlayout);
@@ -101,7 +103,6 @@ public class ShiftSwapActivity extends Toolbar_activity {
                 animationSet.start();
             }
         }).start();
-        Toast.makeText(getApplicationContext(),"Shift swap request sent!", Toast.LENGTH_SHORT).show();
     }
 
 

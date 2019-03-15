@@ -53,6 +53,24 @@ public class ShiftManager{
 		return shifts;
 	}
 
+	/**
+	 * getShifts(Shifter) returns a list of the given shifter's shifts.
+	 * @param shifter A shifter.
+	 * @return The shifter's list of shifts.
+	 */
+	public ArrayList<Shift> getShifts(Shifter shifter){
+		// code to get a list of the given shifter's shifts
+		ArrayList<Shift> myShifts = new ArrayList<Shift>();
+		for (Shift shift : shifts){
+			//System.out.println("" + );
+			//if (shifter.getFirstName().equals(shift.getShifter().getFirstName())){
+			if (shifter.equals(shift.getShifter())){
+				myShifts.add(shift);
+			}
+		}
+		return myShifts;
+	}
+
 	public ArrayList<Shifter> getShifters() {
 		return shifters;
 	}
@@ -60,34 +78,6 @@ public class ShiftManager{
 	public void setShifters(ArrayList<Shifter> shifters) {
 		this.shifters = shifters;
 	}
-
-//	/**
-//	 * Finds all shifts and dates of a Shifter
-//	 * @param s A shifter
-//	 */
-//	public ArrayList<Shift> getMyShifts(Shifter s){
-//		ArrayList<Shift> myShifts = new ArrayList<Shift>();
-//		for (Shift shift: shifts) {
-//			if(shift.getShifter() == s) {
-//				myShifts.add(shift);
-//			}
-//		}
-//		return myShifts;
-//	}
-//
-//	/**
-//	 * Finds all shifts and dates of a Shifter
-//	 * @param s A shifter
-//	 */
-//	public ArrayList<Date> getMyShiftDates(Shifter s){
-//		ArrayList<Date> myShiftDates = new ArrayList<Date>();
-//		for (Shift shift: shifts) {
-//			if(shift.getShifter() == s) {
-//				myShiftDates.add(shift.getDate());
-//			}
-//		}
-//		return myShiftDates;
-//	}
 
 	/**
 	 * Adds a shiftSwap to shiftSwaps list
@@ -124,20 +114,28 @@ public class ShiftManager{
 	public ArrayList<ShiftSwap> getShiftSwaps(){
 		return shiftSwaps;
 	}
-	
+
 	/**
-	 * Returns a list of shifts that can be swapped with the given shift
-	 * @param s A shift.
-	 * @return The list of shifts that are swapable with the given shift
+	 * getSwapableShifts() returns a list of shifts that can be swapped with the given shift,
+	 * according to certain rules.
+	 * @param unwantedShift A shift.
+	 * @return The list of shifts that are swapable with the given shift.
 	 */
-	public ArrayList<Shift> getSwapableShifts(Shift s){
-		ArrayList<Shift> swapableShifts = shifts;
-		String date = s.getDate();
-		for (Shift shift: swapableShifts) {
-			if(s.getShifter().getMyShiftDates().contains(shift.getDate()))
-			swapableShifts.remove(shift);
-			else if(shift.getShifter().getMyShiftDates().contains(date))
-				swapableShifts.remove(shift);
+	public ArrayList<Shift> getSwapableShifts(Shift unwantedShift){
+		// currently, the swapable shifts are all shifts of all other shifters (not the shifter of the given shift),
+		// excluding those shifts having the same date as any of the shifter's shifts.
+		ArrayList<Shift> myShifts = getShifts(unwantedShift.getShifter());
+		ArrayList<Shift> swapableShifts = new ArrayList<Shift>();
+		for (Shift shift : shifts) {
+			if (!unwantedShift.getShifter().equals(shift.getShifter())) {
+				boolean clash = false;
+				for (Shift shift2 : myShifts) {
+					if (shift2.getDate().equals(shift.getDate())){
+						clash = true;
+					}
+				}
+				if (!clash) swapableShifts.add(shift);
+			}
 		}
 		return swapableShifts;
 	}

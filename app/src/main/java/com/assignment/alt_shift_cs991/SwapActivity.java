@@ -32,6 +32,12 @@ public class SwapActivity extends Toolbar_activity  {
         recyclerView = findViewById(R.id.recycler_view);
         Adapter adapter = new Adapter();
 
+        /**
+         * This section is creating a list of Shifters for each date (apart from the clicked date)
+         * It should really be creating a list of SwapableShifts, however the rest of the app is
+         * dealing with Shifters and not shifts. From a shift you can call the Shifter details,
+         * the date of the shift and also create ShiftSwap with two shifts
+         */
         List<Shifter> filteredList = new ArrayList<>();
 
         for (int i = 0; i < model.getShiftList().size(); i++) {
@@ -40,8 +46,6 @@ public class SwapActivity extends Toolbar_activity  {
             }
          }
         adapter.setShifterList(filteredList);
-
-
 
         adapter.setStartActivityCallback(new Adapter.StartActivityCallback() {
             @Override
@@ -55,7 +59,6 @@ public class SwapActivity extends Toolbar_activity  {
         recyclerView.setLayoutManager(linearLayoutManager);
 
     }
-
 
     public void animateIntent(View view, Shifter shifter) {
 
