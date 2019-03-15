@@ -3,13 +3,10 @@ package com.assignment.alt_shift_cs991;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
-import java.text.DateFormat;
-import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +33,7 @@ public class CalendarActivity extends Toolbar_activity {
         calendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateformat.format(new Date()));
-        Shifter testShifter = model.getShiftersList().get(1);
+        Shifter testShifter = model.getShifters().get(1); //Selects Shifter two's shifts regardless of who logged in
         //add events
         calendarManager.shiftPopulate(calendarView, testShifter);
 

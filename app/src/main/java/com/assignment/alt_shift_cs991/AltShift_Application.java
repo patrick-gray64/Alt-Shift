@@ -7,25 +7,25 @@ import java.util.List;
 
 public class AltShift_Application extends Application {
 
-    private ShifterManager shifterManager;
     private ShiftManager shiftManager;
 
     @Override
     public void onCreate(){
 
         super.onCreate();
-        shifterManager = new ShifterManager();
         shiftManager = new ShiftManager();
         fillTheModel();
     }
-    public List<Shifter> getShiftersList(){
-        return shifterManager.getShifterList();
+    public List<Shifter> getShifters(){
+        return shiftManager.getShifters();
     }
+
     public String accessGetShifterLogin(String userID, String password){
-        return shifterManager.getShifterLogin(userID, password);
+        return shiftManager.getShifterLogin(userID, password);
     }
+
     public List<Shift> getShiftList(){
-        return shiftManager.getAllShifts();
+        return shiftManager.getShifts();
     }
 
     public List<Shift> thisShifterList(String userID, String password){
@@ -54,28 +54,28 @@ public class AltShift_Application extends Application {
         Shifter ten = new Shifter("6565", "qwerty9", "George", "Ten");
         Shifter eleven = new Shifter("6565", "qwerty9", "George", "Ten");
 
-        shifterManager.addShifter(one);
-        shifterManager.addShifter(two);
-        shifterManager.addShifter(three);
-        shifterManager.addShifter(four);
-        shifterManager.addShifter(five);
-        shifterManager.addShifter(six);
-        shifterManager.addShifter(seven);
-        shifterManager.addShifter(eight);
-        shifterManager.addShifter(nine);
-        shifterManager.addShifter(ten);
-        shifterManager.addShifter(eleven);
+        shiftManager.addShifter(one);
+        shiftManager.addShifter(two);
+        shiftManager.addShifter(three);
+        shiftManager.addShifter(four);
+        shiftManager.addShifter(five);
+        shiftManager.addShifter(six);
+        shiftManager.addShifter(seven);
+        shiftManager.addShifter(eight);
+        shiftManager.addShifter(nine);
+        shiftManager.addShifter(ten);
+        shiftManager.addShifter(eleven);
 
-        Shift shift1 = new Shift("Mar 21 09:00:00 GMT 2019", one);
-        Shift shift2 = new Shift("Mar 21 09:00:00 GMT 2019", two);
-        Shift shift3 = new Shift("March 23 2019", three);
-        Shift shift4 = new Shift("March 24 2019", four);
-        Shift shift5 = new Shift("March 25 2019", five);
-        Shift shift6 = new Shift("March 26 2019", six);
-        Shift shift7 = new Shift("March 27 2019", seven);
-        Shift shift8 = new Shift("March 28 2019", eight);
-        Shift shift9 = new Shift("March 29 2019", nine);
-        Shift shift10 = new Shift("March 30 2019", ten);
+        Shift shift1 = new Shift("Mar 21 09:00:00 GMT 2019", two);
+        Shift shift2 = new Shift("Mar 22 09:00:00 GMT 2019", two);
+        Shift shift3 = new Shift("Mar 23 09:00:00 GMT 2019", two);
+        Shift shift4 = new Shift("Mar 24 09:00:00 GMT 2019", four);
+        Shift shift5 = new Shift("Mar 25 09:00:00 GMT 2019", five);
+        Shift shift6 = new Shift("Mar 26 09:00:00 GMT 20199", six);
+        Shift shift7 = new Shift("Mar 21 09:00:00 GMT 2019", seven);
+        Shift shift8 = new Shift("Mar 22 09:00:00 GMT 2019", eight);
+        Shift shift9 = new Shift("Mar 23 09:00:00 GMT 2019", nine);
+        Shift shift10 = new Shift("Mar 23 09:00:00 GMT 2019", ten);
 
         shiftManager.addShift(shift1);
         shiftManager.addShift(shift2);

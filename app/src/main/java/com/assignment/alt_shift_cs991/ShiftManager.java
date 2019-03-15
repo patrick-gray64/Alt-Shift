@@ -7,40 +7,58 @@ public class ShiftManager{
 	 * ShiftManager holds all the Shifts and ShiftSwaps in ArrayLists for search and retrieval
 	 * on the front end
 	 */
-	private ArrayList<Shift> allShifts;
+	private ArrayList<Shifter> shifters;
+	private ArrayList<Shift> shifts;
 	private ArrayList<ShiftSwap> shiftSwaps;
 
 	/**
 	 * Constructor for ShiftManager
 	 */
 	public ShiftManager() {
-		allShifts = new ArrayList<Shift>();
+		shifters = new ArrayList<Shifter>();
+		shifts = new ArrayList<Shift>();
 		shiftSwaps = new ArrayList<ShiftSwap>();
 	}
 
 	/**
-	 * Adds a shift to allShifts list
-	 * @param shift shift
+	 * Adds a shifter to the shifters list
+	 * @param shifter shifter
 	 */
-	public void addShift(Shift shift) {
-		allShifts.add(shift);
+	public void addShifter(Shifter shifter) {
+		shifters.add(shifter);
 	}
 
 	/**
-	 * Adds a shift to allShifts list
+	 * Adds a shift to shifts list
+	 * @param shift shift
+	 */
+	public void addShift(Shift shift) {
+		shifts.add(shift);
+	}
+
+	/**
+	 * Adds a shift to shifts list
 	 * @param date date
 	 * @param shifter shifter
 	 */
 	public void addShift(String date, Shifter shifter) {
-		allShifts.add(new Shift(date, shifter));
+		shifts.add(new Shift(date, shifter));
 	}
 
 	/**
-	 * Getter for allShifts list
-	 * @return allShifts
+	 * Getter for shifts list
+	 * @return shifts
 	 */
-	public ArrayList<Shift> getAllShifts(){
-		return allShifts;
+	public ArrayList<Shift> getShifts(){
+		return shifts;
+	}
+
+	public ArrayList<Shifter> getShifters() {
+		return shifters;
+	}
+
+	public void setShifters(ArrayList<Shifter> shifters) {
+		this.shifters = shifters;
 	}
 
 //	/**
@@ -49,7 +67,7 @@ public class ShiftManager{
 //	 */
 //	public ArrayList<Shift> getMyShifts(Shifter s){
 //		ArrayList<Shift> myShifts = new ArrayList<Shift>();
-//		for (Shift shift: allShifts) {
+//		for (Shift shift: shifts) {
 //			if(shift.getShifter() == s) {
 //				myShifts.add(shift);
 //			}
@@ -63,7 +81,7 @@ public class ShiftManager{
 //	 */
 //	public ArrayList<Date> getMyShiftDates(Shifter s){
 //		ArrayList<Date> myShiftDates = new ArrayList<Date>();
-//		for (Shift shift: allShifts) {
+//		for (Shift shift: shifts) {
 //			if(shift.getShifter() == s) {
 //				myShiftDates.add(shift.getDate());
 //			}
@@ -108,12 +126,12 @@ public class ShiftManager{
 	}
 	
 	/**
-	 * Returns a list of allShifts that can be swapped with the given shift
+	 * Returns a list of shifts that can be swapped with the given shift
 	 * @param s A shift.
-	 * @return The list of allShifts that are swapable with the given shift
+	 * @return The list of shifts that are swapable with the given shift
 	 */
 	public ArrayList<Shift> getSwapableShifts(Shift s){
-		ArrayList<Shift> swapableShifts = allShifts;
+		ArrayList<Shift> swapableShifts = shifts;
 		String date = s.getDate();
 		for (Shift shift: swapableShifts) {
 			if(s.getShifter().getMyShiftDates().contains(shift.getDate()))
@@ -157,7 +175,7 @@ public class ShiftManager{
 	}
 	
 	/**
-	 * swapShifts(ShiftSwap) swaps the shifters in the two allShifts in the given shift swap.
+	 * swapShifts(ShiftSwap) swaps the shifters in the two shifts in the given shift swap.
 	 * @param s A shift swap.
 	 */
 	public void swapShifts(ShiftSwap s) {
@@ -168,5 +186,37 @@ public class ShiftManager{
 		Shifter respondingShifter = wantedShift.getShifter();
 		unwantedShift.setShifter(respondingShifter);
 		wantedShift.setShifter(requestingShifter);
+	}
+
+	/**
+	 * getShifter searches in the database of Shifters for the shifter with the given user id and password,
+	 * returns a reference to the shifter if found and null if not found.
+	 * @param userID User ID of shifter or null.
+	 * @param password Password of shifter.
+	 * @return Shifter with given user ID and password.
+	 */
+	public String getShifterLogin(String userID, String password) {
+		for (Shifter s : shifters) {
+			if (s.getUserID().equals(userID) && s.getPassword().equals(password)) {
+				return s.getFirstName();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * getShifter searches in the database of Shifters for the shifter with the given user id and password,
+	 * returns a reference to the shifter if found and null if not found.
+	 * @param u User ID of shifter or null.
+	 * @param p Password of shifter.
+	 * @return Shifter with given user ID and password.
+	 */
+	public Shifter getShifter(String u, String p) {
+		for (Shifter s : shifters) {
+			if ((s.getUserID().equals(u)) && (s.getPassword().equals(p))) {
+				return s;
+			}
+		}
+		return null;
 	}
 }
