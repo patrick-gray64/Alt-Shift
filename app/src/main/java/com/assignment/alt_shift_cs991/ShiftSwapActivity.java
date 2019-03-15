@@ -18,7 +18,7 @@ import androidx.databinding.DataBindingUtil;
 
 public class ShiftSwapActivity extends Toolbar_activity {
 
-    private Shifter shifter;
+    private Shift shift;
     private ObjectAnimator shiftWorkerCardAnimation;
     private ObjectAnimator userCardAnimation;
     private ImageButton swapButton;
@@ -28,10 +28,10 @@ public class ShiftSwapActivity extends Toolbar_activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getIntent().getExtras() != null) {
-            shifter = getIntent().getExtras().getParcelable("SHIFTER");
+            shift = getIntent().getExtras().getParcelable("SHIFT");
         }
         SwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.swap_layout);
-        shiftSwapLayoutBinding.setShifter(shifter);
+        shiftSwapLayoutBinding.setShift(shift);
         initToolbar();
         swapButton =  findViewById(R.id.shift_button);
         model = (AltShift_Application)getApplication();
@@ -73,12 +73,13 @@ public class ShiftSwapActivity extends Toolbar_activity {
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);
+                        Toast.makeText(getApplicationContext(),"Shift swap request sent!", Toast.LENGTH_SHORT).show();
                     }
                 });
                 RelativeLayout layout = findViewById(R.id.rlayout);
-                RelativeLayout.LayoutParams laypram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                RelativeLayout.LayoutParams laypram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 laypram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);
-                laypram.addRule(RelativeLayout.ALIGN_END, R.id.cardSwapHolder);
+                laypram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
                 laypram.setMargins(10, 10, 30, 10);
                 layout.addView(confirmButton, laypram);
 
@@ -101,7 +102,6 @@ public class ShiftSwapActivity extends Toolbar_activity {
                 animationSet.start();
             }
         }).start();
-        Toast.makeText(getApplicationContext(),"Shift swap request sent!", Toast.LENGTH_SHORT).show();
     }
 
 

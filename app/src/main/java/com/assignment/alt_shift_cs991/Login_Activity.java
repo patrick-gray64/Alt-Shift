@@ -15,8 +15,6 @@ public class Login_Activity extends AppCompatActivity {
     private CardView loginButton;
     private int passwordCount;
     protected AltShift_Application model;
-    private String loggedIn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +26,22 @@ public class Login_Activity extends AppCompatActivity {
         password = findViewById(R.id.editText4);
         loginButton = findViewById(R.id.cardButton);
 
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                model.clearLoggedIn();
+                model.setLoggedInUser(false);
                 if (model.accessGetShifterLogin(userName.getText().toString(), password.getText().toString()) != null){
-                    loggedIn = model.accessGetShifterLogin(userName.getText().toString(), password.getText().toString());
-                    setLoggedIn(model.accessGetShifterLogin(userName.getText().toString(), password.getText().toString()));
+                    model.setLoggedInUser(true);
+                    model.storedLoggedInUser(model.accessGetShifter(userName.getText().toString(), password.getText().toString()));
+                    model.getLoggedInUser();
                     Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+                    intent.putExtra("SHIFTER1", model.getLoggedInUser().getFirstName());
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Hello " + loggedIn + "!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Hello " + model.getLoggedInUser().getFirstName() + "!", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(getApplicationContext(), "Wrong Username or Password, please try again", Toast.LENGTH_SHORT).show();
@@ -53,13 +56,5 @@ public class Login_Activity extends AppCompatActivity {
 
             }
         });
-    }
-    public void setLoggedIn(String loggedIn){
-        this.loggedIn = loggedIn;
-    }
-    public String getLoggedIn(){
-        return loggedIn;
-
-
     }
 }
