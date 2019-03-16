@@ -18,6 +18,7 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
     public String shifterDate;
     public String shifterUserName;
     public String shifterPassword;
+    public String shifterName;
 
     /**
      * A constructor for the MyStackAdapter class.
@@ -70,6 +71,7 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
                 shifts.get(a).setSwapUserName(shifterUserName);
                 shifts.get(a).setSwapPassword(shifterPassword);
                 shifts.get(a).setSwapDate(shifterDate);
+                shifts.get(a).setName(shift.getShifter().getFirstName());
                 intent.putExtra("SHIFT", shifts.get(a));
                 v.getContext().startActivity(intent);
 

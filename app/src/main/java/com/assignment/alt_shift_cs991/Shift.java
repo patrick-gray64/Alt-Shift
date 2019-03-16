@@ -71,6 +71,10 @@ public class Shift implements Parcelable {
         return swapPassword;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * Getter for Shifter
      * @return shifter
