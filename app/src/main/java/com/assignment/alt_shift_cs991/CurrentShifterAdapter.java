@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
-    protected AltShift_Application model;
 
     /**
      * A constructor for the MyStackAdapter class.
@@ -57,7 +56,7 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
     @Override
     public void onBindViewHolder(MyViewHolder viewHolder, int position) {
         Shift shift = shifts.get(position);
-        viewHolder.shifter.setText(shift.getShifter().getFirstName());
+        viewHolder.shifterName.setText(shift.getShifter().getFirstName());
         viewHolder.date.setText(shift.getDate());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +82,7 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView shifter;
+        private TextView shifterName;
         private TextView date;
         //private ImageView picture;
 
@@ -94,7 +93,7 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
          */
         public MyViewHolder(View itemView) {
             super(itemView);
-            shifter = itemView.findViewById(R.id.name_field);
+            shifterName = itemView.findViewById(R.id.name_field);
             date = itemView.findViewById(R.id.description_field);
             //picture = itemView.findViewById(R.id.imageView);
         }

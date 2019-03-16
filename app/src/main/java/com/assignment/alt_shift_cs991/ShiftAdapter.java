@@ -67,7 +67,6 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
                 Intent intent = new Intent(v.getContext(), ShiftSwapActivity.class);
                 shifts.get(a).setSwapDate(shifterDate);
                 intent.putExtra("SHIFT", shifts.get(a));
-                //intent.putExtra("SHIFTER", shifts.get(a).getShifter());
                 v.getContext().startActivity(intent);
 
             }

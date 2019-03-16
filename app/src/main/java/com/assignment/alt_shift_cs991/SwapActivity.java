@@ -9,7 +9,7 @@ public class SwapActivity extends Toolbar_activity {
 
     public RecyclerView recyclerView;
     private ShiftAdapter shiftAdapter;
-    private Shift shift;
+    private Shift shiftInfo;
     protected AltShift_Application model;
     private Shift shift1;
 
@@ -19,13 +19,10 @@ public class SwapActivity extends Toolbar_activity {
         setContentView(R.layout.activity_swap);
         initToolbar();
         model = (AltShift_Application) getApplication();
-
-        shift = getIntent().getExtras().getParcelable("SHIFT");
-
-        String swapDate = shift.getDate();
-
-        shift1 = new Shift(swapDate, model.getLoggedInUser());
-        shiftAdapter = new ShiftAdapter(model.getSwappableShifts(shift1));
+        shiftInfo = getIntent().getExtras().getParcelable("SHIFT");
+        String swapDate = shiftInfo.getDate();
+        Shift shift = model.getShift(model.getLoggedInUser(), swapDate);
+        shiftAdapter = new ShiftAdapter(model.getSwappableShifts(shift));
         shiftAdapter.shifterDate = swapDate;
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

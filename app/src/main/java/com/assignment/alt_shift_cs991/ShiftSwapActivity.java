@@ -19,8 +19,7 @@ import androidx.databinding.DataBindingUtil;
 
 public class ShiftSwapActivity extends Toolbar_activity {
 
-    private Shift shift;
-    private Shifter shifter;
+    private Shift shift, userSwapShift, nonUserSwapShift;
     private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
     protected AltShift_Application model;
@@ -30,13 +29,15 @@ public class ShiftSwapActivity extends Toolbar_activity {
         super.onCreate(savedInstanceState);
         if(getIntent().getExtras() != null) {
             shift = getIntent().getExtras().getParcelable("SHIFT");
-            shifter = getIntent().getExtras().getParcelable("SHIFTER");
         }
         SwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.swap_layout);
         shiftSwapLayoutBinding.setShift(shift);
         initToolbar();
         swapButton =  findViewById(R.id.shift_button);
         model = (AltShift_Application)getApplication();
+
+        nonUserSwapShift = model.getShift(model.accessGetShifter(shift.getUserName(),shift.getPassword()), shift.getDate());
+        userSwapShift = model.getShift(model.getLoggedInUser(), shift.getSwapDate());
 
         TextView userName = findViewById(R.id.user_name_field);
         TextView surname = findViewById(R.id.user_description_field);
@@ -79,8 +80,8 @@ public class ShiftSwapActivity extends Toolbar_activity {
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //ShiftSwap shiftSwap = new ShiftSwap(model.getShift(model.getLoggedInUser(), shift.getSwapDate()),model.getShift(shifter,shift.getDate()));
-                        //model.swapShifts(shiftSwap);
+                        ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
+                        model.swapShifts(shiftSwap);
 
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);
