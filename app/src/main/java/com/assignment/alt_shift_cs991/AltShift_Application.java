@@ -10,6 +10,7 @@ public class AltShift_Application extends Application {
 
     private ShiftManager shiftManager;
     private LoggedInStore loggedInStore;
+    SwapActivity swapActivity;
 
     @Override
     public void onCreate(){
@@ -54,6 +55,9 @@ public class AltShift_Application extends Application {
     }
     public Shift getShift(Shifter shifter, String date ){
         return shiftManager.getShift(shifter, date);
+    }
+    public void swapShifts(ShiftSwap s){
+        shiftManager.swapShifts(s);
     }
     public void fillTheModel() {
 
@@ -121,6 +125,7 @@ public class AltShift_Application extends Application {
             spEditor.putString("password", shifter.getPassword());
             spEditor.putString("username", shifter.getUserID());
             spEditor.commit();
+
         }
 
         public Shifter getLoggedInShifter(){

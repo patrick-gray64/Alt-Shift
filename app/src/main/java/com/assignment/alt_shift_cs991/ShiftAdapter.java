@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
+    public String shifterDate;
 
     /**
      * A constructor for the MyStackAdapter class.
@@ -64,7 +65,9 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
             public void onClick(View v) {
                 int a = viewHolder.getAdapterPosition();
                 Intent intent = new Intent(v.getContext(), ShiftSwapActivity.class);
+                shifts.get(a).setSwapDate(shifterDate);
                 intent.putExtra("SHIFT", shifts.get(a));
+                //intent.putExtra("SHIFTER", shifts.get(a).getShifter());
                 v.getContext().startActivity(intent);
 
             }

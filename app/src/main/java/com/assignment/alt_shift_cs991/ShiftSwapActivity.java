@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.databinding.SwapLayoutBinding;
@@ -19,8 +20,8 @@ import androidx.databinding.DataBindingUtil;
 public class ShiftSwapActivity extends Toolbar_activity {
 
     private Shift shift;
-    private ObjectAnimator shiftWorkerCardAnimation;
-    private ObjectAnimator userCardAnimation;
+    private Shifter shifter;
+    private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
     protected AltShift_Application model;
 
@@ -29,12 +30,19 @@ public class ShiftSwapActivity extends Toolbar_activity {
         super.onCreate(savedInstanceState);
         if(getIntent().getExtras() != null) {
             shift = getIntent().getExtras().getParcelable("SHIFT");
+            shifter = getIntent().getExtras().getParcelable("SHIFTER");
         }
         SwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.swap_layout);
         shiftSwapLayoutBinding.setShift(shift);
         initToolbar();
         swapButton =  findViewById(R.id.shift_button);
         model = (AltShift_Application)getApplication();
+
+        TextView userName = findViewById(R.id.user_name_field);
+        TextView surname = findViewById(R.id.user_description_field);
+
+        userName.setText(model.getLoggedInUser().getFirstName());
+        surname.setText(model.getLoggedInUser().getSurname());
     }
 
 
@@ -71,6 +79,9 @@ public class ShiftSwapActivity extends Toolbar_activity {
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        //ShiftSwap shiftSwap = new ShiftSwap(model.getShift(model.getLoggedInUser(), shift.getSwapDate()),model.getShift(shifter,shift.getDate()));
+                        //model.swapShifts(shiftSwap);
+
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(),"Shift swap request sent!", Toast.LENGTH_SHORT).show();
