@@ -141,8 +141,8 @@ public class Shifter implements Parcelable {
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(firstName);
 		dest.writeString(surname);
-		dest.writeSerializable(password);
-		dest.writeSerializable(userID);
+		dest.writeString(password);
+		dest.writeString(userID);
 	}
 	public static final Creator<Shifter> CREATOR = new Creator<Shifter>() {
 		@Override

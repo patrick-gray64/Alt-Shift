@@ -10,7 +10,6 @@ public class AltShift_Application extends Application {
 
     private ShiftManager shiftManager;
     private LoggedInStore loggedInStore;
-    SwapActivity swapActivity;
 
     @Override
     public void onCreate(){

@@ -11,7 +11,6 @@ public class SwapActivity extends Toolbar_activity {
     private ShiftAdapter shiftAdapter;
     private Shift shiftInfo;
     protected AltShift_Application model;
-    private Shift shift1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +20,12 @@ public class SwapActivity extends Toolbar_activity {
         model = (AltShift_Application) getApplication();
         shiftInfo = getIntent().getExtras().getParcelable("SHIFT");
         String swapDate = shiftInfo.getDate();
-        Shift shift = model.getShift(model.getLoggedInUser(), swapDate);
+        String swapUserName = shiftInfo.getUserName();
+        String swapPassword = shiftInfo.getPassword();
+        Shift shift = model.getShift(model.accessGetShifter(swapUserName,swapPassword), swapDate);
         shiftAdapter = new ShiftAdapter(model.getSwappableShifts(shift));
+        shiftAdapter.shifterUserName = swapUserName;
+        shiftAdapter.shifterPassword = swapPassword;
         shiftAdapter.shifterDate = swapDate;
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

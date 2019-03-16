@@ -35,9 +35,8 @@ public class ShiftSwapActivity extends Toolbar_activity {
         initToolbar();
         swapButton =  findViewById(R.id.shift_button);
         model = (AltShift_Application)getApplication();
-
         nonUserSwapShift = model.getShift(model.accessGetShifter(shift.getUserName(),shift.getPassword()), shift.getDate());
-        userSwapShift = model.getShift(model.getLoggedInUser(), shift.getSwapDate());
+        userSwapShift = model.getShift(model.accessGetShifter(shift.getSwapUserName(), shift.getSwapPassword()), shift.getSwapDate());
 
         TextView userName = findViewById(R.id.user_name_field);
         TextView surname = findViewById(R.id.user_description_field);

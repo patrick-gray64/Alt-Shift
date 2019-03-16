@@ -17,6 +17,8 @@ public class Shift implements Parcelable {
     private String userName;
     private String password;
     private String swapDate;
+    private String swapUserName;
+    private String swapPassword;
 
     /**
      * Constructor for a Shift
@@ -30,6 +32,8 @@ public class Shift implements Parcelable {
         surname = shifter.getSurname();
         userName = shifter.getUserID();
         password = shifter.getPassword();
+        swapUserName = "";
+        swapPassword = "";
         shifter.getMyShifts().add(this);
         swapDate = "";
     }
@@ -49,6 +53,22 @@ public class Shift implements Parcelable {
 
     public void setSwapDate(String swapDate) {
         this.swapDate = swapDate;
+    }
+
+    public void setSwapUserName(String swapUserName) {
+        this.swapUserName = swapUserName;
+    }
+
+    public void setSwapPassword(String swapPassword) {
+        this.swapPassword = swapPassword;
+    }
+
+    public String getSwapUserName() {
+        return swapUserName;
+    }
+
+    public String getSwapPassword() {
+        return swapPassword;
     }
 
     /**
@@ -98,6 +118,8 @@ public class Shift implements Parcelable {
         swapDate = in.readString();
         userName = in.readString();
         password = in.readString();
+        swapUserName = in.readString();
+        swapPassword = in.readString();
     }
 
     @Override
@@ -113,6 +135,8 @@ public class Shift implements Parcelable {
         dest.writeString(swapDate);
         dest.writeString(userName);
         dest.writeString(password);
+        dest.writeString(swapUserName);
+        dest.writeString(swapPassword);
     }
 
     public static final Creator<Shift> CREATOR = new Creator<Shift>() {

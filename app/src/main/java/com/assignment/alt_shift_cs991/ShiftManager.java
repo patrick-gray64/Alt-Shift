@@ -90,7 +90,7 @@ public class ShiftManager implements Serializable {
 		for (Shift shift : shifts){
 			//System.out.println("" + );
 			//if (shifter.getFirstName().equals(shift.getShifter().getFirstName())){
-			if (shifter.getUserID().equals(shift.getShifter().getUserID())){
+			if (shifter.equals(shift.getShifter())){
 				myShifts.add(shift);
 			}
 		}

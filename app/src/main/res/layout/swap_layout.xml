@@ -7,9 +7,6 @@
         <variable
             name="Shift"
             type="com.assignment.alt_shift_cs991.Shift" />
-        <variable
-            name="Shifter"
-            type="com.assignment.alt_shift_cs991.Shifter" />
     </data>
 
 
