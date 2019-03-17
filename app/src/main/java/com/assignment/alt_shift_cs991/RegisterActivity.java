@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (userName.getText().toString().isEmpty() || password.getText().toString().isEmpty() || name.getText().toString().isEmpty() || surname.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please fill in missing information!", Toast.LENGTH_SHORT).show();
                 } else {
-                    model.addShifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
+                    model.shiftManager.addShifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
                     Intent intent = new Intent(getApplicationContext(), Login_Activity.class);
                     startActivity(intent);
                 }

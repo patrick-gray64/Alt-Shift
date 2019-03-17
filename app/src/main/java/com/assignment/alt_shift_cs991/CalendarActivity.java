@@ -35,18 +35,16 @@ public class CalendarActivity extends Toolbar_activity {
         calendarView = findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateformat.format(new Date()));
-        Shifter shifter = model.getLoggedInUser(); // This is calling Shifter two for any login
+        Shifter shifter = model.getLoggedInShifter(); // This is calling Shifter two for any login
         //add events
-        calendarManager.shiftPopulate(calendarView, model.getmyShiftsDates(shifter));
-
-
+        calendarManager.shiftPopulate(calendarView, model.shiftManager.getmyShiftsDates(shifter));
 
         // listener
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
 
-                shiftAdapter = new CurrentShifterAdapter(model.getmyShiftsByDate(model.getLoggedInUser(), dateClicked.toString()));
+                shiftAdapter = new CurrentShifterAdapter(model.shiftManager.getmyShiftsByDate(model.getLoggedInShifter(), dateClicked.toString()));
                 recyclerView = findViewById(R.id.shifter_shifts);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 recyclerView.setAdapter(shiftAdapter);

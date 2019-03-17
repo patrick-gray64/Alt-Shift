@@ -32,16 +32,16 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                model.clearLoggedIn();
-                model.setLoggedInUser(false);
-                if (model.accessGetShifterLogin(userName.getText().toString(), password.getText().toString()) != null){
-                    model.setLoggedInUser(true);
-                    model.storedLoggedInUser(model.accessGetShifter(userName.getText().toString(), password.getText().toString()));
-                    model.getLoggedInUser();
+                model.clearUserData();
+                model.setUserLoggedIn(false);
+                if (model.shiftManager.getShifterLogin(userName.getText().toString(), password.getText().toString()) != null){
+                    model.setUserLoggedIn(true);
+                    model.storedLoggedInUser(model.shiftManager.getShifter(userName.getText().toString(), password.getText().toString()));
+                    model.getLoggedInShifter();
                     Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                    intent.putExtra("SHIFTER1", model.getLoggedInUser().getFirstName());
+                    intent.putExtra("SHIFTER1", model.getLoggedInShifter().getFirstName());
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Hello " + model.getLoggedInUser().getFirstName() + "!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Hello " + model.getLoggedInShifter().getFirstName() + "!", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(getApplicationContext(), "Wrong Username or Password, please try again", Toast.LENGTH_SHORT).show();
