@@ -1,10 +1,8 @@
 package com.assignment.alt_shift_cs991;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,8 +21,8 @@ public class CalendarManager {
         calendarView.addEvent(shiftEvent);
     }
 
-    public void shiftPopulate(CompactCalendarView calendarView, Shifter shifter){
-       addMultiStringtoShift(calendarView, shifter.getMyShiftDates());
+    public void shiftPopulate(CompactCalendarView calendarView, List<String> shiftDates){
+       addMultiStringtoShift(calendarView, shiftDates);
     }
 
     public void addMultiStringtoShift (CompactCalendarView calendarView, List<String> shiftList){
@@ -35,7 +33,7 @@ public class CalendarManager {
 
     public long epochGen (String timeDate){
         String str = timeDate;
-        SimpleDateFormat df = new SimpleDateFormat("MMMM dd HH:mm:ss zzz yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("EEE MMMM dd HH:mm:ss zzz yyyy");
         Date date = null;
         try {
             date = df.parse(str);

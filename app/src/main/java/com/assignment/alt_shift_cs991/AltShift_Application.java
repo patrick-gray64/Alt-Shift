@@ -10,12 +10,14 @@ public class AltShift_Application extends Application {
 
     private ShiftManager shiftManager;
     private LoggedInStore loggedInStore;
+    private CalendarManager calendarManager;
 
     @Override
     public void onCreate(){
 
         super.onCreate();
         shiftManager = new ShiftManager();
+        calendarManager = new CalendarManager();
         loggedInStore = new LoggedInStore(getApplicationContext());
         fillTheModel();
     }
@@ -37,8 +39,20 @@ public class AltShift_Application extends Application {
     public List<Shift> getmyShifts(Shifter shifter){
         return shiftManager.getmyShifts(shifter);
     }
+    public List<String> getmyShiftsDates(Shifter shifter){
+        return shiftManager.getmyShiftsDates(shifter);
+    }
+    public List<Shift> getmyShiftsByDate(Shifter shifter, String date){
+        return shiftManager.getmyShiftsByDate(shifter, date);
+    }
     public List<Shift> getSwappableShifts(Shift swappableShift){
         return shiftManager.getSwapableShifts(swappableShift);
+    }
+    public long epochGen (String timeDate){
+        return calendarManager.epochGen(timeDate);
+    }
+    public int addShifter(String u, String p, String f, String s){
+        return shiftManager.addShifter(u, p, f, s);
     }
     public void setLoggedInUser(Boolean a){
         loggedInStore.setUserLoggedIn(a);
@@ -84,16 +98,16 @@ public class AltShift_Application extends Application {
         shiftManager.addShifter(ten);
         shiftManager.addShifter(eleven);
 
-        Shift shift1 = new Shift("Mar 21 09:00:00 GMT 2019", two);
-        Shift shift2 = new Shift("Mar 22 09:00:00 GMT 2019", two);
-        Shift shift3 = new Shift("Mar 23 09:00:00 GMT 2019", two);
-        Shift shift4 = new Shift("Mar 24 09:00:00 GMT 2019", four);
-        Shift shift5 = new Shift("Mar 25 09:00:00 GMT 2019", five);
-        Shift shift6 = new Shift("Mar 26 09:00:00 GMT 2019", six);
-        Shift shift7 = new Shift("Mar 21 09:00:00 GMT 2019", seven);
-        Shift shift8 = new Shift("Mar 22 09:00:00 GMT 2019", eight);
-        Shift shift9 = new Shift("Mar 23 09:00:00 GMT 2019", nine);
-        Shift shift10 = new Shift("Mar 23 09:00:00 GMT 2019", ten);
+        Shift shift1 = new Shift("Thu Mar 21 00:00:00 GMT 2019", two);
+        Shift shift2 = new Shift("Fri Mar 22 00:00:00 GMT 2019", two);
+        Shift shift3 = new Shift("Sat Mar 23 00:00:00 GMT 2019", two);
+        Shift shift4 = new Shift("Sun Mar 24 00:00:00 GMT 2019", four);
+        Shift shift5 = new Shift("Mon Mar 25 00:00:00 GMT 2019", five);
+        Shift shift6 = new Shift("Tue Mar 26 00:00:00 GMT 2019", six);
+        Shift shift7 = new Shift("Thu Mar 21 00:00:00 GMT 2019", seven);
+        Shift shift8 = new Shift("Fri Mar 22 00:00:00 GMT 2019", eight);
+        Shift shift9 = new Shift("Sat Mar 23 00:00:00 GMT 2019", nine);
+        Shift shift10 = new Shift("Sat Mar 23 00:00:00 GMT 2019", ten);
 
         shiftManager.addShift(shift1);
         shiftManager.addShift(shift2);

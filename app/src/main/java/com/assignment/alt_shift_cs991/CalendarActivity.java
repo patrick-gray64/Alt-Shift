@@ -1,22 +1,16 @@
 package com.assignment.alt_shift_cs991;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
-import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import static android.content.Intent.EXTRA_TEXT;
 
 
 public class CalendarActivity extends Toolbar_activity {
@@ -38,16 +32,12 @@ public class CalendarActivity extends Toolbar_activity {
         model = (AltShift_Application)getApplication();
         final ActionBar actionBar = getSupportActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(false);
-        shiftAdapter = new CurrentShifterAdapter(model.getmyShifts(model.getLoggedInUser()));
-        recyclerView = findViewById(R.id.shifter_shifts);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(shiftAdapter);
         calendarView = findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateformat.format(new Date()));
-        Shifter testShifter = model.getShifters().get(1); // This is calling Shifter two for any login
+        Shifter shifter = model.getLoggedInUser(); // This is calling Shifter two for any login
         //add events
-        calendarManager.shiftPopulate(calendarView, testShifter);
+        calendarManager.shiftPopulate(calendarView, model.getmyShiftsDates(shifter));
 
 
 
@@ -55,16 +45,23 @@ public class CalendarActivity extends Toolbar_activity {
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
-                Context context = getApplicationContext();
-                List<Event> events = calendarView.getEvents(dateClicked);
-                if (events.size() != 0) {
+
+                shiftAdapter = new CurrentShifterAdapter(model.getmyShiftsByDate(model.getLoggedInUser(), dateClicked.toString()));
+                recyclerView = findViewById(R.id.shifter_shifts);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                recyclerView.setAdapter(shiftAdapter);
+                shiftAdapter.notifyDataSetChanged();
+
+               // Context context = getApplicationContext();
+               // List<Event> events = calendarView.getEvents(dateClicked);
+              //  if (events.size() != 0) {
                     // Toast.makeText(context, "Event today:" + events.get(events.size() - 1), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), SwapActivity.class);
-                    intent.putExtra(EXTRA_TEXT, dateClicked);
-                    intent.putExtra(EXTRA_SHIFTER, testShifter);
-                    startActivity(intent);
+              //      Intent intent = new Intent(getApplicationContext(), SwapActivity.class);
+              //      intent.putExtra(EXTRA_TEXT, dateClicked);
+              //      intent.putExtra(EXTRA_SHIFTER, shifter)
+             //       startActivity(intent);
                     //
-                }
+              //  }
             /*    if (dateClicked.toString().compareTo("Mar 14 09:00:00 GMT 2019") == 0){
                     Toast.makeText(context, "This is the event", Toast.LENGTH_SHORT).show();
                 }
