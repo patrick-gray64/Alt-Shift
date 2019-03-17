@@ -91,16 +91,40 @@ public class ShiftManager implements Serializable {
 	 * @return The shifter's list of shifts.
 	 */
 	public List<Shift> getmyShifts(Shifter shifter){
+        // code to get a list of the given shifter's shifts
+        List<Shift> myShifts = new ArrayList<Shift>();
+        for (Shift shift : shifts){
+            //System.out.println("" + );
+            //if (shifter.getFirstName().equals(shift.getShifter().getFirstName())){
+            if (shifter.equals(shift.getShifter())){
+                myShifts.add(shift);
+            }
+        }
+        return myShifts;
+    }
+    public List<Shift> getmyShiftsByDate(Shifter shifter, String date){
+        // code to get a list of the given shifter's shifts
+        List<Shift> myShiftsByDate = new ArrayList<Shift>();
+        for (Shift shift : shifts){
+            //System.out.println("" + );
+            //if (shifter.getFirstName().equals(shift.getShifter().getFirstName())){
+            if (shifter.equals(shift.getShifter()) && shift.getDate().equals(date)){
+                myShiftsByDate.add(shift);
+            }
+        }
+        return myShiftsByDate;
+    }
+	public List<String> getmyShiftsDates(Shifter shifter){
 		// code to get a list of the given shifter's shifts
-		List<Shift> myShifts = new ArrayList<Shift>();
+		List<String> myShiftsDates = new ArrayList<String>();
 		for (Shift shift : shifts){
 			//System.out.println("" + );
 			//if (shifter.getFirstName().equals(shift.getShifter().getFirstName())){
 			if (shifter.equals(shift.getShifter())){
-				myShifts.add(shift);
+				myShiftsDates.add(shift.getDate());
 			}
 		}
-		return myShifts;
+		return myShiftsDates;
 	}
 
 	public void addShiftSwap(ShiftSwap s) {

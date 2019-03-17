@@ -35,14 +35,14 @@ public class ShiftSwapActivity extends Toolbar_activity {
         initToolbar();
         swapButton =  findViewById(R.id.shift_button);
         model = (AltShift_Application)getApplication();
-        nonUserSwapShift = model.getShift(model.accessGetShifter(shift.getUserName(),shift.getPassword()), shift.getDate());
-        userSwapShift = model.getShift(model.accessGetShifter(shift.getSwapUserName(), shift.getSwapPassword()), shift.getSwapDate());
+        nonUserSwapShift = model.shiftManager.getShift(model.shiftManager.getShifter(shift.getUserName(),shift.getPassword()), shift.getDate());
+        userSwapShift = model.shiftManager.getShift(model.shiftManager.getShifter(shift.getSwapUserName(), shift.getSwapPassword()), shift.getSwapDate());
 
         TextView userName = findViewById(R.id.user_name_field);
         TextView surname = findViewById(R.id.user_description_field);
 
-        userName.setText(model.getLoggedInUser().getFirstName());
-        surname.setText(model.getLoggedInUser().getSurname());
+        userName.setText(model.getLoggedInShifter().getFirstName());
+        surname.setText(model.getLoggedInShifter().getSurname());
     }
 
 
@@ -80,7 +80,7 @@ public class ShiftSwapActivity extends Toolbar_activity {
                     @Override
                     public void onClick(View v) {
                         ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
-                        model.swapShifts(shiftSwap);
+                        model.shiftManager.swapShifts(shiftSwap);
 
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);

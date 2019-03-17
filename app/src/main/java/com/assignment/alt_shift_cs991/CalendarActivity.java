@@ -51,7 +51,8 @@ public class CalendarActivity extends Toolbar_activity {
         actionBar.setTitle(dateformat.format(new Date()));
 
         //add shifts to calendar
-        calendarManager.shiftPopulate(calendarView, model.getLoggedInUser());
+        Shifter shifter = model.getLoggedInShifter();
+        calendarManager.shiftPopulate(calendarView,  model.shiftManager.getmyShiftsDates(shifter));
 
         // listener for calendar days
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -74,7 +75,7 @@ public class CalendarActivity extends Toolbar_activity {
                    // yourShifts.setVisibility(View.VISIBLE);
 
                     //Gets shifts of user based on date
-                    ArrayList myShifts = model.getShifts(model.getLoggedInUser(), String.valueOf(dateClicked));
+                    ArrayList myShifts = model.getShifts(shifter, String.valueOf(dateClicked));
                     ArrayList<Shift> shiftArrayList = new ArrayList<>();
                     shiftArrayList.addAll(myShifts);
 
