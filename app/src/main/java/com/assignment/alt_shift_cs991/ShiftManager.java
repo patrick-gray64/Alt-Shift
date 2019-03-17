@@ -2,8 +2,14 @@ package com.assignment.alt_shift_cs991;
 
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ShiftManager implements Serializable {
 
@@ -187,14 +193,47 @@ public class ShiftManager implements Serializable {
 		this.shifters = shifters;
 	}
 
-	public Shift getShift(Shifter shifter, String date) {
-		for (Shift shift: shifter.getMyShifts()) {
-			if(shift.getDate().equals(date)) {
-				return shift;
-			}
-		}
-		return null;
+	public Shift getShift(Shifter shifter, String date){
+        SimpleDateFormat inputGiven = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+        SimpleDateFormat output = new SimpleDateFormat("MMM dd");
+        Date given = null;
+        Date stored = null;
+        try
+        {
+            given = inputGiven.parse(date);
+            for (Shift shift: shifter.getMyShifts()) {
+                stored = inputGiven.parse(shift.getDate());
+                if(output.format(stored).compareTo(output.format(given)) == 0) {
+                    return shift;
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
 	}
+
+    public ArrayList<Shift> getShifts(Shifter shifter, String date){
+        SimpleDateFormat inputGiven = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+        SimpleDateFormat output = new SimpleDateFormat("MMM dd");
+        Date given = null;
+        Date stored = null;
+        ArrayList<Shift> myShifts = new ArrayList<>();
+        try
+        {
+            given = inputGiven.parse(date);
+            for (Shift shift: shifter.getMyShifts()) {
+                stored = inputGiven.parse(shift.getDate());
+                if(output.format(stored).compareTo(output.format(given)) == 0) {
+                    myShifts.add(shift);
+                }
+            }
+            return myShifts;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }
 

@@ -63,7 +63,7 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
             public void onClick(View v) {
                 int a = viewHolder.getAdapterPosition();
                 Intent intent = new Intent(v.getContext(), SwapActivity.class);
-                intent.putExtra("SHIFT", shifts.get(a));
+                intent.putExtra("SHIFT", shift);
                 v.getContext().startActivity(intent);
                 }
 

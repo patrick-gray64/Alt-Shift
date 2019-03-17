@@ -18,10 +18,12 @@ public class SwapActivity extends Toolbar_activity {
         setContentView(R.layout.activity_swap);
         initToolbar();
         model = (AltShift_Application) getApplication();
-        shiftInfo = getIntent().getExtras().getParcelable("SHIFT");
-        String swapDate = shiftInfo.getDate();
+        Bundle extras = getIntent().getExtras();
+        shiftInfo = (Shift) extras.get("SHIFT");
+        String swapDate = String.valueOf(shiftInfo.getDate());
         String swapUserName = shiftInfo.getUserName();
         String swapPassword = shiftInfo.getPassword();
+
         Shift shift = model.getShift(model.accessGetShifter(swapUserName,swapPassword), swapDate);
         shiftAdapter = new ShiftAdapter(model.getSwappableShifts(shift));
         shiftAdapter.shifterUserName = swapUserName;

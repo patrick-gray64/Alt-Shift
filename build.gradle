@@ -16,11 +16,14 @@ buildscript {
 
 allprojects {
     repositories {
-    google()
-    jcenter()
-}
-        
+        google()
+        jcenter()
+        maven {
+            url "https://dl.bintray.com/riontech/maven"
+        }
+
     }
+}
 
 
 task clean(type: Delete) {

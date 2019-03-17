@@ -35,7 +35,7 @@ public class CalendarManager {
 
     public long epochGen (String timeDate){
         String str = timeDate;
-        SimpleDateFormat df = new SimpleDateFormat("MMMM dd HH:mm:ss zzz yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
         Date date = null;
         try {
             date = df.parse(str);

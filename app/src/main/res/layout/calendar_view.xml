@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -51,35 +52,32 @@
             app:compactCalendarTargetHeight="250dp"
             app:compactCalendarTextColor="#000000"
             app:compactCalendarTextSize="14sp" />
+       <!-- <TextView
+            android:id="@+id/your_shifts"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Your Shifts: "
+            android:layout_margin="10dp"
+            android:textSize="14sp"
+            android:visibility="gone"/>-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shifter_shifts"
             android:layout_width="match_parent"
-            android:layout_height="339dp"
-            android:layout_below="@+id/compactcalendar_view">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/compactcalendar_view"
+            android:isScrollContainer="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:scrollbars="vertical"
+            ></androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="No shifts on the selected day" />
 
     </LinearLayout>
-
-    <!--
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@android:color/white"
-                    app:layout_collapseMode="pin">
-
-                    <TextView
-                        android:id="@+id/date"
-                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="MONTH" />
-                </androidx.appcompat.widget.Toolbar>
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-    -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
