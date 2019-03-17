@@ -19,6 +19,7 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
     public String shifterUserName;
     public String shifterPassword;
     public String shifterName;
+    protected AltShift_Application model;
 
     /**
      * A constructor for the MyStackAdapter class.

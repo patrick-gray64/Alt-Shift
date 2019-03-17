@@ -1,7 +1,6 @@
 package com.assignment.alt_shift_cs991;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -18,8 +17,6 @@ import java.util.Locale;
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import static android.content.Intent.EXTRA_TEXT;
 
 
 public class CalendarActivity extends Toolbar_activity {
@@ -75,7 +72,7 @@ public class CalendarActivity extends Toolbar_activity {
                    // yourShifts.setVisibility(View.VISIBLE);
 
                     //Gets shifts of user based on date
-                    ArrayList myShifts = model.getShifts(shifter, String.valueOf(dateClicked));
+                    ArrayList myShifts = model.shiftManager.getShifts(shifter, String.valueOf(dateClicked));
                     ArrayList<Shift> shiftArrayList = new ArrayList<>();
                     shiftArrayList.addAll(myShifts);
 

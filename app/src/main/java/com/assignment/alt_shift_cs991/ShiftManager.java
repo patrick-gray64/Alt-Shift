@@ -218,45 +218,56 @@ public class ShiftManager implements Serializable {
 	}
 
 	public Shift getShift(Shifter shifter, String date){
-        SimpleDateFormat inputGiven = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
-        SimpleDateFormat output = new SimpleDateFormat("MMM dd");
-        Date given = null;
-        Date stored = null;
-        try
-        {
-            given = inputGiven.parse(date);
+        String given = dateFormatterCon(date, "MMM dd");
             for (Shift shift: shifter.getMyShifts()) {
-                stored = inputGiven.parse(shift.getDate());
-                if(output.format(stored).compareTo(output.format(given)) == 0) {
+                String stored = dateFormatterCon(shift.getDate().toString(), "MMM dd");
+                if(stored.compareTo(given) == 0) {
                     return shift;
                 }
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         return null;
 	}
 
     public ArrayList<Shift> getShifts(Shifter shifter, String date){
-        SimpleDateFormat inputGiven = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
-        SimpleDateFormat output = new SimpleDateFormat("MMM dd");
-        Date given = null;
-        Date stored = null;
+        String given = dateFormatterCon(date, "MMM dd");
         ArrayList<Shift> myShifts = new ArrayList<>();
-        try
-        {
-            given = inputGiven.parse(date);
             for (Shift shift: shifter.getMyShifts()) {
-                stored = inputGiven.parse(shift.getDate());
-                if(output.format(stored).compareTo(output.format(given)) == 0) {
+                String stored = dateFormatterCon(shift.getDate().toString(), "MMM dd");
+                if(stored.compareTo(given) == 0) {
                     myShifts.add(shift);
                 }
             }
             return myShifts;
-        } catch (ParseException e) {
+    }
+
+    public String dateFormatterStd(String date){
+        SimpleDateFormat inputGiven = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", new Locale("en_GB"));
+        SimpleDateFormat output = new SimpleDateFormat("EEE dd MMM'\n'HH:mm", new Locale("en_GB"));
+        Date given = null;
+        try
+        {
+            given = inputGiven.parse(date);
+            return output.format(given);
+        }
+        catch(ParseException e) {
             e.printStackTrace();
         }
-        return null;
+        return date;
+    }
+
+    public String dateFormatterCon(String date, String format){
+        SimpleDateFormat inputGiven = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", new Locale("en_GB"));
+        SimpleDateFormat output = new SimpleDateFormat(format);
+        Date given = null;
+        try
+        {
+            given = inputGiven.parse(date);
+            return output.format(given);
+        }
+        catch(ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
 }
