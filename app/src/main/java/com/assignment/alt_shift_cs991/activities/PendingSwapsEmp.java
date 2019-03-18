@@ -4,9 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.assignment.alt_shift_cs991.CalendarActivity;
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.activities.CalendarActivity;
-import com.assignment.alt_shift_cs991.activities.ToolbarActivity;
 import com.assignment.alt_shift_cs991.adapters.PendingSwapAdapter;
 import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.PendingSwapItem;
@@ -15,6 +14,8 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+;
 
 
 public class PendingSwapsEmp extends ToolbarActivity {

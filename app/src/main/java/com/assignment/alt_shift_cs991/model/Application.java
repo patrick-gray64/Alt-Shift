@@ -50,17 +50,17 @@ public class Application extends android.app.Application {
         shiftManager.addShifter(ten);
         shiftManager.addShifter(eleven);
 
-        Shift shift1 = new Shift("Thu Mar 21 09:00:00 GMT 2019", two);
-        Shift shift2 = new Shift("Fri Mar 22 09:00:00 GMT 2019", two);
-        Shift shift3 = new Shift("Sat Mar 23 09:00:00 GMT 2019", two);
-        Shift shift4 = new Shift("Sun Mar 24 09:00:00 GMT 2019", four);
-        Shift shift5 = new Shift("Mon Mar 25 09:00:00 GMT 2019", five);
-        Shift shift6 = new Shift("Tue Mar 26 09:00:00 GMT 2019", six);
-        Shift shift7 = new Shift("Thu Mar 21 09:00:00 GMT 2019", seven);
-        Shift shift8 = new Shift("Fri Mar 22 09:00:00 GMT 2019", eight);
-        Shift shift9 = new Shift("Sat Mar 23 09:00:00 GMT 2019", nine);
-        Shift shift10 = new Shift("Sat Mar 23 09:00:00 GMT 2019", ten);
-        Shift shift11 = new Shift("Sat Mar 23 09:00:00 GMT 2019", two);
+        Shift shift1 = new Shift("Thu Mar 21 00:00:00 GMT 2019", two);
+        Shift shift2 = new Shift("Fri Mar 22 00:00:00 GMT 2019", two);
+        Shift shift3 = new Shift("Sat Mar 23 00:00:00 GMT 2019", two);
+        Shift shift4 = new Shift("Sun Mar 24 00:00:00 GMT 2019", four);
+        Shift shift5 = new Shift("Mon Mar 25 00:00:00 GMT 2019", five);
+        Shift shift6 = new Shift("Tue Mar 26 00:00:00 GMT 2019", six);
+        Shift shift7 = new Shift("Thu Mar 21 00:00:00 GMT 2019", seven);
+        Shift shift8 = new Shift("Fri Mar 22 00:00:00 GMT 2019", eight);
+        Shift shift9 = new Shift("Sat Mar 23 00:00:00 GMT 2019", nine);
+        Shift shift10 = new Shift("Sat Mar 23 00:00:00 GMT 2019", ten);
+        Shift shift11 = new Shift("Sat Mar 23 00:00:00 GMT 2019", two);
 
         shiftManager.addShift(shift1);
         shiftManager.addShift(shift2);
