@@ -1,7 +1,5 @@
 package com.assignment.alt_shift_cs991.model;
 
-import com.assignment.alt_shift_cs991.model.Shift;
-
 public class ShiftSwap {
 	/**
 	 * A ShiftSwap is a pair of shifts proposed to swap the dates
@@ -91,5 +89,13 @@ public class ShiftSwap {
 	 */
 	public void setStatusRejected() {
 		this.status = -1;
+	}
+
+	public boolean equals(ShiftSwap s){
+		if(s.getUnwantedShift() == this.getUnwantedShift() && s.getWantedShift() == this.getWantedShift()){
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
