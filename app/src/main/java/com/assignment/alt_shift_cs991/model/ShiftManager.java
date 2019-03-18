@@ -285,6 +285,26 @@ public class ShiftManager implements Serializable {
 		return requestedSwaps;
 	}
 
+
+	public int getCountAvailableSwaps(Shifter shifter){
+		// return the list of shift swaps available to the given shifter (shifter2 = s).
+		int count = 0;
+		for (ShiftSwap shiftSwap : shiftSwaps){
+			if (shifter == shiftSwap.getWantedShift().getShifter()) count++;
+		}
+		return count;
+	}
+
+	public void removeSwap (ShiftSwap swap){
+		shiftSwaps.remove(swap);
+	}
+
+
+
+
+
+
+
 	/**
 	 * swapShifts(ShiftSwap) swaps the shifters in the two shifts in the given shift swap.
 	 * @param s A shift swap.

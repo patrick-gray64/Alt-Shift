@@ -2,11 +2,15 @@
     <string name="app_name">Alt Shift</string>
     <string name="swap_message">John would like to swap his Wednesday evening shift with your Saturday evening shift</string>
     <string name="accept_button">Accept</string>
+    <string name="pending_requests">Below are offered shift swaps,\ntap for aye or bin for naw.</string>
+    <string name="pending_available">Below are your shift swap requests.</string>
     <string name="pending_text">Below are your pending shift requests, tap to accept or reject.</string>
     <string name="calendar_info">Tap on a date to see your shifts on that day</string>
     <string name="calender_shift_list">You can request a swap request by tapping on it below</string>
     <string name="tool_bar_title_date">%1$s %2$s %3$s</string>
     <string name="reject_button">Reject</string>
     <string name="action_home">Go Back To Menu</string>
+    <string name="available_swap">My Swaps:</string>
+    <string name="offered_swap">Offered Swaps:</string>
     <string name="action_more">View more options</string>
 </resources>
