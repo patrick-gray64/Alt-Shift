@@ -1,4 +1,6 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.model;
+
+import com.assignment.alt_shift_cs991.model.Shift;
 
 public class ShiftSwap {
 	/**

@@ -1,4 +1,4 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,12 +8,10 @@ import java.util.List;
 
 
 public class Shifter implements Parcelable {
-
 	/**
 	 * A Shifter is a person that works shifts.
 	 * @author pcolr
 	 */
-
 	private String userID;
 	private String password;
 	private String firstName;
@@ -117,6 +115,10 @@ public class Shifter implements Parcelable {
 		this.myShifts = myShifts;
 	}
 
+	/**
+	 * Returns a list of shift dates for a Shifter
+	 * @return
+	 */
 	public List<String> getMyShiftDates() {
 		for (Shift shift: myShifts) {
 			myShiftDates.add(shift.getDate());

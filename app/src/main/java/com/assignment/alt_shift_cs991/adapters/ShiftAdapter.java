@@ -1,4 +1,4 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.adapters;
 
 
 import android.content.Intent;
@@ -6,6 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.activities.ShiftSwapActivity;
+import com.assignment.alt_shift_cs991.model.Shift;
 
 import java.util.List;
 
@@ -19,7 +24,7 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
     public String shifterUserName;
     public String shifterPassword;
     public String shifterName;
-    protected AltShift_Application model;
+    protected Application model;
 
     /**
      * A constructor for the MyStackAdapter class.

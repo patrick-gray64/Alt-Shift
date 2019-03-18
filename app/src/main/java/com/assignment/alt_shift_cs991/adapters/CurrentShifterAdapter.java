@@ -1,4 +1,4 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.adapters;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -6,22 +6,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.activities.SwapActivity;
+import com.assignment.alt_shift_cs991.model.Shift;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHolder> {
+public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAdapter.MyViewHolder> {
 
-    private List<Shifter> shifters;
+    private List<Shift> shifts;
 
     /**
      * A constructor for the MyStackAdapter class.
      */
-    public ShifterAdapter(List<Shifter> shifters) {
+    public CurrentShifterAdapter(List<Shift> shifts) {
         super();
         setHasStableIds(true);
-        this.shifters = shifters;
+        this.shifts = shifts;
     }
 
     /**
@@ -32,7 +36,7 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
      */
     @Override
     public long getItemId(int position) {
-        return shifters.get(position).hashCode();
+        return shifts.get(position).hashCode();
     }
 
     /**
@@ -55,17 +59,18 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
      */
     @Override
     public void onBindViewHolder(MyViewHolder viewHolder, int position) {
-        Shifter shifter = shifters.get(position);
-        viewHolder.name.setText(shifter.getFirstName());
-        viewHolder.surname.setText(shifter.getSurname());
+        Shift shift = shifts.get(position);
+        viewHolder.shifterName.setText(shift.getShifter().getFirstName());
+        viewHolder.date.setText(shift.getDate());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int a = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(v.getContext(), ShiftSwapActivity.class);
-                intent.putExtra("SHIFT", shifters.get(a));
+                Intent intent = new Intent(v.getContext(), SwapActivity.class);
+                intent.putExtra("SHIFT", shift);
                 v.getContext().startActivity(intent);
-            }
+                }
+
         });
     }
 
@@ -76,14 +81,13 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
      */
     @Override
     public int getItemCount() {
-        return shifters.size();
+        return shifts.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name;
-        private TextView surname;
-        private Shifter shifter;
+        private TextView shifterName;
+        private TextView date;
         //private ImageView picture;
 
         /**
@@ -93,9 +97,8 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
          */
         public MyViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name_field);
-            surname = itemView.findViewById(R.id.description_field);
-
+            shifterName = itemView.findViewById(R.id.name_field);
+            date = itemView.findViewById(R.id.description_field);
             //picture = itemView.findViewById(R.id.imageView);
         }
 

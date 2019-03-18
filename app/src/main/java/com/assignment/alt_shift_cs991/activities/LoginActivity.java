@@ -1,4 +1,4 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,22 +6,25 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.R;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-public class Login_Activity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText userName, password;
     private CardView loginButton;
     private int passwordCount;
-    protected AltShift_Application model;
+    protected Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
 
-        model = (AltShift_Application)getApplication();
+        model = (Application)getApplication();
         userName = findViewById(R.id.editText3);
         password = findViewById(R.id.editText4);
         loginButton = findViewById(R.id.cardButton);

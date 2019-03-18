@@ -1,4 +1,4 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,19 +7,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.R;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class Toolbar_activity extends AppCompatActivity {
+public class ToolbarActivity extends AppCompatActivity {
     private TextView textCartItemCount;
-    protected AltShift_Application model;
+    protected Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_activity);
         initToolbar();
-        model = (AltShift_Application)getApplication();
+        model = (Application)getApplication();
 
 
     }
@@ -63,7 +66,7 @@ public class Toolbar_activity extends AppCompatActivity {
             return false;
         }
         else if (id == R.id.action_more) {
-            Intent intent = new Intent(Toolbar_activity.this, Pending_Swaps_EMP.class);
+            Intent intent = new Intent(ToolbarActivity.this, PendingSwapsEmp.class);
             startActivity(intent);
             return false;
         }

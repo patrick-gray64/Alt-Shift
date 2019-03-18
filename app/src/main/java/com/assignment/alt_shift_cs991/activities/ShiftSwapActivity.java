@@ -1,4 +1,4 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -13,16 +13,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.databinding.SwapLayoutBinding;
+import com.assignment.alt_shift_cs991.model.Shift;
+import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import androidx.databinding.DataBindingUtil;
 
-public class ShiftSwapActivity extends Toolbar_activity {
+public class ShiftSwapActivity extends ToolbarActivity {
 
     private Shift shift, userSwapShift, nonUserSwapShift;
     private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
-    protected AltShift_Application model;
+    protected Application model;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,7 @@ public class ShiftSwapActivity extends Toolbar_activity {
         shiftSwapLayoutBinding.setShift(shift);
         initToolbar();
         swapButton =  findViewById(R.id.shift_button);
-        model = (AltShift_Application)getApplication();
+        model = (Application)getApplication();
         nonUserSwapShift = model.shiftManager.getShift(model.shiftManager.getShifter(shift.getUserName(),shift.getPassword()), shift.getDate());
         userSwapShift = model.shiftManager.getShift(model.shiftManager.getShifter(shift.getSwapUserName(), shift.getSwapPassword()), shift.getSwapDate());
 

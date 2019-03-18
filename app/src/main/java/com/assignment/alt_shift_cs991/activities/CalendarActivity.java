@@ -1,10 +1,16 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.activities;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.model.CalendarManager;
+import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
+import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.model.Shift;
+import com.assignment.alt_shift_cs991.model.Shifter;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
@@ -19,7 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class CalendarActivity extends Toolbar_activity {
+public class CalendarActivity extends ToolbarActivity {
 
 
     public CompactCalendarView calendarView;
@@ -28,7 +34,7 @@ public class CalendarActivity extends Toolbar_activity {
     public static final String EXTRA_SHIFTER = "com.assignment.alt_shift_cs991.SHIFTER";
     public RecyclerView recyclerView;
     private CurrentShifterAdapter shiftAdapter;
-    protected AltShift_Application model;
+    protected Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +42,7 @@ public class CalendarActivity extends Toolbar_activity {
         setContentView(R.layout.calendar_view);
 
         initToolbar();
-        model = (AltShift_Application)getApplication();
+        model = (Application)getApplication();
         final ActionBar actionBar = getSupportActionBar();
 
         recyclerView = findViewById(R.id.shifter_shifts);

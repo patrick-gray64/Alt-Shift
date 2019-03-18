@@ -1,10 +1,13 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -13,14 +16,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, surname, userName, password;
     private CardView registerButton;
-    protected AltShift_Application model;
+    protected Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_new_shifter);
 
-        model = (AltShift_Application) getApplication();
+        model = (Application) getApplication();
         name = findViewById(R.id.editText9);
         surname = findViewById(R.id.editText10);
         userName = findViewById(R.id.editText11);
@@ -36,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill in missing information!", Toast.LENGTH_SHORT).show();
                 } else {
                     model.shiftManager.addShifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
-                    Intent intent = new Intent(getApplicationContext(), Login_Activity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                 }
             }

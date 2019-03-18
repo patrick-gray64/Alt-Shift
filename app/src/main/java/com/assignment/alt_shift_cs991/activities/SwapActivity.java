@@ -1,23 +1,28 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.activities;
 
 import android.os.Bundle;
+
+import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.adapters.ShiftAdapter;
+import com.assignment.alt_shift_cs991.model.Shift;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SwapActivity extends Toolbar_activity {
+public class SwapActivity extends ToolbarActivity {
 
     public RecyclerView recyclerView;
     private ShiftAdapter shiftAdapter;
     private Shift shiftInfo;
-    protected AltShift_Application model;
+    protected Application model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swap);
         initToolbar();
-        model = (AltShift_Application) getApplication();
+        model = (Application) getApplication();
         Bundle extras = getIntent().getExtras();
         shiftInfo = (Shift) extras.get("SHIFT");
         String swapDate = String.valueOf(shiftInfo.getDate());

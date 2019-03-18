@@ -6,7 +6,7 @@
     <data>
         <variable
             name="Shift"
-            type="com.assignment.alt_shift_cs991.Shift" />
+            type="com.assignment.alt_shift_cs991.model.Shift" />
     </data>
 
 

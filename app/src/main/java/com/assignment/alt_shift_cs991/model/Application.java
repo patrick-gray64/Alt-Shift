@@ -1,19 +1,17 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.model;
 
-import android.app.Application;
 import android.content.SharedPreferences;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class AltShift_Application extends Application {
+public class Application extends android.app.Application {
 
     public ShiftManager shiftManager;
     public CalendarManager calendarManager;
     public static final String LI_NAME = "shifterDetails";
     SharedPreferences localData;
 
+    /**
+     * Initialises the Application
+     */
     @Override
     public void onCreate(){
 
@@ -23,8 +21,11 @@ public class AltShift_Application extends Application {
         fillTheModel();
         localData = getSharedPreferences(LI_NAME, 0);
     }
-    public void fillTheModel() {
 
+    /**
+     * Fills the backend with 11 Shifters and Shifts
+     */
+    public void fillTheModel() {
         Shifter one = new Shifter("jsb18181", "qwerty", "James", "Mackenzie");
         Shifter two = new Shifter("5678", "qwerty1", "Anne", "Two");
         Shifter three = new Shifter("9012", "qwerty2", "Mike", "Three");
@@ -49,7 +50,6 @@ public class AltShift_Application extends Application {
         shiftManager.addShifter(ten);
         shiftManager.addShifter(eleven);
 
-
         Shift shift1 = new Shift("Thu Mar 21 09:00:00 GMT 2019", two);
         Shift shift2 = new Shift("Fri Mar 22 09:00:00 GMT 2019", two);
         Shift shift3 = new Shift("Sat Mar 23 09:00:00 GMT 2019", two);
@@ -60,7 +60,6 @@ public class AltShift_Application extends Application {
         Shift shift8 = new Shift("Fri Mar 22 09:00:00 GMT 2019", eight);
         Shift shift9 = new Shift("Sat Mar 23 09:00:00 GMT 2019", nine);
         Shift shift10 = new Shift("Sat Mar 23 09:00:00 GMT 2019", ten);
-
         Shift shift11 = new Shift("Sat Mar 23 09:00:00 GMT 2019", two);
 
         shiftManager.addShift(shift1);
@@ -75,6 +74,10 @@ public class AltShift_Application extends Application {
         shiftManager.addShift(shift10);
     }
 
+    /**
+     * Stores data of the logged in user
+     * @param shifter logged in used
+     */
     public void storedLoggedInUser(Shifter shifter){
 
         SharedPreferences.Editor spEditor = localData.edit();
@@ -85,25 +88,32 @@ public class AltShift_Application extends Application {
         spEditor.commit();
     }
 
+    /**
+     * Getter for the logged in user
+     * @return logged in Shifter
+     */
     public Shifter getLoggedInShifter(){
-
-
         String name = localData.getString("name", "");
         String surname = localData.getString("surname", "");
         String password = localData.getString("password", "");
         String username = localData.getString("username", "");
         Shifter storedShifter = shiftManager.getShifter(username, password);
-
         return storedShifter;
     }
 
+    /**
+     * Setter for the logged in user
+     * @param loggedIn
+     */
     public void setUserLoggedIn(Boolean loggedIn){
-
         SharedPreferences.Editor spEditor = localData.edit();
         spEditor.putBoolean("LoggedIn", loggedIn);
         spEditor.commit();
-
     }
+
+    /**
+     * Clears the data of the logged in user
+     */
     public void clearUserData(){
         SharedPreferences.Editor spEditor = localData.edit();
         spEditor.clear();

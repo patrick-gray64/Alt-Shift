@@ -1,4 +1,4 @@
-package com.assignment.alt_shift_cs991;
+package com.assignment.alt_shift_cs991.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,6 @@ public class Shift implements Parcelable {
      * A Shift is a date and a person (shifter) working on that date.
      * @author pcolr
      */
-
     private String date;
     private Shifter shifter;
     private String name;
@@ -46,33 +45,28 @@ public class Shift implements Parcelable {
         return date;
     }
 
-
+    /**
+     * Getter for swapDate
+     * @return swapDate
+     */
     public String getSwapDate() {
         return swapDate;
     }
 
-    public void setSwapDate(String swapDate) {
-        this.swapDate = swapDate;
-    }
-
-    public void setSwapUserName(String swapUserName) {
-        this.swapUserName = swapUserName;
-    }
-
-    public void setSwapPassword(String swapPassword) {
-        this.swapPassword = swapPassword;
-    }
-
+    /**
+     * Getter for swapUserName
+     * @return swapUserName
+     */
     public String getSwapUserName() {
         return swapUserName;
     }
 
+    /**
+     * Getter for swapPassword
+     * @return swapPassword
+     */
     public String getSwapPassword() {
         return swapPassword;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -83,20 +77,68 @@ public class Shift implements Parcelable {
         return shifter;
     }
 
+    /**
+     * Getter for name
+     * @return name
+     */
     public String getName(){
         return name;
     }
 
+    /**
+     * Getter for surname
+     * @return surname
+     */
     public String getSurname(){
         return surname;
     }
 
+    /**
+     * Getter for userName
+     * @return userName
+     */
     public String getUserName() {
         return userName;
     }
 
+    /**
+     * Getter for password
+     * @return password
+     */
     public String getPassword() {
         return password;
+    }
+
+    /**
+     * Setter for swapDate
+     * @param swapDate
+     */
+    public void setSwapDate(String swapDate) {
+        this.swapDate = swapDate;
+    }
+
+    /**
+     * Setter for setSwapUserName
+     * @param swapUserName
+     */
+    public void setSwapUserName(String swapUserName) {
+        this.swapUserName = swapUserName;
+    }
+
+    /**
+     * Setter for swapPassword
+     * @param swapPassword
+     */
+    public void setSwapPassword(String swapPassword) {
+        this.swapPassword = swapPassword;
+    }
+
+    /**
+     * Setter for name
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
