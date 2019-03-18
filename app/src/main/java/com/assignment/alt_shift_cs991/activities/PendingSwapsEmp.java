@@ -20,7 +20,7 @@ public class PendingSwapsEmp extends ToolbarActivity {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter availableSwapRequestAdapter;
     private RecyclerView.Adapter offeredSwapAdapter;
-    public Application model;
+    protected Application model;
     private TextView description;
 
     @Override
@@ -52,6 +52,10 @@ public class PendingSwapsEmp extends ToolbarActivity {
                 }
             }
         });
+    }
 
+
+    public Application getModel() {
+        return model;
     }
 }

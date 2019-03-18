@@ -66,7 +66,7 @@ public class Available_Swap_Adapter extends RecyclerView.Adapter<Available_Swap_
         holder.otherShifter.setText(shiftArray.get(position).getUnwantedShift().getShifter().getFirstName() + "' s Shift");
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ((PendingSwapsEmp)getmContext()).model.removeSwap(shiftArray.get(position));
+                ((PendingSwapsEmp)getmContext()).getModel().removeSwap(shiftArray.get(position));
                 shiftArray.remove(position);  // remove the item from list
                 notifyDataSetChanged(); // notify the adapter about the removed item
             }

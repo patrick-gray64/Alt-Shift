@@ -40,7 +40,7 @@ public class ToolbarActivity extends AppCompatActivity {
         final MenuItem menuItem = menu.findItem(R.id.action_more);
 
         View actionView = menuItem.getActionView();
-        textSwapItemCount = actionView.findViewById(R.id.cart_badge);
+        textSwapItemCount = actionView.findViewById(R.id.swap_badge);
 
         setupBadge(model.shiftManager.getCountAvailableSwaps(model.getLoggedInShifter()));
 
@@ -50,9 +50,7 @@ public class ToolbarActivity extends AppCompatActivity {
                 onOptionsItemSelected(menuItem);
             }
         });
-
         return true;
-
     }
 
     // handle button activities
@@ -74,7 +72,6 @@ public class ToolbarActivity extends AppCompatActivity {
     }
 
     private void setupBadge(int mItemCount) {
-
         if (textSwapItemCount != null) {
             if (mItemCount == 0) {
                 if (textSwapItemCount.getVisibility() != View.GONE) {
