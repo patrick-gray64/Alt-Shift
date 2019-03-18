@@ -208,8 +208,14 @@ public class ShiftManager implements Serializable {
 	 * Adds a ShiftSwap to the list of ShiftSwaps
 	 * @param s ShiftSwap
 	 */
-	public void addShiftSwap(ShiftSwap s) {
+	public boolean addShiftSwap(ShiftSwap s) {
+		for (ShiftSwap swap : shiftSwaps){
+			if (s.equals(swap)) {
+				return false;
+			}
+		}
 		shiftSwaps.add(s);
+		return true;
 	}
 
 	/**
@@ -217,8 +223,16 @@ public class ShiftManager implements Serializable {
 	 * @param s1 unwanted shift
 	 * @param s2 wanted shift
 	 */
-	public void addShiftSwap(Shift s1, Shift s2) {
-		shiftSwaps.add(new ShiftSwap(s1, s2));
+	public boolean addShiftSwap(Shift s1, Shift s2) {
+		ShiftSwap s = new ShiftSwap(s1, s2);
+		for (ShiftSwap swap : shiftSwaps){
+			if (s.equals(swap)) {
+				return false;
+			}
+		}
+		shiftSwaps.add(s);
+		return true;
+
 	}
 
 	/**

@@ -92,4 +92,13 @@ public class ShiftSwap {
 	public void setStatusRejected() {
 		this.status = -1;
 	}
+
+	public boolean equals(ShiftSwap s){
+		if (s.getUnwantedShift() == this.getUnwantedShift() && s.getWantedShift() == this.getWantedShift()) {
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }
