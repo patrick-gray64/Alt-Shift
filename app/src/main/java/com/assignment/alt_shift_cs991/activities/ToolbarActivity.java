@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class ToolbarActivity extends AppCompatActivity {
-    private TextView textCartItemCount;
+    private TextView textSwapItemCount;
     protected Application model;
 
     @Override
@@ -40,10 +40,9 @@ public class ToolbarActivity extends AppCompatActivity {
         final MenuItem menuItem = menu.findItem(R.id.action_more);
 
         View actionView = menuItem.getActionView();
-        textCartItemCount = actionView.findViewById(R.id.cart_badge);
+        textSwapItemCount = actionView.findViewById(R.id.cart_badge);
 
-/** REPLACE 2 WITH VALUE OF PENDING SHIFTS FROM BACKEND!!!!!*/
-        setupBadge(2);
+        setupBadge(model.shiftManager.getCountAvailableSwaps(model.getLoggedInShifter()));
 
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,15 +75,15 @@ public class ToolbarActivity extends AppCompatActivity {
 
     private void setupBadge(int mItemCount) {
 
-        if (textCartItemCount != null) {
+        if (textSwapItemCount != null) {
             if (mItemCount == 0) {
-                if (textCartItemCount.getVisibility() != View.GONE) {
-                    textCartItemCount.setVisibility(View.GONE);
+                if (textSwapItemCount.getVisibility() != View.GONE) {
+                    textSwapItemCount.setVisibility(View.GONE);
                 }
             } else {
-                textCartItemCount.setText(String.valueOf(Math.min(mItemCount, 99)));
-                if (textCartItemCount.getVisibility() != View.VISIBLE) {
-                    textCartItemCount.setVisibility(View.VISIBLE);
+                textSwapItemCount.setText(String.valueOf(Math.min(mItemCount, 99)));
+                if (textSwapItemCount.getVisibility() != View.VISIBLE) {
+                    textSwapItemCount.setVisibility(View.VISIBLE);
                 }
             }
         }
