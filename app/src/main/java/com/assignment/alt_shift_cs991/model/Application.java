@@ -72,6 +72,22 @@ public class Application extends android.app.Application {
         shiftManager.addShift(shift8);
         shiftManager.addShift(shift9);
         shiftManager.addShift(shift10);
+
+        ShiftSwap swap1 = new ShiftSwap(shift5, shift1);
+        ShiftSwap swap2 = new ShiftSwap(shift1, shift8);
+        ShiftSwap swap3 = new ShiftSwap(shift8, shift1);
+        ShiftSwap swap4 = new ShiftSwap(shift7, shift1);
+        ShiftSwap swap5 = new ShiftSwap(shift1, shift7);
+        ShiftSwap swap6 = new ShiftSwap(shift1, shift10);
+
+        shiftManager.addShiftSwap(swap1);
+        shiftManager.addShiftSwap(swap2);
+        shiftManager.addShiftSwap(swap3);
+        shiftManager.addShiftSwap(swap4);
+        shiftManager.addShiftSwap(swap5);
+        shiftManager.addShiftSwap(swap6);
+
+
     }
 
     /**
@@ -120,5 +136,9 @@ public class Application extends android.app.Application {
         spEditor.commit();
     }
 
+
+    public void removeSwap ( ShiftSwap s){
+        shiftManager.removeSwap(s);
+    }
 
 }
