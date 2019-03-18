@@ -14,4 +14,10 @@
         <item name="selectableItemBackgroundBorderless">?android:selectableItemBackground</item>
     </style>
 
+    <style name="SwitchStyle" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/jamesblue</item>
+        <item name="colorSwitchThumbNormal">@color/rachelsprink</item>
+        <item name="android:colorForeground">@color/rachelsdarkprink</item>
+    </style>
+
 </resources>

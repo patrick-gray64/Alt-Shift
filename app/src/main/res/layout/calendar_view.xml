@@ -75,7 +75,7 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingBottom="10dp"
-            android:text="@string/calender_shift_list" />
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shifter_shifts"
