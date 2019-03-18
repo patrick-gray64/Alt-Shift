@@ -6,8 +6,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.adapters.Available_Swap_Adapter;
-import com.assignment.alt_shift_cs991.adapters.Requested_Swap_Adapter;
+import com.assignment.alt_shift_cs991.adapters.AvailableSwapAdapter;
+import com.assignment.alt_shift_cs991.adapters.RequestedSwapAdapter;
 import com.assignment.alt_shift_cs991.model.Application;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,8 +30,8 @@ public class PendingSwapsEmp extends ToolbarActivity {
         model = (Application)getApplication();
         description = (TextView) findViewById(R.id.description);
         recyclerView = (RecyclerView) findViewById(R.id.rcview);
-        availableSwapRequestAdapter = new Available_Swap_Adapter(this, model.shiftManager.getAvailableSwaps(model.getLoggedInShifter()));
-        offeredSwapAdapter = new Requested_Swap_Adapter(this, model.shiftManager.getRequestedSwaps(model.getLoggedInShifter()));
+        availableSwapRequestAdapter = new AvailableSwapAdapter(this, model.shiftManager.getAvailableSwaps(model.getLoggedInShifter()));
+        offeredSwapAdapter = new RequestedSwapAdapter(this, model.shiftManager.getRequestedSwaps(model.getLoggedInShifter()));
         recyclerView.setAdapter(availableSwapRequestAdapter);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);

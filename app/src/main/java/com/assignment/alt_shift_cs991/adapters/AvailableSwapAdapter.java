@@ -18,11 +18,11 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class Available_Swap_Adapter extends RecyclerView.Adapter<Available_Swap_Adapter.MyViewHolder>{
+public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdapter.MyViewHolder>{
     private List<ShiftSwap> shiftArray;
     private Context mContext;
 
-    public Available_Swap_Adapter(Context context, List<ShiftSwap> shiftArray) {
+    public AvailableSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
         this.mContext=context;
         this.shiftArray = shiftArray;
     }
@@ -46,7 +46,6 @@ public class Available_Swap_Adapter extends RecyclerView.Adapter<Available_Swap_
                 }
             });
         }
-
     }
 
     @Override
@@ -67,8 +66,8 @@ public class Available_Swap_Adapter extends RecyclerView.Adapter<Available_Swap_
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ((PendingSwapsEmp)getmContext()).getModel().removeSwap(shiftArray.get(position));
-                shiftArray.remove(position);  // remove the item from list
-                notifyDataSetChanged(); // notify the adapter about the removed item
+                shiftArray.remove(position);
+                notifyDataSetChanged();
             }
         });
     }
