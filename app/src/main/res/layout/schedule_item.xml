@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    app:cardElevation="10dp"
+    app:cardElevation="5dp"
     android:layout_margin="10dp"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    app:cardCornerRadius="20dp">
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:columnCount="4"
+        app:columnCount="5"
         app:rowCount="2">
 
         <TextView
@@ -22,26 +22,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:gravity="start"
             android:paddingTop="30dp"
             android:text="Your Shift"
-            android:textSize="18dp"
             android:textColor="@color/rachelsprink"
+            android:textSize="18dp"
             app:layout_column="0"
             app:layout_gravity="start" />
 
         <TextView
-            android:id="@+id/index_text"
+            android:id="@+id/your_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:gravity="start"
+            android:maxWidth="100dp"
             android:paddingBottom="20dp"
-            android:text=" "
+            android:singleLine="false"
             android:textSize="16dp"
             app:layout_column="0"
             app:layout_gravity="start"
@@ -51,44 +52,53 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="25dp"
+
             app:layout_column="2"
             app:layout_gravity="bottom|center_horizontal"
             app:layout_row="0"
-            app:srcCompat="@drawable/ic_switch_arrows"/>
+            app:srcCompat="@drawable/ic_switch_arrows" />
 
         <TextView
-            android:id="@+id/offered_shift"
+            android:id="@+id/other_shifter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
-            android:gravity="start"
             android:paddingTop="30dp"
-            android:text="Offered Shift"
-            android:textSize="18dp"
+            android:textAlignment="textStart"
             android:textColor="@color/jamesblue"
+            android:textSize="18dp"
+            android:text="a"
             app:layout_column="3"
-            app:layout_gravity="right"
+            app:layout_gravity="left"
             app:layout_row="0" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/offered_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
             android:gravity="start"
+            android:maxWidth="100dp"
             android:paddingBottom="20dp"
-            android:textSize="16dp"
+            android:singleLine="false"
             android:text="2nd March"
+            android:textSize="16dp"
             app:layout_column="3"
-            app:layout_gravity="bottom|right"
+            app:layout_gravity="left"
             app:layout_row="1" />
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/rachelsprink"
+            android:backgroundTint="@android:color/white"
+            app:layout_gravity="bottom|right"
+            app:layout_column="4"
+            app:layout_row="1"
+            app:srcCompat="@drawable/ic_delete_black_24dp" />
     </androidx.gridlayout.widget.GridLayout>
-
-
 </androidx.cardview.widget.CardView>
