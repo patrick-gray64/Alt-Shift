@@ -14,9 +14,8 @@
     //pending shift toolbar button
     <item
         android:id="@+id/action_more"
-        android:icon="@drawable/ic_menu_black_24dp"
         android:title="@string/action_more"
-        app:actionLayout="@layout/ic_p_s"
+        app:actionLayout="@layout/menu_ic_layout"
         app:showAsAction="ifRoom"/>
 
 

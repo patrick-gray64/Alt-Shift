@@ -21,7 +21,7 @@ public class Requested_Swap_Adapter extends Available_Swap_Adapter {
         holder.otherShifter.setText(getShiftArray().get(position).getWantedShift().getShifter().getFirstName()+"' s Shift");
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ((PendingSwapsEmp)getmContext()).model.removeSwap(getShiftArray().get(position));
+                ((PendingSwapsEmp)getmContext()).getModel().removeSwap(getShiftArray().get(position));
                 //System.out.println(((Pending_Swaps_EMP)getmContext()).model.getRequestedSwaps());/** just for testing*/
                 getShiftArray().remove(position);
                 notifyDataSetChanged();
