@@ -6,17 +6,35 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "shifters")
 public class Shifter implements Parcelable {
 	/**
 	 * A Shifter is a person that works shifts.
 	 * @author pcolr
 	 */
+	@NonNull
+    @PrimaryKey
 	private String userID;
+
+	@ColumnInfo(name = "password")
 	private String password;
+
+	@ColumnInfo(name = "first_name")
 	private String firstName;
+
+    @ColumnInfo(name = "surname")
 	private String surname;
+
+    @Ignore
 	private List<Shift> myShifts;
+
+    @Ignore
 	private List<String> myShiftDates;
 
 	/**
@@ -103,6 +121,7 @@ public class Shifter implements Parcelable {
 	 * Getter for myShifts
 	 * @return List of Shifts that this Shifter is assigned
 	 */
+	@Ignore
 	public List<Shift> getMyShifts() {
 		return myShifts;
 	}
@@ -111,6 +130,7 @@ public class Shifter implements Parcelable {
 	 * Setter for myShifts
 	 * @param myShifts List of Shifts that this Shifter is assigned
 	 */
+	@Ignore
 	public void setMyShifts(List<Shift> myShifts) {
 		this.myShifts = myShifts;
 	}
@@ -119,13 +139,14 @@ public class Shifter implements Parcelable {
 	 * Returns a list of shift dates for a Shifter
 	 * @return
 	 */
+	@Ignore
 	public List<String> getMyShiftDates() {
 		for (Shift shift: myShifts) {
 			myShiftDates.add(shift.getDate());
 		}
 		return myShiftDates;
 	}
-
+    @Ignore
 	protected Shifter(Parcel in) {
 		firstName = in.readString();
 		surname = in.readString();
@@ -133,12 +154,13 @@ public class Shifter implements Parcelable {
 		password = in.readString();
 
 	}
-
+    @Ignore
 	@Override
 	public int describeContents() {
 		return 0;
 	}
 
+	@Ignore
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(firstName);
@@ -146,8 +168,9 @@ public class Shifter implements Parcelable {
 		dest.writeString(password);
 		dest.writeString(userID);
 	}
+	@Ignore
 	public static final Creator<Shifter> CREATOR = new Creator<Shifter>() {
-		@Override
+	    @Override
 		public Shifter createFromParcel(Parcel in) {
 			return new Shifter(in);
 		}

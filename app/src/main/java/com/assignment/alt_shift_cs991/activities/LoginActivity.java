@@ -8,9 +8,11 @@ import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.model.Database;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.room.Room;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -18,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     private CardView loginButton;
     private int passwordCount;
     protected Application model;
+    private static final String DATABASE_NAME = "login_db";
+    private Database loginDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         userName = findViewById(R.id.editText3);
         password = findViewById(R.id.editText4);
         loginButton = findViewById(R.id.cardButton);
-
+        loginDatabase = Room.databaseBuilder(getApplicationContext(),Database.class, DATABASE_NAME).fallbackToDestructiveMigration().build();
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -64,4 +68,5 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(intent);
     }
+
 }

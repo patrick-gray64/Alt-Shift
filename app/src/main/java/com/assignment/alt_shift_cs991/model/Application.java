@@ -2,12 +2,15 @@ package com.assignment.alt_shift_cs991.model;
 
 import android.content.SharedPreferences;
 
+import androidx.room.Room;
+
 public class Application extends android.app.Application {
 
     public ShiftManager shiftManager;
     public CalendarManager calendarManager;
     public static final String LI_NAME = "shifterDetails";
     SharedPreferences localData;
+    public Database db;
 
     /**
      * Initialises the Application
@@ -20,12 +23,16 @@ public class Application extends android.app.Application {
         calendarManager = new CalendarManager();
         fillTheModel();
         localData = getSharedPreferences(LI_NAME, 0);
+        db = Room.databaseBuilder(getApplicationContext(), Database.class, "database-name").allowMainThreadQueries().build();
+        
     }
 
     /**
      * Fills the backend with 11 Shifters and Shifts
      */
     public void fillTheModel() {
+
+
         Shifter one = new Shifter("jsb18181", "qwerty", "James", "Mackenzie");
         Shifter two = new Shifter("5678", "qwerty1", "Anne", "Two");
         Shifter three = new Shifter("9012", "qwerty2", "Mike", "Three");

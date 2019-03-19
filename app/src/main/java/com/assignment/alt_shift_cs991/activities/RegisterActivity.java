@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.model.Shifter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -39,6 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill in missing information!", Toast.LENGTH_SHORT).show();
                 } else {
                     model.shiftManager.addShifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
+                    model.db.daoAccess().insertShifter(new Shifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString()));
+                    Toast.makeText(getApplicationContext(),"Shifter added to database", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                 }
