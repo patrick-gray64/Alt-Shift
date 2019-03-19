@@ -122,7 +122,7 @@ public class Application extends android.app.Application {
         String surname = localData.getString("surname", "");
         String password = localData.getString("password", "");
         int username = localData.getInt("username", 0);
-        Shifter storedShifter = shiftManager.getShifter(username, password);
+        Shifter storedShifter = db.daoAccess().getShifter(username, password);
         return storedShifter;
     }
 

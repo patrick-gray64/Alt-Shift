@@ -44,9 +44,9 @@ public class LoginActivity extends AppCompatActivity {
                     model.storedLoggedInUser(shifter);
                     //model.getLoggedInShifter();
                     Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                    intent.putExtra("SHIFTER1", shifter.getFirstName());
+                    intent.putExtra("SHIFTER1", model.getLoggedInShifter().getFirstName());
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Hello " + shifter.getFirstName() + "!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Hello " + model.getLoggedInShifter().getFirstName() + "!", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(getApplicationContext(), "Wrong Username or Password, please try again", Toast.LENGTH_SHORT).show();
