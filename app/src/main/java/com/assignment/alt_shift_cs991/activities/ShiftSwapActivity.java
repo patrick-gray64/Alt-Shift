@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,8 @@ public class ShiftSwapActivity extends ToolbarActivity {
         if(getIntent().getExtras() != null) {
             shift = getIntent().getExtras().getParcelable("SHIFT");
         }
+
+
         SwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.swap_layout);
         shiftSwapLayoutBinding.setShift(shift);
         initToolbar();
@@ -48,6 +51,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
 
         userName.setText(model.getLoggedInShifter().getFirstName());
         surname.setText(model.getLoggedInShifter().getSurname());
+
     }
 
 

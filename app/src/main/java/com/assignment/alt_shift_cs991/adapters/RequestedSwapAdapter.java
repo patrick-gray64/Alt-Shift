@@ -8,9 +8,9 @@ import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import java.util.List;
 
-public class Requested_Swap_Adapter extends Available_Swap_Adapter {
+public class RequestedSwapAdapter extends AvailableSwapAdapter {
 
-    public Requested_Swap_Adapter(Context context, List<ShiftSwap> shiftArray) {
+    public RequestedSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
         super(context, shiftArray);
     }
 
@@ -21,8 +21,7 @@ public class Requested_Swap_Adapter extends Available_Swap_Adapter {
         holder.otherShifter.setText(getShiftArray().get(position).getWantedShift().getShifter().getFirstName()+"' s Shift");
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ((PendingSwapsEmp)getmContext()).model.removeSwap(getShiftArray().get(position));
-                //System.out.println(((Pending_Swaps_EMP)getmContext()).model.getRequestedSwaps());/** just for testing*/
+                ((PendingSwapsEmp)getmContext()).getModel().removeSwap(getShiftArray().get(position));
                 getShiftArray().remove(position);
                 notifyDataSetChanged();
             }

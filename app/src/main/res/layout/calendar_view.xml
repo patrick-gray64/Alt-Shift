@@ -66,34 +66,34 @@
             android:textSize="14sp"
             android:visibility="gone"/>-->
 
-        <!--    <TextView
-              android:id="@+id/shiftInfoDesc"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:visibility="gone"
-              android:elegantTextHeight="true"
-              android:paddingStart="20dp"
-              android:paddingEnd="20dp"
-              android:paddingBottom="10dp"
-              android:text="@string/calender_shift_list" />-->
+        <TextView
+            android:id="@+id/shiftInfoDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:elegantTextHeight="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:text="@string/calender_shift_list" />
 
-          <androidx.recyclerview.widget.RecyclerView
-              android:id="@+id/shifter_shifts"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_below="@+id/compactcalendar_view"
-              android:isScrollContainer="true"
-              app:layout_behavior="@string/appbar_scrolling_view_behavior"
-              android:scrollbars="vertical"
-              ></androidx.recyclerview.widget.RecyclerView>
-          <TextView
-              android:id="@+id/empty_view"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:visibility="gone"
-              android:text="No shifts on the selected day" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shifter_shifts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/compactcalendar_view"
+            android:isScrollContainer="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:scrollbars="vertical"
+            ></androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="No shifts on the selected day" />
 
-      </LinearLayout>
+    </LinearLayout>
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
