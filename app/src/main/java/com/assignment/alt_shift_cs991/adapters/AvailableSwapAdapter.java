@@ -39,12 +39,6 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
             offeredDate = view.findViewById(R.id.offered_date);
             otherShifter = view.findViewById(R.id.other_shifter);
             delete = view.findViewById(R.id.delete);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), FinalShiftSwapActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
         }
     }
 
