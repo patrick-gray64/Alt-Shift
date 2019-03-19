@@ -21,8 +21,9 @@
         <activity android:name=".activities.PendingSwapsEmp" />
         <activity android:name=".activities.SwapActivity" />
         <activity android:name=".activities.ToolbarActivity"/>
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".activities.CalendarActivity" />
         <activity android:name=".activities.RegisterActivity"/>
+        <activity android:name=".activities.FinalShiftSwapActivity"/>
     </application>
 
 </manifest>

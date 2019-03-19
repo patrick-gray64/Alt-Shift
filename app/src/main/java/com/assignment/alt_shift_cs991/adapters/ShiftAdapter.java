@@ -80,7 +80,6 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
                 shifts.get(a).setName(shift.getShifter().getFirstName());
                 intent.putExtra("SHIFT", shifts.get(a));
                 v.getContext().startActivity(intent);
-
             }
         });
     }

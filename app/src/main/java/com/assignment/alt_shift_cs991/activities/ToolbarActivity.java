@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.assignment.alt_shift_cs991.CalendarActivity;
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.model.Application;
 

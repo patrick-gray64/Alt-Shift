@@ -160,6 +160,7 @@ public class Shift implements Parcelable {
     protected Shift(Parcel in) {
         date = in.readString();
         name = in.readString();
+        //this.shifter = in.readParcelable(Shifter.class.getClassLoader());
         surname = in.readString();
         swapDate = in.readString();
         userName = in.readString();
@@ -176,6 +177,7 @@ public class Shift implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(date);
+        //dest.writeParcelable(this.shifter, flags);
         dest.writeString(name);
         dest.writeString(surname);
         dest.writeString(swapDate);

@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.assignment.alt_shift_cs991.CalendarActivity;
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.databinding.SwapLayoutBinding;
 import com.assignment.alt_shift_cs991.model.Application;
@@ -27,6 +26,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
     private Shift shift, userSwapShift, nonUserSwapShift;
     private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
+    private ShiftSwap shiftSwap;
     protected Application model;
 
     @Override
@@ -79,13 +79,13 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 v.setEnabled(true);
                 Button confirmButton = new Button(v.getContext());
                 confirmButton.setBackgroundResource(R.drawable.button_layout);
-                confirmButton.setText("Confirm Swap");
+                confirmButton.setText("Confirm Swap Request");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
-                        model.shiftManager.swapShifts(shiftSwap);
+                        model.shiftManager.addShiftSwap(shiftSwap);
 
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);

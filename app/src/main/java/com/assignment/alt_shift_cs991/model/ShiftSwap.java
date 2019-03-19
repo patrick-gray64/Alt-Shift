@@ -1,6 +1,9 @@
 package com.assignment.alt_shift_cs991.model;
 
-public class ShiftSwap {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ShiftSwap implements Parcelable {
 	/**
 	 * A ShiftSwap is a pair of shifts proposed to swap the dates
 	 * @author pcolr
@@ -98,4 +101,34 @@ public class ShiftSwap {
 			return false;
 		}
 	}
+	protected ShiftSwap(Parcel in) {
+		status = in.readInt();
+		this.shift1 = in.readParcelable(Shift.class.getClassLoader());
+		this.shift2 = in.readParcelable(Shift.class.getClassLoader());
+
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(status);
+		dest.writeParcelable(this.shift1, flags);
+		dest.writeParcelable(this.shift2, flags);
+	}
+	public static final Creator<ShiftSwap> CREATOR = new Creator<ShiftSwap>() {
+		@Override
+		public ShiftSwap createFromParcel(Parcel in) {
+			return new ShiftSwap(in);
+		}
+
+		@Override
+		public ShiftSwap[] newArray(int size) {
+			return new ShiftSwap [size];
+		}
+	};
+
 }

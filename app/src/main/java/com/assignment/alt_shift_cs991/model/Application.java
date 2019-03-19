@@ -73,6 +73,7 @@ public class Application extends android.app.Application {
         shiftManager.addShift(shift9);
         shiftManager.addShift(shift10);
 
+        /**
         ShiftSwap swap1 = new ShiftSwap(shift5, shift1);
         ShiftSwap swap2 = new ShiftSwap(shift1, shift8);
         ShiftSwap swap3 = new ShiftSwap(shift8, shift1);
@@ -86,6 +87,7 @@ public class Application extends android.app.Application {
         shiftManager.addShiftSwap(swap4);
         shiftManager.addShiftSwap(swap5);
         shiftManager.addShiftSwap(swap6);
+         */
 
 
     }

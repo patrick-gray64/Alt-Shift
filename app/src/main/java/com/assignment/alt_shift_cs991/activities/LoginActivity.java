@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.assignment.alt_shift_cs991.CalendarActivity;
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.model.Application;
 
