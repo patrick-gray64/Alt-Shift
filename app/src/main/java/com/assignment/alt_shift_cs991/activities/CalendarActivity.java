@@ -52,7 +52,7 @@ public class CalendarActivity extends ToolbarActivity {
             @Override
             public void onDayClick(Date dateClicked) {
 
-                shiftAdapter = new CurrentShifterAdapter(model.shiftManager.getMyShiftsByDate(model.getLoggedInShifter(), dateClicked.toString()));
+                shiftAdapter = new CurrentShifterAdapter(model.shiftManager.getMyShiftsByDate(shifter, dateClicked.toString()));
                 recyclerView = findViewById(R.id.shifter_shifts);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 recyclerView.setAdapter(shiftAdapter);

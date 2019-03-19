@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                     model.storedLoggedInUser(shifter);
                     //model.getLoggedInShifter();
                     Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                    intent.putExtra("SHIFTER1", model.getLoggedInShifter().getFirstName());
+                    intent.putExtra("SHIFTER1", shifter);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(), "Hello " + model.getLoggedInShifter().getFirstName() + "!", Toast.LENGTH_SHORT).show();
                 } else {

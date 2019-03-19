@@ -21,9 +21,9 @@ public class Application extends android.app.Application {
         super.onCreate();
         shiftManager = new ShiftManager();
         calendarManager = new CalendarManager();
-        fillTheModel();
         localData = getSharedPreferences(LI_NAME, 0);
         db = Room.databaseBuilder(getApplicationContext(), Database.class, "login-db").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+        fillTheModel();
 
     }
 
@@ -33,16 +33,16 @@ public class Application extends android.app.Application {
     public void fillTheModel() {
 
 
-        Shifter one = new Shifter(12345, "qwerty", "James", "Mackenzie");
-        Shifter two = new Shifter(5678, "qwerty1", "Anne", "Two");
-        Shifter three = new Shifter(9012, "qwerty2", "Mike", "Three");
-        Shifter four = new Shifter(3456, "qwerty3", "Laura", "Four");
-        Shifter five = new Shifter(7890, "qwerty4", "Sam", "Five");
-        Shifter six = new Shifter(1212, "qwerty5", "Oscar", "Six");
-        Shifter seven = new Shifter(3234, "qwerty6", "Ryan", "Seven");
-        Shifter eight = new Shifter(4345, "qwerty7", "Tina", "Eight");
-        Shifter nine = new Shifter(5456, "qwerty8", "Tom", "Nine");
-        Shifter ten = new Shifter(6565, "qwerty9", "George", "Ten");
+        Shifter one = db.daoAccess().getShifter(12345, "qwerty");
+        Shifter two = db.daoAccess().getShifter(5678, "qwerty1");
+        Shifter three = db.daoAccess().getShifter(9012, "qwerty2");
+        Shifter four = db.daoAccess().getShifter(3456, "qwerty3");
+        Shifter five = db.daoAccess().getShifter(7890, "qwerty4");
+        Shifter six = db.daoAccess().getShifter(1212, "qwerty5");
+        Shifter seven = db.daoAccess().getShifter(3234, "qwerty6");
+        Shifter eight = db.daoAccess().getShifter(4345, "qwerty7");
+        Shifter nine = db.daoAccess().getShifter(5456, "qwerty8");
+        Shifter ten = db.daoAccess().getShifter(6565, "qwerty9");
         //Shifter eleven = new Shifter("6565", "qwerty9", "George", "Eleven");
 
         shiftManager.addShifter(one);
@@ -122,7 +122,7 @@ public class Application extends android.app.Application {
         String surname = localData.getString("surname", "");
         String password = localData.getString("password", "");
         int username = localData.getInt("username", 0);
-        Shifter storedShifter = db.daoAccess().getShifter(username, password);
+        Shifter storedShifter = shiftManager.getShifter(username, password);
         return storedShifter;
     }
 
