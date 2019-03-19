@@ -79,9 +79,9 @@ public class ShiftManager implements Serializable {
 	 * @param password Password of shifter.
 	 * @return Shifter with given user ID and password.
 	 */
-	public String getShifterLogin(String userID, String password) {
+	public String getShifterLogin(int userID, String password) {
 		for (Shifter s : shifters) {
-			if (s.getUserID().equals(userID) && s.getPassword().equals(password)) {
+			if (s.getUserID() == userID && s.getPassword().equals(password)) {
 				return s.getFirstName();
 			}
 		}
@@ -95,9 +95,9 @@ public class ShiftManager implements Serializable {
 	 * @param p Password of shifter.
 	 * @return Shifter with given user ID and password.
 	 */
-	public Shifter getShifter(String u, String p) {
+	public Shifter getShifter(int u, String p) {
 		for (Shifter s : shifters) {
-			if ((s.getUserID().equals(u)) && (s.getPassword().equals(p))) {
+			if ((s.getUserID() == u) && (s.getPassword().equals(p))) {
 				return s;
 			}
 		}
@@ -120,7 +120,7 @@ public class ShiftManager implements Serializable {
 	 * @param s surname
 	 * @return
 	 */
-	public int addShifter(String u, String p, String f, String s) {
+	public int addShifter(int u, String p, String f, String s) {
 		if (getShifter(u, p) == null){
 			shifters.add(new Shifter(u, p, f, s));
 			return 0;

@@ -31,16 +31,15 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.editText12);
         registerButton = findViewById(R.id.cardButton);
 
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (userName.getText().toString().isEmpty() || password.getText().toString().isEmpty() || name.getText().toString().isEmpty() || surname.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please fill in missing information!", Toast.LENGTH_SHORT).show();
                 } else {
-                    model.shiftManager.addShifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
-                    model.db.daoAccess().insertShifter(new Shifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString()));
+                    Shifter shifter = new Shifter(Integer.parseInt(userName.getText().toString()), password.getText().toString(), name.getText().toString(), surname.getText().toString());
+                    model.shiftManager.addShifter(shifter);
+                    model.db.daoAccess().insertShifter(shifter);
                     Toast.makeText(getApplicationContext(),"Shifter added to database", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);

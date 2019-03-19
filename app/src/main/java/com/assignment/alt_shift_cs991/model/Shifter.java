@@ -7,28 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "shifters")
+@Entity
 public class Shifter implements Parcelable {
 	/**
 	 * A Shifter is a person that works shifts.
 	 * @author pcolr
 	 */
 	@NonNull
-    @PrimaryKey
-	private String userID;
+    @PrimaryKey (autoGenerate = true)
+    private int keyID;
 
-	@ColumnInfo(name = "password")
+	private int userID;
 	private String password;
-
-	@ColumnInfo(name = "first_name")
 	private String firstName;
-
-    @ColumnInfo(name = "surname")
 	private String surname;
 
     @Ignore
@@ -44,7 +39,7 @@ public class Shifter implements Parcelable {
 	 * @param firstName first name
 	 * @param surname surname
 	 */
-	public Shifter(String userID, String password, String firstName, String surname) {
+	public Shifter(int userID, String password, String firstName, String surname) {
 		this.userID = userID;
 		this.password = password;
 		this.firstName = firstName;
@@ -52,12 +47,23 @@ public class Shifter implements Parcelable {
 		myShifts = new ArrayList<Shift>();
 		myShiftDates = new ArrayList<String>();
 	}
+    /**
+     * Getter for userID
+     * @return
+     */
+    @NonNull
+    public int getKeyID() {
+        return keyID;
+    }
 
+    public void setKeyID(@NonNull int keyID) {
+        this.keyID = keyID;
+    }
 	/**
 	 * Getter for userID
 	 * @return
 	 */
-	public String getUserID() {
+	public int getUserID() {
 		return userID;
 	}
 
@@ -89,7 +95,7 @@ public class Shifter implements Parcelable {
 	 * Setter for user ID
 	 * @param userID userID
 	 */
-	public void setUserID(String userID) {
+	public void setUserID(int userID) {
 		this.userID = userID;
 	}
 
@@ -150,7 +156,7 @@ public class Shifter implements Parcelable {
 	protected Shifter(Parcel in) {
 		firstName = in.readString();
 		surname = in.readString();
-		userID = in.readString();
+		userID = in.readInt();
 		password = in.readString();
 
 	}
@@ -166,7 +172,7 @@ public class Shifter implements Parcelable {
 		dest.writeString(firstName);
 		dest.writeString(surname);
 		dest.writeString(password);
-		dest.writeString(userID);
+		dest.writeInt(userID);
 	}
 	@Ignore
 	public static final Creator<Shifter> CREATOR = new Creator<Shifter>() {

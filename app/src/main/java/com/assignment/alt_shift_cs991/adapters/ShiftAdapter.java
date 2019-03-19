@@ -21,7 +21,7 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
 
     private List<Shift> shifts;
     public String shifterDate;
-    public String shifterUserName;
+    public int shifterUserName;
     public String shifterPassword;
     public String shifterName;
     protected Application model;

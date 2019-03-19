@@ -23,8 +23,8 @@ public class Application extends android.app.Application {
         calendarManager = new CalendarManager();
         fillTheModel();
         localData = getSharedPreferences(LI_NAME, 0);
-        db = Room.databaseBuilder(getApplicationContext(), Database.class, "database-name").allowMainThreadQueries().build();
-        
+        db = Room.databaseBuilder(getApplicationContext(), Database.class, "login-db").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+
     }
 
     /**
@@ -33,17 +33,17 @@ public class Application extends android.app.Application {
     public void fillTheModel() {
 
 
-        Shifter one = new Shifter("jsb18181", "qwerty", "James", "Mackenzie");
-        Shifter two = new Shifter("5678", "qwerty1", "Anne", "Two");
-        Shifter three = new Shifter("9012", "qwerty2", "Mike", "Three");
-        Shifter four = new Shifter("3456", "qwerty3", "Laura", "Four");
-        Shifter five = new Shifter("7890", "qwerty4", "Sam", "Five");
-        Shifter six = new Shifter("1212", "qwerty5", "Oscar", "Six");
-        Shifter seven = new Shifter("3234", "qwerty6", "Ryan", "Seven");
-        Shifter eight = new Shifter("4345", "qwerty7", "Tina", "Eight");
-        Shifter nine = new Shifter("5456", "qwerty8", "Tom", "Nine");
-        Shifter ten = new Shifter("6565", "qwerty9", "George", "Ten");
-        Shifter eleven = new Shifter("6565", "qwerty9", "George", "Eleven");
+        Shifter one = new Shifter(12345, "qwerty", "James", "Mackenzie");
+        Shifter two = new Shifter(5678, "qwerty1", "Anne", "Two");
+        Shifter three = new Shifter(9012, "qwerty2", "Mike", "Three");
+        Shifter four = new Shifter(3456, "qwerty3", "Laura", "Four");
+        Shifter five = new Shifter(7890, "qwerty4", "Sam", "Five");
+        Shifter six = new Shifter(1212, "qwerty5", "Oscar", "Six");
+        Shifter seven = new Shifter(3234, "qwerty6", "Ryan", "Seven");
+        Shifter eight = new Shifter(4345, "qwerty7", "Tina", "Eight");
+        Shifter nine = new Shifter(5456, "qwerty8", "Tom", "Nine");
+        Shifter ten = new Shifter(6565, "qwerty9", "George", "Ten");
+        //Shifter eleven = new Shifter("6565", "qwerty9", "George", "Eleven");
 
         shiftManager.addShifter(one);
         shiftManager.addShifter(two);
@@ -55,7 +55,7 @@ public class Application extends android.app.Application {
         shiftManager.addShifter(eight);
         shiftManager.addShifter(nine);
         shiftManager.addShifter(ten);
-        shiftManager.addShifter(eleven);
+        //shiftManager.addShifter(eleven);
 
         Shift shift1 = new Shift("Thu Mar 21 00:00:00 GMT 2019", two);
         Shift shift2 = new Shift("Fri Mar 22 00:00:00 GMT 2019", two);
@@ -109,7 +109,7 @@ public class Application extends android.app.Application {
         spEditor.putString("name", shifter.getFirstName());
         spEditor.putString("surname", shifter.getSurname());
         spEditor.putString("password", shifter.getPassword());
-        spEditor.putString("username", shifter.getUserID());
+        spEditor.putInt("username", shifter.getUserID());
         spEditor.commit();
     }
 
@@ -121,7 +121,7 @@ public class Application extends android.app.Application {
         String name = localData.getString("name", "");
         String surname = localData.getString("surname", "");
         String password = localData.getString("password", "");
-        String username = localData.getString("username", "");
+        int username = localData.getInt("username", 0);
         Shifter storedShifter = shiftManager.getShifter(username, password);
         return storedShifter;
     }

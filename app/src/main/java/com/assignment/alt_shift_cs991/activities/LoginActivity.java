@@ -8,11 +8,10 @@ import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.model.Application;
-import com.assignment.alt_shift_cs991.model.Database;
+import com.assignment.alt_shift_cs991.model.Shifter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.room.Room;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,8 +19,6 @@ public class LoginActivity extends AppCompatActivity {
     private CardView loginButton;
     private int passwordCount;
     protected Application model;
-    private static final String DATABASE_NAME = "login_db";
-    private Database loginDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,23 +29,24 @@ public class LoginActivity extends AppCompatActivity {
         userName = findViewById(R.id.editText3);
         password = findViewById(R.id.editText4);
         loginButton = findViewById(R.id.cardButton);
-        loginDatabase = Room.databaseBuilder(getApplicationContext(),Database.class, DATABASE_NAME).fallbackToDestructiveMigration().build();
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Log.d("dbCheck", model.db.daoAccess().getShifter(Integer.parseInt("10101010"), "10101010").getFirstName());
                 model.clearUserData();
                 model.setUserLoggedIn(false);
-                if (model.shiftManager.getShifterLogin(userName.getText().toString(), password.getText().toString()) != null){
+                Shifter shifter = model.db.daoAccess().getShifter(Integer.parseInt(userName.getText().toString()), password.getText().toString());
+                if (shifter != null){
+                    //model.shiftManager.getShifterLogin(Integer.parseInt(userName.getText().toString()), password.getText().toString());
                     model.setUserLoggedIn(true);
-                    model.storedLoggedInUser(model.shiftManager.getShifter(userName.getText().toString(), password.getText().toString()));
-                    model.getLoggedInShifter();
+                    model.storedLoggedInUser(shifter);
+                    //model.getLoggedInShifter();
                     Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                    intent.putExtra("SHIFTER1", model.getLoggedInShifter().getFirstName());
+                    intent.putExtra("SHIFTER1", shifter.getFirstName());
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Hello " + model.getLoggedInShifter().getFirstName() + "!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Hello " + shifter.getFirstName() + "!", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(getApplicationContext(), "Wrong Username or Password, please try again", Toast.LENGTH_SHORT).show();
