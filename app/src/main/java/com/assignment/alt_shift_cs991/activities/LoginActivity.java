@@ -2,6 +2,7 @@ package com.assignment.alt_shift_cs991.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -42,11 +43,19 @@ public class LoginActivity extends AppCompatActivity {
                     //model.shiftManager.getShifterLogin(Integer.parseInt(userName.getText().toString()), password.getText().toString());
                     model.setUserLoggedIn(true);
                     model.storedLoggedInUser(shifter);
+                    Log.d("dbcheck", String.valueOf(model.db.daoAccess().getAllShifters().size()));
+                    String name = "Manager";
                     //model.getLoggedInShifter();
-                    Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                    intent.putExtra("SHIFTER1", shifter);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Hello " + model.getLoggedInShifter().getFirstName() + "!", Toast.LENGTH_SHORT).show();
+                    if(shifter.getFirstName().equals(name)){
+                        Intent intent = new Intent(getApplicationContext(), ManagerCalendarActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Hello " + shifter.getFirstName() + "!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+                        intent.putExtra("SHIFTER1", shifter);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Hello " + shifter.getFirstName() + "!", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
 
                     Toast.makeText(getApplicationContext(), "Wrong Username or Password, please try again", Toast.LENGTH_SHORT).show();

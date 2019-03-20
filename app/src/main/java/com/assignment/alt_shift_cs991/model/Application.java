@@ -32,7 +32,16 @@ public class Application extends android.app.Application {
      */
     public void fillTheModel() {
 
+        Shifter one1 = db.daoAccess().getShifter(1, "1");
+        Shifter manager = db.daoAccess().getShifter(2, "2");
 
+        shiftManager.addShifter(one1);
+        shiftManager.addShifter(manager);
+        Shift shift12 = new Shift("Thu Mar 21 00:00:00 GMT 2019", one1);
+
+        shiftManager.addShift(shift12);
+
+/**
         Shifter one = db.daoAccess().getShifter(12345, "qwerty");
         Shifter two = db.daoAccess().getShifter(5678, "qwerty1");
         Shifter three = db.daoAccess().getShifter(9012, "qwerty2");

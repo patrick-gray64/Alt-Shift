@@ -203,6 +203,23 @@ public class ShiftManager implements Serializable {
 		}
 		return myShiftsDates;
 	}
+	public List<String> getAllShiftsDates(){
+		List<String> allShiftsDates = new ArrayList<String>();
+		for (Shift shift : shifts){
+			allShiftsDates.add(shift.getDate());
+		}
+		return allShiftsDates;
+	}
+    public List<Shift> getAllShiftsByDate(String date){
+        List<Shift> allShiftsByDate = new ArrayList<Shift>();
+        for (Shift shift : shifts){
+            if (shift.getDate().equals(date)){
+                allShiftsByDate.add(shift);
+            }
+        }
+        return allShiftsByDate;
+    }
+
 
 	/**
 	 * Adds a ShiftSwap to the list of ShiftSwaps
