@@ -1,13 +1,16 @@
 package com.assignment.alt_shift_cs991.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.activities.ShiftSwapActivity;
+import com.assignment.alt_shift_cs991.activities.ManagerCalendarActivity;
+import com.assignment.alt_shift_cs991.activities.ShiftAddingActivity;
 import com.assignment.alt_shift_cs991.model.Shifter;
 
 import java.util.List;
@@ -18,14 +21,17 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHolder> {
 
     private List<Shifter> shifters;
+    public String dateOfNewShift;
+    private Context mContext;
 
     /**
      * A constructor for the MyStackAdapter class.
      */
-    public ShifterAdapter(List<Shifter> shifters) {
+    public ShifterAdapter(Context context, List<Shifter> shifters) {
         super();
         setHasStableIds(true);
         this.shifters = shifters;
+        this.mContext=context;
     }
 
     /**
@@ -64,11 +70,13 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
         viewHolder.surname.setText(shifter.getSurname());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { ;
                 int a = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(v.getContext(), ShiftSwapActivity.class);
-                intent.putExtra("SHIFT", shifters.get(a));
+                Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
                 v.getContext().startActivity(intent);
+                Toast.makeText(getmContext(), "Shift added to calendar!", Toast.LENGTH_SHORT).show();
+                ((ShiftAddingActivity)getmContext()).getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
+                notifyDataSetChanged();
             }
         });
     }
@@ -114,6 +122,9 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
             View listItemView = viewInflater.inflate(R.layout.adapter_item, viewGroup, false);
             return new MyViewHolder(listItemView);
         }
+    }
+    public Context getmContext() {
+        return mContext;
     }
 }
 

@@ -1,12 +1,11 @@
 package com.assignment.alt_shift_cs991.activities;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.ShiftAdapter;
+import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.Shift;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,7 +28,7 @@ public class SwapActivity extends ToolbarActivity {
         Bundle extras = getIntent().getExtras();
         shiftInfo = (Shift) extras.get("SHIFT");
 
-        String swapDate = String.valueOf(shiftInfo.getDate());
+        String swapDate = shiftInfo.getDate();
         int swapUserName = shiftInfo.getUserName();
         String swapPassword = shiftInfo.getPassword();
         Shift shift = model.shiftManager.getShift(model.shiftManager.getShifter(swapUserName,swapPassword), swapDate);

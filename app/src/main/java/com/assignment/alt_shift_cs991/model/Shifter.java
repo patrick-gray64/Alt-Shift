@@ -26,6 +26,9 @@ public class Shifter implements Parcelable {
 	private String firstName;
 	private String surname;
 
+	@Ignore
+	private String newShiftDate;
+
     @Ignore
 	private List<Shift> myShifts;
 
@@ -44,6 +47,7 @@ public class Shifter implements Parcelable {
 		this.password = password;
 		this.firstName = firstName;
 		this.surname = surname;
+		newShiftDate = "";
 		myShifts = new ArrayList<Shift>();
 		myShiftDates = new ArrayList<String>();
 	}
@@ -65,6 +69,17 @@ public class Shifter implements Parcelable {
 	 */
 	public int getUserID() {
 		return userID;
+	}
+
+	public void setNewShiftDate(String newShiftDate) {
+		this.newShiftDate = newShiftDate;
+	}
+	/**
+	 * Getter for userID
+	 * @return
+	 */
+	public String getNewShiftDate() {
+		return newShiftDate;
 	}
 
 	/**
@@ -158,6 +173,7 @@ public class Shifter implements Parcelable {
 		surname = in.readString();
 		userID = in.readInt();
 		password = in.readString();
+		newShiftDate = in.readString();
 
 	}
     @Ignore
@@ -173,6 +189,7 @@ public class Shifter implements Parcelable {
 		dest.writeString(surname);
 		dest.writeString(password);
 		dest.writeInt(userID);
+		dest.writeString(newShiftDate);
 	}
 	@Ignore
 	public static final Creator<Shifter> CREATOR = new Creator<Shifter>() {

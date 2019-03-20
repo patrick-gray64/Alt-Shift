@@ -25,6 +25,7 @@
         <activity android:name=".activities.RegisterActivity"/>
         <activity android:name=".activities.FinalShiftSwapActivity"/>
         <activity android:name=".activities.ManagerCalendarActivity"/>
+        <activity android:name=".activities.ShiftAddingActivity"/>
     </application>
 
 </manifest>

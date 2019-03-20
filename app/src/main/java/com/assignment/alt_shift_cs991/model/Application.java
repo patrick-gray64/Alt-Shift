@@ -11,6 +11,8 @@ public class Application extends android.app.Application {
     public static final String LI_NAME = "shifterDetails";
     SharedPreferences localData;
     public Database db;
+    public String dateClicked;
+
 
     /**
      * Initialises the Application
@@ -27,6 +29,14 @@ public class Application extends android.app.Application {
 
     }
 
+    public void setDateClicked(String dateClicked){
+        this.dateClicked = dateClicked;
+    }
+
+    public String getDateClicked() {
+        return dateClicked;
+    }
+
     /**
      * Fills the backend with 11 Shifters and Shifts
      */
@@ -34,9 +44,12 @@ public class Application extends android.app.Application {
 
         Shifter one1 = db.daoAccess().getShifter(1, "1");
         Shifter manager = db.daoAccess().getShifter(2, "2");
+        Shifter two2 = db.daoAccess().getShifter(3, "3");
 
         shiftManager.addShifter(one1);
         shiftManager.addShifter(manager);
+        shiftManager.addShifter(two2);
+
         Shift shift12 = new Shift("Thu Mar 21 00:00:00 GMT 2019", one1);
 
         shiftManager.addShift(shift12);
