@@ -22,7 +22,7 @@ public class Shifter implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int keyID;
 
-    private int userID;
+    private String userID;
     private String password;
     private String firstName;
     private String surname;
@@ -44,7 +44,7 @@ public class Shifter implements Parcelable {
      * @param firstName first name
      * @param surname   surname
      */
-    public Shifter(int userID, String password, String firstName, String surname) {
+    public Shifter(String userID, String password, String firstName, String surname) {
         this.userID = userID;
         this.password = password;
         this.firstName = firstName;
@@ -73,7 +73,7 @@ public class Shifter implements Parcelable {
      *
      * @return
      */
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
 
@@ -122,7 +122,7 @@ public class Shifter implements Parcelable {
      *
      * @param userID userID
      */
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
@@ -190,7 +190,7 @@ public class Shifter implements Parcelable {
     protected Shifter(Parcel in) {
         firstName = in.readString();
         surname = in.readString();
-        userID = in.readInt();
+        userID = in.readString();
         password = in.readString();
         newShiftDate = in.readString();
 
@@ -208,7 +208,7 @@ public class Shifter implements Parcelable {
         dest.writeString(firstName);
         dest.writeString(surname);
         dest.writeString(password);
-        dest.writeInt(userID);
+        dest.writeString(userID);
         dest.writeString(newShiftDate);
     }
 

@@ -148,7 +148,7 @@ public class Application extends android.app.Application {
         spEditor.putString("name", shifter.getFirstName());
         spEditor.putString("surname", shifter.getSurname());
         spEditor.putString("password", shifter.getPassword());
-        spEditor.putInt("username", shifter.getUserID());
+        spEditor.putString("username", shifter.getUserID());
         spEditor.commit();
     }
 
@@ -161,7 +161,7 @@ public class Application extends android.app.Application {
         String name = localData.getString("name", "");
         String surname = localData.getString("surname", "");
         String password = localData.getString("password", "");
-        int username = localData.getInt("username", 0);
+        String username = localData.getString("username", "");
         Shifter storedShifter = shiftManager.getShifter(username, password);
         return storedShifter;
     }

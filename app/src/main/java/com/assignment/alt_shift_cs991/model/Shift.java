@@ -14,10 +14,10 @@ public class Shift implements Parcelable {
     private Shifter shifter;
     private String name;
     private String surname;
-    private int userName;
+    private String userName;
     private String password;
     private String swapDate;
-    private int swapUserName;
+    private String swapUserName;
     private String swapPassword;
 
     /**
@@ -33,7 +33,7 @@ public class Shift implements Parcelable {
         surname = shifter.getSurname();
         userName = shifter.getUserID();
         password = shifter.getPassword();
-        swapUserName = 0;
+        swapUserName = "";
         swapPassword = "";
         shifter.getMyShifts().add(this);
         swapDate = "";
@@ -62,7 +62,7 @@ public class Shift implements Parcelable {
      *
      * @return swapUserName
      */
-    public int getSwapUserName() {
+    public String getSwapUserName() {
         return swapUserName;
     }
 
@@ -107,7 +107,7 @@ public class Shift implements Parcelable {
      *
      * @return userName
      */
-    public int getUserName() {
+    public String getUserName() {
         return userName;
     }
 
@@ -134,7 +134,7 @@ public class Shift implements Parcelable {
      *
      * @param swapUserName
      */
-    public void setSwapUserName(int swapUserName) {
+    public void setSwapUserName(String swapUserName) {
         this.swapUserName = swapUserName;
     }
 
@@ -180,9 +180,9 @@ public class Shift implements Parcelable {
         //this.shifter = in.readParcelable(Shifter.class.getClassLoader());
         surname = in.readString();
         swapDate = in.readString();
-        userName = in.readInt();
+        userName = in.readString();
         password = in.readString();
-        swapUserName = in.readInt();
+        swapUserName = in.readString();
         swapPassword = in.readString();
     }
 
@@ -198,9 +198,9 @@ public class Shift implements Parcelable {
         dest.writeString(name);
         dest.writeString(surname);
         dest.writeString(swapDate);
-        dest.writeInt(userName);
+        dest.writeString(userName);
         dest.writeString(password);
-        dest.writeInt(swapUserName);
+        dest.writeString(swapUserName);
         dest.writeString(swapPassword);
     }
 
