@@ -69,5 +69,4 @@ public class ManagerCalendarActivity extends CalendarActivity {
             }
         });
     }
-
 }

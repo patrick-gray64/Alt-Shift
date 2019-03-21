@@ -2,6 +2,8 @@ package com.assignment.alt_shift_cs991.model;
 
 import android.content.SharedPreferences;
 
+import java.util.List;
+
 import androidx.room.Room;
 
 public class Application extends android.app.Application {
@@ -42,7 +44,15 @@ public class Application extends android.app.Application {
      */
     public void fillTheModel() {
 
-        Shifter one1 = db.daoAccess().getShifter(1, "1");
+        List<Shifter> dbShifters = db.daoAccess().getAllShifters();
+        for (Shifter s: dbShifters){
+            shiftManager.addShifter(s);
+        }
+        Shift shift12 = new Shift("Thu Mar 21 00:00:00 GMT 2019", shiftManager.getShifter(1, "1"));
+
+        shiftManager.addShift(shift12);
+
+       /** Shifter one1 = db.daoAccess().getShifter(1, "1");
         Shifter manager = db.daoAccess().getShifter(2, "2");
         Shifter two2 = db.daoAccess().getShifter(3, "3");
 
@@ -54,7 +64,7 @@ public class Application extends android.app.Application {
 
         shiftManager.addShift(shift12);
 
-/**
+
         Shifter one = db.daoAccess().getShifter(12345, "qwerty");
         Shifter two = db.daoAccess().getShifter(5678, "qwerty1");
         Shifter three = db.daoAccess().getShifter(9012, "qwerty2");
