@@ -6,4 +6,5 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/jamesblue"
+    app:titleTextColor="#ffff"
     android:elevation="4dp" />
