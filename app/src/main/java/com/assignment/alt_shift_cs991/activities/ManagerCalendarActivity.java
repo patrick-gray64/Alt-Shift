@@ -1,8 +1,10 @@
 package com.assignment.alt_shift_cs991.activities;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
@@ -11,6 +13,8 @@ import com.assignment.alt_shift_cs991.model.CalendarManager;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -18,6 +22,9 @@ import java.util.Locale;
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static android.icu.util.Calendar.DAY_OF_WEEK;
+import static android.icu.util.Calendar.getInstance;
 
 public class ManagerCalendarActivity extends CalendarActivity {
 
@@ -64,8 +71,21 @@ public class ManagerCalendarActivity extends CalendarActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ShiftAddingActivity.class);
-                startActivity(intent);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", new Locale("en_GB"));
+                Date dateClicked = new Date();
+                Date today = Calendar.getInstance().getTime();
+                try {
+                    dateClicked = dateFormat.parse(model.getDateClicked());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if(dateClicked.after(today)) {
+                    Intent intent = new Intent(getApplicationContext(), ShiftAddingActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "You cannot assign a shift to a date that has passed.", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
