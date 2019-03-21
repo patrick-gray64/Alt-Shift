@@ -26,6 +26,7 @@ public class Shifter implements Parcelable {
     private String password;
     private String firstName;
     private String surname;
+    private Boolean manager;
 
     @Ignore
     private String newShiftDate;
@@ -49,6 +50,7 @@ public class Shifter implements Parcelable {
         this.password = password;
         this.firstName = firstName;
         this.surname = surname;
+        this.manager = false;
         newShiftDate = "";
         myShifts = new ArrayList<Shift>();
         myShiftDates = new ArrayList<String>();
@@ -152,6 +154,16 @@ public class Shifter implements Parcelable {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+
+    public Boolean isManager() {
+        return manager;
+    }
+
+    public void setManager(Boolean manager) {
+        this.manager = manager;
+    }
+
 
     /**
      * Getter for myShifts

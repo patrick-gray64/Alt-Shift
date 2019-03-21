@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.model.Shifter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -57,12 +58,19 @@ public class ToolbarActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.action_home) {
+        Shifter shifter = model.getLoggedInShifter();
+        if (id == R.id.action_home && !shifter.isManager()) {
             Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
             return false;
-        } else if (id == R.id.action_more) {
+
+        }
+        if (id == R.id.action_home && shifter.isManager()) {
+            Intent intent = new Intent(this, ManagerCalendarActivity.class);
+            startActivity(intent);
+            return false;
+        }
+        else if (id == R.id.action_more) {
             Intent intent = new Intent(ToolbarActivity.this, PendingSwapsEmp.class);
             startActivity(intent);
             return false;

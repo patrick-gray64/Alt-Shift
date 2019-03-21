@@ -44,9 +44,8 @@ public class LoginActivity extends AppCompatActivity {
                     model.setUserLoggedIn(true);
                     model.storedLoggedInUser(shifter);
                     Log.d("dbcheck", String.valueOf(model.db.daoAccess().getAllShifters().size()));
-                    String name = "Manager";
                     //model.getLoggedInShifter();
-                    if (shifter.getFirstName().equals(name)) {
+                    if (shifter.isManager()) {
                         Intent intent = new Intent(getApplicationContext(), ManagerCalendarActivity.class);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Hello " + shifter.getFirstName() + "!", Toast.LENGTH_SHORT).show();

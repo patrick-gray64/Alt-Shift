@@ -3,6 +3,7 @@ package com.assignment.alt_shift_cs991.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, surname, userName, password;
     private CardView registerButton;
+    private CheckBox isManagerCheck;
     protected Application model;
     private Shifter shifter;
 
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         userName = findViewById(R.id.editText11);
         password = findViewById(R.id.editText12);
         registerButton = findViewById(R.id.cardButton);
+        isManagerCheck = findViewById(R.id.isManger);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill in missing information!", Toast.LENGTH_SHORT).show();
                 } else {
                     shifter = new Shifter(Integer.parseInt(userName.getText().toString()), password.getText().toString(), name.getText().toString(), surname.getText().toString());
+                    if(isManagerCheck.isChecked()){
+                        shifter.setManager(true);
+                    }
                     model.db.daoAccess().insertShifter(shifter);
                     model.shiftManager.addShifter(shifter);
                     Toast.makeText(getApplicationContext(), "Shifter added to database", Toast.LENGTH_SHORT).show();
