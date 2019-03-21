@@ -13,6 +13,7 @@ public class PendingSwapItem {
 
     /**
      * Constructor for PendingSwapItem
+     *
      * @param name
      */
     public PendingSwapItem(String name) {
@@ -21,6 +22,7 @@ public class PendingSwapItem {
 
     /**
      * Getter for name
+     *
      * @return name
      */
     public String getName() {
@@ -29,6 +31,7 @@ public class PendingSwapItem {
 
     /**
      * Setter for name
+     *
      * @param name
      */
     public void setName(String name) {
@@ -37,6 +40,7 @@ public class PendingSwapItem {
 
     /**
      * Getter for index
+     *
      * @return index
      */
     public int getIndex() {
@@ -45,6 +49,7 @@ public class PendingSwapItem {
 
     /**
      * Setter for index
+     *
      * @param index
      */
     public void setIndex(int index) {

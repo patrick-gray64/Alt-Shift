@@ -7,14 +7,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.model.Application;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class ToolbarActivity extends AppCompatActivity {
-    private TextView textCartItemCount;
+    private TextView textSwapItemCount;
     protected Application model;
 
     @Override
@@ -22,11 +22,12 @@ public class ToolbarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_activity);
         initToolbar();
-        model = (Application)getApplication();
+        model = (Application) getApplication();
 
 
     }
-    public void initToolbar (){
+
+    public void initToolbar() {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
@@ -39,10 +40,9 @@ public class ToolbarActivity extends AppCompatActivity {
         final MenuItem menuItem = menu.findItem(R.id.action_more);
 
         View actionView = menuItem.getActionView();
-        textCartItemCount = actionView.findViewById(R.id.cart_badge);
+        textSwapItemCount = actionView.findViewById(R.id.swap_badge);
 
-/** REPLACE 2 WITH VALUE OF PENDING SHIFTS FROM BACKEND!!!!!*/
-        setupBadge(2);
+        setupBadge(model.shiftManager.getCountAvailableSwaps(model.getLoggedInShifter()));
 
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,9 +50,7 @@ public class ToolbarActivity extends AppCompatActivity {
                 onOptionsItemSelected(menuItem);
             }
         });
-
         return true;
-
     }
 
     // handle button activities
@@ -64,8 +62,7 @@ public class ToolbarActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
             return false;
-        }
-        else if (id == R.id.action_more) {
+        } else if (id == R.id.action_more) {
             Intent intent = new Intent(ToolbarActivity.this, PendingSwapsEmp.class);
             startActivity(intent);
             return false;
@@ -74,16 +71,15 @@ public class ToolbarActivity extends AppCompatActivity {
     }
 
     private void setupBadge(int mItemCount) {
-
-        if (textCartItemCount != null) {
+        if (textSwapItemCount != null) {
             if (mItemCount == 0) {
-                if (textCartItemCount.getVisibility() != View.GONE) {
-                    textCartItemCount.setVisibility(View.GONE);
+                if (textSwapItemCount.getVisibility() != View.GONE) {
+                    textSwapItemCount.setVisibility(View.GONE);
                 }
             } else {
-                textCartItemCount.setText(String.valueOf(Math.min(mItemCount, 99)));
-                if (textCartItemCount.getVisibility() != View.VISIBLE) {
-                    textCartItemCount.setVisibility(View.VISIBLE);
+                textSwapItemCount.setText(String.valueOf(Math.min(mItemCount, 99)));
+                if (textSwapItemCount.getVisibility() != View.VISIBLE) {
+                    textSwapItemCount.setVisibility(View.VISIBLE);
                 }
             }
         }

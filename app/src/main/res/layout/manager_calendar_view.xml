@@ -57,25 +57,25 @@
             app:compactCalendarTargetHeight="250dp"
             app:compactCalendarTextColor="#000000"
             app:compactCalendarTextSize="14sp" />
-       <!-- <TextView
-            android:id="@+id/your_shifts"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Your Shifts: "
-            android:layout_margin="10dp"
-            android:textSize="14sp"
-            android:visibility="gone"/>-->
+        <!-- <TextView
+             android:id="@+id/your_shifts"
+             android:layout_width="match_parent"
+             android:layout_height="40dp"
+             android:text="Your Shifts: "
+             android:layout_margin="10dp"
+             android:textSize="14sp"
+             android:visibility="gone"/>-->
 
         <TextView
             android:id="@+id/shiftInfoDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:elegantTextHeight="true"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingBottom="10dp"
-            android:text="@string/calender_shift_list" />
+            android:text="@string/calender_shift_list"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shifter_shifts"
@@ -83,16 +83,24 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/compactcalendar_view"
             android:isScrollContainer="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:scrollbars="vertical"
-            ></androidx.recyclerview.widget.RecyclerView>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.recyclerview.widget.RecyclerView>
+
         <TextView
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:visibility="gone"
-            android:text="No shifts on the selected day" />
+            android:text="No shifts on the selected day"
+            android:visibility="gone" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_input_add" />
 
     </LinearLayout>
 

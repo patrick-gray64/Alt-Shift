@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
@@ -62,7 +61,7 @@
         android:drawableRight="@drawable/ic_action_username"
         android:ems="10"
         android:hint="Username"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/editText12"

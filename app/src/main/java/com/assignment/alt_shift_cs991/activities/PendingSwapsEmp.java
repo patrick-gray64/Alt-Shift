@@ -1,17 +1,14 @@
 package com.assignment.alt_shift_cs991.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.activities.CalendarActivity;
-import com.assignment.alt_shift_cs991.activities.ToolbarActivity;
-import com.assignment.alt_shift_cs991.adapters.PendingSwapAdapter;
+import com.assignment.alt_shift_cs991.adapters.AvailableSwapAdapter;
+import com.assignment.alt_shift_cs991.adapters.RequestedSwapAdapter;
 import com.assignment.alt_shift_cs991.model.Application;
-import com.assignment.alt_shift_cs991.model.PendingSwapItem;
-
-import java.util.ArrayList;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,38 +16,44 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PendingSwapsEmp extends ToolbarActivity {
 
-    private ArrayList<PendingSwapItem> ShiftArray;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.Adapter availableSwapRequestAdapter;
+    private RecyclerView.Adapter offeredSwapAdapter;
     protected Application model;
+    private TextView description;
 
-    /**
-     * Initialises PendingSwapsEmp activity
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pending_swaps_emp);
-        ShiftArray = new ArrayList<PendingSwapItem>();
+        model = (Application) getApplication();
+        description = findViewById(R.id.description);
         recyclerView = findViewById(R.id.rcview);
-        mAdapter = new PendingSwapAdapter(this.ShiftArray);
-        recyclerView.setAdapter(mAdapter);
+        availableSwapRequestAdapter = new AvailableSwapAdapter(this, model.shiftManager.getAvailableSwaps(model.getLoggedInShifter()));
+        offeredSwapAdapter = new RequestedSwapAdapter(this, model.shiftManager.getRequestedSwaps(model.getLoggedInShifter()));
+        recyclerView.setAdapter(availableSwapRequestAdapter);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        ShiftArray.add(new PendingSwapItem("7th March"));
-        ShiftArray.add(new PendingSwapItem("1st March"));
         initToolbar();
-        model = (Application)getApplication();
+        getSupportActionBar().setTitle("My Shifts Swaps");
+        Switch mySwitch = findViewById(R.id.switch1);
+
+        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean on) {
+                if (on) {
+                    recyclerView.setAdapter(offeredSwapAdapter);
+                    description.setText(R.string.pending_requests);
+                } else {
+                    recyclerView.setAdapter(availableSwapRequestAdapter);
+                    description.setText(R.string.pending_available);
+                }
+            }
+        });
     }
 
-    /**
-     * Returns user to the calendar activity
-     * @param view
-     */
-    public void backToMain(View view){
-        Intent intent = new Intent(this, CalendarActivity.class);
-        startActivity(intent);
+
+    public Application getModel() {
+        return model;
     }
 }

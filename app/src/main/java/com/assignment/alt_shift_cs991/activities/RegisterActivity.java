@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.model.Shifter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -17,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText name, surname, userName, password;
     private CardView registerButton;
     protected Application model;
+    private Shifter shifter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +32,16 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.editText12);
         registerButton = findViewById(R.id.cardButton);
 
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (userName.getText().toString().isEmpty() || password.getText().toString().isEmpty() || name.getText().toString().isEmpty() || surname.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please fill in missing information!", Toast.LENGTH_SHORT).show();
                 } else {
-                    model.shiftManager.addShifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
+                    shifter = new Shifter(Integer.parseInt(userName.getText().toString()), password.getText().toString(), name.getText().toString(), surname.getText().toString());
+                    model.db.daoAccess().insertShifter(shifter);
+                    model.shiftManager.addShifter(shifter);
+                    Toast.makeText(getApplicationContext(), "Shifter added to database", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                 }

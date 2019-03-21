@@ -7,21 +7,23 @@ import android.os.Parcelable;
 public class Shift implements Parcelable {
     /**
      * A Shift is a date and a person (shifter) working on that date.
+     *
      * @author pcolr
      */
     private String date;
     private Shifter shifter;
     private String name;
     private String surname;
-    private String userName;
+    private int userName;
     private String password;
     private String swapDate;
-    private String swapUserName;
+    private int swapUserName;
     private String swapPassword;
 
     /**
      * Constructor for a Shift
-     * @param date Date of Shift
+     *
+     * @param date    Date of Shift
      * @param shifter Employee on Shift
      */
     public Shift(String date, Shifter shifter) {
@@ -31,7 +33,7 @@ public class Shift implements Parcelable {
         surname = shifter.getSurname();
         userName = shifter.getUserID();
         password = shifter.getPassword();
-        swapUserName = "";
+        swapUserName = 0;
         swapPassword = "";
         shifter.getMyShifts().add(this);
         swapDate = "";
@@ -39,14 +41,16 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for Date
+     *
      * @return date
      */
-    public String getDate(){
+    public String getDate() {
         return date;
     }
 
     /**
      * Getter for swapDate
+     *
      * @return swapDate
      */
     public String getSwapDate() {
@@ -55,14 +59,16 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for swapUserName
+     *
      * @return swapUserName
      */
-    public String getSwapUserName() {
+    public int getSwapUserName() {
         return swapUserName;
     }
 
     /**
      * Getter for swapPassword
+     *
      * @return swapPassword
      */
     public String getSwapPassword() {
@@ -71,6 +77,7 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for Shifter
+     *
      * @return shifter
      */
     public Shifter getShifter() {
@@ -79,30 +86,34 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for name
+     *
      * @return name
      */
-    public String getName(){
+    public String getName() {
         return name;
     }
 
     /**
      * Getter for surname
+     *
      * @return surname
      */
-    public String getSurname(){
+    public String getSurname() {
         return surname;
     }
 
     /**
      * Getter for userName
+     *
      * @return userName
      */
-    public String getUserName() {
+    public int getUserName() {
         return userName;
     }
 
     /**
      * Getter for password
+     *
      * @return password
      */
     public String getPassword() {
@@ -111,6 +122,7 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for swapDate
+     *
      * @param swapDate
      */
     public void setSwapDate(String swapDate) {
@@ -119,14 +131,16 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for setSwapUserName
+     *
      * @param swapUserName
      */
-    public void setSwapUserName(String swapUserName) {
+    public void setSwapUserName(int swapUserName) {
         this.swapUserName = swapUserName;
     }
 
     /**
      * Setter for swapPassword
+     *
      * @param swapPassword
      */
     public void setSwapPassword(String swapPassword) {
@@ -135,6 +149,7 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for name
+     *
      * @param name
      */
     public void setName(String name) {
@@ -143,6 +158,7 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for Date
+     *
      * @param date date
      */
     public void setDate(String date) {
@@ -151,6 +167,7 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for Shifter
+     *
      * @param shifter shifter
      */
     public void setShifter(Shifter shifter) {
@@ -160,11 +177,12 @@ public class Shift implements Parcelable {
     protected Shift(Parcel in) {
         date = in.readString();
         name = in.readString();
+        //this.shifter = in.readParcelable(Shifter.class.getClassLoader());
         surname = in.readString();
         swapDate = in.readString();
-        userName = in.readString();
+        userName = in.readInt();
         password = in.readString();
-        swapUserName = in.readString();
+        swapUserName = in.readInt();
         swapPassword = in.readString();
     }
 
@@ -176,12 +194,13 @@ public class Shift implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(date);
+        //dest.writeParcelable(this.shifter, flags);
         dest.writeString(name);
         dest.writeString(surname);
         dest.writeString(swapDate);
-        dest.writeString(userName);
+        dest.writeInt(userName);
         dest.writeString(password);
-        dest.writeString(swapUserName);
+        dest.writeInt(swapUserName);
         dest.writeString(swapPassword);
     }
 

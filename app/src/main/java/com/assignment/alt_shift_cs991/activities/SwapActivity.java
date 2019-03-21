@@ -1,10 +1,11 @@
 package com.assignment.alt_shift_cs991.activities;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.ShiftAdapter;
+import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.Shift;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,13 +23,20 @@ public class SwapActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swap);
         initToolbar();
+
         model = (Application) getApplication();
         Bundle extras = getIntent().getExtras();
         shiftInfo = (Shift) extras.get("SHIFT");
-        String swapDate = String.valueOf(shiftInfo.getDate());
-        String swapUserName = shiftInfo.getUserName();
+
+        String swapDate = shiftInfo.getDate();
+        int swapUserName = shiftInfo.getUserName();
         String swapPassword = shiftInfo.getPassword();
-        Shift shift = model.shiftManager.getShift(model.shiftManager.getShifter(swapUserName,swapPassword), swapDate);
+        Shift shift = model.shiftManager.getShift(model.shiftManager.getShifter(swapUserName, swapPassword), swapDate);
+
+        String swapText = String.format(getString(R.string.swap_info), shift.getDate());
+        TextView swapInfo = findViewById(R.id.swapInfo);
+        swapInfo.setText(swapText);
+
         shiftAdapter = new ShiftAdapter(model.shiftManager.getSwapableShifts(shift));
         shiftAdapter.shifterUserName = swapUserName;
         shiftAdapter.shifterPassword = swapPassword;

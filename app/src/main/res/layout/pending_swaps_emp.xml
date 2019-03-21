@@ -4,27 +4,63 @@
     <include layout="@layout/toolbar" />
 
 
+
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/availableSwap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/pending_text"
+        android:text="@string/available_swap"
+        android:textStyle="bold"
         android:textSize="18sp" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:theme="@style/SwitchStyle"
+        android:scaleX="2"
+        android:scaleY="2"/>
+
+    <TextView
+        android:id="@+id/requestedSwap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/switch1"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/offered_swap"
+        android:textAlignment="textEnd"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/switch1"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="@string/pending_available"
+        android:textSize="14sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/description"
         android:layout_centerInParent="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="0dp"
-        android:gravity="center_horizontal"
         android:scrollbars="vertical" />
+
+
 
 </RelativeLayout>

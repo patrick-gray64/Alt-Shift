@@ -17,11 +17,11 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder> {
+public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
     public String shifterDate;
-    public String shifterUserName;
+    public int shifterUserName;
     public String shifterPassword;
     public String shifterName;
     protected Application model;
@@ -80,7 +80,6 @@ public class  ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolde
                 shifts.get(a).setName(shift.getShifter().getFirstName());
                 intent.putExtra("SHIFT", shifts.get(a));
                 v.getContext().startActivity(intent);
-
             }
         });
     }
