@@ -31,7 +31,7 @@ public class SwapActivity extends ToolbarActivity {
         String swapDate = shiftInfo.getDate();
         int swapUserName = shiftInfo.getUserName();
         String swapPassword = shiftInfo.getPassword();
-        Shift shift = model.shiftManager.getShift(model.shiftManager.getShifter(swapUserName,swapPassword), swapDate);
+        Shift shift = model.shiftManager.getShift(model.shiftManager.getShifter(swapUserName, swapPassword), swapDate);
 
         String swapText = String.format(getString(R.string.swap_info), shift.getDate());
         TextView swapInfo = findViewById(R.id.swapInfo);

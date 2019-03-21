@@ -22,11 +22,12 @@ public class ToolbarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_activity);
         initToolbar();
-        model = (Application)getApplication();
+        model = (Application) getApplication();
 
 
     }
-    public void initToolbar (){
+
+    public void initToolbar() {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
@@ -61,8 +62,7 @@ public class ToolbarActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
             return false;
-        }
-        else if (id == R.id.action_more) {
+        } else if (id == R.id.action_more) {
             Intent intent = new Intent(ToolbarActivity.this, PendingSwapsEmp.class);
             startActivity(intent);
             return false;

@@ -31,7 +31,7 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
         super();
         setHasStableIds(true);
         this.shifters = shifters;
-        this.mContext=context;
+        this.mContext = context;
     }
 
     /**
@@ -70,12 +70,13 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
         viewHolder.surname.setText(shifter.getSurname());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { ;
+            public void onClick(View v) {
+
                 int a = viewHolder.getAdapterPosition();
                 Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
                 v.getContext().startActivity(intent);
                 Toast.makeText(getmContext(), "Shift added to calendar!", Toast.LENGTH_SHORT).show();
-                ((ShiftAddingActivity)getmContext()).getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
+                ((ShiftAddingActivity) getmContext()).getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
                 notifyDataSetChanged();
             }
         });
@@ -123,6 +124,7 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
             return new MyViewHolder(listItemView);
         }
     }
+
     public Context getmContext() {
         return mContext;
     }

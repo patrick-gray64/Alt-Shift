@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
                     shifter = new Shifter(Integer.parseInt(userName.getText().toString()), password.getText().toString(), name.getText().toString(), surname.getText().toString());
                     model.db.daoAccess().insertShifter(shifter);
                     model.shiftManager.addShifter(shifter);
-                    Toast.makeText(getApplicationContext(),"Shifter added to database", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Shifter added to database", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                 }

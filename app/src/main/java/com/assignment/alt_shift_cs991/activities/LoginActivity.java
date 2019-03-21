@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
 
-        model = (Application)getApplication();
+        model = (Application) getApplication();
         userName = findViewById(R.id.editText3);
         password = findViewById(R.id.editText4);
         loginButton = findViewById(R.id.cardButton);
@@ -39,14 +39,14 @@ public class LoginActivity extends AppCompatActivity {
                 model.clearUserData();
                 model.setUserLoggedIn(false);
                 Shifter shifter = model.db.daoAccess().getShifter(Integer.parseInt(userName.getText().toString()), password.getText().toString());
-                if (shifter != null){
+                if (shifter != null) {
                     //model.shiftManager.getShifterLogin(Integer.parseInt(userName.getText().toString()), password.getText().toString());
                     model.setUserLoggedIn(true);
                     model.storedLoggedInUser(shifter);
                     Log.d("dbcheck", String.valueOf(model.db.daoAccess().getAllShifters().size()));
                     String name = "Manager";
                     //model.getLoggedInShifter();
-                    if(shifter.getFirstName().equals(name)){
+                    if (shifter.getFirstName().equals(name)) {
                         Intent intent = new Intent(getApplicationContext(), ManagerCalendarActivity.class);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Hello " + shifter.getFirstName() + "!", Toast.LENGTH_SHORT).show();
@@ -61,16 +61,17 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Wrong Username or Password, please try again", Toast.LENGTH_SHORT).show();
 
                     passwordCount++;
-                    if(passwordCount > 2){
+                    if (passwordCount > 2) {
                         loginButton.setEnabled(false);
-                        Toast.makeText(getApplicationContext(),"Attempt limit reached, please try again later", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Attempt limit reached, please try again later", Toast.LENGTH_SHORT).show();
 
                     }
                 }
             }
         });
     }
-    public void register(View v){
+
+    public void register(View v) {
 
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(intent);

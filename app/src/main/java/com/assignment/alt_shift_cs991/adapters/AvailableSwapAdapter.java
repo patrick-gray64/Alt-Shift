@@ -18,12 +18,12 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdapter.MyViewHolder>{
+public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdapter.MyViewHolder> {
     private List<ShiftSwap> shiftArray;
     private Context mContext;
 
     public AvailableSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
-        this.mContext=context;
+        this.mContext = context;
         this.shiftArray = shiftArray;
     }
 
@@ -45,7 +45,7 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        LayoutInflater inflate= LayoutInflater.from(parent.getContext());
+        LayoutInflater inflate = LayoutInflater.from(parent.getContext());
         view = inflate.inflate(R.layout.schedule_item, parent, false);
         MyViewHolder viewH = new MyViewHolder(view);
         return viewH;
@@ -67,7 +67,7 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
         });
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ((PendingSwapsEmp)getmContext()).getModel().removeSwap(shiftArray.get(position));
+                ((PendingSwapsEmp) getmContext()).getModel().removeSwap(shiftArray.get(position));
                 shiftArray.remove(position);
                 notifyDataSetChanged();
             }
