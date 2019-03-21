@@ -18,7 +18,7 @@ public interface DaoAccess {
     void insertMultipleShifters(List<Shifter> shifters);
 
     @Query("SELECT * FROM Shifter WHERE userID = :userID and password = :password")
-    Shifter getShifter(int userID, String password);
+    Shifter getShifter(String userID, String password);
 
     @Query("SELECT * FROM Shifter")
     List<Shifter> getAllShifters();

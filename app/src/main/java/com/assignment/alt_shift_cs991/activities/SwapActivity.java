@@ -29,7 +29,7 @@ public class SwapActivity extends ToolbarActivity {
         shiftInfo = (Shift) extras.get("SHIFT");
 
         String swapDate = shiftInfo.getDate();
-        int swapUserName = shiftInfo.getUserName();
+        String swapUserName = shiftInfo.getUserName();
         String swapPassword = shiftInfo.getPassword();
         Shift shift = model.shiftManager.getShift(model.shiftManager.getShifter(swapUserName, swapPassword), swapDate);
 

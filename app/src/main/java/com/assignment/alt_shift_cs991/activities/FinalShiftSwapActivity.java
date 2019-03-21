@@ -37,7 +37,7 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
         }
         model = (Application) getApplication();
         FinalSwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.final_swap_layout);
-        shiftSwapLayoutBinding.setShift(shiftSwap.getWantedShift());
+        shiftSwapLayoutBinding.setShift1(shiftSwap.getWantedShift());
         initToolbar();
         swapButton = findViewById(R.id.shift_button);
         unwantedShift = shiftSwap.getUnwantedShift();

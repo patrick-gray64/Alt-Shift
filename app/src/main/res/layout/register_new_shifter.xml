@@ -45,7 +45,7 @@
         android:layout_marginEnd="97dp"
         android:drawableRight="@drawable/ic_action_username"
         android:ems="10"
-        android:hint="Surname"
+        android:hint="Role"
         android:inputType="textPersonName" />
 
     <EditText
@@ -61,7 +61,7 @@
         android:drawableRight="@drawable/ic_action_username"
         android:ems="10"
         android:hint="Username"
-        android:inputType="number" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText12"

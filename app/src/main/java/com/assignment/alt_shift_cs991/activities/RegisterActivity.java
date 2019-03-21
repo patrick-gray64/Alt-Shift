@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (userName.getText().toString().isEmpty() || password.getText().toString().isEmpty() || name.getText().toString().isEmpty() || surname.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please fill in missing information!", Toast.LENGTH_SHORT).show();
                 } else {
-                    shifter = new Shifter(Integer.parseInt(userName.getText().toString()), password.getText().toString(), name.getText().toString(), surname.getText().toString());
+                    shifter = new Shifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
                     if(isManagerCheck.isChecked()){
                         shifter.setManager(true);
                     }

@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Log.d("dbCheck", model.db.daoAccess().getShifter(Integer.parseInt("10101010"), "10101010").getFirstName());
                 model.clearUserData();
                 model.setUserLoggedIn(false);
-                Shifter shifter = model.db.daoAccess().getShifter(Integer.parseInt(userName.getText().toString()), password.getText().toString());
+                Shifter shifter = model.db.daoAccess().getShifter(userName.getText().toString(), password.getText().toString());
                 if (shifter != null) {
                     //model.shiftManager.getShifterLogin(Integer.parseInt(userName.getText().toString()), password.getText().toString());
                     model.setUserLoggedIn(true);
