@@ -27,7 +27,7 @@
             android:gravity="start"
             android:paddingTop="30dp"
             android:text="Your Shift"
-            android:textColor="@color/rachelsprink"
+            android:textColor="@color/jamesblue"
             android:textSize="18dp"
             app:layout_column="0"
             app:layout_gravity="start" />
@@ -94,7 +94,7 @@
             android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="@color/rachelsprink"
+            android:tint="@color/jamesblue"
             android:backgroundTint="@android:color/white"
             app:layout_gravity="bottom|right"
             app:layout_column="4"

@@ -2,6 +2,8 @@ package com.assignment.alt_shift_cs991.model;
 
 import android.content.SharedPreferences;
 
+import java.util.List;
+
 import androidx.room.Room;
 
 public class Application extends android.app.Application {
@@ -26,7 +28,9 @@ public class Application extends android.app.Application {
         localData = getSharedPreferences(LI_NAME, 0);
         db = Room.databaseBuilder(getApplicationContext(), Database.class, "login-db").allowMainThreadQueries().fallbackToDestructiveMigration().build();
 
-    }
+        }
+
+
 
     public void setDateClicked(String dateClicked) {
         this.dateClicked = dateClicked;
@@ -39,9 +43,14 @@ public class Application extends android.app.Application {
     /**
      * Fills the backend with 11 Shifters and Shifts
      */
+
+
+
+  /**
+
     public void fillTheModel() {
 
-        /**  List<Shifter> dbShifters = db.daoAccess().getAllShifters();
+        List<Shifter> dbShifters = db.daoAccess().getAllShifters();
          for (Shifter s : dbShifters) {
          shiftManager.addShifter(s);
          }
@@ -49,7 +58,7 @@ public class Application extends android.app.Application {
 
          shiftManager.addShift(shift12);
 
-         /** Shifter one1 = db.daoAccess().getShifter(1, "1");
+         Shifter one1 = db.daoAccess().getShifter(1, "1");
          Shifter manager = db.daoAccess().getShifter(2, "2");
          Shifter two2 = db.daoAccess().getShifter(3, "3");
 
@@ -57,7 +66,7 @@ public class Application extends android.app.Application {
          shiftManager.addShifter(manager);
          shiftManager.addShifter(two2);
 
-         Shift shift12 = new Shift("Thu Mar 21 00:00:00 GMT 2019", one1);
+        Shift  shift12 = new Shift("Thu Mar 21 00:00:00 GMT 2019", one1);
 
          shiftManager.addShift(shift12);
 
@@ -126,7 +135,7 @@ public class Application extends android.app.Application {
          */
 
 
-    }
+
 
     /**
      * Stores data of the logged in user
