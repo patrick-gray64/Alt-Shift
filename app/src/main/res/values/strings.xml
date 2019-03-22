@@ -10,6 +10,7 @@
     <string name="tool_bar_title_date">%1$s %2$s %3$s</string>
     <string name="reject_button">Reject</string>
     <string name="action_home">Go Back To Menu</string>
+    <string name="action_logout">Logout</string>
     <string name="available_swap">My Swaps:</string>
     <string name="offered_swap">Offered Swaps:</string>
     <string name="action_more">View more options</string>

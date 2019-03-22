@@ -38,18 +38,12 @@ public class CalendarActivity extends ToolbarActivity {
 
         model = (Application) getApplication();
         final ActionBar actionBar = getSupportActionBar();
-        //actionBar.setDisplayHomeAsUpEnabled(false);
         calendarView = findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateformat.format(new Date()));
-        // This is calling Shifter two for any login
         shifter = model.getLoggedInShifter();
-        //add events
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getmyShiftsDates(shifter));
 
-        // TextView shift_descp = findViewById(R.id.shiftInfoDesc);
-        // shift_descp.setVisibility(View.GONE);
-        // listener
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
@@ -58,19 +52,11 @@ public class CalendarActivity extends ToolbarActivity {
                 recyclerView = findViewById(R.id.shifter_shifts);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 recyclerView.setAdapter(shiftAdapter);
-                // if(shiftAdapter.getItemCount() > 0){
-                // shift_descp.setVisibility(View.VISIBLE);}
-                // else {
-                //   shift_descp.setVisibility(View.GONE);
-                // }
-                // shiftAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 actionBar.setTitle(dateformat.format(firstDayOfNewMonth));
-                //  shift_descp.setVisibility(View.GONE);
-
             }
         });
     }

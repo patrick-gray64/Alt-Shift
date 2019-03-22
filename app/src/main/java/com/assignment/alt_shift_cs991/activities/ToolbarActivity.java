@@ -33,7 +33,6 @@ public class ToolbarActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
     }
 
-    // create an action bar button
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -54,7 +53,6 @@ public class ToolbarActivity extends AppCompatActivity {
         return true;
     }
 
-    // handle button activities
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -63,14 +61,12 @@ public class ToolbarActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
             return false;
-
         }
         if (id == R.id.action_home && shifter.isManager()) {
             Intent intent = new Intent(this, ManagerCalendarActivity.class);
             startActivity(intent);
             return false;
-        }
-        else if (id == R.id.action_more) {
+        } else if (id == R.id.action_more) {
             Intent intent = new Intent(ToolbarActivity.this, PendingSwapsEmp.class);
             startActivity(intent);
             return false;

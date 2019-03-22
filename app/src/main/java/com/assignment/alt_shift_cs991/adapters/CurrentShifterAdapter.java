@@ -96,7 +96,6 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
 
         private TextView shifterName;
         private TextView date;
-        //private ImageView picture;
 
         /**
          * A constructor which initiates the views which will be inside the textView.
@@ -107,7 +106,6 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
             super(itemView);
             shifterName = itemView.findViewById(R.id.name_field);
             date = itemView.findViewById(R.id.description_field);
-            //picture = itemView.findViewById(R.id.imageView);
         }
 
         /**

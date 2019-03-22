@@ -31,9 +31,25 @@ public class ShiftAddingActivity extends ToolbarActivity {
         recyclerView = findViewById(R.id.recycler_view2);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(shifterAdapter);
+
+        Callback callback = new Callback() {
+            @Override
+            public void finishActivity() {
+                finish();
+            }
+
+            @Override
+            public Application getModel() {
+                return model;
+            }
+        };
+        shifterAdapter.setCallBack(callback);
     }
 
-    public Application getModel() {
-        return model;
+    public interface Callback{
+
+        void finishActivity();
+
+        Application getModel();
     }
 }

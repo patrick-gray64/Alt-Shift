@@ -26,7 +26,6 @@ public class ShiftSwapActivity extends ToolbarActivity {
     private Shift shift, userSwapShift, nonUserSwapShift;
     private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
-    private ShiftSwap shiftSwap;
     protected Application model;
 
     @Override
@@ -35,8 +34,6 @@ public class ShiftSwapActivity extends ToolbarActivity {
         if (getIntent().getExtras() != null) {
             shift = getIntent().getExtras().getParcelable("SHIFT");
         }
-
-
         SwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.swap_layout);
         shiftSwapLayoutBinding.setShift(shift);
         initToolbar();
@@ -50,7 +47,6 @@ public class ShiftSwapActivity extends ToolbarActivity {
 
         userName.setText(model.getLoggedInShifter().getFirstName());
         surname.setText(model.getLoggedInShifter().getSurname());
-
     }
 
 
@@ -101,9 +97,6 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 laypram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
                 laypram.setMargins(10, 10, 30, 10);
                 layout.addView(confirmButton, laypram);
-
-                //(new Handler()).postDelayed(this::returnToHome, 500);
-
             }
 
             @Override

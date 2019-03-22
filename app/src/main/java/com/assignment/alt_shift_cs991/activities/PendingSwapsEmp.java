@@ -64,12 +64,6 @@ public class PendingSwapsEmp extends ToolbarActivity {
         });
     }
 
-
-    public Application getModel() {
-        return model;
-    }
-
-
     public interface Callback{
 
         void finishActivity();

@@ -35,16 +35,13 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Log.d("dbCheck", model.db.daoAccess().getShifter(Integer.parseInt("10101010"), "10101010").getFirstName());
                 model.clearUserData();
                 model.setUserLoggedIn(false);
                 Shifter shifter = model.db.daoAccess().getShifter(userName.getText().toString(), password.getText().toString());
                 if (shifter != null) {
-                    //model.shiftManager.getShifterLogin(Integer.parseInt(userName.getText().toString()), password.getText().toString());
                     model.setUserLoggedIn(true);
                     model.storedLoggedInUser(shifter);
                     Log.d("dbcheck", String.valueOf(model.db.daoAccess().getAllShifters().size()));
-                    //model.getLoggedInShifter();
                     if (shifter.isManager()) {
                         Intent intent = new Intent(getApplicationContext(), ManagerCalendarActivity.class);
                         startActivity(intent);
@@ -63,7 +60,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (passwordCount > 2) {
                         loginButton.setEnabled(false);
                         Toast.makeText(getApplicationContext(), "Attempt limit reached, please try again later", Toast.LENGTH_SHORT).show();
-
                     }
                 }
             }
