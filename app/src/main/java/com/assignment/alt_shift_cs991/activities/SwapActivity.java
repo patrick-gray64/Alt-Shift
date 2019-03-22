@@ -12,12 +12,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SwapActivity extends ToolbarActivity {
-
+    /**
+     * Activity for a shifter to choose another shifter's shift they want to swap
+     */
     public RecyclerView recyclerView;
     private ShiftAdapter shiftAdapter;
     private Shift shiftInfo;
     protected Application model;
 
+    /**
+     * Initialises activity with a list of available shifts for swapping
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

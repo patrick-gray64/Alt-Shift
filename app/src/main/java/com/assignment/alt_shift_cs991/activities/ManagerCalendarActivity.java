@@ -20,7 +20,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ManagerCalendarActivity extends CalendarActivity {
-
+    /**
+     * Calendar activity for Manager users
+     */
     public CompactCalendarView calendarView;
     private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
@@ -29,6 +31,10 @@ public class ManagerCalendarActivity extends CalendarActivity {
     protected Application model;
     private FloatingActionButton fab;
 
+    /**
+     * Initialises activity with all shifts
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,18 +54,30 @@ public class ManagerCalendarActivity extends CalendarActivity {
         recyclerView.setAdapter(shiftAdapter);
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            /**
+             * Shows all shifts on clicked date
+             * @param dateClicked
+             */
             @Override
             public void onDayClick(Date dateClicked) {
                 model.setDateClicked(dateClicked.toString());
                 shiftAdapter.setItems(model.shiftManager.getAllShiftsByDate(dateClicked.toString()));
             }
 
+            /**
+             * Changes month on the calendar when scrolled
+             * @param firstDayOfNewMonth
+             */
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 actionBar.setTitle(dateformat.format(firstDayOfNewMonth));
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Takes user to activity to create a new shift on clicked date
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ShiftAddingActivity.class);
@@ -68,6 +86,9 @@ public class ManagerCalendarActivity extends CalendarActivity {
         });
     }
 
+    /**
+     * Populates the calendar with shifts as events on dates
+     */
     @Override
     protected void onResume() {
         super.onResume();

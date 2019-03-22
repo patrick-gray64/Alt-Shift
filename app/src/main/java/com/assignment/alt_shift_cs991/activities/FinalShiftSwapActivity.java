@@ -16,12 +16,14 @@ import android.widget.Toast;
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.databinding.FinalSwapLayoutBinding;
 import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.model.Shift;
 import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import androidx.databinding.DataBindingUtil;
 
 public class FinalShiftSwapActivity extends ToolbarActivity {
 
+    private Shift unwantedShift, wantedShift;
     private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
     private ShiftSwap shiftSwap;
@@ -37,8 +39,12 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
         initToolbar();
         swapButton = findViewById(R.id.shift_button);
 
+
+
+
         TextView userName = findViewById(R.id.user_name_field);
         TextView surname = findViewById(R.id.user_description_field);
+
         userName.setText(shiftSwap.getUnwantedShift().getName());
         surname.setText(shiftSwap.getUnwantedShift().getSurname());
     }

@@ -22,12 +22,18 @@ import com.assignment.alt_shift_cs991.model.ShiftSwap;
 import androidx.databinding.DataBindingUtil;
 
 public class ShiftSwapActivity extends ToolbarActivity {
-
+    /**
+     * Activity for requesting a shiftSwap
+     */
     private Shift shift, userSwapShift, nonUserSwapShift;
     private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
     protected Application model;
 
+    /**
+     * Initialises activity with two shifts and shifters to be swapped
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +55,10 @@ public class ShiftSwapActivity extends ToolbarActivity {
         surname.setText(model.getLoggedInShifter().getSurname());
     }
 
-
+    /**
+     * Swaps the positions of the two shifters when swap button is clicked
+     * @param v
+     */
     public void switchShifts(final View v) {
         final AnimatorSet animationSet = new AnimatorSet();
         View userCard = findViewById(R.id.user_card);
@@ -67,12 +76,20 @@ public class ShiftSwapActivity extends ToolbarActivity {
         animationSet.playTogether(shiftWorkerCardAnimation, userCardAnimation);
 
         v.animate().rotation(v.getRotation() - 180).setDuration(500).setListener(new Animator.AnimatorListener() {
+            /**
+             * Deactivates the swap button
+             * @param animation
+             */
             @Override
             public void onAnimationStart(Animator animation) {
                 v.setEnabled(false);
                 swapButton.setClickable(false);
             }
 
+            /**
+             * Makes confirm button visible
+             * @param animation
+             */
             @Override
             public void onAnimationEnd(Animator animation) {
                 v.setEnabled(true);
@@ -81,6 +98,11 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setText("Confirm Swap Request");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
                 confirmButton.setOnClickListener(new View.OnClickListener() {
+                    /**
+                     * Swaps the two shifts, produces a toast message confirming and returns
+                     * user to the calendar activity
+                     * @param v
+                     */
                     @Override
                     public void onClick(View v) {
                         ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
@@ -101,8 +123,8 @@ public class ShiftSwapActivity extends ToolbarActivity {
 
             @Override
             public void onAnimationCancel(Animator animation) {
-
             }
+
 
             @Override
             public void onAnimationRepeat(Animator animation) {

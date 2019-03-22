@@ -10,7 +10,15 @@ import androidx.room.Update;
 
 @Dao
 public interface DaoAccess {
+    /**
+     * Interface for database
+     * @param shifter
+     */
 
+    /**
+     * Adds a shifter
+     * @param shifter
+     */
     @Insert
     void insertShifter(Shifter shifter);
 

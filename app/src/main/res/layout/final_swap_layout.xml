@@ -176,7 +176,7 @@
                         android:id="@+id/textView8"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:text="Shift"
+                        android:text="@string/shift"
                         android:textAlignment="center"
                         android:textSize="24sp" />
 
@@ -216,7 +216,7 @@
                         android:id="@+id/textView9"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:text="Shift"
+                        android:text="@string/shift"
                         android:textAlignment="center"
                         android:textSize="24sp" />
 

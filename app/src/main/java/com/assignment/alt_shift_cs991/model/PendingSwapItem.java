@@ -1,7 +1,9 @@
 package com.assignment.alt_shift_cs991.model;
 
 public class PendingSwapItem {
-
+    /**
+     * Class for a Pending shiftSwap
+     */
     private String name;
     private int index;
 

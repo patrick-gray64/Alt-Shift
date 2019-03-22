@@ -100,14 +100,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Register"
+                android:text="@string/register"
                 android:textColor="#fff" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
     <CheckBox
-        android:id="@+id/isManger"
+        android:id="@+id/isManager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText12"
@@ -116,5 +116,5 @@
         android:layout_marginTop="-337dp"
         android:layout_marginEnd="95dp"
         android:layout_marginBottom="505dp"
-        android:text="Tick if Manager" />
+        android:text="@string/managerCheckbox" />
 </RelativeLayout>

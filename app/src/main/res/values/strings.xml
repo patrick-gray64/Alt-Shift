@@ -14,4 +14,12 @@
     <string name="available_swap">My Swaps:</string>
     <string name="offered_swap">Offered Swaps:</string>
     <string name="action_more">View more options</string>
+    <string name="managerCheckbox">Tick if Manager</string>
+    <string name="register">Register</string>
+    <string name="shift">Shift</string>
+    <string name="login">Login</string>
+    <string name="calendar_explain">Tap on a date to see shifts assigned to your team. You can assign shifts by selecting a date and using the + button</string>
+    <string name="no_shifts">No shifts on the selected day</string>
+    <string name="your_shift">Your Shift</string>
+    <string name="a">a</string>
 </resources>
