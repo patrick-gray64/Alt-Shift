@@ -32,10 +32,8 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getIntent().getExtras() != null) {
-            shiftSwap = getIntent().getExtras().getParcelable("SHIFTSWAP");
-        }
         model = (Application) getApplication();
+        shiftSwap = model.selectedCurrentShiftSwap;
         FinalSwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.final_swap_layout);
         shiftSwapLayoutBinding.setShift1(shiftSwap.getWantedShift());
         initToolbar();
@@ -85,8 +83,8 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        model.shiftManager.swapShifts(model.shiftManager.getShiftSwaps().get(0));
-                        model.shiftManager.getShiftSwaps().remove(0);
+                        model.shiftManager.swapShifts(shiftSwap);
+                        model.shiftManager.getShiftSwaps().remove(shiftSwap);
 
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);

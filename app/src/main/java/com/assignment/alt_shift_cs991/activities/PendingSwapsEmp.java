@@ -18,7 +18,7 @@ public class PendingSwapsEmp extends ToolbarActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter availableSwapRequestAdapter;
+    private AvailableSwapAdapter availableSwapRequestAdapter;
     private RecyclerView.Adapter offeredSwapAdapter;
     protected Application model;
     private TextView description;
@@ -39,6 +39,18 @@ public class PendingSwapsEmp extends ToolbarActivity {
         getSupportActionBar().setTitle("My Shifts Swaps");
         Switch mySwitch = findViewById(R.id.switch1);
 
+        Callback callback = new Callback(){
+            @Override
+            public void finishActivity() {
+                finish();
+            }
+
+            @Override
+            public Application getModel() {
+                return model;
+            }
+        };
+        availableSwapRequestAdapter.setCallback(callback);
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean on) {
                 if (on) {
@@ -55,5 +67,13 @@ public class PendingSwapsEmp extends ToolbarActivity {
 
     public Application getModel() {
         return model;
+    }
+
+
+    public interface Callback{
+
+        void finishActivity();
+
+        Application getModel();
     }
 }

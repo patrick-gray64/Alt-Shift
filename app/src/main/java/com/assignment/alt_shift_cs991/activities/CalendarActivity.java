@@ -28,6 +28,7 @@ public class CalendarActivity extends ToolbarActivity {
     public RecyclerView recyclerView;
     private CurrentShifterAdapter shiftAdapter;
     protected Application model;
+    private Shifter shifter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,8 @@ public class CalendarActivity extends ToolbarActivity {
         calendarView = findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateformat.format(new Date()));
-        Shifter shifter = model.getLoggedInShifter(); // This is calling Shifter two for any login
+        // This is calling Shifter two for any login
+        shifter = model.getLoggedInShifter();
         //add events
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getmyShiftsDates(shifter));
 
@@ -71,9 +73,12 @@ public class CalendarActivity extends ToolbarActivity {
 
             }
         });
-
-
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        calendarView.removeAllEvents();
+        calendarManager.shiftPopulate(calendarView, model.shiftManager.getmyShiftsDates(shifter));
+    }
 }

@@ -3,7 +3,6 @@ package com.assignment.alt_shift_cs991.adapters;
 import android.content.Context;
 import android.view.View;
 
-import com.assignment.alt_shift_cs991.activities.PendingSwapsEmp;
 import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class RequestedSwapAdapter extends AvailableSwapAdapter {
         holder.otherShifter.setText(getShiftArray().get(position).getWantedShift().getShifter().getFirstName() + "' s Shift");
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ((PendingSwapsEmp) getmContext()).getModel().removeSwap(getShiftArray().get(position));
+                callback.getModel().removeSwap(getShiftArray().get(position));
                 getShiftArray().remove(position);
                 notifyDataSetChanged();
             }

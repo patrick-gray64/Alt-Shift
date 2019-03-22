@@ -75,6 +75,7 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
                 int a = viewHolder.getAdapterPosition();
                 Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
                 v.getContext().startActivity(intent);
+                ((ShiftAddingActivity) getmContext()).finish();
                 Toast.makeText(getmContext(), "Shift added to calendar!", Toast.LENGTH_SHORT).show();
                 ((ShiftAddingActivity) getmContext()).getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
                 notifyDataSetChanged();

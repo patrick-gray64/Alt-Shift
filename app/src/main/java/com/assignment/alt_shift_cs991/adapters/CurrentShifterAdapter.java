@@ -40,6 +40,15 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
     }
 
     /**
+     * Updates items
+     * @param shifts - shifts to be updated in the list
+     */
+    public void setItems(List<Shift> shifts){
+        this.shifts = shifts;
+        notifyDataSetChanged();
+    }
+
+    /**
      * Creates the viewHolder and places it inside the correct viewGroup.
      *
      * @param viewGroup the viewGroup in question

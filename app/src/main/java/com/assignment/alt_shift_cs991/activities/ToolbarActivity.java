@@ -93,7 +93,11 @@ public class ToolbarActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupBadge(model.shiftManager.getCountAvailableSwaps(model.getLoggedInShifter()));
+    }
 }
 
 

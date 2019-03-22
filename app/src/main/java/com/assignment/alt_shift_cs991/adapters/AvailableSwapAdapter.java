@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdapter.MyViewHolder> {
     private List<ShiftSwap> shiftArray;
     private Context mContext;
+    protected PendingSwapsEmp.Callback callback;
 
     public AvailableSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
         this.mContext = context;
@@ -42,6 +43,10 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
         }
     }
 
+    public void setCallback(PendingSwapsEmp.Callback callback) {
+        this.callback = callback;
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
@@ -61,15 +66,19 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), FinalShiftSwapActivity.class);
-                intent.putExtra("SHIFTSWAP", shiftArray.get(position));
+                callback.getModel().selectedCurrentShiftSwap = shiftArray.get(position);
                 v.getContext().startActivity(intent);
+                if(callback != null){
+                    callback.finishActivity();
+                }
             }
         });
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ((PendingSwapsEmp) getmContext()).getModel().removeSwap(shiftArray.get(position));
+                callback.getModel().removeSwap(shiftArray.get(position));
                 shiftArray.remove(position);
                 notifyDataSetChanged();
+
             }
         });
     }

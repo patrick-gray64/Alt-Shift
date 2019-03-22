@@ -89,9 +89,9 @@ public class ShiftSwapActivity extends ToolbarActivity {
                     public void onClick(View v) {
                         ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
                         model.shiftManager.addShiftSwap(shiftSwap);
-
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);
+                        finish();
                         Toast.makeText(getApplicationContext(), "Shift swap request sent!", Toast.LENGTH_SHORT).show();
                     }
                 });
