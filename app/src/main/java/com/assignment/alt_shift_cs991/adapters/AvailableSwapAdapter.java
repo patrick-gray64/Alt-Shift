@@ -19,10 +19,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdapter.MyViewHolder> {
+    /**
+     * Adapter for Available Swaps
+     */
     private List<ShiftSwap> shiftArray;
     private Context mContext;
     protected PendingSwapsEmp.Callback callback;
 
+    /**
+     * Constructor for AvailableSwapAdapter
+     * @param context
+     * @param shiftArray list of shift swaps
+     */
     public AvailableSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
         this.mContext = context;
         this.shiftArray = shiftArray;

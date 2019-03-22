@@ -13,11 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ShiftAddingActivity extends ToolbarActivity {
-
+    /**
+     * Activity for a manager to assign a shift to a shifter
+     */
     protected Application model;
     private ShifterAdapter shifterAdapter;
     private RecyclerView recyclerView;
 
+    /**
+     * Initialises activity with a list of all Shifters
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,10 @@ public class ShiftAddingActivity extends ToolbarActivity {
         recyclerView.setAdapter(shifterAdapter);
     }
 
+    /**
+     * Returns the model
+     * @return model
+     */
     public Application getModel() {
         return model;
     }

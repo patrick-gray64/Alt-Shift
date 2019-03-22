@@ -7,7 +7,6 @@ import android.os.Parcelable;
 public class Shift implements Parcelable {
     /**
      * A Shift is a date and a person (shifter) working on that date.
-     *
      * @author pcolr
      */
     private String date;
@@ -22,7 +21,6 @@ public class Shift implements Parcelable {
 
     /**
      * Constructor for a Shift
-     *
      * @param date    Date of Shift
      * @param shifter Employee on Shift
      */
@@ -41,7 +39,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for Date
-     *
      * @return date
      */
     public String getDate() {
@@ -50,7 +47,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for swapDate
-     *
      * @return swapDate
      */
     public String getSwapDate() {
@@ -59,7 +55,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for swapUserName
-     *
      * @return swapUserName
      */
     public String getSwapUserName() {
@@ -68,7 +63,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for swapPassword
-     *
      * @return swapPassword
      */
     public String getSwapPassword() {
@@ -77,7 +71,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for Shifter
-     *
      * @return shifter
      */
     public Shifter getShifter() {
@@ -86,7 +79,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for name
-     *
      * @return name
      */
     public String getName() {
@@ -95,7 +87,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for surname
-     *
      * @return surname
      */
     public String getSurname() {
@@ -104,7 +95,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for userName
-     *
      * @return userName
      */
     public String getUserName() {
@@ -113,7 +103,6 @@ public class Shift implements Parcelable {
 
     /**
      * Getter for password
-     *
      * @return password
      */
     public String getPassword() {
@@ -122,7 +111,6 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for swapDate
-     *
      * @param swapDate
      */
     public void setSwapDate(String swapDate) {
@@ -131,7 +119,6 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for setSwapUserName
-     *
      * @param swapUserName
      */
     public void setSwapUserName(String swapUserName) {
@@ -140,7 +127,6 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for swapPassword
-     *
      * @param swapPassword
      */
     public void setSwapPassword(String swapPassword) {
@@ -149,7 +135,6 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for name
-     *
      * @param name
      */
     public void setName(String name) {
@@ -158,7 +143,6 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for Date
-     *
      * @param date date
      */
     public void setDate(String date) {
@@ -167,7 +151,6 @@ public class Shift implements Parcelable {
 
     /**
      * Setter for Shifter
-     *
      * @param shifter shifter
      */
     public void setShifter(Shifter shifter) {

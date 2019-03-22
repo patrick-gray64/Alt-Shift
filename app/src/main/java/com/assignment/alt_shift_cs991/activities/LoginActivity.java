@@ -15,12 +15,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class LoginActivity extends AppCompatActivity {
-
+    /**
+     * Login Activity for users
+     */
     private EditText userName, password;
     private CardView loginButton;
     private int passwordCount;
     protected Application model;
 
+    /**
+     * Initialises activity with empty editTexts for user input
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Takes user to calendar page if login details are correct, informs user of wrong details
+             * if login details are incorrect
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 //Log.d("dbCheck", model.db.daoAccess().getShifter(Integer.parseInt("10101010"), "10101010").getFirstName());
@@ -70,8 +81,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Takes user to the register activity when button is clicked
+     * @param v
+     */
     public void register(View v) {
-
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(intent);
     }

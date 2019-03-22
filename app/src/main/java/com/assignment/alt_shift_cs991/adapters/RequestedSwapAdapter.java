@@ -9,6 +9,11 @@ import java.util.List;
 
 public class RequestedSwapAdapter extends AvailableSwapAdapter {
 
+    /**
+     * Constructor for RequestedSwapAdapter
+     * @param context
+     * @param shiftArray
+     */
     public RequestedSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
         super(context, shiftArray);
     }
