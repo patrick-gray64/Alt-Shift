@@ -40,8 +40,9 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
         shiftSwapLayoutBinding.setShift1(shiftSwap.getWantedShift());
         initToolbar();
         swapButton = findViewById(R.id.shift_button);
-        unwantedShift = shiftSwap.getUnwantedShift();
-        wantedShift = shiftSwap.getWantedShift();
+
+
+
 
         TextView userName = findViewById(R.id.user_name_field);
         TextView surname = findViewById(R.id.user_description_field);
@@ -85,6 +86,7 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                     @Override
                     public void onClick(View v) {
                         model.shiftManager.swapShifts(model.shiftManager.getShiftSwaps().get(0));
+                        model.shiftManager.getShiftSwaps().remove(0);
 
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);
