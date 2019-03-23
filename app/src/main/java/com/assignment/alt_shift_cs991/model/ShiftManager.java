@@ -369,6 +369,8 @@ public class ShiftManager implements Serializable {
         return date;
     }
 
+
+
     /**
      * Changes a date to a specified format
      * @param date

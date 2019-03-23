@@ -1,6 +1,8 @@
 package com.assignment.alt_shift_cs991.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
@@ -29,6 +31,7 @@ public class CalendarActivity extends ToolbarActivity {
     private CurrentShifterAdapter shiftAdapter;
     protected Application model;
     private Shifter shifter;
+    private Boolean isShowing = true;
 
     /**
      * Initialises Calendar with shifts for the logged in user.
@@ -50,6 +53,7 @@ public class CalendarActivity extends ToolbarActivity {
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getMyShiftsDates(shifter));
         calendarManager.swapPopulate(calendarView, model.shiftManager.getRequestedSwaps(shifter));
 
+
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             /**
              * Shows a shift in a recycler list below the calendar when date is clicked.
@@ -70,6 +74,23 @@ public class CalendarActivity extends ToolbarActivity {
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 actionBar.setTitle(dateFormat.format(firstDayOfNewMonth));
+            }
+        });
+
+        Button hideshow = findViewById(R.id.hideShowCal);
+        hideshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isShowing){
+                    calendarView.hideCalendar();
+                    isShowing = false;
+                    hideshow.setText("SHOW CALENDER");
+                }
+                else{
+                    calendarView.showCalendar();
+                    isShowing = true;
+                    hideshow.setText("HIDE CALENDER");
+                }
             }
         });
     }

@@ -3,9 +3,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
         <variable
             name="Shift1"
             type="com.assignment.alt_shift_cs991.model.Shift" />
@@ -32,13 +30,13 @@
                 android:id="@+id/user_card"
                 android:layout_width="206dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="40dp"
                 android:transitionName="usercard"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                android:layout_gravity="center">
 
                 <androidx.gridlayout.widget.GridLayout
                     android:layout_width="206dp"
@@ -59,21 +57,19 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
-                        android:gravity="center"
                         android:textSize="24sp"
-                        app:layout_column="0"
                         app:layout_constraintStart_toEndOf="@+id/user_imageView"
                         app:layout_constraintTop_toTopOf="@+id/user_imageView"
-                        app:layout_row="1"
-                        tools:text="first name second name" />
+                        tools:text="first name second name"
+                        app:layout_column="0"
+                        app:layout_row="1" />
 
                     <TextView
                         android:id="@+id/user_description_field"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:gravity="center"
                         android:textSize="24sp"
                         app:layout_column="0"
                         app:layout_row="2"
@@ -97,12 +93,12 @@
                 android:id="@+id/current_shift_worker_card"
                 android:layout_width="206dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                android:layout_gravity="center">
 
                 <androidx.gridlayout.widget.GridLayout
                     android:layout_width="206dp"
@@ -123,22 +119,20 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
-                        android:gravity="center"
                         android:text="@{Shift1.name}"
                         android:textSize="24sp"
-                        app:layout_column="0"
                         app:layout_constraintStart_toEndOf="@+id/user_imageView"
                         app:layout_constraintTop_toTopOf="@+id/user_imageView"
-                        app:layout_row="1"
-                        tools:text="first name second name" />
+                        tools:text="first name second name"
+                        app:layout_column="0"
+                        app:layout_row="1" />
 
                     <TextView
                         android:id="@+id/swap_description_field"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="49dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:gravity="center"
                         android:text="@{Shift1.surname}"
                         android:textSize="24sp"
                         app:layout_column="0"
@@ -155,20 +149,20 @@
             android:layout_width="206dp"
             android:layout_height="603dp"
             android:layout_below="@+id/my_toolbar"
-            android:layout_toRightOf="@id/cardSwapHolder"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/cardSwapHolder">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/user_shift"
                 android:layout_width="206dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="40dp"
                 android:transitionName="usercard"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                android:layout_gravity="center">
 
                 <androidx.gridlayout.widget.GridLayout
                     android:layout_width="206dp"
@@ -178,7 +172,7 @@
                         android:id="@+id/textView8"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:text="@string/shift"
+                        android:text="Shift"
                         android:textAlignment="center"
                         android:textSize="24sp" />
 
@@ -188,8 +182,8 @@
                         android:layout_height="136dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="@{Shift1.swapDate}"
                         android:textAlignment="center"
+                        android:text="@{Shift1.swapDate}"
                         android:textSize="18sp"
                         app:layout_column="0"
                         app:layout_row="2"
@@ -203,12 +197,12 @@
                 android:id="@+id/current_shift_worker_shift"
                 android:layout_width="206dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="93dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                android:layout_gravity="center">
 
                 <androidx.gridlayout.widget.GridLayout
                     android:layout_width="206dp"
@@ -218,7 +212,7 @@
                         android:id="@+id/textView9"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:text="@string/shift"
+                        android:text="Shift"
                         android:textAlignment="center"
                         android:textSize="24sp" />
 
