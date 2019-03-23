@@ -3,6 +3,7 @@ package com.assignment.alt_shift_cs991.adapters;
 import android.graphics.Color;
 
 import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.model.ShiftSwap;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
