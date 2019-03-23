@@ -57,7 +57,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
     }
 
     /**
-     * Swaps the positions of the two shifters when swap button is clicked.
+     * Animates the swapping of shifts and adds the shift swap to the pending shiftswaps.
      *
      * @param v
      */
@@ -78,6 +78,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
         animationSet.playTogether(shiftWorkerCardAnimation, userCardAnimation);
 
         v.animate().rotation(v.getRotation() - 180).setDuration(500).setListener(new Animator.AnimatorListener() {
+
             /**
              * Deactivates the swap button.
              * @param animation
@@ -100,8 +101,9 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setText("Confirm Swap Request");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
                 confirmButton.setOnClickListener(new View.OnClickListener() {
+
                     /**
-                     * Swaps the two shifts, produces a toast message confirming and returns
+                     * Adds the shiftswap to the pending shiftswap list, produces a toast message confirming and returns
                      * user to the calendar activity.
                      * @param v
                      */

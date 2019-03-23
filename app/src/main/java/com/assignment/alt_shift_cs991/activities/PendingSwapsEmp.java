@@ -67,6 +67,10 @@ public class PendingSwapsEmp extends ToolbarActivity {
         });
     }
 
+    /**
+     * Callback interface which enables us to use these methods within the AvailableSwapAdapter, where
+     * it is necessary to use some of the methods from our Application class.
+     */
     public interface Callback {
 
         void finishActivity();

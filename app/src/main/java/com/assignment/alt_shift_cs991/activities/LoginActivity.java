@@ -2,7 +2,6 @@ package com.assignment.alt_shift_cs991.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -54,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (shifter != null) {
                     model.setUserLoggedIn(true);
                     model.storedLoggedInUser(shifter);
-                    Log.d("dbcheck", String.valueOf(model.db.daoAccess().getAllShifters().size()));
                     if (shifter.isManager()) {
                         Intent intent = new Intent(getApplicationContext(), ManagerCalendarActivity.class);
                         startActivity(intent);

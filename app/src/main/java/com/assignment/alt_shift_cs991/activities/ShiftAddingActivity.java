@@ -47,6 +47,10 @@ public class ShiftAddingActivity extends ToolbarActivity {
         shifterAdapter.setCallBack(callback);
     }
 
+    /**
+     * Callback interface which enables us to use these methods within the ShifterAdapter, where
+     * it is necessary to use some of the methods from our Application class.
+     */
     public interface Callback {
 
         void finishActivity();

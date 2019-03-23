@@ -47,7 +47,12 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
         surname.setText(shiftSwap.getUnwantedShift().getSurname());
     }
 
-
+    /**
+     * Animates the swapping of shifts and performs the final swap of shifts between two employees when
+     * the swap has been officially accepted.
+     *
+     * @param v
+     */
     public void switchShifts(final View v) {
         final AnimatorSet animationSet = new AnimatorSet();
         View userCard = findViewById(R.id.user_card);
@@ -65,12 +70,21 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
         animationSet.playTogether(shiftWorkerCardAnimation, userCardAnimation);
 
         v.animate().rotation(v.getRotation() - 180).setDuration(500).setListener(new Animator.AnimatorListener() {
+
+            /**
+             * Deactivates the swap button.
+             * @param animation
+             */
             @Override
             public void onAnimationStart(Animator animation) {
                 v.setEnabled(false);
                 swapButton.setClickable(false);
             }
 
+            /**
+             * Makes confirm button visible.
+             * @param animation
+             */
             @Override
             public void onAnimationEnd(Animator animation) {
                 v.setEnabled(true);
@@ -79,6 +93,12 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setText("Confirm Swap");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
                 confirmButton.setOnClickListener(new View.OnClickListener() {
+
+                    /**
+                     * Performs the applicable pending shift swap, produces a toast message confirming and returns
+                     * user to the calendar activity.
+                     * @param v
+                     */
                     @Override
                     public void onClick(View v) {
                         model.shiftManager.swapShifts(shiftSwap);

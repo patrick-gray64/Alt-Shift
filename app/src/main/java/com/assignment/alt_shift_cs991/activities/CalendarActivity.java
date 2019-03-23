@@ -74,7 +74,8 @@ public class CalendarActivity extends ToolbarActivity {
     }
 
     /**
-     * Populates the calendar with shifts as events on dates
+     * Populates the calendar with shifts as events on dates. Ensures the calendar is refreshed with any
+     * new changes.
      */
     @Override
     protected void onResume() {
