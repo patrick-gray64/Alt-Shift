@@ -16,15 +16,14 @@ import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Home activity displaying a Calendar with shifts
+ */
 public class CalendarActivity extends ToolbarActivity {
-    /**
-     * Home activity displaying a Calendar with shifts
-     */
+
     public CompactCalendarView calendarView;
-    private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
-    public static final String EXTRA_SHIFTER = "com.assignment.alt_shift_cs991.SHIFTER";
     public RecyclerView recyclerView;
     private CurrentShifterAdapter shiftAdapter;
     protected Application model;
@@ -32,6 +31,7 @@ public class CalendarActivity extends ToolbarActivity {
 
     /**
      * Initialises Calendar with shifts for the logged in user
+     *
      * @param savedInstanceState
      */
     @Override
@@ -42,17 +42,12 @@ public class CalendarActivity extends ToolbarActivity {
 
         model = (Application) getApplication();
         final ActionBar actionBar = getSupportActionBar();
-        //actionBar.setDisplayHomeAsUpEnabled(false);
         calendarView = findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
-        actionBar.setTitle(dateformat.format(new Date()));
+        actionBar.setTitle(dateFormat.format(new Date()));
         shifter = model.getLoggedInShifter();
-        //add events
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getmyShiftsDates(shifter));
 
-        // TextView shift_descp = findViewById(R.id.shiftInfoDesc);
-        // shift_descp.setVisibility(View.GONE);
-        // listener
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             /**
              * Shows a shift in a recycler list below the calendar when date is clicked
@@ -64,12 +59,6 @@ public class CalendarActivity extends ToolbarActivity {
                 recyclerView = findViewById(R.id.shifter_shifts);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 recyclerView.setAdapter(shiftAdapter);
-                // if(shiftAdapter.getItemCount() > 0){
-                // shift_descp.setVisibility(View.VISIBLE);}
-                // else {
-                //   shift_descp.setVisibility(View.GONE);
-                // }
-                // shiftAdapter.notifyDataSetChanged();
             }
 
             /**
@@ -78,15 +67,14 @@ public class CalendarActivity extends ToolbarActivity {
              */
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                actionBar.setTitle(dateformat.format(firstDayOfNewMonth));
-                //  shift_descp.setVisibility(View.GONE);
-
+                actionBar.setTitle(dateFormat.format(firstDayOfNewMonth));
             }
         });
     }
 
     /**
-     * Populates the calendar with shifts as events on dates
+     * Populates the calendar with shifts as events on dates. Ensures the calendar is refreshed with any
+     * new changes.
      */
     @Override
     protected void onResume() {

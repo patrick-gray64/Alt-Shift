@@ -18,10 +18,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Calendar activity for Manager users.
+ */
 public class ManagerCalendarActivity extends CalendarActivity {
-    /**
-     * Calendar activity for Manager users
-     */
+
     public CompactCalendarView calendarView;
     private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
@@ -31,7 +32,8 @@ public class ManagerCalendarActivity extends CalendarActivity {
     private FloatingActionButton fab;
 
     /**
-     * Initialises activity with all shifts
+     * Initialises activity with all shifts.
+     *
      * @param savedInstanceState
      */
     @Override
@@ -54,7 +56,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             /**
-             * Shows all shifts on clicked date
+             * Shows all shifts on clicked date.
              * @param dateClicked
              */
             @Override
@@ -64,7 +66,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
             }
 
             /**
-             * Changes month on the calendar when scrolled
+             * Changes month on the calendar when scrolled.
              * @param firstDayOfNewMonth
              */
             @Override
@@ -74,7 +76,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
         });
         fab.setOnClickListener(new View.OnClickListener() {
             /**
-             * Takes user to activity to create a new shift on clicked date
+             * Takes user to activity to create a new shift on clicked date.
              * @param v
              */
             @Override
@@ -86,7 +88,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
     }
 
     /**
-     * Populates the calendar with shifts as events on dates
+     * Populates the calendar with shifts as events on dates.
      */
     @Override
     protected void onResume() {

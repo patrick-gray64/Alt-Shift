@@ -14,10 +14,11 @@ import java.util.List;
 
 import androidx.room.Room;
 
+/**
+ * Backend data storage and link to database
+ */
 public class Application extends android.app.Application {
-    /**
-     * Backend data storage and link to database
-     */
+
     public ShiftManager shiftManager;
     public CalendarManager calendarManager;
     public static final String LI_NAME = "shifterDetails";
@@ -49,6 +50,7 @@ public class Application extends android.app.Application {
 
     /**
      * Setter for dateClicked
+     *
      * @param dateClicked
      */
     public void setDateClicked(String dateClicked) {
@@ -57,6 +59,7 @@ public class Application extends android.app.Application {
 
     /**
      * Getter for dateClicked
+     *
      * @return dateClicked
      */
     public String getDateClicked() {
@@ -70,61 +73,63 @@ public class Application extends android.app.Application {
             shiftManager.addShifter(s);
         }
     }
-        /**
-         * Stores data of the logged in user
-         *
-         * @param shifter logged in used
-         */
-        public void storedLoggedInUser (Shifter shifter){
 
-            SharedPreferences.Editor spEditor = localData.edit();
-            spEditor.putString("name", shifter.getFirstName());
-            spEditor.putString("surname", shifter.getSurname());
-            spEditor.putString("password", shifter.getPassword());
-            spEditor.putString("username", shifter.getUserID());
-            spEditor.commit();
-        }
+    /**
+     * Stores data of the logged in user
+     *
+     * @param shifter logged in used
+     */
+    public void storedLoggedInUser(Shifter shifter) {
 
-        /**
-         * Getter for the logged in user
-         *
-         * @return logged in Shifter
-         */
-        public Shifter getLoggedInShifter () {
-            String name = localData.getString("name", "");
-            String surname = localData.getString("surname", "");
-            String password = localData.getString("password", "");
-            String username = localData.getString("username", "");
-            Shifter storedShifter = shiftManager.getShifter(username, password);
-            return storedShifter;
-        }
+        SharedPreferences.Editor spEditor = localData.edit();
+        spEditor.putString("name", shifter.getFirstName());
+        spEditor.putString("surname", shifter.getSurname());
+        spEditor.putString("password", shifter.getPassword());
+        spEditor.putString("username", shifter.getUserID());
+        spEditor.commit();
+    }
 
-        /**
-         * Setter for the logged in user
-         *
-         * @param loggedIn
-         */
-        public void setUserLoggedIn (Boolean loggedIn){
-            SharedPreferences.Editor spEditor = localData.edit();
-            spEditor.putBoolean("LoggedIn", loggedIn);
-            spEditor.commit();
-        }
+    /**
+     * Getter for the logged in user
+     *
+     * @return logged in Shifter
+     */
+    public Shifter getLoggedInShifter() {
+        String name = localData.getString("name", "");
+        String surname = localData.getString("surname", "");
+        String password = localData.getString("password", "");
+        String username = localData.getString("username", "");
+        Shifter storedShifter = shiftManager.getShifter(username, password);
+        return storedShifter;
+    }
 
-        /**
-         * Clears the data of the logged in user
-         */
-        public void clearUserData () {
-            SharedPreferences.Editor spEditor = localData.edit();
-            spEditor.clear();
-            spEditor.commit();
-        }
+    /**
+     * Setter for the logged in user
+     *
+     * @param loggedIn
+     */
+    public void setUserLoggedIn(Boolean loggedIn) {
+        SharedPreferences.Editor spEditor = localData.edit();
+        spEditor.putBoolean("LoggedIn", loggedIn);
+        spEditor.commit();
+    }
+
+    /**
+     * Clears the data of the logged in user
+     */
+    public void clearUserData() {
+        SharedPreferences.Editor spEditor = localData.edit();
+        spEditor.clear();
+        spEditor.commit();
+    }
 
     /**
      * Removes a shiftSwap from the list of shiftSwaps
+     *
      * @param s
      */
-    public void removeSwap (ShiftSwap s){
-            shiftManager.removeSwap(s);
-        }
-
+    public void removeSwap(ShiftSwap s) {
+        shiftManager.removeSwap(s);
     }
+
+}

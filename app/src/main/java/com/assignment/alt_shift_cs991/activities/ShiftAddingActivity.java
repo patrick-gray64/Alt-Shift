@@ -11,18 +11,13 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Activity that enables the manager to assign employees to shifts.
+ */
 public class ShiftAddingActivity extends ToolbarActivity {
-    /**
-     * Activity for a manager to assign a shift to a shifter
-     */
-    protected Application model;
-    private ShifterAdapter shifterAdapter;
-    private RecyclerView recyclerView;
 
-    /**
-     * Initialises activity with a list of all Shifters
-     * @param savedInstanceState
-     */
+    protected Application model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +26,34 @@ public class ShiftAddingActivity extends ToolbarActivity {
 
         model = (Application) getApplication();
         List<Shifter> shifters = model.shiftManager.getShifters();
-        shifterAdapter = new ShifterAdapter(this, shifters);
+        ShifterAdapter shifterAdapter = new ShifterAdapter(shifters);
         shifterAdapter.dateOfNewShift = model.getDateClicked();
-        recyclerView = findViewById(R.id.recycler_view2);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view2);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(shifterAdapter);
+
+        Callback callback = new Callback() {
+            @Override
+            public void finishActivity() {
+                finish();
+            }
+
+            @Override
+            public Application getModel() {
+                return model;
+            }
+        };
+        shifterAdapter.setCallBack(callback);
     }
 
     /**
-     * Returns the model
-     * @return model
+     * Callback interface which enables us to use these methods within the ShifterAdapter, where
+     * it is necessary to use some of the methods from our Application class.
      */
-    public Application getModel() {
-        return model;
+    public interface Callback {
+
+        void finishActivity();
+
+        Application getModel();
     }
 }

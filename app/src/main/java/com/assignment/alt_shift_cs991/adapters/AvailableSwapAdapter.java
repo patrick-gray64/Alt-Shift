@@ -1,6 +1,5 @@
 package com.assignment.alt_shift_cs991.adapters;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,22 +16,22 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Adapter for available swaps.
+ */
 public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdapter.MyViewHolder> {
-    /**
-     * Adapter for Available Swaps
-     */
+
     private List<ShiftSwap> shiftArray;
-    private Context mContext;
     protected PendingSwapsEmp.Callback callback;
 
     /**
-     * Constructor for AvailableSwapAdapter
-     * @param context
+     * Constructor for AvailableSwapAdapter.
+     *
      * @param shiftArray list of shift swaps
      */
-    public AvailableSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
-        this.mContext = context;
+    public AvailableSwapAdapter(List<ShiftSwap> shiftArray) {
+        super();
+        setHasStableIds(true);
         this.shiftArray = shiftArray;
     }
 
@@ -66,7 +65,6 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        System.out.println(mContext);
         holder.yourDate.setText(shiftArray.get(position).getWantedShift().getDate());
         holder.offeredDate.setText(shiftArray.get(position).getUnwantedShift().getDate());
         holder.otherShifter.setText(shiftArray.get(position).getUnwantedShift().getShifter().getFirstName() + "' s Shift");
@@ -76,7 +74,7 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
                 Intent intent = new Intent(v.getContext(), FinalShiftSwapActivity.class);
                 callback.getModel().selectedCurrentShiftSwap = shiftArray.get(position);
                 v.getContext().startActivity(intent);
-                if(callback != null){
+                if (callback != null) {
                     callback.finishActivity();
                 }
             }
@@ -100,8 +98,5 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
         return shiftArray;
     }
 
-    public Context getmContext() {
-        return mContext;
-    }
 }
 

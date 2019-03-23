@@ -16,14 +16,15 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Adapter for shift information.
+ */
 public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
     public String shifterDate;
     public String shifterUserName;
     public String shifterPassword;
-    public String shifterName;
     protected Application model;
 
     /**
@@ -98,7 +99,6 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
 
         private TextView shifter;
         private TextView date;
-        //private ImageView picture;
 
         /**
          * A constructor which initiates the views which will be inside the textView.
@@ -109,7 +109,6 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
             super(itemView);
             shifter = itemView.findViewById(R.id.name_field);
             date = itemView.findViewById(R.id.description_field);
-            //picture = itemView.findViewById(R.id.imageView);
         }
 
         /**

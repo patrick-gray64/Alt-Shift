@@ -20,17 +20,18 @@ import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import androidx.databinding.DataBindingUtil;
 
+/**
+ * Activity for requesting a shiftSwap.
+ */
 public class ShiftSwapActivity extends ToolbarActivity {
-    /**
-     * Activity for requesting a shiftSwap
-     */
+
     private Shift shift, userSwapShift, nonUserSwapShift;
-    private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
     protected Application model;
 
     /**
-     * Initialises activity with two shifts and shifters to be swapped
+     * Initialises activity with two shifts and shifters to be swapped.
+     *
      * @param savedInstanceState
      */
     @Override
@@ -39,8 +40,6 @@ public class ShiftSwapActivity extends ToolbarActivity {
         if (getIntent().getExtras() != null) {
             shift = getIntent().getExtras().getParcelable("SHIFT");
         }
-
-
         SwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.swap_layout);
         shiftSwapLayoutBinding.setShift(shift);
         initToolbar();
@@ -57,7 +56,8 @@ public class ShiftSwapActivity extends ToolbarActivity {
     }
 
     /**
-     * Swaps the positions of the two shifters when swap button is clicked
+     * Animates the swapping of shifts and adds the shift swap to the pending shiftswaps.
+     *
      * @param v
      */
     public void switchShifts(final View v) {
@@ -65,8 +65,8 @@ public class ShiftSwapActivity extends ToolbarActivity {
         View userCard = findViewById(R.id.user_card);
         View shiftWorkerCard = findViewById(R.id.current_shift_worker_card);
 
-        shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());
-        userCardAnimation = ObjectAnimator.ofFloat(userCard, "y", shiftWorkerCard.getY());
+        ObjectAnimator shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());
+        ObjectAnimator userCardAnimation = ObjectAnimator.ofFloat(userCard, "y", shiftWorkerCard.getY());
 
         if (userCard.getY() < shiftWorkerCard.getY()) {
             shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());
@@ -77,8 +77,9 @@ public class ShiftSwapActivity extends ToolbarActivity {
         animationSet.playTogether(shiftWorkerCardAnimation, userCardAnimation);
 
         v.animate().rotation(v.getRotation() - 180).setDuration(500).setListener(new Animator.AnimatorListener() {
+
             /**
-             * Deactivates the swap button
+             * Deactivates the swap button.
              * @param animation
              */
             @Override
@@ -88,7 +89,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
             }
 
             /**
-             * Makes confirm button visible
+             * Makes confirm button visible.
              * @param animation
              */
             @Override
@@ -99,9 +100,10 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setText("Confirm Swap Request");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
                 confirmButton.setOnClickListener(new View.OnClickListener() {
+
                     /**
-                     * Swaps the two shifts, produces a toast message confirming and returns
-                     * user to the calendar activity
+                     * Adds the shiftswap to the pending shiftswap list, produces a toast message confirming and returns
+                     * user to the calendar activity.
                      * @param v
                      */
                     @Override
@@ -120,9 +122,6 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 laypram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
                 laypram.setMargins(10, 10, 30, 10);
                 layout.addView(confirmButton, laypram);
-
-                //(new Handler()).postDelayed(this::returnToHome, 500);
-
             }
 
             @Override

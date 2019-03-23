@@ -13,23 +13,22 @@ import com.assignment.alt_shift_cs991.model.Shifter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+/**
+ * Activity that creates a toolbar.
+ */
 public class ToolbarActivity extends AppCompatActivity {
-    /**
-     * Activity for displaying a toolbar at the top of other Activities
-     */
+
     private TextView textSwapItemCount;
     protected Application model;
 
-    /**
-     * Initialises toolbar
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_activity);
         initToolbar();
         model = (Application) getApplication();
+
+
     }
 
     public void initToolbar() {
@@ -37,9 +36,6 @@ public class ToolbarActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
     }
 
-    /**
-     * Creates an action bar button
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -52,10 +48,6 @@ public class ToolbarActivity extends AppCompatActivity {
         setupBadge(model.shiftManager.getCountAvailableSwaps(model.getLoggedInShifter()));
 
         actionView.setOnClickListener(new View.OnClickListener() {
-            /**
-             * Takes user to another activity depending on which toolbar icon is clicked
-             * @param v
-             */
             @Override
             public void onClick(View v) {
                 onOptionsItemSelected(menuItem);
@@ -64,11 +56,6 @@ public class ToolbarActivity extends AppCompatActivity {
         return true;
     }
 
-    /**
-     * Takes user to another activity depending on which toolbar icon is clicked
-     * @param item
-     * @return boolean
-     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -77,14 +64,12 @@ public class ToolbarActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
             return false;
-
         }
         if (id == R.id.action_home && shifter.isManager()) {
             Intent intent = new Intent(this, ManagerCalendarActivity.class);
             startActivity(intent);
             return false;
-        }
-        else if (id == R.id.action_more) {
+        } else if (id == R.id.action_more) {
             Intent intent = new Intent(ToolbarActivity.this, PendingSwapsEmp.class);
             startActivity(intent);
             return false;
@@ -92,10 +77,6 @@ public class ToolbarActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Displays the number of shiftSwaps a shifter has on the shiftSwap icon
-     * @param mItemCount
-     */
     private void setupBadge(int mItemCount) {
         if (textSwapItemCount != null) {
             if (mItemCount == 0) {

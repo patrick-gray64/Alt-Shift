@@ -9,11 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * Manages the Calendar
+ */
 public class CalendarManager {
-    /**
-     * Manages the Calendar
-     */
+
 
     /**
      * Constructor for CalendarManager

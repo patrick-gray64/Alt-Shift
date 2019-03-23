@@ -11,12 +11,14 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+/**
+ * A Shifter is a user that works shifts. This is one of the entities in out SQLite database.
+ *
+ * @author pcolr
+ */
 @Entity
 public class Shifter implements Parcelable {
-    /**
-     * A Shifter is a user that works shifts.
-     * @author pcolr
-     */
+
     @NonNull
     @PrimaryKey(autoGenerate = true)
     private int keyID;
@@ -37,7 +39,7 @@ public class Shifter implements Parcelable {
     private List<String> myShiftDates;
 
     /**
-     * Constructor for a Shifter Employee
+     * Constructor for a Shifter Employee.
      *
      * @param userID    userID
      * @param password  password
@@ -56,7 +58,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Getter for userID
+     * Getter for userID.
+     *
      * @return
      */
     @NonNull
@@ -65,7 +68,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Setter for userID
+     * Setter for userID.
+     *
      * @param keyID
      */
     public void setKeyID(@NonNull int keyID) {
@@ -73,7 +77,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Getter for userID
+     * Getter for userID.
+     *
      * @return
      */
     public String getUserID() {
@@ -81,7 +86,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Setter for newShiftDate
+     * Setter for newShiftDate.
+     *
      * @param newShiftDate
      */
     public void setNewShiftDate(String newShiftDate) {
@@ -89,7 +95,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Getter for userID
+     * Getter for userID.
+     *
      * @return
      */
     public String getNewShiftDate() {
@@ -97,7 +104,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Getter for password
+     * Getter for password.
+     *
      * @return password
      */
     public String getPassword() {
@@ -105,7 +113,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Getter for first name
+     * Getter for first name.
+     *
      * @return firstName
      */
     public String getFirstName() {
@@ -113,7 +122,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Getter for surname
+     * Getter for surname.
+     *
      * @return surname
      */
     public String getSurname() {
@@ -121,7 +131,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Setter for user ID
+     * Setter for user ID.
+     *
      * @param userID userID
      */
     public void setUserID(String userID) {
@@ -129,7 +140,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Setter for password
+     * Setter for password.
+     *
      * @param password password
      */
     public void setPassword(String password) {
@@ -137,7 +149,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Setter for first name
+     * Setter for first name.
+     *
      * @param firstName firstName
      */
     public void setFirstName(String firstName) {
@@ -145,7 +158,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Setter for surname
+     * Setter for surname.
+     *
      * @param surname surname
      */
     public void setSurname(String surname) {
@@ -153,7 +167,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Checks if a shifter is a Manager
+     * Checks if a shifter is a Manager.
+     *
      * @return boolean
      */
     public Boolean isManager() {
@@ -161,7 +176,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Setter for manager
+     * Setter for manager.
+     *
      * @param manager
      */
     public void setManager(Boolean manager) {
@@ -169,7 +185,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Getter for myShifts
+     * Getter for myShifts.
+     *
      * @return List of Shifts that this Shifter is assigned
      */
     @Ignore
@@ -178,7 +195,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Setter for myShifts
+     * Setter for myShifts.
+     *
      * @param myShifts List of Shifts that this Shifter is assigned
      */
     @Ignore
@@ -187,7 +205,8 @@ public class Shifter implements Parcelable {
     }
 
     /**
-     * Returns a list of shift dates for a Shifter
+     * Returns a list of shift dates for a Shifter.
+     *
      * @return
      */
     @Ignore

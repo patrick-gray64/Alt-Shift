@@ -2,7 +2,6 @@ package com.assignment.alt_shift_cs991.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,17 +12,19 @@ import com.assignment.alt_shift_cs991.model.Shifter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+/**
+ * Login Activity for users.
+ */
 public class LoginActivity extends AppCompatActivity {
-    /**
-     * Login Activity for users
-     */
+
     private EditText userName, password;
     private CardView loginButton;
     private int passwordCount;
     protected Application model;
 
     /**
-     * Initialises activity with empty editTexts for user input
+     * Initialises activity with empty editTexts for user input.
+     *
      * @param savedInstanceState
      */
     @Override
@@ -40,21 +41,17 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             /**
              * Takes user to calendar page if login details are correct, informs user of wrong details
-             * if login details are incorrect
+             * if login details are incorrect.
              * @param v
              */
             @Override
             public void onClick(View v) {
-                //Log.d("dbCheck", model.db.daoAccess().getShifter(Integer.parseInt("10101010"), "10101010").getFirstName());
                 model.clearUserData();
                 model.setUserLoggedIn(false);
                 Shifter shifter = model.db.daoAccess().getShifter(userName.getText().toString(), password.getText().toString());
                 if (shifter != null) {
-                    //model.shiftManager.getShifterLogin(Integer.parseInt(userName.getText().toString()), password.getText().toString());
                     model.setUserLoggedIn(true);
                     model.storedLoggedInUser(shifter);
-                    Log.d("dbcheck", String.valueOf(model.db.daoAccess().getAllShifters().size()));
-                    //model.getLoggedInShifter();
                     if (shifter.isManager()) {
                         Intent intent = new Intent(getApplicationContext(), ManagerCalendarActivity.class);
                         startActivity(intent);
@@ -73,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (passwordCount > 2) {
                         loginButton.setEnabled(false);
                         Toast.makeText(getApplicationContext(), "Attempt limit reached, please try again later", Toast.LENGTH_SHORT).show();
-
                     }
                 }
             }
@@ -81,7 +77,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * Takes user to the register activity when button is clicked
+     * Takes user to the register activity when button is clicked.
+     *
      * @param v
      */
     public void register(View v) {

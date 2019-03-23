@@ -3,21 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     // toolbar button
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/action_home"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
     //pending shift toolbar button
     <item
         android:id="@+id/action_more"
         android:title="@string/action_more"
         app:actionLayout="@layout/menu_ic_layout"
-        app:showAsAction="ifRoom"/>
-
+        app:showAsAction="ifRoom" />
 
 
 </menu>
