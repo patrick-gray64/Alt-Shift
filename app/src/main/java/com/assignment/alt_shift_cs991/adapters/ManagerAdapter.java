@@ -1,13 +1,11 @@
 package com.assignment.alt_shift_cs991.adapters;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.activities.SwapActivity;
 import com.assignment.alt_shift_cs991.model.Shift;
 
 import java.util.List;
@@ -15,16 +13,16 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Adapter for the shifter that is currently logged into the app.
+ * Adapter for the list contained in the managers calendar view.
  */
-public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAdapter.MyViewHolder> {
+public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
 
     /**
-     * A constructor for the CurrentShifterAdapter class.
+     * A constructor for the ManagerAdapter class.
      */
-    public CurrentShifterAdapter(List<Shift> shifts) {
+    public ManagerAdapter(List<Shift> shifts) {
         super();
         setHasStableIds(true);
         this.shifts = shifts;
@@ -60,7 +58,7 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
      */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        return MyViewHolder.createHolder(viewGroup);
+        return ManagerAdapter.MyViewHolder.createHolder(viewGroup);
     }
 
     /**
@@ -74,15 +72,6 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
         Shift shift = shifts.get(position);
         viewHolder.shifterName.setText(shift.getShifter().getFirstName());
         viewHolder.date.setText(shift.getDate());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int a = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(v.getContext(), SwapActivity.class);
-                intent.putExtra("SHIFT", shifts.get(a));
-                v.getContext().startActivity(intent);
-            }
-        });
     }
 
     /**
@@ -117,10 +106,10 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
          * @param viewGroup the current view group
          * @return a view holder which holds list items
          */
-        public static MyViewHolder createHolder(ViewGroup viewGroup) {
+        public static ManagerAdapter.MyViewHolder createHolder(ViewGroup viewGroup) {
             LayoutInflater viewInflater = LayoutInflater.from(viewGroup.getContext());
             View listItemView = viewInflater.inflate(R.layout.adapter_item, viewGroup, false);
-            return new MyViewHolder(listItemView);
+            return new ManagerAdapter.MyViewHolder(listItemView);
         }
     }
 }

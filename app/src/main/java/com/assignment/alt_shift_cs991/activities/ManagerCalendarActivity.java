@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
+import com.assignment.alt_shift_cs991.adapters.ManagerAdapter;
 import com.assignment.alt_shift_cs991.model.CalendarManager;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,7 +27,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
     private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
     public RecyclerView recyclerView;
-    private CurrentShifterAdapter shiftAdapter;
+    private ManagerAdapter shifterAdapter;
     protected Application model;
     private FloatingActionButton fab;
 
@@ -49,10 +49,10 @@ public class ManagerCalendarActivity extends CalendarActivity {
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateformat.format(new Date()));
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getAllShiftsDates());
-        shiftAdapter = new CurrentShifterAdapter(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
+        shifterAdapter = new ManagerAdapter(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
         recyclerView = findViewById(R.id.shifter_shifts);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setAdapter(shiftAdapter);
+        recyclerView.setAdapter(shifterAdapter);
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             /**
@@ -62,7 +62,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
             @Override
             public void onDayClick(Date dateClicked) {
                 model.setDateClicked(dateClicked.toString());
-                shiftAdapter.setItems(model.shiftManager.getAllShiftsByDate(dateClicked.toString()));
+                shifterAdapter.setItems(model.shiftManager.getAllShiftsByDate(dateClicked.toString()));
             }
 
             /**
@@ -94,6 +94,6 @@ public class ManagerCalendarActivity extends CalendarActivity {
     protected void onResume() {
         super.onResume();
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getAllShiftsDates());
-        shiftAdapter.setItems(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
+        shifterAdapter.setItems(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
     }
 }

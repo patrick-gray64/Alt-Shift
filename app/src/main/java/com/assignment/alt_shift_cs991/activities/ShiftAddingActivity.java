@@ -1,6 +1,7 @@
 package com.assignment.alt_shift_cs991.activities;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.ShifterAdapter;
@@ -31,6 +32,10 @@ public class ShiftAddingActivity extends ToolbarActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view2);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(shifterAdapter);
+
+        String swapText = String.format(getString(R.string.add_shift_info), model.dateClicked);
+        TextView swapInfo = findViewById(R.id.swapInfo);
+        swapInfo.setText(swapText);
 
         Callback callback = new Callback() {
             @Override

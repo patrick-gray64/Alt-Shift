@@ -46,7 +46,7 @@ public class CalendarActivity extends ToolbarActivity {
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateFormat.format(new Date()));
         shifter = model.getLoggedInShifter();
-        calendarManager.shiftPopulate(calendarView, model.shiftManager.getmyShiftsDates(shifter));
+        calendarManager.shiftPopulate(calendarView, model.shiftManager.getMyShiftsDates(shifter));
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             /**
@@ -80,6 +80,6 @@ public class CalendarActivity extends ToolbarActivity {
     protected void onResume() {
         super.onResume();
         calendarView.removeAllEvents();
-        calendarManager.shiftPopulate(calendarView, model.shiftManager.getmyShiftsDates(shifter));
+        calendarManager.shiftPopulate(calendarView, model.shiftManager.getMyShiftsDates(shifter));
     }
 }
