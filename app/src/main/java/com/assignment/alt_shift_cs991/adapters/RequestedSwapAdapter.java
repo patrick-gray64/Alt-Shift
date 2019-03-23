@@ -26,7 +26,6 @@ public class RequestedSwapAdapter extends AvailableSwapAdapter {
         holder.otherShifter.setText(getShiftArray().get(position).getWantedShift().getShifter().getFirstName() + "' s Shift");
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                callback.getModel().removeSwap(getShiftArray().get(position));
                 getShiftArray().remove(position);
                 notifyDataSetChanged();
             }
