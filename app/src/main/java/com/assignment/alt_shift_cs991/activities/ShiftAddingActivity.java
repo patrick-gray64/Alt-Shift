@@ -24,7 +24,7 @@ public class ShiftAddingActivity extends ToolbarActivity {
 
         model = (Application) getApplication();
         List<Shifter> shifters = model.shiftManager.getShifters();
-        ShifterAdapter shifterAdapter = new ShifterAdapter(this, shifters);
+        ShifterAdapter shifterAdapter = new ShifterAdapter(shifters);
         shifterAdapter.dateOfNewShift = model.getDateClicked();
         RecyclerView recyclerView = findViewById(R.id.recycler_view2);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
