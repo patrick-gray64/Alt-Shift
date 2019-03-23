@@ -17,13 +17,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Home activity displaying a Calendar with shifts
+ */
 public class CalendarActivity extends ToolbarActivity {
-    /**
-     * Home activity displaying a Calendar with shifts
-     */
+
     public CompactCalendarView calendarView;
-    private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
     public RecyclerView recyclerView;
     private CurrentShifterAdapter shiftAdapter;
@@ -45,7 +45,7 @@ public class CalendarActivity extends ToolbarActivity {
         final ActionBar actionBar = getSupportActionBar();
         calendarView = findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
-        actionBar.setTitle(dateformat.format(new Date()));
+        actionBar.setTitle(dateFormat.format(new Date()));
         shifter = model.getLoggedInShifter();
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getmyShiftsDates(shifter));
 
@@ -68,7 +68,7 @@ public class CalendarActivity extends ToolbarActivity {
              */
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                actionBar.setTitle(dateformat.format(firstDayOfNewMonth));
+                actionBar.setTitle(dateFormat.format(firstDayOfNewMonth));
             }
         });
     }

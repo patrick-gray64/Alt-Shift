@@ -21,16 +21,17 @@ import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import androidx.databinding.DataBindingUtil;
 
+/**
+ * Activity for requesting a shiftSwap.
+ */
 public class ShiftSwapActivity extends ToolbarActivity {
-    /**
-     * Activity for requesting a shiftSwap
-     */
+
     private Shift shift, userSwapShift, nonUserSwapShift;
     private ImageButton swapButton;
     protected Application model;
 
     /**
-     * Initialises activity with two shifts and shifters to be swapped
+     * Initialises activity with two shifts and shifters to be swapped.
      *
      * @param savedInstanceState
      */
@@ -56,7 +57,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
     }
 
     /**
-     * Swaps the positions of the two shifters when swap button is clicked
+     * Swaps the positions of the two shifters when swap button is clicked.
      *
      * @param v
      */
@@ -78,7 +79,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
 
         v.animate().rotation(v.getRotation() - 180).setDuration(500).setListener(new Animator.AnimatorListener() {
             /**
-             * Deactivates the swap button
+             * Deactivates the swap button.
              * @param animation
              */
             @Override
@@ -88,7 +89,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
             }
 
             /**
-             * Makes confirm button visible
+             * Makes confirm button visible.
              * @param animation
              */
             @Override
@@ -101,7 +102,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     /**
                      * Swaps the two shifts, produces a toast message confirming and returns
-                     * user to the calendar activity
+                     * user to the calendar activity.
                      * @param v
                      */
                     @Override

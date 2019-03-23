@@ -6,6 +6,9 @@ import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import java.util.List;
 
+/**
+ * Adapter for requested swaps
+ */
 public class RequestedSwapAdapter extends AvailableSwapAdapter {
 
     /**

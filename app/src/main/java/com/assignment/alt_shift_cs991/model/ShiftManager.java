@@ -9,16 +9,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Holds lists of Shifters, Shifts and ShiftSwaps.
+ */
 public class ShiftManager implements Serializable {
-    /**
-     * Holds lists of Shifters, Shifts and ShiftSwaps
-     */
+
     private List<Shifter> shifters;
     private List<Shift> shifts;
     private List<ShiftSwap> shiftSwaps;
 
     /**
-     * Constructor for ShiftManager
+     * Constructor for ShiftManager.
      */
     public ShiftManager() {
         shifters = new ArrayList<>();
@@ -27,7 +28,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Getter for list of Shifters
+     * Getter for list of Shifters.
      *
      * @return list of Shifters
      */
@@ -36,7 +37,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns the list of all Shifts
+     * Returns the list of all Shifts.
      *
      * @return
      */
@@ -45,7 +46,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Getter for list of ShiftSwaps
+     * Getter for list of ShiftSwaps.
      *
      * @return list of ShiftSwaps
      */
@@ -54,7 +55,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Setter for list of Shifters
+     * Setter for list of Shifters.
      *
      * @param shifters list of Shifters
      */
@@ -63,7 +64,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Setter for list of shifts
+     * Setter for list of shifts.
      *
      * @param shifts
      */
@@ -72,7 +73,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Setter for list of shiftSwaps
+     * Setter for list of shiftSwaps.
      *
      * @param shiftSwaps
      */
@@ -115,7 +116,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns the number of Shifters stored in the backend
+     * Returns the number of Shifters stored in the backend.
      *
      * @return numer of shifters
      */
@@ -124,7 +125,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Adds a Shifter to the list of Shifters
+     * Adds a Shifter to the list of Shifters.
      *
      * @param u userName
      * @param p password
@@ -141,7 +142,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Adds a Shifter to the list of Shifters
+     * Adds a Shifter to the list of Shifters.
      *
      * @param s
      */
@@ -150,7 +151,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Adds a Shift to the list of Shifts
+     * Adds a Shift to the list of Shifts.
      *
      * @param s shift
      */
@@ -159,7 +160,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Adds a Shift to the list of Shifts
+     * Adds a Shift to the list of Shifts.
      *
      * @param d date
      * @param s shifter
@@ -188,7 +189,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns a list of Shifts of a particular Shifter on a date
+     * Returns a list of Shifts of a particular Shifter on a date.
      *
      * @param shifter
      * @param date
@@ -206,7 +207,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns a list of dates that Shifter has Shifts on
+     * Returns a list of dates that Shifter has Shifts on.
      *
      * @param shifter
      * @return list of shifts
@@ -223,7 +224,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns a list of dates for all shifts
+     * Returns a list of dates for all shifts.
      *
      * @return list of dates
      */
@@ -236,7 +237,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns a list of all shifts for a specified date
+     * Returns a list of all shifts for a specified date.
      *
      * @param date
      * @return list of shifts on date
@@ -253,7 +254,7 @@ public class ShiftManager implements Serializable {
 
 
     /**
-     * Adds a ShiftSwap to the list of ShiftSwaps
+     * Adds a ShiftSwap to the list of ShiftSwaps.
      *
      * @param s ShiftSwap
      */
@@ -268,7 +269,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Adds a ShiftSwap to the list of ShiftSwaps
+     * Adds a ShiftSwap to the list of ShiftSwaps.
      *
      * @param s1 unwanted shift
      * @param s2 wanted shift
@@ -285,7 +286,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Adds a ShiftSwap to the list of ShiftSwaps
+     * Adds a ShiftSwap to the list of ShiftSwaps.
      *
      * @param d1 Unwanted shift date
      * @param s1 Requesting Shifter
@@ -356,7 +357,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns the number of shift swaps available to the given shifter
+     * Returns the number of shift swaps available to the given shifter.
      *
      * @param shifter
      * @return
@@ -370,7 +371,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Removes a shiftSwap from the list of shiftSwaps
+     * Removes a shiftSwap from the list of shiftSwaps.
      *
      * @param swap
      */
@@ -380,7 +381,7 @@ public class ShiftManager implements Serializable {
 
 
     /**
-     * Swaps the shifters in the two shifts in the given shift swap
+     * Swaps the shifters in the two shifts in the given shift swap.
      *
      * @param s A shift swap.
      */
@@ -394,7 +395,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns a shift with a particular Shifter on a date
+     * Returns a shift with a particular Shifter on a date.
      *
      * @param shifter
      * @param date
@@ -412,7 +413,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns a list of Shifts with a particular Shifter on a date
+     * Returns a list of Shifts with a particular Shifter on a date.
      *
      * @param shifter
      * @param date
@@ -431,7 +432,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Shortens a date format
+     * Shortens a date format.
      *
      * @param date
      * @return shortened date
@@ -450,7 +451,7 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Changes a date to a specified format
+     * Changes a date to a specified format.
      *
      * @param date
      * @param format

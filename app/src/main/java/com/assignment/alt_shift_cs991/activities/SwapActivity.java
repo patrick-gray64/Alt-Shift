@@ -11,15 +11,16 @@ import com.assignment.alt_shift_cs991.model.Shift;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Activity for a shifter to choose another shifter's shift they want to swap.
+ */
 public class SwapActivity extends ToolbarActivity {
-    /**
-     * Activity for a shifter to choose another shifter's shift they want to swap
-     */
+
     public RecyclerView recyclerView;
     protected Application model;
 
     /**
-     * Initialises activity with a list of available shifts for swapping
+     * Initialises activity with a list of available shifts for swapping.
      *
      * @param savedInstanceState
      */

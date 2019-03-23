@@ -13,7 +13,9 @@ import com.assignment.alt_shift_cs991.model.Application;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Activity that handles the pending swaps.
+ */
 public class PendingSwapsEmp extends ToolbarActivity {
 
     private RecyclerView recyclerView;

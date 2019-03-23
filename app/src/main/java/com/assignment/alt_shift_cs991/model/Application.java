@@ -8,10 +8,11 @@ import java.util.List;
 
 import androidx.room.Room;
 
+/**
+ * Backend data storage and link to database
+ */
 public class Application extends android.app.Application {
-    /**
-     * Backend data storage and link to database
-     */
+
     public ShiftManager shiftManager;
     public CalendarManager calendarManager;
     public static final String LI_NAME = "shifterDetails";

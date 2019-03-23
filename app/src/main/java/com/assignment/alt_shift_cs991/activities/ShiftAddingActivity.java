@@ -12,6 +12,9 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Activity that enables the manager to assign employees to shifts.
+ */
 public class ShiftAddingActivity extends ToolbarActivity {
 
     protected Application model;

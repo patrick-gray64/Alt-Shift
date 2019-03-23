@@ -14,6 +14,9 @@ import com.assignment.alt_shift_cs991.model.Shifter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+/**
+ * Activity that creates a toolbar.
+ */
 public class ToolbarActivity extends AppCompatActivity {
 
     private TextView textSwapItemCount;

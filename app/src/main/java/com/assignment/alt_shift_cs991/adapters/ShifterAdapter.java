@@ -16,7 +16,9 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Adapter for shifter information.
+ */
 public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHolder> {
 
     private List<Shifter> shifters;

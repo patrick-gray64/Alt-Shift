@@ -14,7 +14,9 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Adapter for the shifter that is currently logged into the app.
+ */
 public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
@@ -40,7 +42,7 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
     }
 
     /**
-     * Updates items
+     * Updates items.
      * @param shifts - shifts to be updated in the list
      */
     public void setItems(List<Shift> shifts){

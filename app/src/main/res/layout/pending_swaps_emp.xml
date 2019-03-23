@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <include layout="@layout/toolbar" />
-
-
 
 
     <TextView
@@ -15,40 +15,40 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="@string/available_swap"
-        android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"
-        android:theme="@style/SwitchStyle"
+        android:layout_marginTop="80dp"
         android:scaleX="2"
-        android:scaleY="2"/>
+        android:scaleY="2"
+        android:theme="@style/SwitchStyle" />
 
     <TextView
         android:id="@+id/requestedSwap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/switch1"
         android:layout_alignParentRight="true"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@+id/switch1"
         android:text="@string/offered_swap"
         android:textAlignment="textEnd"
-        android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/switch1"
-        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:text="@string/pending_available"
         android:textSize="14sp" />
@@ -60,7 +60,6 @@
         android:layout_below="@+id/description"
         android:layout_centerInParent="true"
         android:scrollbars="vertical" />
-
 
 
 </RelativeLayout>

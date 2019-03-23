@@ -3,13 +3,13 @@ package com.assignment.alt_shift_cs991.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
+/**
+ * A Shift is a date and a person (shifter) working on that date.
+ *
+ * @author pcolr
+ */
 public class Shift implements Parcelable {
-    /**
-     * A Shift is a date and a person (shifter) working on that date.
-     *
-     * @author pcolr
-     */
+
     private String date;
     private Shifter shifter;
     private String name;

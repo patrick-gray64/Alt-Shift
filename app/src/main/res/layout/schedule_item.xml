@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    app:cardElevation="5dp"
     android:layout_margin="10dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5dp">
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
@@ -94,10 +94,10 @@
             android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="@color/jamesblue"
             android:backgroundTint="@android:color/white"
-            app:layout_gravity="bottom|right"
+            android:tint="@color/jamesblue"
             app:layout_column="4"
+            app:layout_gravity="bottom|right"
             app:layout_row="1"
             app:srcCompat="@drawable/ic_delete_black_24dp" />
     </androidx.gridlayout.widget.GridLayout>

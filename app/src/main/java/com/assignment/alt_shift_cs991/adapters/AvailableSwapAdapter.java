@@ -16,16 +16,16 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Adapter for available swaps.
+ */
 public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdapter.MyViewHolder> {
-    /**
-     * Adapter for Available Swaps
-     */
+
     private List<ShiftSwap> shiftArray;
     protected PendingSwapsEmp.Callback callback;
 
     /**
-     * Constructor for AvailableSwapAdapter
+     * Constructor for AvailableSwapAdapter.
      *
      * @param shiftArray list of shift swaps
      */

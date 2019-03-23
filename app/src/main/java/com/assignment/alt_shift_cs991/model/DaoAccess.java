@@ -8,8 +8,12 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+/**
+ * Required data access object interface which enables us top query the SQLite database.
+ */
 @Dao
 public interface DaoAccess {
+
     /**
      * Adds a shifter
      *

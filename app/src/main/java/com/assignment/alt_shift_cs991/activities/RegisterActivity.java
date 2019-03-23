@@ -14,10 +14,11 @@ import com.assignment.alt_shift_cs991.model.Shifter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+/**
+ * Activity for a user to register.
+ */
 public class RegisterActivity extends AppCompatActivity {
-    /**
-     * Activity for a user to register
-     */
+
     private EditText name, surname, userName, password;
     private CardView registerButton;
     private CheckBox isManagerCheck;
@@ -25,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Shifter shifter;
 
     /**
-     * Initialises activity with empty editTexts for user input
+     * Initialises activity with empty editTexts for user input.
      *
      * @param savedInstanceState
      */
@@ -45,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             /**
              * Takes user back to login Activity after entering their details and confirms
-             * shifter has been added to the database
+             * shifter has been added to the database.
              * @param v
              */
             @Override

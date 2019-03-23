@@ -14,17 +14,18 @@ import com.assignment.alt_shift_cs991.model.Shifter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+/**
+ * Login Activity for users.
+ */
 public class LoginActivity extends AppCompatActivity {
-    /**
-     * Login Activity for users
-     */
+
     private EditText userName, password;
     private CardView loginButton;
     private int passwordCount;
     protected Application model;
 
     /**
-     * Initialises activity with empty editTexts for user input
+     * Initialises activity with empty editTexts for user input.
      *
      * @param savedInstanceState
      */
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             /**
              * Takes user to calendar page if login details are correct, informs user of wrong details
-             * if login details are incorrect
+             * if login details are incorrect.
              * @param v
              */
             @Override
@@ -79,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * Takes user to the register activity when button is clicked
+     * Takes user to the register activity when button is clicked.
      *
      * @param v
      */

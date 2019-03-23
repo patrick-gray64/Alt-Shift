@@ -20,6 +20,9 @@ import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import androidx.databinding.DataBindingUtil;
 
+/**
+ * Activity that handles the finalisation of a shift swap.
+ */
 public class FinalShiftSwapActivity extends ToolbarActivity {
 
     private ImageButton swapButton;
