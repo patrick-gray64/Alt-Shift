@@ -70,18 +70,15 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
         Shift shift = shifts.get(position);
         viewHolder.shifter.setText(shift.getShifter().getFirstName());
         viewHolder.date.setText(shift.getDate());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int a = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(v.getContext(), ShiftSwapActivity.class);
-                shifts.get(a).setSwapUserName(shifterUserName);
-                shifts.get(a).setSwapPassword(shifterPassword);
-                shifts.get(a).setSwapDate(shifterDate);
-                shifts.get(a).setName(shift.getShifter().getFirstName());
-                intent.putExtra("SHIFT", shifts.get(a));
-                v.getContext().startActivity(intent);
-            }
+        viewHolder.itemView.setOnClickListener(v -> {
+            int a = viewHolder.getAdapterPosition();
+            Intent intent = new Intent(v.getContext(), ShiftSwapActivity.class);
+            shifts.get(a).setSwapUserName(shifterUserName);
+            shifts.get(a).setSwapPassword(shifterPassword);
+            shifts.get(a).setSwapDate(shifterDate);
+            shifts.get(a).setName(shift.getShifter().getFirstName());
+            intent.putExtra("SHIFT", shifts.get(a));
+            v.getContext().startActivity(intent);
         });
     }
 

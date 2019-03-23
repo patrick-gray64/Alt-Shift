@@ -133,12 +133,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
             public void onAnimationRepeat(Animator animation) {
 
             }
-        }).withStartAction(new Runnable() {
-            @Override
-            public void run() {
-                animationSet.start();
-            }
-        }).start();
+        }).withStartAction(animationSet::start).start();
     }
 
 

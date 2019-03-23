@@ -68,24 +68,19 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
         holder.yourDate.setText(shiftArray.get(position).getWantedShift().getDate());
         holder.offeredDate.setText(shiftArray.get(position).getUnwantedShift().getDate());
         holder.otherShifter.setText(shiftArray.get(position).getUnwantedShift().getShifter().getFirstName() + "' s Shift");
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), FinalShiftSwapActivity.class);
-                callback.getModel().selectedCurrentShiftSwap = shiftArray.get(position);
-                v.getContext().startActivity(intent);
-                if (callback != null) {
-                    callback.finishActivity();
-                }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), FinalShiftSwapActivity.class);
+            callback.getModel().selectedCurrentShiftSwap = shiftArray.get(position);
+            v.getContext().startActivity(intent);
+            if (callback != null) {
+                callback.finishActivity();
             }
         });
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                callback.getModel().removeSwap(shiftArray.get(position));
-                shiftArray.remove(position);
-                notifyDataSetChanged();
+        holder.delete.setOnClickListener(v -> {
+            callback.getModel().removeSwap(shiftArray.get(position));
+            shiftArray.remove(position);
+            notifyDataSetChanged();
 
-            }
         });
     }
 

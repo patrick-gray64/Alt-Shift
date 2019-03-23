@@ -8,12 +8,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.adapters.ManagerAdapter;
 import com.assignment.alt_shift_cs991.adapters.CalendarManager;
+import com.assignment.alt_shift_cs991.adapters.ManagerAdapter;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,9 +21,6 @@ import java.util.Locale;
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import static android.icu.util.Calendar.DAY_OF_WEEK;
-import static android.icu.util.Calendar.getInstance;
 
 /**
  * Calendar activity for Manager users.
@@ -110,19 +106,16 @@ public class ManagerCalendarActivity extends CalendarActivity {
         });
 
         Button hideshow = findViewById(R.id.hideShowCal);
-        hideshow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isShowing){
-                    calendarView.hideCalendar();
-                    isShowing = false;
-                    hideshow.setText("SHOW CALENDER");
-                }
-                else{
-                    calendarView.showCalendar();
-                    isShowing = true;
-                    hideshow.setText("HIDE CALENDER");
-                }
+        hideshow.setOnClickListener(v -> {
+            if(isShowing){
+                calendarView.hideCalendar();
+                isShowing = false;
+                hideshow.setText(R.string.Show_Calender);
+            }
+            else{
+                calendarView.showCalendar();
+                isShowing = true;
+                hideshow.setText(R.string.Hide_Calender);
             }
         });
     }

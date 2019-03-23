@@ -1,18 +1,16 @@
 package com.assignment.alt_shift_cs991.activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
 import com.assignment.alt_shift_cs991.adapters.CalendarManager;
+import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
 import com.assignment.alt_shift_cs991.model.Shifter;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import androidx.appcompat.app.ActionBar;
@@ -78,19 +76,16 @@ public class CalendarActivity extends ToolbarActivity {
         });
 
         Button hideshow = findViewById(R.id.hideShowCal);
-        hideshow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isShowing){
-                    calendarView.hideCalendar();
-                    isShowing = false;
-                    hideshow.setText("SHOW CALENDER");
-                }
-                else{
-                    calendarView.showCalendar();
-                    isShowing = true;
-                    hideshow.setText("HIDE CALENDER");
-                }
+        hideshow.setOnClickListener(v -> {
+            if(isShowing){
+                calendarView.hideCalendar();
+                isShowing = false;
+                hideshow.setText(R.string.Show_Calender);
+            }
+            else{
+                calendarView.showCalendar();
+                isShowing = true;
+                hideshow.setText(R.string.Hide_Calender);
             }
         });
     }

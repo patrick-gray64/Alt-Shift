@@ -24,7 +24,8 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="No_shifts">No shifts on the selected day</string>
-    <string name="Hide_Calender">Hide Calender</string>
+    <string name="Hide_Calender">Hide Calendar</string>
+    <string name="Show_Calender">Show Calendar</string>
     <string name="Your_shifts">Your shifts</string>
     <string name="Your_Requested_Swaps">Your requested swaps</string>
     <string name="calendar_explain">Tap on a date to see shifts assigned to your team. You can assign shifts by selecting a date and using the + button</string>
