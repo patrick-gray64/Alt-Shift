@@ -3,7 +3,6 @@ package com.assignment.alt_shift_cs991.activities;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -79,13 +78,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
                 actionBar.setTitle(dateFormat.format(firstDayOfNewMonth));
             }
         });
-        fab.setOnClickListener(new View.OnClickListener() {
-            /**
-             * Takes user to activity to create a new shift on clicked date.
-             * @param v
-             */
-            @Override
-            public void onClick(View v) {
+        fab.setOnClickListener(v -> {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", new Locale("en_GB"));
                 Date dateClicked = new Date();
                 Date today = Calendar.getInstance().getTime();
@@ -101,8 +94,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
                 else{
                     Toast.makeText(getApplicationContext(), "You cannot assign a shift to a date that has passed.", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
+            });
 
         Button hideShow = findViewById(R.id.hideShowCal);
         hideShow.setOnClickListener(v -> {
