@@ -12,9 +12,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="82dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="80dp"
         app:srcCompat="@drawable/altshift" />
 
     <EditText
@@ -24,9 +24,10 @@
         android:layout_below="@+id/imageView2"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="98dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
         android:drawableRight="@drawable/ic_action_username"
         android:ems="10"
         android:hint="Name"
@@ -39,13 +40,14 @@
         android:layout_below="@+id/editText9"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="97dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
         android:drawableRight="@drawable/ic_action_username"
         android:ems="10"
         android:hint="Role"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/editText11"
@@ -54,13 +56,14 @@
         android:layout_below="@+id/editText10"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="97dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
         android:drawableRight="@drawable/ic_action_username"
         android:ems="10"
         android:hint="Username"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/editText12"
@@ -69,13 +72,25 @@
         android:layout_below="@+id/editText11"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="99dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
         android:drawableRight="@drawable/ic_action_password"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:padding="10dp" />
+
+    <CheckBox
+        android:id="@+id/isManager"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@+id/editText12"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/managerCheckbox" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardButton"
@@ -84,9 +99,9 @@
         android:layout_below="@+id/editText12"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="78dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="80dp"
         app:cardBackgroundColor="@color/jamesblue"
         app:cardCornerRadius="25dp">
 
@@ -105,15 +120,4 @@
 
     </androidx.cardview.widget.CardView>
 
-    <CheckBox
-        android:id="@+id/isManager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText12"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="-337dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginBottom="505dp"
-        android:text="@string/managerCheckbox" />
 </RelativeLayout>
