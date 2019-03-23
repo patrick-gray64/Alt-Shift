@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.ShiftSwapActivity"
+            android:noHistory="true"
             android:launchMode="singleInstance"/>
         <activity android:name=".activities.PendingSwapsEmp"
             android:launchMode="singleInstance" />
