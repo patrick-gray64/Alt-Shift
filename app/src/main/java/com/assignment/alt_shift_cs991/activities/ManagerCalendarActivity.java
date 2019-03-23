@@ -105,17 +105,17 @@ public class ManagerCalendarActivity extends CalendarActivity {
             }
         });
 
-        Button hideshow = findViewById(R.id.hideShowCal);
-        hideshow.setOnClickListener(v -> {
+        Button hideShow = findViewById(R.id.hideShowCal);
+        hideShow.setOnClickListener(v -> {
             if(isShowing){
                 calendarView.hideCalendar();
                 isShowing = false;
-                hideshow.setText(R.string.Show_Calender);
+                hideShow.setText(R.string.Show_Calender);
             }
             else{
                 calendarView.showCalendar();
                 isShowing = true;
-                hideshow.setText(R.string.Hide_Calender);
+                hideShow.setText(R.string.Hide_Calender);
             }
         });
     }
