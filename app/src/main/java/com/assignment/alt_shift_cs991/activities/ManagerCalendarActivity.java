@@ -28,12 +28,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ManagerCalendarActivity extends CalendarActivity {
 
     public CompactCalendarView calendarView;
-    private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
     public RecyclerView recyclerView;
     private ManagerAdapter shifterAdapter;
     protected Application model;
-    private FloatingActionButton fab;
     private Boolean isShowing;
 
     /**
@@ -48,11 +47,11 @@ public class ManagerCalendarActivity extends CalendarActivity {
         initToolbar();
 
         model = (Application) getApplication();
-        fab = findViewById(R.id.floatingActionButton);
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         final ActionBar actionBar = getSupportActionBar();
         calendarView = findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
-        actionBar.setTitle(dateformat.format(new Date()));
+        actionBar.setTitle(dateFormat.format(new Date()));
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getAllShiftsDates());
         shifterAdapter = new ManagerAdapter(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
         recyclerView = findViewById(R.id.shifter_shifts);
@@ -77,7 +76,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
              */
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                actionBar.setTitle(dateformat.format(firstDayOfNewMonth));
+                actionBar.setTitle(dateFormat.format(firstDayOfNewMonth));
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
