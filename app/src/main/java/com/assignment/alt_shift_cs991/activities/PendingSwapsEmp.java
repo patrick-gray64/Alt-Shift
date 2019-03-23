@@ -31,7 +31,7 @@ public class PendingSwapsEmp extends ToolbarActivity {
         model = (Application) getApplication();
         description = findViewById(R.id.description);
         recyclerView = findViewById(R.id.rcview);
-        availableSwapRequestAdapter = new AvailableSwapAdapter(model.shiftManager.getRequestedSwaps(model.getLoggedInShifter()));
+        availableSwapRequestAdapter = new AvailableSwapAdapter(model.shiftManager.getAvailableSwaps(model.getLoggedInShifter()));
         offeredSwapAdapter = new RequestedSwapAdapter(model.shiftManager.getRequestedSwaps(model.getLoggedInShifter()));
         recyclerView.setAdapter(availableSwapRequestAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -56,10 +56,10 @@ public class PendingSwapsEmp extends ToolbarActivity {
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean on) {
                 if (on) {
-                    recyclerView.setAdapter(offeredSwapAdapter);
+                    recyclerView.setAdapter(availableSwapRequestAdapter);
                     description.setText(R.string.pending_requests);
                 } else {
-                    recyclerView.setAdapter(availableSwapRequestAdapter);
+                    recyclerView.setAdapter(offeredSwapAdapter);
                     description.setText(R.string.pending_available);
                 }
             }

@@ -232,7 +232,7 @@ public class ShiftManager implements Serializable {
     /**
      * Returns the number of shift swaps available to the given shifter
      * @param shifter
-     * @return
+     * @return the number of available swaps
      */
     public int getCountAvailableSwaps(Shifter shifter) {
         int count = 0;
@@ -240,6 +240,21 @@ public class ShiftManager implements Serializable {
             if (shifter == shiftSwap.getWantedShift().getShifter()) count++;
         }
         return count;
+    }
+
+    /**
+     * Returns the shift swaps available to the given shifter
+     * @param shifter
+     * @return the list of available swaps
+     */
+    public List<ShiftSwap> getAvailableSwaps(Shifter shifter) {
+        List<ShiftSwap> availableSwaps = new ArrayList<>();
+        for (ShiftSwap shiftSwap : shiftSwaps) {
+            if (shifter == shiftSwap.getWantedShift().getShifter()){
+                availableSwaps.add(shiftSwap);
+            }
+        }
+        return availableSwaps;
     }
 
     /**
