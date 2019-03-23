@@ -31,11 +31,20 @@ public class ToolbarActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to initialise the toolbar within various activities.
+     */
     public void initToolbar() {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
 
+    /**
+     * Initialises the toolbar buttons and enables the user to click the actionView button.
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -56,6 +65,12 @@ public class ToolbarActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Determines where to send the user depending on the button clicked.
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -77,6 +92,11 @@ public class ToolbarActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Sets up the icon which shows the user how many pending swap they currently have.
+     *
+     * @param mItemCount
+     */
     private void setupBadge(int mItemCount) {
         if (textSwapItemCount != null) {
             if (mItemCount == 0) {
@@ -92,6 +112,9 @@ public class ToolbarActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Refreshes the badge information.
+     */
     @Override
     protected void onResume() {
         super.onResume();
