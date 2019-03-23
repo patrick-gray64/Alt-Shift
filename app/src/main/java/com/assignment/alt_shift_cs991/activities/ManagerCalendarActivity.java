@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
@@ -37,6 +38,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
     private ManagerAdapter shifterAdapter;
     protected Application model;
     private FloatingActionButton fab;
+    private Boolean isShowing;
 
     /**
      * Initialises activity with all shifts.
@@ -60,6 +62,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
         recyclerView = findViewById(R.id.shifter_shifts);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(shifterAdapter);
+        isShowing = true;
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             /**
@@ -102,6 +105,23 @@ public class ManagerCalendarActivity extends CalendarActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "You cannot assign a shift to a date that has passed.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        Button hideshow = findViewById(R.id.hideShowCal);
+        hideshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isShowing){
+                    calendarView.hideCalendar();
+                    isShowing = false;
+                    hideshow.setText("SHOW CALENDER");
+                }
+                else{
+                    calendarView.showCalendar();
+                    isShowing = true;
+                    hideshow.setText("HIDE CALENDER");
                 }
             }
         });
