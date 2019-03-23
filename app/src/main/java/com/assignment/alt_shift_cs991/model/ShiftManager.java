@@ -230,22 +230,9 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns a list of shift swaps shift swaps available to the the given shifter.
-     * @param shifter A Shifter.
-     * @return The list of shift swaps available to the shifter.
-     */
-    public List<ShiftSwap> getAvailableSwaps(Shifter shifter) {
-        List<ShiftSwap> requestedSwaps = new ArrayList<ShiftSwap>();
-        for (ShiftSwap shiftSwap : shiftSwaps) {
-            if (shifter == shiftSwap.getWantedShift().getShifter()) requestedSwaps.add(shiftSwap);
-        }
-        return requestedSwaps;
-    }
-
-    /**
      * Returns the number of shift swaps available to the given shifter
      * @param shifter
-     * @return
+     * @return the number of available swaps
      */
     public int getCountAvailableSwaps(Shifter shifter) {
         int count = 0;
@@ -253,6 +240,21 @@ public class ShiftManager implements Serializable {
             if (shifter == shiftSwap.getWantedShift().getShifter()) count++;
         }
         return count;
+    }
+
+    /**
+     * Returns the shift swaps available to the given shifter
+     * @param shifter
+     * @return the list of available swaps
+     */
+    public List<ShiftSwap> getAvailableSwaps(Shifter shifter) {
+        List<ShiftSwap> availableSwaps = new ArrayList<>();
+        for (ShiftSwap shiftSwap : shiftSwaps) {
+            if (shifter == shiftSwap.getWantedShift().getShifter()){
+                availableSwaps.add(shiftSwap);
+            }
+        }
+        return availableSwaps;
     }
 
     /**
@@ -280,12 +282,12 @@ public class ShiftManager implements Serializable {
      * @param s surname
      * @return
      */
-    public int addShifter(String u, String p, String f, String s) {
+    public boolean addShifter(String u, String p, String f, String s) {
         if (getShifter(u, p) == null) {
             shifters.add(new Shifter(u, p, f, s));
-            return 0;
+            return true;
         }
-        return -1;
+        return false;
     }
 
     /**
@@ -318,40 +320,6 @@ public class ShiftManager implements Serializable {
      * @param s ShiftSwap
      */
     public boolean addShiftSwap(ShiftSwap s) {
-        for (ShiftSwap swap : shiftSwaps) {
-            if (s.equals(swap)) {
-                return false;
-            }
-        }
-        shiftSwaps.add(s);
-        return true;
-    }
-
-    /**
-     * Adds a ShiftSwap to the list of ShiftSwaps
-     * @param s1 unwanted shift
-     * @param s2 wanted shift
-     */
-    public boolean addShiftSwap(Shift s1, Shift s2) {
-        ShiftSwap s = new ShiftSwap(s1, s2);
-        for (ShiftSwap swap : shiftSwaps) {
-            if (s.equals(swap)) {
-                return false;
-            }
-        }
-        shiftSwaps.add(s);
-        return true;
-    }
-
-    /**
-     * Adds a ShiftSwap to the list of ShiftSwaps
-     * @param d1 Unwanted shift date
-     * @param s1 Requesting Shifter
-     * @param d2 Wanted shift date
-     * @param s2 Receiving Shifter
-     */
-    public boolean addShiftSwap(String d1, Shifter s1, String d2, Shifter s2) {
-        ShiftSwap s = new ShiftSwap(new Shift(d1, s1), new Shift(d2, s2));
         for (ShiftSwap swap : shiftSwaps) {
             if (s.equals(swap)) {
                 return false;

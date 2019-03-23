@@ -28,6 +28,18 @@
             android:text="@string/calendar_info"
             android:textAlignment="center"
             android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your shifts"
+            android:layout_gravity="center"
+            android:textColor="@color/jamesblue"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your requested swaps"
+            android:layout_gravity="center"
+            android:textColor="@color/rachelsdarkprink"/>
 
         <Button
             android:id="@+id/hideShowCal"
@@ -45,17 +57,15 @@
             android:layout_height="250dp"
             android:layout_marginTop="10dp"
             android:elevation="25dp"
-            android:outlineAmbientShadowColor="@color/jamesblue"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            app:compactCalendarBackgroundColor="@color/jamesaccentblue"
-            app:compactCalendarCurrentDayBackgroundColor="@color/paulsneutral"
-            app:compactCalendarCurrentDayTextColor="@color/rachelsblack"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/paddysblue"
+            app:compactCalendarBackgroundColor="@android:color/white"
+            app:compactCalendarCurrentDayBackgroundColor="@android:color/white"
+            app:compactCalendarCurrentDayTextColor="@color/rachelsdarkprink"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/andreasyellow"
             app:compactCalendarEventIndicatorStyle="no_fill_large_indicator"
-            app:compactCalendarMultiEventIndicatorColor="@color/paddysblue"
             app:compactCalendarTargetHeight="250dp"
-            app:compactCalendarTextColor="#ffff"
+            app:compactCalendarTextColor="@android:color/black"
             app:compactCalendarTextSize="14sp" />
         <!-- <TextView
              android:id="@+id/your_shifts"

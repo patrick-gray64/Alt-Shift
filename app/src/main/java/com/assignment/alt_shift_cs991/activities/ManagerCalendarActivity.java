@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.ManagerAdapter;
-import com.assignment.alt_shift_cs991.model.CalendarManager;
+import com.assignment.alt_shift_cs991.adapters.CalendarManager;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

@@ -6,12 +6,13 @@ import android.widget.Button;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
-import com.assignment.alt_shift_cs991.model.CalendarManager;
+import com.assignment.alt_shift_cs991.adapters.CalendarManager;
 import com.assignment.alt_shift_cs991.model.Shifter;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import androidx.appcompat.app.ActionBar;
@@ -50,6 +51,7 @@ public class CalendarActivity extends ToolbarActivity {
         actionBar.setTitle(dateFormat.format(new Date()));
         shifter = model.getLoggedInShifter();
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getMyShiftsDates(shifter));
+        calendarManager.swapPopulate(calendarView, model.shiftManager.getRequestedSwaps(shifter));
 
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -102,5 +104,7 @@ public class CalendarActivity extends ToolbarActivity {
         super.onResume();
         calendarView.removeAllEvents();
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getMyShiftsDates(shifter));
+        calendarManager.swapPopulate(calendarView, model.shiftManager.getRequestedSwaps(shifter));
+
     }
 }

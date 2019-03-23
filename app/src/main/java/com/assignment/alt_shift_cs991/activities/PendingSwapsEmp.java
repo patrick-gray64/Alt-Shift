@@ -19,7 +19,7 @@ public class PendingSwapsEmp extends ToolbarActivity {
 
     private RecyclerView recyclerView;
     private AvailableSwapAdapter availableSwapRequestAdapter;
-    private RecyclerView.Adapter offeredSwapAdapter;
+    private RequestedSwapAdapter offeredSwapAdapter;
     protected Application model;
     private TextView description;
 
@@ -36,9 +36,22 @@ public class PendingSwapsEmp extends ToolbarActivity {
         recyclerView.setAdapter(availableSwapRequestAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(offeredSwapAdapter);
         initToolbar();
         getSupportActionBar().setTitle("My Shifts Swaps");
         Switch mySwitch = findViewById(R.id.switch1);
+
+        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean on) {
+                if (on) {
+                    recyclerView.setAdapter(availableSwapRequestAdapter);
+                    description.setText(R.string.pending_requests);
+                } else {
+                    recyclerView.setAdapter(offeredSwapAdapter);
+                    description.setText(R.string.pending_available);
+                }
+            }
+        });
 
         Callback callback = new Callback() {
             @Override
@@ -51,19 +64,20 @@ public class PendingSwapsEmp extends ToolbarActivity {
                 return model;
             }
         };
-        availableSwapRequestAdapter.setCallback(callback);
+        availableSwapRequestAdapter.setCallBack(callback);
 
-        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean on) {
-                if (on) {
-                    recyclerView.setAdapter(offeredSwapAdapter);
-                    description.setText(R.string.pending_requests);
-                } else {
-                    recyclerView.setAdapter(availableSwapRequestAdapter);
-                    description.setText(R.string.pending_available);
-                }
+        Callback callback1 = new Callback() {
+            @Override
+            public void finishActivity() {
+                finish();
             }
-        });
+
+            @Override
+            public Application getModel() {
+                return model;
+            }
+        };
+        offeredSwapAdapter.setCallBack(callback1);
     }
 
     /**

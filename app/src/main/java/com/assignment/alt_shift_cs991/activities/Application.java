@@ -2,7 +2,7 @@ package com.assignment.alt_shift_cs991.activities;
 
 import android.content.SharedPreferences;
 
-import com.assignment.alt_shift_cs991.model.CalendarManager;
+import com.assignment.alt_shift_cs991.adapters.CalendarManager;
 import com.assignment.alt_shift_cs991.model.Database;
 import com.assignment.alt_shift_cs991.model.ShiftManager;
 import com.assignment.alt_shift_cs991.model.ShiftSwap;
