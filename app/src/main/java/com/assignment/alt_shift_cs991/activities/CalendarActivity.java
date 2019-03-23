@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Home activity displaying a Calendar with shifts
+ * Home activity displaying a Calendar with shifts.
  */
 public class CalendarActivity extends ToolbarActivity {
 
@@ -31,7 +31,7 @@ public class CalendarActivity extends ToolbarActivity {
     private Shifter shifter;
 
     /**
-     * Initialises Calendar with shifts for the logged in user
+     * Initialises Calendar with shifts for the logged in user.
      *
      * @param savedInstanceState
      */
@@ -51,7 +51,7 @@ public class CalendarActivity extends ToolbarActivity {
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             /**
-             * Shows a shift in a recycler list below the calendar when date is clicked
+             * Shows a shift in a recycler list below the calendar when date is clicked.
              * @param dateClicked
              */
             @Override
@@ -63,7 +63,7 @@ public class CalendarActivity extends ToolbarActivity {
             }
 
             /**
-             * Changes month on the calendar when scrolled
+             * Changes month on the calendar when scrolled.
              * @param firstDayOfNewMonth
              */
             @Override
