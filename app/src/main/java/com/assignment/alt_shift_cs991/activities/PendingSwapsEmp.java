@@ -19,7 +19,7 @@ public class PendingSwapsEmp extends ToolbarActivity {
 
     private RecyclerView recyclerView;
     private AvailableSwapAdapter availableSwapRequestAdapter;
-    private RecyclerView.Adapter offeredSwapAdapter;
+    private RequestedSwapAdapter offeredSwapAdapter;
     protected Application model;
     private TextView description;
 
@@ -36,22 +36,10 @@ public class PendingSwapsEmp extends ToolbarActivity {
         recyclerView.setAdapter(availableSwapRequestAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(offeredSwapAdapter);
         initToolbar();
         getSupportActionBar().setTitle("My Shifts Swaps");
         Switch mySwitch = findViewById(R.id.switch1);
-
-        Callback callback = new Callback() {
-            @Override
-            public void finishActivity() {
-                finish();
-            }
-
-            @Override
-            public Application getModel() {
-                return model;
-            }
-        };
-        availableSwapRequestAdapter.setCallback(callback);
 
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean on) {
@@ -64,6 +52,32 @@ public class PendingSwapsEmp extends ToolbarActivity {
                 }
             }
         });
+
+        Callback callback = new Callback() {
+            @Override
+            public void finishActivity() {
+                finish();
+            }
+
+            @Override
+            public Application getModel() {
+                return model;
+            }
+        };
+        availableSwapRequestAdapter.setCallBack(callback);
+
+        Callback callback1 = new Callback() {
+            @Override
+            public void finishActivity() {
+                finish();
+            }
+
+            @Override
+            public Application getModel() {
+                return model;
+            }
+        };
+        offeredSwapAdapter.setCallBack(callback1);
     }
 
     /**
