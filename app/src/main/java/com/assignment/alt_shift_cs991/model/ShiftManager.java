@@ -384,24 +384,6 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns a list of Shifts with a particular Shifter on a date
-     * @param shifter
-     * @param date
-     * @return
-     */
-    public ArrayList<Shift> getShifts(Shifter shifter, String date) {
-        String given = dateFormatterCon(date, "MMM dd");
-        ArrayList<Shift> myShifts = new ArrayList<>();
-        for (Shift shift : shifter.getMyShifts()) {
-            String stored = dateFormatterCon(shift.getDate().toString(), "MMM dd");
-            if (stored.compareTo(given) == 0) {
-                myShifts.add(shift);
-            }
-        }
-        return myShifts;
-    }
-
-    /**
      * Shortens a date format
      * @param date
      * @return shortened date
