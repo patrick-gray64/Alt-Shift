@@ -91,7 +91,7 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setBackgroundResource(R.drawable.button_layout);
                 confirmButton.setText("Confirm Swap");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
-                confirmButton.setOnClickListener(v1 -> {
+                confirmButton.setOnClickListener(v -> {
                     model.shiftManager.swapShifts(shiftSwap);
                     model.shiftManager.getShiftSwaps().remove(shiftSwap);
 
@@ -101,11 +101,11 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                 });
 
                 RelativeLayout layout = findViewById(R.id.rlayout);
-                RelativeLayout.LayoutParams laypram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                laypram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);
-                laypram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
-                laypram.setMargins(10, 10, 30, 10);
-                layout.addView(confirmButton, laypram);
+                RelativeLayout.LayoutParams layPram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                layPram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);
+                layPram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
+                layPram.setMargins(10, 10, 30, 10);
+                layout.addView(confirmButton, layPram);
 
             }
 
