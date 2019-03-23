@@ -3,7 +3,7 @@
     package="com.assignment.alt_shift_cs991">
 
     <application
-        android:name=".model.Application"
+        android:name=".activities.Application"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"

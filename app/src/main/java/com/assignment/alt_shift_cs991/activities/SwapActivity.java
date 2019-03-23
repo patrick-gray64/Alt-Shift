@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.ShiftAdapter;
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.Shift;
 
 import androidx.recyclerview.widget.LinearLayoutManager;

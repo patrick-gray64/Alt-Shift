@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.Shifter;
 
 import androidx.appcompat.app.AppCompatActivity;

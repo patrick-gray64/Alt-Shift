@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.AvailableSwapAdapter;
 import com.assignment.alt_shift_cs991.adapters.RequestedSwapAdapter;
-import com.assignment.alt_shift_cs991.model.Application;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
