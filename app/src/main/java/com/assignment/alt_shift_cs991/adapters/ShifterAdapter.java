@@ -69,10 +69,9 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
         viewHolder.name.setText(shifter.getFirstName());
         viewHolder.surname.setText(shifter.getSurname());
         viewHolder.itemView.setOnClickListener(v -> {
-
             int a = viewHolder.getAdapterPosition();
             Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
-            if(callback != null){
+            if (callback != null) {
                 callback.finishActivity();
             }
             v.getContext().startActivity(intent);
@@ -82,7 +81,7 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
         });
     }
 
-    public void setCallBack(ShiftAddingActivity.Callback callback){
+    public void setCallBack(ShiftAddingActivity.Callback callback) {
         this.callback = callback;
     }
 

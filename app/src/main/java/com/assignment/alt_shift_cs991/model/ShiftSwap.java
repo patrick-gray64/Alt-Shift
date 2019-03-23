@@ -119,6 +119,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Reads information for enabling the class to be Parcelable.
+     *
      * @param in
      */
     protected ShiftSwap(Parcel in) {

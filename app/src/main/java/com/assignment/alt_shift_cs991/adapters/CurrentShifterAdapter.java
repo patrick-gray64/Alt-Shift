@@ -74,14 +74,11 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
         Shift shift = shifts.get(position);
         viewHolder.shifterName.setText(shift.getShifter().getFirstName());
         viewHolder.date.setText(shift.getDate());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int a = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(v.getContext(), SwapActivity.class);
-                intent.putExtra("SHIFT", shifts.get(a));
-                v.getContext().startActivity(intent);
-            }
+        viewHolder.itemView.setOnClickListener(v -> {
+            int a = viewHolder.getAdapterPosition();
+            Intent intent = new Intent(v.getContext(), SwapActivity.class);
+            intent.putExtra("SHIFT", shifts.get(a));
+            v.getContext().startActivity(intent);
         });
     }
 

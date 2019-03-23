@@ -79,31 +79,29 @@ public class ManagerCalendarActivity extends CalendarActivity {
             }
         });
         fab.setOnClickListener(v -> {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", new Locale("en_GB"));
-                Date dateClicked = new Date();
-                Date today = Calendar.getInstance().getTime();
-                try {
-                    dateClicked = dateFormat.parse(model.getDateClicked());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                if(dateClicked.after(today)) {
-                    Intent intent = new Intent(getApplicationContext(), ShiftAddingActivity.class);
-                    startActivity(intent);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "You cannot assign a shift to a date that has passed.", Toast.LENGTH_LONG).show();
-                }
-            });
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", new Locale("en_GB"));
+            Date dateClicked = new Date();
+            Date today = Calendar.getInstance().getTime();
+            try {
+                dateClicked = dateFormat.parse(model.getDateClicked());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if (dateClicked.after(today)) {
+                Intent intent = new Intent(getApplicationContext(), ShiftAddingActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getApplicationContext(), "You cannot assign a shift to a date that has passed.", Toast.LENGTH_LONG).show();
+            }
+        });
 
         Button hideShow = findViewById(R.id.hideShowCal);
         hideShow.setOnClickListener(v -> {
-            if(isShowing){
+            if (isShowing) {
                 calendarView.hideCalendar();
                 isShowing = false;
                 hideShow.setText(R.string.Show_Calender);
-            }
-            else{
+            } else {
                 calendarView.showCalendar();
                 isShowing = true;
                 hideShow.setText(R.string.Hide_Calender);

@@ -91,23 +91,15 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setBackgroundResource(R.drawable.button_layout);
                 confirmButton.setText("Confirm Swap");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
-                confirmButton.setOnClickListener(new View.OnClickListener() {
+                confirmButton.setOnClickListener(v1 -> {
+                    model.shiftManager.swapShifts(shiftSwap);
+                    model.shiftManager.getShiftSwaps().remove(shiftSwap);
 
-                    /**
-                     * Performs the applicable pending shift swap, produces a toast message confirming and returns
-                     * user to the calendar activity.
-                     * @param v
-                     */
-                    @Override
-                    public void onClick(View v) {
-                        model.shiftManager.swapShifts(shiftSwap);
-                        model.shiftManager.getShiftSwaps().remove(shiftSwap);
-
-                        Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(getApplicationContext(), "Shift has been swapped!", Toast.LENGTH_SHORT).show();
-                    }
+                    Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Shift has been swapped!", Toast.LENGTH_SHORT).show();
                 });
+
                 RelativeLayout layout = findViewById(R.id.rlayout);
                 RelativeLayout.LayoutParams laypram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 laypram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);

@@ -2,14 +2,12 @@ package com.assignment.alt_shift_cs991.adapters;
 
 import android.graphics.Color;
 
-import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.model.ShiftSwap;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +24,7 @@ public class CalendarManager {
 
     /**
      * Adds a Shift date to the calendar
+     *
      * @param calendarView
      * @param shiftDate    date of shift
      */
@@ -43,20 +42,20 @@ public class CalendarManager {
      */
     public void addStringToSwap(CompactCalendarView calendarView, String shiftDate) {
         long eShiftDate = epochGen(shiftDate);
-        Event swapEvent = new Event(Color.parseColor("#BE254A"),eShiftDate, shiftDate);
+        Event swapEvent = new Event(Color.parseColor("#BE254A"), eShiftDate, shiftDate);
         calendarView.addEvent(swapEvent);
 
     }
 
 
-
     /**
      * Populates the calendar with multiple shifts
+     *
      * @param calendarView
      * @param shiftDates   list of shift dates
      */
     public void shiftPopulate(CompactCalendarView calendarView, List<String> shiftDates) {
-       addMultiStringtoShift(calendarView, shiftDates);
+        addMultiStringtoShift(calendarView, shiftDates);
     }
 
     public void swapPopulate(CompactCalendarView calendarView, List<ShiftSwap> swapList) {
@@ -65,6 +64,7 @@ public class CalendarManager {
 
     /**
      * Adds multiple shifts to the calendar
+     *
      * @param calendarView
      * @param shiftList
      */
@@ -87,10 +87,9 @@ public class CalendarManager {
     }
 
 
-
-
     /**
      * Converts a string to date format
+     *
      * @param timeDate
      * @return
      */
@@ -106,9 +105,6 @@ public class CalendarManager {
         long epoch = date.getTime();
         return epoch;
     }
-
-
-
 
 
 }

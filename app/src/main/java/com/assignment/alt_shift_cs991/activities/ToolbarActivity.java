@@ -56,11 +56,8 @@ public class ToolbarActivity extends AppCompatActivity {
 
         setupBadge(model.shiftManager.getCountAvailableSwaps(model.getLoggedInShifter()));
 
-        actionView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onOptionsItemSelected(menuItem);
-            }
+        actionView.setOnClickListener(v -> {
+            onOptionsItemSelected(menuItem);
         });
         return true;
     }

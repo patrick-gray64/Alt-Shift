@@ -77,12 +77,11 @@ public class CalendarActivity extends ToolbarActivity {
 
         Button hideShow = findViewById(R.id.hideShowCal);
         hideShow.setOnClickListener(v -> {
-            if(isShowing){
+            if (isShowing) {
                 calendarView.hideCalendar();
                 isShowing = false;
                 hideShow.setText(R.string.Show_Calender);
-            }
-            else{
+            } else {
                 calendarView.showCalendar();
                 isShowing = true;
                 hideShow.setText(R.string.Hide_Calender);

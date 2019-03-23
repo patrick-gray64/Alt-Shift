@@ -99,23 +99,15 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setBackgroundResource(R.drawable.button_layout);
                 confirmButton.setText("Confirm Swap Request");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
-                confirmButton.setOnClickListener(new View.OnClickListener() {
-
-                    /**
-                     * Adds the shiftswap to the pending shiftswap list, produces a toast message confirming and returns
-                     * user to the calendar activity.
-                     * @param v
-                     */
-                    @Override
-                    public void onClick(View v) {
-                        ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
-                        model.shiftManager.addShiftSwap(shiftSwap);
-                        Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                        startActivity(intent);
-                        finish();
-                        Toast.makeText(getApplicationContext(), "Shift swap request sent!", Toast.LENGTH_SHORT).show();
-                    }
+                confirmButton.setOnClickListener(v -> {
+                    ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
+                    model.shiftManager.addShiftSwap(shiftSwap);
+                    Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(getApplicationContext(), "Shift swap request sent!", Toast.LENGTH_SHORT).show();
                 });
+
                 RelativeLayout layout = findViewById(R.id.rlayout);
                 RelativeLayout.LayoutParams laypram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 laypram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);
