@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.activities.Application;
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.activities.ShiftSwapActivity;
 import com.assignment.alt_shift_cs991.model.Shift;

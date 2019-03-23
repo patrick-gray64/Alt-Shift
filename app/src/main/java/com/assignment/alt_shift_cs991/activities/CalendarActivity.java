@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.CalendarManager;
 import com.assignment.alt_shift_cs991.model.Shifter;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;

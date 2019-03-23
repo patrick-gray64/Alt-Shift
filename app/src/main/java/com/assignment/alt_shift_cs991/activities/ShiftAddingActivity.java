@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.ShifterAdapter;
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.Shifter;
 
 import java.util.List;

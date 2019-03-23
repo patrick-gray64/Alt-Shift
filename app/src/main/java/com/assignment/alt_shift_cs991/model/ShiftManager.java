@@ -35,22 +35,6 @@ public class ShiftManager implements Serializable {
     }
 
     /**
-     * Returns the list of all Shifts
-     * @return
-     */
-    public List<Shift> getShifts() {
-        return shifts;
-    }
-
-    /**
-     * Getter for list of ShiftSwaps
-     * @return list of ShiftSwaps
-     */
-    public List<ShiftSwap> getShiftSwaps() {
-        return shiftSwaps;
-    }
-
-    /**
      * Setter for list of Shifters
      * @param shifters list of Shifters
      */
@@ -59,11 +43,27 @@ public class ShiftManager implements Serializable {
     }
 
     /**
+     * Returns the list of all Shifts
+     * @return
+     */
+    public List<Shift> getShifts() {
+        return shifts;
+    }
+
+    /**
      * Setter for list of shifts
      * @param shifts
      */
     public void setShifts(List<Shift> shifts) {
         this.shifts = shifts;
+    }
+
+    /**
+     * Getter for list of ShiftSwaps
+     * @return list of ShiftSwaps
+     */
+    public List<ShiftSwap> getShiftSwaps() {
+        return shiftSwaps;
     }
 
     /**
@@ -81,7 +81,7 @@ public class ShiftManager implements Serializable {
      * @param password Password of shifter.
      * @return Shifter with given user ID and password.
      */
-    public String getShifterLogin(int userID, String password) {
+    public String getShifterLogin(String userID, String password) {
         for (Shifter s : shifters) {
             if (s.getUserID().equals(userID) && s.getPassword().equals(password)) {
                 return s.getFirstName();
@@ -114,46 +114,6 @@ public class ShiftManager implements Serializable {
         return shifters.size();
     }
 
-    /**
-     * Adds a Shifter to the list of Shifters
-     * @param u userName
-     * @param p password
-     * @param f firstName
-     * @param s surname
-     * @return
-     */
-    public int addShifter(String u, String p, String f, String s) {
-        if (getShifter(u, p) == null) {
-            shifters.add(new Shifter(u, p, f, s));
-            return 0;
-        }
-        return -1;
-    }
-
-    /**
-     * Adds a Shifter to the list of Shifters
-     * @param s
-     */
-    public void addShifter(Shifter s) {
-        shifters.add(s);
-    }
-
-    /**
-     * Adds a Shift to the list of Shifts
-     * @param s shift
-     */
-    public void addShift(Shift s) {
-        shifts.add(s);
-    }
-
-    /**
-     * Adds a Shift to the list of Shifts
-     * @param d date
-     * @param s shifter
-     */
-    public void addShift(String d, Shifter s) {
-        shifts.add(new Shift(d, s));
-    }
 
     /**
      * getShifts(Shifter) returns a list of the given shifter's shifts.
@@ -195,7 +155,7 @@ public class ShiftManager implements Serializable {
      * @param shifter
      * @return list of shifts
      */
-    public List<String> getmyShiftsDates(Shifter shifter) {
+    public List<String> getMyShiftsDates(Shifter shifter) {
         List<String> myShiftsDates = new ArrayList<String>();
         for (Shift shift : shifts) {
             //System.out.println("" + );
@@ -231,55 +191,6 @@ public class ShiftManager implements Serializable {
             }
         }
         return allShiftsByDate;
-    }
-
-
-    /**
-     * Adds a ShiftSwap to the list of ShiftSwaps
-     * @param s ShiftSwap
-     */
-    public boolean addShiftSwap(ShiftSwap s) {
-        for (ShiftSwap swap : shiftSwaps) {
-            if (s.equals(swap)) {
-                return false;
-            }
-        }
-        shiftSwaps.add(s);
-        return true;
-    }
-
-    /**
-     * Adds a ShiftSwap to the list of ShiftSwaps
-     * @param s1 unwanted shift
-     * @param s2 wanted shift
-     */
-    public boolean addShiftSwap(Shift s1, Shift s2) {
-        ShiftSwap s = new ShiftSwap(s1, s2);
-        for (ShiftSwap swap : shiftSwaps) {
-            if (s.equals(swap)) {
-                return false;
-            }
-        }
-        shiftSwaps.add(s);
-        return true;
-    }
-
-    /**
-     * Adds a ShiftSwap to the list of ShiftSwaps
-     * @param d1 Unwanted shift date
-     * @param s1 Requesting Shifter
-     * @param d2 Wanted shift date
-     * @param s2 Receiving Shifter
-     */
-    public boolean addShiftSwap(String d1, Shifter s1, String d2, Shifter s2) {
-        ShiftSwap s = new ShiftSwap(new Shift(d1, s1), new Shift(d2, s2));
-        for (ShiftSwap swap : shiftSwaps) {
-            if (s.equals(swap)) {
-                return false;
-            }
-        }
-        shiftSwaps.add(s);
-        return true;
     }
 
     /**
@@ -345,6 +256,112 @@ public class ShiftManager implements Serializable {
     }
 
     /**
+     * Returns a shift with a particular Shifter on a date
+     * @param shifter
+     * @param date
+     * @return
+     */
+    public Shift getShift(Shifter shifter, String date) {
+        String given = dateFormatterCon(date, "MMM dd");
+        for (Shift shift : shifter.getMyShifts()) {
+            String stored = dateFormatterCon(shift.getDate().toString(), "MMM dd");
+            if (stored.compareTo(given) == 0) {
+                return shift;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Adds a Shifter to the list of Shifters
+     * @param u username
+     * @param p password
+     * @param f first name
+     * @param s surname
+     * @return
+     */
+    public int addShifter(String u, String p, String f, String s) {
+        if (getShifter(u, p) == null) {
+            shifters.add(new Shifter(u, p, f, s));
+            return 0;
+        }
+        return -1;
+    }
+
+    /**
+     * Adds a Shifter to the list of Shifters
+     * @param s
+     */
+    public void addShifter(Shifter s) {
+        shifters.add(s);
+    }
+
+    /**
+     * Adds a Shift to the list of Shifts
+     * @param s shift
+     */
+    public void addShift(Shift s) {
+        shifts.add(s);
+    }
+
+    /**
+     * Adds a Shift to the list of Shifts
+     * @param d date
+     * @param s shifter
+     */
+    public void addShift(String d, Shifter s) {
+        shifts.add(new Shift(d, s));
+    }
+
+    /**
+     * Adds a ShiftSwap to the list of ShiftSwaps
+     * @param s ShiftSwap
+     */
+    public boolean addShiftSwap(ShiftSwap s) {
+        for (ShiftSwap swap : shiftSwaps) {
+            if (s.equals(swap)) {
+                return false;
+            }
+        }
+        shiftSwaps.add(s);
+        return true;
+    }
+
+    /**
+     * Adds a ShiftSwap to the list of ShiftSwaps
+     * @param s1 unwanted shift
+     * @param s2 wanted shift
+     */
+    public boolean addShiftSwap(Shift s1, Shift s2) {
+        ShiftSwap s = new ShiftSwap(s1, s2);
+        for (ShiftSwap swap : shiftSwaps) {
+            if (s.equals(swap)) {
+                return false;
+            }
+        }
+        shiftSwaps.add(s);
+        return true;
+    }
+
+    /**
+     * Adds a ShiftSwap to the list of ShiftSwaps
+     * @param d1 Unwanted shift date
+     * @param s1 Requesting Shifter
+     * @param d2 Wanted shift date
+     * @param s2 Receiving Shifter
+     */
+    public boolean addShiftSwap(String d1, Shifter s1, String d2, Shifter s2) {
+        ShiftSwap s = new ShiftSwap(new Shift(d1, s1), new Shift(d2, s2));
+        for (ShiftSwap swap : shiftSwaps) {
+            if (s.equals(swap)) {
+                return false;
+            }
+        }
+        shiftSwaps.add(s);
+        return true;
+    }
+
+    /**
      * Removes a shiftSwap from the list of shiftSwaps
      * @param swap
      */
@@ -364,23 +381,6 @@ public class ShiftManager implements Serializable {
         Shifter respondingShifter = wantedShift.getShifter();
         unwantedShift.setShifter(respondingShifter);
         wantedShift.setShifter(requestingShifter);
-    }
-
-    /**
-     * Returns a shift with a particular Shifter on a date
-     * @param shifter
-     * @param date
-     * @return
-     */
-    public Shift getShift(Shifter shifter, String date) {
-        String given = dateFormatterCon(date, "MMM dd");
-        for (Shift shift : shifter.getMyShifts()) {
-            String stored = dateFormatterCon(shift.getDate().toString(), "MMM dd");
-            if (stored.compareTo(given) == 0) {
-                return shift;
-            }
-        }
-        return null;
     }
 
     /**
