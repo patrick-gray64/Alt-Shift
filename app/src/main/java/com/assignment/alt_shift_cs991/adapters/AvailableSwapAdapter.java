@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdapter.MyViewHolder> {
 
     private List<ShiftSwap> shiftArray;
-    protected PendingSwapsEmp.Callback callback;
+    public PendingSwapsEmp.Callback callback;
 
     /**
      * Constructor for AvailableSwapAdapter.
@@ -50,7 +50,7 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
         }
     }
 
-    public void setCallback(PendingSwapsEmp.Callback callback) {
+    public void setCallBack(PendingSwapsEmp.Callback callback) {
         this.callback = callback;
     }
 

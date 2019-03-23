@@ -45,12 +45,6 @@ public class ShiftManagerTest {
         assertEquals(shiftManager.getShifters().size(), 2);
         assertEquals(shiftManager.getShifts().size(), 2);
         assertEquals(shiftManager.getShiftSwaps().size(), 1);
-
-        //getSwapableShifts
-        //getRequestedSwaps
-        //getAvailableSwaps
-        //getCountAvailableSwaps
-        //getShift
     }
 
     /**
@@ -129,7 +123,7 @@ public class ShiftManagerTest {
      */
     @Test
     public void testGetMyShiftsByDate() {
-        assertEquals(shiftManager.getMyShiftsByDate(shifter1, "date").get(0), shift1);
+        assertEquals(shiftManager.getMyShiftsByDate(shifter1, "date1").get(0), shift1);
     }
 
     /**
@@ -137,7 +131,7 @@ public class ShiftManagerTest {
      */
     @Test
     public void testGetMyShiftsDates() {
-        assertEquals(shiftManager.getMyShiftsDates(shifter1).get(0), "date");
+        assertEquals(shiftManager.getMyShiftsDates(shifter1).get(0), "date1");
     }
 
     /**
@@ -145,7 +139,7 @@ public class ShiftManagerTest {
      */
     @Test
     public void testGetAllShiftsDates() {
-        assertEquals(shiftManager.getAllShiftsDates().get(0), "date");
+        assertEquals(shiftManager.getAllShiftsDates().get(0), "date1");
     }
 
     /**
@@ -153,14 +147,145 @@ public class ShiftManagerTest {
      */
     @Test
     public void testGetAllShiftsByDates() {
-        assertEquals(shiftManager.getAllShiftsByDate("date").get(0), shift1);
+        assertEquals(shiftManager.getAllShiftsByDate("date1").get(0), shift1);
     }
 
-//    /**
-////     * Tests getSwapableShifts
-////     */
-////    @Test
-////    public void testGetSwapableShifts() {
-////
-////    }
+    /**
+     * Tests getSwapableShifts
+     */
+    @Test
+    public void testGetSwapableShifts() {
+        assertEquals(shiftManager.getSwapableShifts(shift1).get(0), shift2);
+    }
+
+    /**
+     * Tests getRequestedSwaps
+     */
+    @Test
+    public void testGetRequestedSwaps() {
+        assertEquals(shiftManager.getRequestedSwaps(shifter1).get(0), shiftSwap);
+    }
+
+    /**
+     * Tests getShift
+     */
+    @Test
+    public void testGetShift() {
+        assertEquals(shiftManager.getShift(shifter1, "date1"), shift1);
+    }
+
+    /**
+     * Tests addShifter(username, password, firstname, surname) when shifter has not already been created
+     */
+    @Test
+    public void testAddShifterSuccess() {
+        assertTrue(shiftManager.addShifter("x","x","x","x"));
+        assertEquals(shiftManager.getShifters().size(), 3);
+    }
+
+    /**
+     * Tests addShifter(username, password, firstname, surname) when shifter has already been created
+     */
+    @Test
+    public void testAddShifterFail() {
+        assertFalse(shiftManager.addShifter("1", "1", "x", "x"));
+        assertEquals(shiftManager.getShifters().size(), 2);
+    }
+
+    /**
+     * Tests addShifter(shifter)
+     */
+    @Test
+    public void testAddShifterShifter() {
+        Shifter s = new Shifter("x","x","x","x");
+        shiftManager.addShifter(s);
+        assertEquals(shiftManager.getShifters().size(), 3);
+    }
+
+    /**
+     * Tests addShift(shift)
+     */
+    @Test
+    public void testAddShiftShift() {
+        shiftManager.addShift(shift1);
+        assertEquals(shiftManager.getShifts().size(), 3);
+    }
+
+    /**
+     * Tests addShift(date, shifter)
+     */
+    @Test
+    public void testAddShiftShifter() {
+        shiftManager.addShift("date3", shifter1);
+        assertEquals(shiftManager.getShifts().size(), 3);
+    }
+
+    /**
+     * Tests addShiftSwap when shiftSwap hasn't been created already
+     */
+    @Test
+    public void testAddShiftSwapSuccess() {
+        ShiftSwap s = new ShiftSwap(shift2, shift1);
+        assertTrue(shiftManager.addShiftSwap(s));
+    }
+
+    /**
+     * Tests addShiftSwap when shiftSwap has been created already
+     */
+    @Test
+    public void testAddShiftSwapFail() {
+        assertFalse(shiftManager.addShiftSwap(shiftSwap));
+    }
+
+    /**
+     * Tests removeSwap
+     */
+    @Test
+    public void testRemoveSwap() {
+        shiftManager.removeSwap(shiftSwap);
+        assertEquals(shiftManager.getShiftSwaps().size(), 0);
+    }
+
+    /**
+     * Tests swapShifts
+     */
+    @Test
+    public void testSwapShifts() {
+        shiftManager.swapShifts(shiftSwap);
+        assertEquals(shiftManager.getShifts().get(0).getShifter(), shifter2);
+        assertEquals(shiftManager.getShifts().get(1).getShifter(), shifter1);
+    }
+
+    /**
+     * Tests dateFormatterStd when successful
+     */
+    @Test
+    public void testDateFormatterStdSuccess() {
+
+    }
+
+    /**
+     * Tests dateFormatterStd when unsuccessful
+     */
+    @Test
+    public void testDateFormatterStdFail() {
+
+    }
+
+    /**
+     * Tests dateFormatterCon when successful
+     */
+    @Test
+    public void testDateFormatterConSuccess() {
+
+    }
+
+    /**
+     * Tests dateFormatterCon when unsuccessful
+     */
+    @Test
+    public void testDateFormatterConFail() {
+
+    }
+
 }
