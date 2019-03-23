@@ -5,19 +5,24 @@ import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.ShiftAdapter;
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.Shift;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Activity for a shifter to choose another shifter's shift they want to swap.
+ */
 public class SwapActivity extends ToolbarActivity {
 
     public RecyclerView recyclerView;
-    private ShiftAdapter shiftAdapter;
-    private Shift shiftInfo;
     protected Application model;
 
+    /**
+     * Initialises activity with a list of available shifts for swapping.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +31,7 @@ public class SwapActivity extends ToolbarActivity {
 
         model = (Application) getApplication();
         Bundle extras = getIntent().getExtras();
-        shiftInfo = (Shift) extras.get("SHIFT");
+        Shift shiftInfo = (Shift) extras.get("SHIFT");
 
         String swapDate = shiftInfo.getDate();
         String swapUserName = shiftInfo.getUserName();
@@ -37,7 +42,7 @@ public class SwapActivity extends ToolbarActivity {
         TextView swapInfo = findViewById(R.id.swapInfo);
         swapInfo.setText(swapText);
 
-        shiftAdapter = new ShiftAdapter(model.shiftManager.getSwapableShifts(shift));
+        ShiftAdapter shiftAdapter = new ShiftAdapter(model.shiftManager.getSwapableShifts(shift));
         shiftAdapter.shifterUserName = swapUserName;
         shiftAdapter.shifterPassword = swapPassword;
         shiftAdapter.shifterDate = swapDate;

@@ -1,10 +1,10 @@
 package com.assignment.alt_shift_cs991.activities;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.adapters.ShifterAdapter;
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.Shifter;
 
 import java.util.List;
@@ -12,11 +12,12 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Activity that enables the manager to assign employees to shifts.
+ */
 public class ShiftAddingActivity extends ToolbarActivity {
 
     protected Application model;
-    private ShifterAdapter shifterAdapter;
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +27,38 @@ public class ShiftAddingActivity extends ToolbarActivity {
 
         model = (Application) getApplication();
         List<Shifter> shifters = model.shiftManager.getShifters();
-        shifterAdapter = new ShifterAdapter(this, shifters);
+        ShifterAdapter shifterAdapter = new ShifterAdapter(shifters);
         shifterAdapter.dateOfNewShift = model.getDateClicked();
-        recyclerView = findViewById(R.id.recycler_view2);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view2);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(shifterAdapter);
+
+        String swapText = String.format(getString(R.string.add_shift_info), model.dateClicked);
+        TextView swapInfo = findViewById(R.id.swapInfo);
+        swapInfo.setText(swapText);
+
+        Callback callback = new Callback() {
+            @Override
+            public void finishActivity() {
+                finish();
+            }
+
+            @Override
+            public Application getModel() {
+                return model;
+            }
+        };
+        shifterAdapter.setCallBack(callback);
     }
 
-    public Application getModel() {
-        return model;
+    /**
+     * Callback interface which enables us to use these methods within the ShifterAdapter, where
+     * it is necessary to use some of the methods from our Application class.
+     */
+    public interface Callback {
+
+        void finishActivity();
+
+        Application getModel();
     }
 }

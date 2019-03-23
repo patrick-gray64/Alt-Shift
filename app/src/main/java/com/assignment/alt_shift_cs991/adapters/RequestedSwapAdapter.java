@@ -1,17 +1,22 @@
 package com.assignment.alt_shift_cs991.adapters;
 
-import android.content.Context;
 import android.view.View;
 
-import com.assignment.alt_shift_cs991.activities.PendingSwapsEmp;
 import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import java.util.List;
 
+/**
+ * Adapter for requested swaps
+ */
 public class RequestedSwapAdapter extends AvailableSwapAdapter {
 
-    public RequestedSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
-        super(context, shiftArray);
+    /**
+     * Constructor for RequestedSwapAdapter
+     * @param shiftArray
+     */
+    public RequestedSwapAdapter(List<ShiftSwap> shiftArray) {
+        super(shiftArray);
     }
 
     @Override
@@ -21,7 +26,6 @@ public class RequestedSwapAdapter extends AvailableSwapAdapter {
         holder.otherShifter.setText(getShiftArray().get(position).getWantedShift().getShifter().getFirstName() + "' s Shift");
         holder.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ((PendingSwapsEmp) getmContext()).getModel().removeSwap(getShiftArray().get(position));
                 getShiftArray().remove(position);
                 notifyDataSetChanged();
             }

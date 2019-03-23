@@ -1,37 +1,31 @@
 package com.assignment.alt_shift_cs991.adapters;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.activities.ManagerCalendarActivity;
-import com.assignment.alt_shift_cs991.activities.ShiftAddingActivity;
-import com.assignment.alt_shift_cs991.model.Shifter;
+import com.assignment.alt_shift_cs991.model.Shift;
 
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Adapter for shifter information.
+ * Adapter for the list contained in the managers calendar view.
  */
-public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHolder> {
+public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHolder> {
 
-    private List<Shifter> shifters;
-    public String dateOfNewShift;
-    protected ShiftAddingActivity.Callback callback;
+    private List<Shift> shifts;
 
     /**
-     * A constructor for the MyStackAdapter class.
+     * A constructor for the ManagerAdapter class.
      */
-    public ShifterAdapter(List<Shifter> shifters) {
+    public ManagerAdapter(List<Shift> shifts) {
         super();
         setHasStableIds(true);
-        this.shifters = shifters;
+        this.shifts = shifts;
     }
 
     /**
@@ -42,7 +36,17 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
      */
     @Override
     public long getItemId(int position) {
-        return shifters.get(position).hashCode();
+        return shifts.get(position).hashCode();
+    }
+
+    /**
+     * Updates items.
+     *
+     * @param shifts - shifts to be updated in the list
+     */
+    public void setItems(List<Shift> shifts) {
+        this.shifts = shifts;
+        notifyDataSetChanged();
     }
 
     /**
@@ -54,7 +58,7 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
      */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        return MyViewHolder.createHolder(viewGroup);
+        return ManagerAdapter.MyViewHolder.createHolder(viewGroup);
     }
 
     /**
@@ -65,28 +69,9 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
      */
     @Override
     public void onBindViewHolder(MyViewHolder viewHolder, int position) {
-        Shifter shifter = shifters.get(position);
-        viewHolder.name.setText(shifter.getFirstName());
-        viewHolder.surname.setText(shifter.getSurname());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int a = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
-                if(callback != null){
-                    callback.finishActivity();
-                }
-                v.getContext().startActivity(intent);
-                Toast.makeText(callback.getModel().getApplicationContext(), "Shift added to calendar!", Toast.LENGTH_SHORT).show();
-                callback.getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
-                notifyDataSetChanged();
-            }
-        });
-    }
-
-    public void setCallBack(ShiftAddingActivity.Callback callback){
-        this.callback = callback;
+        Shift shift = shifts.get(position);
+        viewHolder.shifterName.setText(shift.getShifter().getFirstName());
+        viewHolder.date.setText(shift.getDate());
     }
 
     /**
@@ -96,13 +81,13 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
      */
     @Override
     public int getItemCount() {
-        return shifters.size();
+        return shifts.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name;
-        private TextView surname;
+        private TextView shifterName;
+        private TextView date;
 
         /**
          * A constructor which initiates the views which will be inside the textView.
@@ -111,8 +96,8 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
          */
         public MyViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name_field);
-            surname = itemView.findViewById(R.id.description_field);
+            shifterName = itemView.findViewById(R.id.name_field);
+            date = itemView.findViewById(R.id.description_field);
         }
 
         /**
@@ -121,10 +106,10 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
          * @param viewGroup the current view group
          * @return a view holder which holds list items
          */
-        public static MyViewHolder createHolder(ViewGroup viewGroup) {
+        public static ManagerAdapter.MyViewHolder createHolder(ViewGroup viewGroup) {
             LayoutInflater viewInflater = LayoutInflater.from(viewGroup.getContext());
             View listItemView = viewInflater.inflate(R.layout.adapter_item, viewGroup, false);
-            return new MyViewHolder(listItemView);
+            return new ManagerAdapter.MyViewHolder(listItemView);
         }
     }
 }

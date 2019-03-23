@@ -8,13 +8,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.model.Application;
 import com.assignment.alt_shift_cs991.model.Shifter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+/**
+ * Activity that creates a toolbar.
+ */
 public class ToolbarActivity extends AppCompatActivity {
+
     private TextView textSwapItemCount;
     protected Application model;
 
@@ -28,12 +31,20 @@ public class ToolbarActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to initialise the toolbar within various activities.
+     */
     public void initToolbar() {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
 
-    // create an action bar button
+    /**
+     * Initialises the toolbar buttons and enables the user to click the actionView button.
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -54,7 +65,12 @@ public class ToolbarActivity extends AppCompatActivity {
         return true;
     }
 
-    // handle button activities
+    /**
+     * Determines where to send the user depending on the button clicked.
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -63,14 +79,12 @@ public class ToolbarActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
             return false;
-
         }
         if (id == R.id.action_home && shifter.isManager()) {
             Intent intent = new Intent(this, ManagerCalendarActivity.class);
             startActivity(intent);
             return false;
-        }
-        else if (id == R.id.action_more) {
+        } else if (id == R.id.action_more) {
             Intent intent = new Intent(ToolbarActivity.this, PendingSwapsEmp.class);
             startActivity(intent);
             return false;
@@ -78,6 +92,11 @@ public class ToolbarActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Sets up the icon which shows the user how many pending swap they currently have.
+     *
+     * @param mItemCount
+     */
     private void setupBadge(int mItemCount) {
         if (textSwapItemCount != null) {
             if (mItemCount == 0) {
@@ -93,7 +112,14 @@ public class ToolbarActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Refreshes the badge information.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupBadge(model.shiftManager.getCountAvailableSwaps(model.getLoggedInShifter()));
+    }
 }
 
 

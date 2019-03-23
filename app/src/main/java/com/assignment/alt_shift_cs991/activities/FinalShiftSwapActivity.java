@@ -15,16 +15,15 @@ import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.databinding.FinalSwapLayoutBinding;
-import com.assignment.alt_shift_cs991.model.Application;
-import com.assignment.alt_shift_cs991.model.Shift;
 import com.assignment.alt_shift_cs991.model.ShiftSwap;
 
 import androidx.databinding.DataBindingUtil;
 
+/**
+ * Activity that handles the finalisation of a shift swap.
+ */
 public class FinalShiftSwapActivity extends ToolbarActivity {
 
-    private Shift unwantedShift, wantedShift;
-    private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
     private ShiftSwap shiftSwap;
     protected Application model;
@@ -32,16 +31,13 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getIntent().getExtras() != null) {
-            shiftSwap = getIntent().getExtras().getParcelable("SHIFTSWAP");
-        }
         model = (Application) getApplication();
+        shiftSwap = model.selectedCurrentShiftSwap;
         FinalSwapLayoutBinding shiftSwapLayoutBinding = DataBindingUtil.setContentView(this, R.layout.final_swap_layout);
         shiftSwapLayoutBinding.setShift1(shiftSwap.getWantedShift());
         initToolbar();
         swapButton = findViewById(R.id.shift_button);
-        unwantedShift = shiftSwap.getUnwantedShift();
-        wantedShift = shiftSwap.getWantedShift();
+
 
         TextView userName = findViewById(R.id.user_name_field);
         TextView surname = findViewById(R.id.user_description_field);
@@ -50,14 +46,19 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
         surname.setText(shiftSwap.getUnwantedShift().getSurname());
     }
 
-
+    /**
+     * Animates the swapping of shifts and performs the final swap of shifts between two employees when
+     * the swap has been officially accepted.
+     *
+     * @param v
+     */
     public void switchShifts(final View v) {
         final AnimatorSet animationSet = new AnimatorSet();
         View userCard = findViewById(R.id.user_card);
         View shiftWorkerCard = findViewById(R.id.current_shift_worker_card);
 
-        shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());
-        userCardAnimation = ObjectAnimator.ofFloat(userCard, "y", shiftWorkerCard.getY());
+        ObjectAnimator shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());
+        ObjectAnimator userCardAnimation = ObjectAnimator.ofFloat(userCard, "y", shiftWorkerCard.getY());
 
         if (userCard.getY() < shiftWorkerCard.getY()) {
             shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());
@@ -68,12 +69,21 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
         animationSet.playTogether(shiftWorkerCardAnimation, userCardAnimation);
 
         v.animate().rotation(v.getRotation() - 180).setDuration(500).setListener(new Animator.AnimatorListener() {
+
+            /**
+             * Deactivates the swap button.
+             * @param animation
+             */
             @Override
             public void onAnimationStart(Animator animation) {
                 v.setEnabled(false);
                 swapButton.setClickable(false);
             }
 
+            /**
+             * Makes confirm button visible.
+             * @param animation
+             */
             @Override
             public void onAnimationEnd(Animator animation) {
                 v.setEnabled(true);
@@ -82,9 +92,16 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                 confirmButton.setText("Confirm Swap");
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
                 confirmButton.setOnClickListener(new View.OnClickListener() {
+
+                    /**
+                     * Performs the applicable pending shift swap, produces a toast message confirming and returns
+                     * user to the calendar activity.
+                     * @param v
+                     */
                     @Override
                     public void onClick(View v) {
-                        model.shiftManager.swapShifts(model.shiftManager.getShiftSwaps().get(0));
+                        model.shiftManager.swapShifts(shiftSwap);
+                        model.shiftManager.getShiftSwaps().remove(shiftSwap);
 
                         Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                         startActivity(intent);
@@ -97,8 +114,6 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                 laypram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
                 laypram.setMargins(10, 10, 30, 10);
                 layout.addView(confirmButton, laypram);
-
-                //(new Handler()).postDelayed(this::returnToHome, 500);
 
             }
 

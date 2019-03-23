@@ -7,8 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.adapters.CurrentShifterAdapter;
-import com.assignment.alt_shift_cs991.model.Application;
+import com.assignment.alt_shift_cs991.adapters.ManagerAdapter;
 import com.assignment.alt_shift_cs991.model.CalendarManager;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,16 +25,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import static android.icu.util.Calendar.DAY_OF_WEEK;
 import static android.icu.util.Calendar.getInstance;
 
+/**
+ * Calendar activity for Manager users.
+ */
 public class ManagerCalendarActivity extends CalendarActivity {
 
     public CompactCalendarView calendarView;
     private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
     public RecyclerView recyclerView;
-    private CurrentShifterAdapter shiftAdapter;
+    private ManagerAdapter shifterAdapter;
     protected Application model;
     private FloatingActionButton fab;
 
+    /**
+     * Initialises activity with all shifts.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,26 +56,36 @@ public class ManagerCalendarActivity extends CalendarActivity {
         calendarView.setUseThreeLetterAbbreviation(true);
         actionBar.setTitle(dateformat.format(new Date()));
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getAllShiftsDates());
-
+        shifterAdapter = new ManagerAdapter(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
+        recyclerView = findViewById(R.id.shifter_shifts);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setAdapter(shifterAdapter);
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            /**
+             * Shows all shifts on clicked date.
+             * @param dateClicked
+             */
             @Override
             public void onDayClick(Date dateClicked) {
-
                 model.setDateClicked(dateClicked.toString());
-                shiftAdapter = new CurrentShifterAdapter(model.shiftManager.getAllShiftsByDate(dateClicked.toString()));
-                recyclerView = findViewById(R.id.shifter_shifts);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                recyclerView.setAdapter(shiftAdapter);
-
+                shifterAdapter.setItems(model.shiftManager.getAllShiftsByDate(dateClicked.toString()));
             }
 
+            /**
+             * Changes month on the calendar when scrolled.
+             * @param firstDayOfNewMonth
+             */
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 actionBar.setTitle(dateformat.format(firstDayOfNewMonth));
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Takes user to activity to create a new shift on clicked date.
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", new Locale("en_GB"));
@@ -88,5 +105,15 @@ public class ManagerCalendarActivity extends CalendarActivity {
                 }
             }
         });
+    }
+
+    /**
+     * Populates the calendar with shifts as events on dates.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        calendarManager.shiftPopulate(calendarView, model.shiftManager.getAllShiftsDates());
+        shifterAdapter.setItems(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
     }
 }

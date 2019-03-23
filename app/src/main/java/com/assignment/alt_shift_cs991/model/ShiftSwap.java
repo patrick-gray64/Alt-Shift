@@ -3,18 +3,19 @@ package com.assignment.alt_shift_cs991.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * A ShiftSwap is a pair of shifts proposed to swap the dates.
+ *
+ * @author pcolr
+ */
 public class ShiftSwap implements Parcelable {
-    /**
-     * A ShiftSwap is a pair of shifts proposed to swap the dates
-     *
-     * @author pcolr
-     */
+
     private Shift shift1;
     private Shift shift2;
     private int status;
 
     /**
-     * Constructor for a ShiftSwap
+     * Constructor for a ShiftSwap.
      *
      * @param s1 unwanted shift
      * @param s2 wanted shift
@@ -26,7 +27,7 @@ public class ShiftSwap implements Parcelable {
     }
 
     /**
-     * Getter for the unwanted shift
+     * Getter for the unwanted shift.
      *
      * @return unwanted shift
      */
@@ -35,7 +36,7 @@ public class ShiftSwap implements Parcelable {
     }
 
     /**
-     * Getter for the wanted shift
+     * Getter for the wanted shift.
      *
      * @return wanted shift
      */
@@ -44,7 +45,7 @@ public class ShiftSwap implements Parcelable {
     }
 
     /**
-     * Setter for the unwanted shift
+     * Setter for the unwanted shift.
      *
      * @param s unwanted shift
      */
@@ -53,7 +54,7 @@ public class ShiftSwap implements Parcelable {
     }
 
     /**
-     * Setter for the wanted shift
+     * Setter for the wanted shift.
      *
      * @param s wanted shift
      */
@@ -62,7 +63,7 @@ public class ShiftSwap implements Parcelable {
     }
 
     /**
-     * Getter for the swap status
+     * Getter for the swap status.
      *
      * @return swap status
      */
@@ -71,7 +72,7 @@ public class ShiftSwap implements Parcelable {
     }
 
     /**
-     * Setter for the swap status if status value is between -1 and 1
+     * Setter for the swap status if status value is between -1 and 1.
      *
      * @param status swap status
      */
@@ -82,26 +83,32 @@ public class ShiftSwap implements Parcelable {
     }
 
     /**
-     * Sets the status to pending
+     * Sets the status to pending.
      */
     public void setStatusPending() {
         this.status = 0;
     }
 
     /**
-     * Sets the status to accepted
+     * Sets the status to accepted.
      */
     public void setStatusAccepted() {
         this.status = 1;
     }
 
     /**
-     * Sets the status to rejected
+     * Sets the status to rejected.
      */
     public void setStatusRejected() {
         this.status = -1;
     }
 
+    /**
+     * Checks if a shiftSwap with specific dates has already been created.
+     *
+     * @param s shiftSwap
+     * @return boolean
+     */
     public boolean equals(ShiftSwap s) {
         if (s.getUnwantedShift() == this.getUnwantedShift() && s.getWantedShift() == this.getWantedShift()) {
             return true;
@@ -110,6 +117,10 @@ public class ShiftSwap implements Parcelable {
         }
     }
 
+    /**
+     * Reads information for enabling the class to be Parcelable.
+     * @param in
+     */
     protected ShiftSwap(Parcel in) {
         status = in.readInt();
         this.shift1 = in.readParcelable(Shift.class.getClassLoader());

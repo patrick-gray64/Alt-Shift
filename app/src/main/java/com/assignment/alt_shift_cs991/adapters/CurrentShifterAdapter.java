@@ -14,13 +14,15 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Adapter for the shifter that is currently logged into the app.
+ */
 public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
 
     /**
-     * A constructor for the MyStackAdapter class.
+     * A constructor for the CurrentShifterAdapter class.
      */
     public CurrentShifterAdapter(List<Shift> shifts) {
         super();
@@ -37,6 +39,16 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
     @Override
     public long getItemId(int position) {
         return shifts.get(position).hashCode();
+    }
+
+    /**
+     * Updates items.
+     *
+     * @param shifts - shifts to be updated in the list
+     */
+    public void setItems(List<Shift> shifts) {
+        this.shifts = shifts;
+        notifyDataSetChanged();
     }
 
     /**
@@ -87,7 +99,6 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
 
         private TextView shifterName;
         private TextView date;
-        //private ImageView picture;
 
         /**
          * A constructor which initiates the views which will be inside the textView.
@@ -98,7 +109,6 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
             super(itemView);
             shifterName = itemView.findViewById(R.id.name_field);
             date = itemView.findViewById(R.id.description_field);
-            //picture = itemView.findViewById(R.id.imageView);
         }
 
         /**

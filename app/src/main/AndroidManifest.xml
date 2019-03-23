@@ -3,9 +3,8 @@
     package="com.assignment.alt_shift_cs991">
 
     <application
-        android:name=".model.Application"
+        android:name=".activities.Application"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -17,15 +16,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ShiftSwapActivity" />
-        <activity android:name=".activities.PendingSwapsEmp" />
-        <activity android:name=".activities.SwapActivity" />
-        <activity android:name=".activities.ToolbarActivity"/>
-        <activity android:name=".activities.CalendarActivity" />
-        <activity android:name=".activities.RegisterActivity"/>
-        <activity android:name=".activities.FinalShiftSwapActivity"/>
-        <activity android:name=".activities.ManagerCalendarActivity"/>
-        <activity android:name=".activities.ShiftAddingActivity"/>
+        <activity android:name=".activities.ShiftSwapActivity"
+            android:noHistory="true"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".activities.PendingSwapsEmp"
+            android:launchMode="singleInstance" />
+        <activity android:name=".activities.SwapActivity"
+            android:noHistory="true"
+            android:launchMode="singleInstance" />
+        <activity android:name=".activities.ToolbarActivity"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".activities.CalendarActivity"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".activities.RegisterActivity"
+            android:noHistory="true"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".activities.FinalShiftSwapActivity"
+            android:noHistory="true"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".activities.ManagerCalendarActivity"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".activities.ShiftAddingActivity"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>
