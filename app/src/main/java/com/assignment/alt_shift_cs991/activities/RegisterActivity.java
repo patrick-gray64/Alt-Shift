@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     /**
      * Initialises activity with empty editTexts for user input
+     *
      * @param savedInstanceState
      */
     @Override
@@ -53,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill in missing information!", Toast.LENGTH_SHORT).show();
                 } else {
                     shifter = new Shifter(userName.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
-                    if(isManagerCheck.isChecked()){
+                    if (isManagerCheck.isChecked()) {
                         shifter.setManager(true);
                     }
                     model.db.daoAccess().insertShifter(shifter);

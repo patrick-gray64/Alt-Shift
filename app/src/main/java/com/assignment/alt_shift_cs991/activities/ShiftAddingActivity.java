@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ShiftAddingActivity extends ToolbarActivity {
 
     protected Application model;
-    private ShifterAdapter shifterAdapter;
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +24,9 @@ public class ShiftAddingActivity extends ToolbarActivity {
 
         model = (Application) getApplication();
         List<Shifter> shifters = model.shiftManager.getShifters();
-        shifterAdapter = new ShifterAdapter(this, shifters);
+        ShifterAdapter shifterAdapter = new ShifterAdapter(this, shifters);
         shifterAdapter.dateOfNewShift = model.getDateClicked();
-        recyclerView = findViewById(R.id.recycler_view2);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view2);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(shifterAdapter);
 
@@ -46,7 +44,7 @@ public class ShiftAddingActivity extends ToolbarActivity {
         shifterAdapter.setCallBack(callback);
     }
 
-    public interface Callback{
+    public interface Callback {
 
         void finishActivity();
 

@@ -33,6 +33,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
 
     /**
      * Initialises activity with all shifts
+     *
      * @param savedInstanceState
      */
     @Override

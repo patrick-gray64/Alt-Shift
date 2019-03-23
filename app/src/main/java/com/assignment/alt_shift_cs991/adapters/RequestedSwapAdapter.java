@@ -1,6 +1,5 @@
 package com.assignment.alt_shift_cs991.adapters;
 
-import android.content.Context;
 import android.view.View;
 
 import com.assignment.alt_shift_cs991.model.ShiftSwap;
@@ -11,11 +10,10 @@ public class RequestedSwapAdapter extends AvailableSwapAdapter {
 
     /**
      * Constructor for RequestedSwapAdapter
-     * @param context
      * @param shiftArray
      */
-    public RequestedSwapAdapter(Context context, List<ShiftSwap> shiftArray) {
-        super(context, shiftArray);
+    public RequestedSwapAdapter(List<ShiftSwap> shiftArray) {
+        super(shiftArray);
     }
 
     @Override

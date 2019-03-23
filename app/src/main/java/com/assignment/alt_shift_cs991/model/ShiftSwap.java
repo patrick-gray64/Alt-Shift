@@ -6,6 +6,7 @@ import android.os.Parcelable;
 public class ShiftSwap implements Parcelable {
     /**
      * A ShiftSwap is a pair of shifts proposed to swap the dates
+     *
      * @author pcolr
      */
     private Shift shift1;
@@ -14,6 +15,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Constructor for a ShiftSwap
+     *
      * @param s1 unwanted shift
      * @param s2 wanted shift
      */
@@ -25,6 +27,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Getter for the unwanted shift
+     *
      * @return unwanted shift
      */
     public Shift getUnwantedShift() {
@@ -33,6 +36,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Getter for the wanted shift
+     *
      * @return wanted shift
      */
     public Shift getWantedShift() {
@@ -41,6 +45,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Setter for the unwanted shift
+     *
      * @param s unwanted shift
      */
     public void setUnwantedShift(Shift s) {
@@ -49,6 +54,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Setter for the wanted shift
+     *
      * @param s wanted shift
      */
     public void setWantedShift(Shift s) {
@@ -57,6 +63,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Getter for the swap status
+     *
      * @return swap status
      */
     public int getStatus() {
@@ -65,6 +72,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Setter for the swap status if status value is between -1 and 1
+     *
      * @param status swap status
      */
     public void setStatus(int status) {
@@ -96,6 +104,7 @@ public class ShiftSwap implements Parcelable {
 
     /**
      * Checks if a shiftSwap with specific dates has already been created
+     *
      * @param s shiftSwap
      * @return boolean
      */

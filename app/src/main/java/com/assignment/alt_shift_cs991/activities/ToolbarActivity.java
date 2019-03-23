@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class ToolbarActivity extends AppCompatActivity {
+
     private TextView textSwapItemCount;
     protected Application model;
 

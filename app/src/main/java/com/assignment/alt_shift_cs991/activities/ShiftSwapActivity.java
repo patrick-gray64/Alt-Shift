@@ -26,12 +26,12 @@ public class ShiftSwapActivity extends ToolbarActivity {
      * Activity for requesting a shiftSwap
      */
     private Shift shift, userSwapShift, nonUserSwapShift;
-    private ObjectAnimator shiftWorkerCardAnimation, userCardAnimation;
     private ImageButton swapButton;
     protected Application model;
 
     /**
      * Initialises activity with two shifts and shifters to be swapped
+     *
      * @param savedInstanceState
      */
     @Override
@@ -57,6 +57,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
 
     /**
      * Swaps the positions of the two shifters when swap button is clicked
+     *
      * @param v
      */
     public void switchShifts(final View v) {
@@ -64,8 +65,8 @@ public class ShiftSwapActivity extends ToolbarActivity {
         View userCard = findViewById(R.id.user_card);
         View shiftWorkerCard = findViewById(R.id.current_shift_worker_card);
 
-        shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());
-        userCardAnimation = ObjectAnimator.ofFloat(userCard, "y", shiftWorkerCard.getY());
+        ObjectAnimator shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());
+        ObjectAnimator userCardAnimation = ObjectAnimator.ofFloat(userCard, "y", shiftWorkerCard.getY());
 
         if (userCard.getY() < shiftWorkerCard.getY()) {
             shiftWorkerCardAnimation = ObjectAnimator.ofFloat(shiftWorkerCard, "y", userCard.getY());

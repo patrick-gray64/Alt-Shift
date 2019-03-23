@@ -1,6 +1,5 @@
 package com.assignment.alt_shift_cs991.adapters;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +26,7 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
     /**
      * A constructor for the MyStackAdapter class.
      */
-    public ShifterAdapter(Context context, List<Shifter> shifters) {
+    public ShifterAdapter(List<Shifter> shifters) {
         super();
         setHasStableIds(true);
         this.shifters = shifters;

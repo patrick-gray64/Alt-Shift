@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Initialises activity with empty editTexts for user input
+     *
      * @param savedInstanceState
      */
     @Override
@@ -79,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Takes user to the register activity when button is clicked
+     *
      * @param v
      */
     public void register(View v) {

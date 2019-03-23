@@ -25,7 +25,6 @@ public class CalendarActivity extends ToolbarActivity {
     public CompactCalendarView calendarView;
     private SimpleDateFormat dateformat = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
     private CalendarManager calendarManager = new CalendarManager();
-    public static final String EXTRA_SHIFTER = "com.assignment.alt_shift_cs991.SHIFTER";
     public RecyclerView recyclerView;
     private CurrentShifterAdapter shiftAdapter;
     protected Application model;
@@ -33,6 +32,7 @@ public class CalendarActivity extends ToolbarActivity {
 
     /**
      * Initialises Calendar with shifts for the logged in user
+     *
      * @param savedInstanceState
      */
     @Override
