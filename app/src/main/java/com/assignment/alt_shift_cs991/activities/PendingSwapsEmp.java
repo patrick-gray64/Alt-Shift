@@ -31,7 +31,7 @@ public class PendingSwapsEmp extends ToolbarActivity {
         model = (Application) getApplication();
         description = findViewById(R.id.description);
         recyclerView = findViewById(R.id.rcview);
-        availableSwapRequestAdapter = new AvailableSwapAdapter(model.shiftManager.getAvailableSwaps(model.getLoggedInShifter()));
+        availableSwapRequestAdapter = new AvailableSwapAdapter(model.shiftManager.getRequestedSwaps(model.getLoggedInShifter()));
         offeredSwapAdapter = new RequestedSwapAdapter(model.shiftManager.getRequestedSwaps(model.getLoggedInShifter()));
         recyclerView.setAdapter(availableSwapRequestAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

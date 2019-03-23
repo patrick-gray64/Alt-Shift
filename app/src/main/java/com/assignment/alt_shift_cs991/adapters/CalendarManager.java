@@ -1,4 +1,4 @@
-package com.assignment.alt_shift_cs991.model;
+package com.assignment.alt_shift_cs991.adapters;
 
 import com.assignment.alt_shift_cs991.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -9,11 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Manages the Calendar
- */
 public class CalendarManager {
-
+    /**
+     * Manages the Calendar
+     */
 
     /**
      * Constructor for CalendarManager
@@ -23,7 +22,6 @@ public class CalendarManager {
 
     /**
      * Adds a Shift date to the calendar
-     *
      * @param calendarView
      * @param shiftDate    date of shift
      */
@@ -35,7 +33,6 @@ public class CalendarManager {
 
     /**
      * Populates the calendar with multiple shifts
-     *
      * @param calendarView
      * @param shiftDates   list of shift dates
      */
@@ -45,7 +42,6 @@ public class CalendarManager {
 
     /**
      * Adds multiple shifts to the calendar
-     *
      * @param calendarView
      * @param shiftList
      */
@@ -57,7 +53,6 @@ public class CalendarManager {
 
     /**
      * Converts a string to date format
-     *
      * @param timeDate
      * @return
      */
