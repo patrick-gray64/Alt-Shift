@@ -19,24 +19,21 @@
         <include layout="@layout/toolbar" />
 
 
-        <LinearLayout
-            android:id="@+id/cardSwapHolder"
-            android:layout_width="206dp"
-            android:layout_height="603dp"
-            android:layout_below="@+id/my_toolbar"
-            android:orientation="vertical">
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/user_card"
                 android:layout_width="206dp"
                 android:layout_height="200dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="40dp"
                 android:transitionName="usercard"
-                app:cardElevation="4dp"
-                android:layout_gravity="center">
+                app:cardElevation="4dp">
 
                 <androidx.gridlayout.widget.GridLayout
                     android:layout_width="206dp"
@@ -58,11 +55,11 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
                         android:textSize="24sp"
+                        app:layout_column="0"
                         app:layout_constraintStart_toEndOf="@+id/user_imageView"
                         app:layout_constraintTop_toTopOf="@+id/user_imageView"
-                        tools:text="first name second name"
-                        app:layout_column="0"
-                        app:layout_row="1" />
+                        app:layout_row="1"
+                        tools:text="first name second name" />
 
                     <TextView
                         android:id="@+id/user_description_field"
@@ -77,6 +74,14 @@
                         tools:text="Just some random text to test the layout." />
                 </androidx.gridlayout.widget.GridLayout>
             </androidx.cardview.widget.CardView>
+        </androidx.gridlayout.widget.GridLayout>
+
+        <LinearLayout
+            android:id="@+id/cardSwapHolder"
+            android:layout_width="206dp"
+            android:layout_height="603dp"
+            android:layout_below="@+id/my_toolbar"
+            android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/shift_button"
