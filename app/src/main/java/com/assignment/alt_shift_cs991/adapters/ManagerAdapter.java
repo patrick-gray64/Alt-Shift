@@ -3,9 +3,12 @@ package com.assignment.alt_shift_cs991.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.activities.ManagerCalendarActivity;
+import com.assignment.alt_shift_cs991.activities.PendingSwapsEmp;
 import com.assignment.alt_shift_cs991.model.Shift;
 
 import java.util.List;
@@ -18,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
+    public ManagerCalendarActivity.Callback callback;
+
 
     /**
      * A constructor for the ManagerAdapter class.
@@ -27,6 +32,11 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
         setHasStableIds(true);
         this.shifts = shifts;
     }
+
+    public void setCallBack(ManagerCalendarActivity.Callback callback) {
+        this.callback = callback;
+    }
+
 
     /**
      * Returns the hash value of the item in a specific position in the list.
@@ -62,7 +72,7 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
     }
 
     /**
-     * Sets the item from the list into a specific holder in the recyclerView.
+     * Sets the item from the list into a specific holder in the recyclerView and remove shifts if bin button clicked.
      *
      * @param viewHolder the viewHolder
      * @param position   the position within the list
@@ -72,6 +82,13 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
         Shift shift = shifts.get(position);
         viewHolder.shifterName.setText(shift.getShifter().getFirstName());
         viewHolder.date.setText(shift.getDate());
+        viewHolder.delete.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                callback.getModel().shiftManager.removeShift(shifts.get(position));
+                shifts.remove(position);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     /**
@@ -88,6 +105,8 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
 
         private TextView shifterName;
         private TextView date;
+        private ImageButton delete;
+
 
         /**
          * A constructor which initiates the views which will be inside the textView.
@@ -98,6 +117,8 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
             super(itemView);
             shifterName = itemView.findViewById(R.id.name_field);
             date = itemView.findViewById(R.id.description_field);
+            delete = itemView.findViewById(R.id.deleteM);
+
         }
 
         /**
@@ -108,10 +129,12 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
          */
         public static ManagerAdapter.MyViewHolder createHolder(ViewGroup viewGroup) {
             LayoutInflater viewInflater = LayoutInflater.from(viewGroup.getContext());
-            View listItemView = viewInflater.inflate(R.layout.adapter_item, viewGroup, false);
+            View listItemView = viewInflater.inflate(R.layout.manager_shift_item, viewGroup, false);
             return new ManagerAdapter.MyViewHolder(listItemView);
         }
     }
+
+
 }
 
 
