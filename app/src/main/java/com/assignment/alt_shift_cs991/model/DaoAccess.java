@@ -49,6 +49,13 @@ public interface DaoAccess {
     List<Shifter> getAllShifters();
 
     /**
+     * Returns all userIDs of shifters in database using an SQL query
+     * @return
+     */
+    @Query("SELECT userID FROM Shifter")
+    List<String> getAllShiftersUserID();
+
+    /**
      * Updates a shifter record within the database.
      *
      * @param shifter

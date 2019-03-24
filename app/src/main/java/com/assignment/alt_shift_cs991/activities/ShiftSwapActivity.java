@@ -111,7 +111,9 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 RelativeLayout layout = findViewById(R.id.rlayout);
                 RelativeLayout.LayoutParams layPram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 layPram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);
-                layPram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
+                layPram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder2);
+                layPram.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                layPram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.rlayout);
                 layPram.setMargins(10, 10, 30, 10);
                 layout.addView(confirmButton, layPram);
             }
