@@ -19,8 +19,8 @@
 
     <style name="SwitchStyle" parent="Theme.AppCompat.Light">
         <item name="android:fontFamily">@font/switchfonts</item>
-        <item name="colorControlActivated">@color/jamesblue</item>
-        <item name="colorSwitchThumbNormal">@color/jamesaccentblue</item>
+        <item name="colorControlActivated">@color/rachelsdarkprink</item>
+        <item name="colorSwitchThumbNormal">@color/paddysblue</item>
         <item name="android:colorForeground">@color/paddysblue</item>
     </style>
 

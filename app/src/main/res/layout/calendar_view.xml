@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
     <include layout="@layout/toolbar" />
-
-    <!--
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbarlayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:expanded="false">
-
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsing_tool_bar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:fitsSystemWindows="true"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
-    -->
 
 
     <LinearLayout
@@ -34,53 +18,73 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:elegantTextHeight="true"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/backgroundrectangle"
+            android:elegantTextHeight="true"
             android:text="@string/calendar_info"
             android:textAlignment="center"
-            android:textSize="16sp"
-            android:background="@drawable/backgroundrectangle"/>
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Your_shifts"
+            android:layout_gravity="center"
+            android:textColor="@color/jamesblue"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Your_Requested_Swaps"
+            android:layout_gravity="center"
+            android:textColor="@color/rachelsdarkprink"/>
+
+        <Button
+            android:id="@+id/hideShowCal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/jamesblue"
+            android:clickable="true"
+            android:text="@string/Hide_Calender"
+            android:textColor="@color/colorAccent" />
 
         <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/compactcalendar_view"
             android:layout_width="fill_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:elevation="25dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:elevation="25dp"
-            android:outlineAmbientShadowColor="@color/jamesblue"
-            app:compactCalendarBackgroundColor="@color/jamesaccentblue"
-            app:compactCalendarCurrentDayBackgroundColor="@color/paulsneutral"
-            app:compactCalendarCurrentDayTextColor="@color/rachelsblack"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/paddysblue"
+            app:compactCalendarBackgroundColor="@android:color/white"
+            app:compactCalendarCurrentDayBackgroundColor="@android:color/white"
+            app:compactCalendarCurrentDayTextColor="@color/rachelsdarkprink"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/andreasyellow"
             app:compactCalendarEventIndicatorStyle="no_fill_large_indicator"
-            app:compactCalendarMultiEventIndicatorColor="@color/paddysblue"
             app:compactCalendarTargetHeight="250dp"
-            app:compactCalendarTextColor="#ffff"
+            app:compactCalendarTextColor="@android:color/black"
             app:compactCalendarTextSize="14sp" />
-       <!-- <TextView
-            android:id="@+id/your_shifts"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Your Shifts: "
-            android:layout_margin="10dp"
-            android:textSize="14sp"
-            android:visibility="gone"/>-->
+        <!-- <TextView
+             android:id="@+id/your_shifts"
+             android:layout_width="match_parent"
+             android:layout_height="40dp"
+             android:text="Your Shifts: "
+             android:layout_margin="10dp"
+             android:textSize="14sp"
+             android:visibility="gone"/>-->
 
         <TextView
             android:id="@+id/shiftInfoDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:elegantTextHeight="true"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingBottom="10dp"
-            android:text="@string/calender_shift_list" />
+            android:text="@string/calender_shift_list"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shifter_shifts"
@@ -88,16 +92,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/compactcalendar_view"
             android:isScrollContainer="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:scrollbars="vertical"
-            ></androidx.recyclerview.widget.RecyclerView>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.recyclerview.widget.RecyclerView>
+
         <TextView
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:visibility="gone"
-            android:text="No shifts on the selected day" />
+            android:text="@string/No_shifts"
+            android:visibility="gone" />
 
     </LinearLayout>
 

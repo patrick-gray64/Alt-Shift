@@ -1,15 +1,13 @@
 package com.assignment.alt_shift_cs991.adapters;
 
-
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.assignment.alt_shift_cs991.activities.Application;
 import com.assignment.alt_shift_cs991.R;
-import com.assignment.alt_shift_cs991.activities.ShiftSwapActivity;
+import com.assignment.alt_shift_cs991.activities.ManagerCalendarActivity;
 import com.assignment.alt_shift_cs991.model.Shift;
 
 import java.util.List;
@@ -17,24 +15,26 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Adapter for shift information.
+ * Adapter for the list contained in the managers calendar view.
  */
-public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder> {
+public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
-    public String shifterDate;
-    public String shifterUserName;
-    public String shifterPassword;
-    protected Application model;
+    public ManagerCalendarActivity.Callback callback;
 
     /**
-     * A constructor for the MyStackAdapter class.
+     * A constructor for the ManagerAdapter class.
      */
-    public ShiftAdapter(List<Shift> shifts) {
+    public ManagerAdapter(List<Shift> shifts) {
         super();
         setHasStableIds(true);
         this.shifts = shifts;
     }
+
+    public void setCallBack(ManagerCalendarActivity.Callback callback) {
+        this.callback = callback;
+    }
+
 
     /**
      * Returns the hash value of the item in a specific position in the list.
@@ -48,6 +48,16 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
     }
 
     /**
+     * Updates items.
+     *
+     * @param shifts - shifts to be updated in the list
+     */
+    public void setItems(List<Shift> shifts) {
+        this.shifts = shifts;
+        notifyDataSetChanged();
+    }
+
+    /**
      * Creates the viewHolder and places it inside the correct viewGroup.
      *
      * @param viewGroup the viewGroup in question
@@ -56,11 +66,11 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
      */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        return MyViewHolder.createHolder(viewGroup);
+        return ManagerAdapter.MyViewHolder.createHolder(viewGroup);
     }
 
     /**
-     * Sets the item from the list into a specific holder in the recyclerView.
+     * Sets the item from the list into a specific holder in the recyclerView and remove shifts if bin button clicked.
      *
      * @param viewHolder the viewHolder
      * @param position   the position within the list
@@ -68,18 +78,15 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder viewHolder, int position) {
         Shift shift = shifts.get(position);
-        viewHolder.shifter.setText(shift.getShifter().getFirstName());
+        viewHolder.shifterName.setText(shift.getShifter().getFirstName());
         viewHolder.date.setText(shift.getDate());
-        viewHolder.itemView.setOnClickListener(v -> {
-            int a = viewHolder.getAdapterPosition();
-            Intent intent = new Intent(v.getContext(), ShiftSwapActivity.class);
-            shifts.get(a).setSwapUserName(shifterUserName);
-            shifts.get(a).setSwapPassword(shifterPassword);
-            shifts.get(a).setSwapDate(shifterDate);
-            shifts.get(a).setName(shift.getShifter().getFirstName());
-            intent.putExtra("SHIFT", shifts.get(a));
-            v.getContext().startActivity(intent);
-        });
+        viewHolder.delete.setOnClickListener(v -> {
+                callback.getModel().shiftManager.removeShift(shifts.get(position));
+                callback.getCalendar().removeAllEvents();
+                callback.getCalendarManager().shiftPopulate(callback.getCalendar(), callback.getModel().shiftManager.getAllShiftsDates());
+                shifts.remove(position);
+                notifyDataSetChanged();
+            });
     }
 
     /**
@@ -94,8 +101,10 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView shifter;
+        private TextView shifterName;
         private TextView date;
+        private ImageButton delete;
+
 
         /**
          * A constructor which initiates the views which will be inside the textView.
@@ -104,8 +113,10 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
          */
         public MyViewHolder(View itemView) {
             super(itemView);
-            shifter = itemView.findViewById(R.id.name_field);
+            shifterName = itemView.findViewById(R.id.name_field);
             date = itemView.findViewById(R.id.description_field);
+            delete = itemView.findViewById(R.id.deleteM);
+
         }
 
         /**
@@ -114,12 +125,13 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.MyViewHolder
          * @param viewGroup the current view group
          * @return a view holder which holds list items
          */
-        public static MyViewHolder createHolder(ViewGroup viewGroup) {
+        public static ManagerAdapter.MyViewHolder createHolder(ViewGroup viewGroup) {
             LayoutInflater viewInflater = LayoutInflater.from(viewGroup.getContext());
-            View listItemView = viewInflater.inflate(R.layout.adapter_item, viewGroup, false);
-            return new MyViewHolder(listItemView);
+            View listItemView = viewInflater.inflate(R.layout.manager_shift_item, viewGroup, false);
+            return new ManagerAdapter.MyViewHolder(listItemView);
         }
     }
 }
+
 
 

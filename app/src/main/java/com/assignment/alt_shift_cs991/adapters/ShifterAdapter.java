@@ -1,6 +1,5 @@
 package com.assignment.alt_shift_cs991.adapters;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,21 +16,22 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * Adapter for shifter information.
+ */
 public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHolder> {
 
     private List<Shifter> shifters;
     public String dateOfNewShift;
-    private Context mContext;
+    protected ShiftAddingActivity.Callback callback;
 
     /**
      * A constructor for the MyStackAdapter class.
      */
-    public ShifterAdapter(Context context, List<Shifter> shifters) {
+    public ShifterAdapter(List<Shifter> shifters) {
         super();
         setHasStableIds(true);
         this.shifters = shifters;
-        this.mContext = context;
     }
 
     /**
@@ -68,18 +68,21 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
         Shifter shifter = shifters.get(position);
         viewHolder.name.setText(shifter.getFirstName());
         viewHolder.surname.setText(shifter.getSurname());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int a = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
-                v.getContext().startActivity(intent);
-                Toast.makeText(getmContext(), "Shift added to calendar!", Toast.LENGTH_SHORT).show();
-                ((ShiftAddingActivity) getmContext()).getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
-                notifyDataSetChanged();
+        viewHolder.itemView.setOnClickListener(v -> {
+            int a = viewHolder.getAdapterPosition();
+            Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
+            if (callback != null) {
+                callback.finishActivity();
             }
+            v.getContext().startActivity(intent);
+            Toast.makeText(callback.getModel().getApplicationContext(), "Shift added to calendar!", Toast.LENGTH_SHORT).show();
+            callback.getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
+            notifyDataSetChanged();
         });
+    }
+
+    public void setCallBack(ShiftAddingActivity.Callback callback) {
+        this.callback = callback;
     }
 
     /**
@@ -96,8 +99,6 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
 
         private TextView name;
         private TextView surname;
-        private Shifter shifter;
-        //private ImageView picture;
 
         /**
          * A constructor which initiates the views which will be inside the textView.
@@ -108,8 +109,6 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
             super(itemView);
             name = itemView.findViewById(R.id.name_field);
             surname = itemView.findViewById(R.id.description_field);
-
-            //picture = itemView.findViewById(R.id.imageView);
         }
 
         /**
@@ -123,10 +122,6 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
             View listItemView = viewInflater.inflate(R.layout.adapter_item, viewGroup, false);
             return new MyViewHolder(listItemView);
         }
-    }
-
-    public Context getmContext() {
-        return mContext;
     }
 }
 

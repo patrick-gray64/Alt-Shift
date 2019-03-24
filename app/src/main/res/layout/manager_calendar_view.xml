@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
+
     <include layout="@layout/toolbar" />
-
-    <!--
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbarlayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:expanded="false">
-
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsing_tool_bar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:fitsSystemWindows="true"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
-    -->
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,28 +15,41 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:autoText="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/backgroundrectangle"
             android:elegantTextHeight="true"
-            android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="20dp"
-            android:paddingBottom="10dp"
-            android:text="@string/calendar_info" />
+            android:text="@string/calendar_explain"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/hideShowCal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/jamesblue"
+            android:clickable="true"
+            android:text="@string/Hide_Calender"
+            android:textColor="@color/colorAccent" />
 
         <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/compactcalendar_view"
             android:layout_width="fill_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:elevation="25dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            app:compactCalendarBackgroundColor="#fff"
-            app:compactCalendarCurrentDayBackgroundColor="@color/paulsneutral"
+            app:compactCalendarBackgroundColor="@android:color/white"
+            app:compactCalendarCurrentDayBackgroundColor="@android:color/white"
+            app:compactCalendarCurrentDayTextColor="@color/rachelsdarkprink"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/andreasyellow"
             app:compactCalendarEventIndicatorStyle="no_fill_large_indicator"
-            app:compactCalendarMultiEventIndicatorColor="@color/paddysgreen"
             app:compactCalendarTargetHeight="250dp"
-            app:compactCalendarTextColor="#000000"
+            app:compactCalendarTextColor="@android:color/black"
             app:compactCalendarTextSize="14sp" />
         <!-- <TextView
              android:id="@+id/your_shifts"
@@ -91,17 +85,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="No shifts on the selected day"
+            android:text="@string/No_shifts"
             android:visibility="gone" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:clickable="true"
-            app:srcCompat="@android:drawable/ic_input_add" />
 
     </LinearLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+</FrameLayout>

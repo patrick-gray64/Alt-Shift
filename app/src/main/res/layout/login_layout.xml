@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <ImageView
@@ -15,8 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="60dp"
-        android:src="@drawable/altshift"
-         />
+        android:src="@drawable/altshift" />
 
     <EditText
         android:id="@+id/editText3"
@@ -27,12 +25,11 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="98dp"
         android:layout_marginTop="50dp"
-        android:drawableRight="@drawable/ic_action_username"
-        android:hint="Username"
         android:layout_marginEnd="99dp"
+        android:drawableRight="@drawable/ic_action_username"
         android:ems="10"
-        android:inputType="textPersonName"
-        />
+        android:hint="@string/username"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText4"
@@ -43,10 +40,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="100dp"
         android:layout_marginTop="33dp"
-        android:drawableRight="@drawable/ic_action_password"
-        android:hint="Password"
         android:layout_marginEnd="98dp"
+        android:drawableRight="@drawable/ic_action_password"
         android:ems="10"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <androidx.cardview.widget.CardView
@@ -54,13 +51,13 @@
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_below="@+id/editText4"
-        app:cardCornerRadius="25dp"
-        app:cardBackgroundColor="@color/jamesblue"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="80dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="80dp" >
+        android:layout_marginEnd="80dp"
+        app:cardBackgroundColor="@color/jamesblue"
+        app:cardCornerRadius="25dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -71,8 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textColor="#fff"
-                android:text="Login" />
+                android:text="@string/login"
+                android:textColor="#fff" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
@@ -80,15 +77,15 @@
     <Button
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="38dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="556dp"
-        android:layout_marginEnd="130dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="545dp"
+        android:layout_marginEnd="40dp"
         android:onClick="register"
-        android:text="Register Here"
+        android:text="@string/register"
         android:textAlignment="center" />
 </RelativeLayout>

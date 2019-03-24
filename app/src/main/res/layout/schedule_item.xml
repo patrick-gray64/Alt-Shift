@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    app:cardElevation="5dp"
     android:layout_margin="10dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5dp">
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
@@ -26,8 +26,8 @@
             android:layout_weight="1"
             android:gravity="start"
             android:paddingTop="30dp"
-            android:text="Your Shift"
-            android:textColor="@color/jamesblue"
+            android:text="@string/your_shift"
+            android:textColor="@color/paddysblue"
             android:textSize="18dp"
             app:layout_column="0"
             app:layout_gravity="start" />
@@ -66,10 +66,10 @@
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:paddingTop="30dp"
+            android:text="@string/a"
             android:textAlignment="textStart"
-            android:textColor="@color/jamesblue"
+            android:textColor="@color/rachelsdarkprink"
             android:textSize="18dp"
-            android:text="a"
             app:layout_column="3"
             app:layout_gravity="left"
             app:layout_row="0" />
@@ -94,10 +94,10 @@
             android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="@color/jamesblue"
             android:backgroundTint="@android:color/white"
-            app:layout_gravity="bottom|right"
+            android:tint="@color/rachelsdarkprink"
             app:layout_column="4"
+            app:layout_gravity="bottom|right"
             app:layout_row="1"
             app:srcCompat="@drawable/ic_delete_black_24dp" />
     </androidx.gridlayout.widget.GridLayout>
