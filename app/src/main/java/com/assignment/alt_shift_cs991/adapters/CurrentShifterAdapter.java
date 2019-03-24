@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
+import com.assignment.alt_shift_cs991.activities.CalendarActivity;
 import com.assignment.alt_shift_cs991.activities.SwapActivity;
 import com.assignment.alt_shift_cs991.model.Shift;
 
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAdapter.MyViewHolder> {
 
     private List<Shift> shifts;
+    public CalendarActivity.CallBack callBack;
 
     /**
      * A constructor for the CurrentShifterAdapter class.
@@ -51,6 +53,10 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
         notifyDataSetChanged();
     }
 
+    public void setCallBack(CalendarActivity.CallBack callBack) {
+        this.callBack = callBack;
+    }
+
     /**
      * Creates the viewHolder and places it inside the correct viewGroup.
      *
@@ -77,7 +83,7 @@ public class CurrentShifterAdapter extends RecyclerView.Adapter<CurrentShifterAd
         viewHolder.itemView.setOnClickListener(v -> {
             int a = viewHolder.getAdapterPosition();
             Intent intent = new Intent(v.getContext(), SwapActivity.class);
-            intent.putExtra("SHIFT", shifts.get(a));
+            callBack.getModel().selectedCurrentShift = shifts.get(a);
             v.getContext().startActivity(intent);
         });
     }

@@ -50,6 +50,10 @@ public class CalendarActivity extends ToolbarActivity {
         shifter = model.getLoggedInShifter();
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getMyShiftsDates(shifter));
         calendarManager.swapPopulate(calendarView, model.shiftManager.getRequestedSwaps(shifter));
+        shiftAdapter = new CurrentShifterAdapter(model.shiftManager.getMyShiftsByDate(shifter, model.getDateClicked()));
+        recyclerView = findViewById(R.id.shifter_shifts);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setAdapter(shiftAdapter);
 
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -59,10 +63,10 @@ public class CalendarActivity extends ToolbarActivity {
              */
             @Override
             public void onDayClick(Date dateClicked) {
-                shiftAdapter = new CurrentShifterAdapter(model.shiftManager.getMyShiftsByDate(shifter, dateClicked.toString()));
-                recyclerView = findViewById(R.id.shifter_shifts);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                recyclerView.setAdapter(shiftAdapter);
+
+                model.setDateClicked(dateClicked.toString());
+                shiftAdapter.setItems(model.shiftManager.getMyShiftsByDate(shifter, dateClicked.toString()));
+
             }
 
             /**
@@ -87,7 +91,16 @@ public class CalendarActivity extends ToolbarActivity {
                 hideShow.setText(R.string.Hide_Calender);
             }
         });
+
+        CallBack callback = new CallBack() {
+            @Override
+            public Application getModel() {
+
+                return model;
+            }
+        }; shiftAdapter.setCallBack(callback);
     }
+
 
     /**
      * Populates the calendar with shifts as events on dates. Ensures the calendar is refreshed with any
@@ -100,5 +113,9 @@ public class CalendarActivity extends ToolbarActivity {
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getMyShiftsDates(shifter));
         calendarManager.swapPopulate(calendarView, model.shiftManager.getRequestedSwaps(shifter));
 
+    }
+    public interface CallBack {
+
+        Application getModel();
     }
 }

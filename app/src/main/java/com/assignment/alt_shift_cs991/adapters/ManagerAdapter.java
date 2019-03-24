@@ -81,12 +81,12 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
         viewHolder.shifterName.setText(shift.getShifter().getFirstName());
         viewHolder.date.setText(shift.getDate());
         viewHolder.delete.setOnClickListener(v -> {
-                callback.getModel().shiftManager.removeShift(shifts.get(position));
-                callback.getCalendar().removeAllEvents();
-                callback.getCalendarManager().shiftPopulate(callback.getCalendar(), callback.getModel().shiftManager.getAllShiftsDates());
-                shifts.remove(position);
-                notifyDataSetChanged();
-            });
+            callback.getModel().shiftManager.removeShift(shifts.get(position));
+            shifts.remove(position);
+            callback.getCalendar().removeAllEvents();
+            callback.getCalendarManager().shiftPopulate(callback.getCalendar(), callback.getModel().shiftManager.getAllShiftsDates());
+            notifyDataSetChanged();
+        });
     }
 
     /**

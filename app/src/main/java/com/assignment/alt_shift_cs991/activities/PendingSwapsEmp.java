@@ -62,19 +62,7 @@ public class PendingSwapsEmp extends ToolbarActivity {
             }
         };
         availableSwapRequestAdapter.setCallBack(callback);
-
-        Callback callback1 = new Callback() {
-            @Override
-            public void finishActivity() {
-                finish();
-            }
-
-            @Override
-            public Application getModel() {
-                return model;
-            }
-        };
-        offeredSwapAdapter.setCallBack(callback1);
+        offeredSwapAdapter.setCallBack(callback);
     }
 
     /**

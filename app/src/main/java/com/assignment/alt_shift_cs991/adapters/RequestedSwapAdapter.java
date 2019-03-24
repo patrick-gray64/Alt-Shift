@@ -63,12 +63,12 @@ public class RequestedSwapAdapter extends RecyclerView.Adapter<RequestedSwapAdap
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.yourDate.setText(getShiftArray().get(position).getUnwantedShift().getDate());
-        holder.offeredDate.setText(getShiftArray().get(position).getWantedShift().getDate());
-        holder.otherShifter.setText(getShiftArray().get(position).getWantedShift().getShifter().getFirstName() + "' s Shift");
+        holder.yourDate.setText(shiftArray.get(position).getUnwantedShift().getDate());
+        holder.offeredDate.setText(shiftArray.get(position).getWantedShift().getDate());
+        holder.otherShifter.setText(shiftArray.get(position).getWantedShift().getShifter().getFirstName() + "' s Shift");
         holder.delete.setOnClickListener(v -> {
-            callback.getModel().shiftManager.removeSwap(getShiftArray().get(position));
-            getShiftArray().remove(position);
+            callback.getModel().shiftManager.removeSwap(shiftArray.get(position));
+            shiftArray.remove(position);
             notifyDataSetChanged();
         });
     }
@@ -76,10 +76,6 @@ public class RequestedSwapAdapter extends RecyclerView.Adapter<RequestedSwapAdap
     @Override
     public int getItemCount() {
         return shiftArray.size();
-    }
-
-    public List<ShiftSwap> getShiftArray() {
-        return shiftArray;
     }
 }
 
