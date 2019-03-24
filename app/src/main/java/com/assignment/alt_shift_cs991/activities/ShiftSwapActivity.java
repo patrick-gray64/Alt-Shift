@@ -97,31 +97,23 @@ public class ShiftSwapActivity extends ToolbarActivity {
                 v.setEnabled(true);
                 Button confirmButton = new Button(v.getContext());
                 confirmButton.setBackgroundResource(R.drawable.button_layout);
-                confirmButton.setText("Confirm Swap Request");
+                confirmButton.setText(R.string.confirm_swap_request);
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
-                confirmButton.setOnClickListener(new View.OnClickListener() {
-
-                    /**
-                     * Adds the shiftswap to the pending shiftswap list, produces a toast message confirming and returns
-                     * user to the calendar activity.
-                     * @param v
-                     */
-                    @Override
-                    public void onClick(View v) {
-                        ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
-                        model.shiftManager.addShiftSwap(shiftSwap);
-                        Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-                        startActivity(intent);
-                        finish();
-                        Toast.makeText(getApplicationContext(), "Shift swap request sent!", Toast.LENGTH_SHORT).show();
-                    }
+                confirmButton.setOnClickListener(v -> {
+                    ShiftSwap shiftSwap = new ShiftSwap(userSwapShift, nonUserSwapShift);
+                    model.shiftManager.addShiftSwap(shiftSwap);
+                    Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(getApplicationContext(), "Shift swap request sent!", Toast.LENGTH_SHORT).show();
                 });
+
                 RelativeLayout layout = findViewById(R.id.rlayout);
-                RelativeLayout.LayoutParams laypram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                laypram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);
-                laypram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
-                laypram.setMargins(10, 10, 30, 10);
-                layout.addView(confirmButton, laypram);
+                RelativeLayout.LayoutParams layPram = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                layPram.addRule(RelativeLayout.BELOW, R.id.cardSwapHolder);
+                layPram.addRule(RelativeLayout.CENTER_IN_PARENT, R.id.cardSwapHolder);
+                layPram.setMargins(10, 10, 30, 10);
+                layout.addView(confirmButton, layPram);
             }
 
             @Override
@@ -133,12 +125,7 @@ public class ShiftSwapActivity extends ToolbarActivity {
             public void onAnimationRepeat(Animator animation) {
 
             }
-        }).withStartAction(new Runnable() {
-            @Override
-            public void run() {
-                animationSet.start();
-            }
-        }).start();
+        }).withStartAction(animationSet::start).start();
     }
 
 

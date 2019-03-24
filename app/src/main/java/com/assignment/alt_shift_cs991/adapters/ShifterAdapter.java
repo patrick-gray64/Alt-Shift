@@ -68,24 +68,20 @@ public class ShifterAdapter extends RecyclerView.Adapter<ShifterAdapter.MyViewHo
         Shifter shifter = shifters.get(position);
         viewHolder.name.setText(shifter.getFirstName());
         viewHolder.surname.setText(shifter.getSurname());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int a = viewHolder.getAdapterPosition();
-                Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
-                if(callback != null){
-                    callback.finishActivity();
-                }
-                v.getContext().startActivity(intent);
-                Toast.makeText(callback.getModel().getApplicationContext(), "Shift added to calendar!", Toast.LENGTH_SHORT).show();
-                callback.getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
-                notifyDataSetChanged();
+        viewHolder.itemView.setOnClickListener(v -> {
+            int a = viewHolder.getAdapterPosition();
+            Intent intent = new Intent(v.getContext(), ManagerCalendarActivity.class);
+            if (callback != null) {
+                callback.finishActivity();
             }
+            v.getContext().startActivity(intent);
+            Toast.makeText(callback.getModel().getApplicationContext(), "Shift added to calendar!", Toast.LENGTH_SHORT).show();
+            callback.getModel().shiftManager.addShift(dateOfNewShift, shifters.get(a));
+            notifyDataSetChanged();
         });
     }
 
-    public void setCallBack(ShiftAddingActivity.Callback callback){
+    public void setCallBack(ShiftAddingActivity.Callback callback) {
         this.callback = callback;
     }
 

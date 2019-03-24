@@ -123,14 +123,4 @@ public class Application extends android.app.Application {
         spEditor.clear();
         spEditor.commit();
     }
-
-    /**
-     * Removes a shiftSwap from the list of shiftSwaps
-     *
-     * @param s
-     */
-    public void removeSwap(ShiftSwap s) {
-        shiftManager.removeSwap(s);
-    }
-
 }

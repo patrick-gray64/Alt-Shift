@@ -30,9 +30,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="@color/paddysblue"
+            android:background="@color/jamesblue"
             android:clickable="true"
-            android:text="Hide Calender"
+            android:text="@string/Hide_Calender"
             android:textColor="@color/colorAccent" />
 
         <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/no_shifts"
+            android:text="@string/No_shifts"
             android:visibility="gone" />
 
 

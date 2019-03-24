@@ -1,7 +1,6 @@
 package com.assignment.alt_shift_cs991.activities;
 
 import android.os.Bundle;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -41,15 +40,13 @@ public class PendingSwapsEmp extends ToolbarActivity {
         getSupportActionBar().setTitle("My Shifts Swaps");
         Switch mySwitch = findViewById(R.id.switch1);
 
-        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean on) {
-                if (on) {
-                    recyclerView.setAdapter(availableSwapRequestAdapter);
-                    description.setText(R.string.pending_requests);
-                } else {
-                    recyclerView.setAdapter(offeredSwapAdapter);
-                    description.setText(R.string.pending_available);
-                }
+        mySwitch.setOnCheckedChangeListener((buttonView, on) -> {
+            if (on) {
+                recyclerView.setAdapter(availableSwapRequestAdapter);
+                description.setText(R.string.pending_requests);
+            } else {
+                recyclerView.setAdapter(offeredSwapAdapter);
+                description.setText(R.string.pending_available);
             }
         });
 
