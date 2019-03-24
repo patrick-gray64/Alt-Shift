@@ -337,6 +337,14 @@ public class ShiftManager implements Serializable {
         shiftSwaps.remove(swap);
     }
 
+    /**
+     * Removes a Shift from the list of Shifts
+     * @param shift
+     */
+    public void removeShift(Shift shift) {
+        shifts.remove(shift);
+    }
+
 
     /**
      * Swaps the shifters in the two shifts in the given shift swap

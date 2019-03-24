@@ -19,7 +19,7 @@
     <string name="register">Register</string>
     <string name="shift">Shift</string>
     <string name="login">Login</string>
-    <string name="calendar_explain">Tap on a date to see shifts assigned to your team. You can assign shifts by selecting a date and using the + button</string>
+    <string name="calendar_explain">Tap on a date to see shifts assigned to your team. You can assign shifts by selecting a date and using the + button.\n Press on bin to remove the shift.</string>
     <string name="no_shifts">No shifts on the selected day</string>
     <string name="your_shift">Your Shift</string>
     <string name="a">a</string>

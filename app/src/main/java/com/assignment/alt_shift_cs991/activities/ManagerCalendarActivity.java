@@ -64,6 +64,19 @@ public class ManagerCalendarActivity extends CalendarActivity {
         recyclerView.setAdapter(shifterAdapter);
         isShowing = true;
 
+        Callback callback = new Callback() {
+            @Override
+            public void finishActivity() {
+                finish();
+            }
+
+            @Override
+            public Application getModel() {
+                return model;
+            }
+        };
+        shifterAdapter.setCallBack(callback);
+
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             /**
              * Shows all shifts on clicked date.
@@ -135,5 +148,16 @@ public class ManagerCalendarActivity extends CalendarActivity {
         super.onResume();
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getAllShiftsDates());
         shifterAdapter.setItems(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
+    }
+
+    /**
+     * Callback interface which enables us to use these methods within the ManagerAdapter, where
+     * it is necessary to use some of the methods from our Application class.
+     */
+    public interface Callback {
+
+        void finishActivity();
+
+        Application getModel();
     }
 }

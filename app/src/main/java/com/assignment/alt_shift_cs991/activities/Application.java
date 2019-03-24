@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 
 import com.assignment.alt_shift_cs991.adapters.CalendarManager;
 import com.assignment.alt_shift_cs991.model.Database;
+import com.assignment.alt_shift_cs991.model.Shift;
 import com.assignment.alt_shift_cs991.model.ShiftManager;
 import com.assignment.alt_shift_cs991.model.ShiftSwap;
 import com.assignment.alt_shift_cs991.model.Shifter;
@@ -132,5 +133,7 @@ public class Application extends android.app.Application {
     public void removeSwap(ShiftSwap s) {
         shiftManager.removeSwap(s);
     }
+
+
 
 }
