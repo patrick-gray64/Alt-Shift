@@ -14,6 +14,8 @@
     <string name="action_logout">Logout</string>
     <string name="available_swap">My Swaps:</string>
     <string name="offered_swap">Offered Swaps:</string>
+    <string name="confirm_swap_request">Confirm Swap Request</string>
+    <string name="confirm_swap">Confirm Swap</string>
     <string name="action_more">View more options</string>
     <string name="managerCheckbox">Tick if Manager</string>
     <string name="register">Register</string>

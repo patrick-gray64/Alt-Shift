@@ -89,7 +89,7 @@ public class FinalShiftSwapActivity extends ToolbarActivity {
                 v.setEnabled(true);
                 Button confirmButton = new Button(v.getContext());
                 confirmButton.setBackgroundResource(R.drawable.button_layout);
-                confirmButton.setText("Confirm Swap");
+                confirmButton.setText(R.string.confirm_swap);
                 confirmButton.setTextColor(Color.parseColor("#ffffff"));
                 confirmButton.setOnClickListener(v -> {
                     model.shiftManager.swapShifts(shiftSwap);
