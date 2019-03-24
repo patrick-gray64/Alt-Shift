@@ -77,7 +77,7 @@ public class AvailableSwapAdapter extends RecyclerView.Adapter<AvailableSwapAdap
             }
         });
         holder.delete.setOnClickListener(v -> {
-            callback.getModel().removeSwap(shiftArray.get(position));
+            callback.getModel().shiftManager.removeSwap(shiftArray.get(position));
             shiftArray.remove(position);
             notifyDataSetChanged();
 

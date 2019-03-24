@@ -50,8 +50,8 @@ public class ManagerCalendarActivity extends CalendarActivity {
         final ActionBar actionBar = getSupportActionBar();
         calendarView = findViewById(R.id.compactcalendar_view);
         calendarView.setUseThreeLetterAbbreviation(true);
-        actionBar.setTitle(dateFormat.format(new Date()));
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getAllShiftsDates());
+        actionBar.setTitle(dateFormat.format(new Date()));
         shifterAdapter = new ManagerAdapter(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
         recyclerView = findViewById(R.id.shifter_shifts);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -68,6 +68,17 @@ public class ManagerCalendarActivity extends CalendarActivity {
             public Application getModel() {
                 return model;
             }
+
+            @Override
+            public CompactCalendarView getCalendar() {
+                return calendarView;
+            }
+
+            @Override
+            public CalendarManager getCalendarManager() {
+                return calendarManager;
+            }
+
         };
         shifterAdapter.setCallBack(callback);
 
@@ -128,6 +139,7 @@ public class ManagerCalendarActivity extends CalendarActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        calendarView.removeAllEvents();
         calendarManager.shiftPopulate(calendarView, model.shiftManager.getAllShiftsDates());
         shifterAdapter.setItems(model.shiftManager.getAllShiftsByDate(model.getDateClicked()));
     }
@@ -141,5 +153,9 @@ public class ManagerCalendarActivity extends CalendarActivity {
         void finishActivity();
 
         Application getModel();
+
+        CompactCalendarView getCalendar();
+
+        CalendarManager getCalendarManager();
     }
 }

@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.assignment.alt_shift_cs991.R;
 import com.assignment.alt_shift_cs991.activities.ManagerCalendarActivity;
-import com.assignment.alt_shift_cs991.activities.PendingSwapsEmp;
 import com.assignment.alt_shift_cs991.model.Shift;
 
 import java.util.List;
@@ -22,7 +21,6 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
 
     private List<Shift> shifts;
     public ManagerCalendarActivity.Callback callback;
-
 
     /**
      * A constructor for the ManagerAdapter class.
@@ -82,13 +80,13 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
         Shift shift = shifts.get(position);
         viewHolder.shifterName.setText(shift.getShifter().getFirstName());
         viewHolder.date.setText(shift.getDate());
-        viewHolder.delete.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        viewHolder.delete.setOnClickListener(v -> {
                 callback.getModel().shiftManager.removeShift(shifts.get(position));
+                callback.getCalendar().removeAllEvents();
+                callback.getCalendarManager().shiftPopulate(callback.getCalendar(), callback.getModel().shiftManager.getAllShiftsDates());
                 shifts.remove(position);
                 notifyDataSetChanged();
-            }
-        });
+            });
     }
 
     /**
@@ -133,8 +131,6 @@ public class ManagerAdapter extends RecyclerView.Adapter<ManagerAdapter.MyViewHo
             return new ManagerAdapter.MyViewHolder(listItemView);
         }
     }
-
-
 }
 
 

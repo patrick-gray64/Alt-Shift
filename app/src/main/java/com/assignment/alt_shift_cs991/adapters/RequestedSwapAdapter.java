@@ -67,7 +67,7 @@ public class RequestedSwapAdapter extends RecyclerView.Adapter<RequestedSwapAdap
         holder.offeredDate.setText(getShiftArray().get(position).getWantedShift().getDate());
         holder.otherShifter.setText(getShiftArray().get(position).getWantedShift().getShifter().getFirstName() + "' s Shift");
         holder.delete.setOnClickListener(v -> {
-            callback.getModel().removeSwap(getShiftArray().get(position));
+            callback.getModel().shiftManager.removeSwap(getShiftArray().get(position));
             getShiftArray().remove(position);
             notifyDataSetChanged();
         });
