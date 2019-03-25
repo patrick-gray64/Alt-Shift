@@ -92,13 +92,7 @@ public class CalendarActivity extends ToolbarActivity {
             }
         });
 
-        CallBack callback = new CallBack() {
-            @Override
-            public Application getModel() {
-
-                return model;
-            }
-        }; shiftAdapter.setCallBack(callback);
+        CallBack callback = () -> model; shiftAdapter.setCallBack(callback);
     }
 
 
